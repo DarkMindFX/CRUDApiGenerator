@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>PPT.Utils</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Convertors\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CRUD.DTO\CRUD.DTO.csproj" />
+    <ProjectReference Include="..\CRUD.Interfaces\CRUD.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

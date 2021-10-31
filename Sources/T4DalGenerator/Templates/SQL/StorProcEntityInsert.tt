@@ -1,0 +1,68 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".sql"#>
+
+<#@ parameter name="table" type="DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="T4DalGenerator.ModelHelper" #>
+<#@ parameter name="generator" type="T4DalGenerator.Generators.GeneratorBase"#>
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF OBJECT_ID('p_<#= table.Name #>_Insert', 'P') IS NOT NULL
+DROP PROC [dbo].[p_<#= table.Name #>_Insert]
+GO
+
+CREATE PROCEDURE [dbo].[p_<#= table.Name #>_Insert]
+	<#
+		var pks = generator.GetPKColumns(table);
+		for(int i = 0; i < table.Columns.Count; ++i)
+		{
+			var c = table.Columns[i];
+	#>
+		<#=generator.GenerateParamDeclaration(c) #><#= i+1 < table.Columns.Count ? "," : string.Empty #>
+	<#
+		}
+	#>
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+
+	INSERT INTO [dbo].[<#= table.Name #>]
+	SELECT 
+	<#
+		for(int i = 0; i < table.Columns.Count; ++i)
+		{
+			var c = table.Columns[i];
+			if(!c.IsIdentity) 
+			{
+	#>
+	@<#=c.Name #><#= i+1 < table.Columns.Count ? "," : string.Empty #>
+	<#
+			}
+		}
+	#>
+
+	
+
+	SELECT
+		e.*
+	FROM
+		[dbo].[<#= table.Name #>] e
+	WHERE
+		<#
+			for(int i = 0; i < table.Columns.Count; ++i)
+			{
+				var c = table.Columns[i];
+		#>
+		(CASE WHEN @<#=c.Name #> IS NOT NULL THEN (CASE WHEN e.[<#=c.Name #>] = @<#=c.Name #> THEN 1 ELSE 0 END) ELSE 1 END) = 1 <#= i + 1 < table.Columns.Count ? "AND" : string.Empty #>
+		<# 	}//for #>
+END
+GO

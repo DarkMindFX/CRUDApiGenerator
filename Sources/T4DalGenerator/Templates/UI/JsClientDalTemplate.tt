@@ -1,0 +1,109 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#@ parameter name="table" type="DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="T4DalGenerator.ModelHelper" #>
+<#@ parameter name="generator" type="T4DalGenerator.Generators.GeneratorBase"#>
+
+
+const axios = require('axios');
+const constants = require('../constants');
+
+const DalBase = require('./DalBase');
+
+<# var pks = generator.GetPKColumns(table); #>
+
+class <#= modelHelper.Pluralize(table.Name) #>Dal extends DalBase {
+
+    constructor() {
+        super();
+    }
+
+    async insert<#= table.Name #>(new<#= table.Name #>) {
+        let inst = this.Instance;
+
+        try {
+            let res = await inst.post(`/<#=modelHelper.Pluralize(table.Name).ToLower()#>`, new<#= table.Name #>);
+
+            return res;
+        }
+        catch(error) {
+            console.log(error.response);
+            return error.response;
+        }
+    }
+
+    async update<#= table.Name #>(updated<#= table.Name #>) {
+        let inst = this.Instance;
+        
+        try {
+            let res = await inst.put(`/<#=modelHelper.Pluralize(table.Name).ToLower()#>`, updated<#= table.Name #>);
+
+            return res;
+        }
+        catch(error) {
+            return error.response;
+        }
+    }
+
+    async delete<#= table.Name #>(<#
+        for(int i = 0; i < pks.Count; ++i)
+        {
+            var pk = pks[i];
+    #><#=pk.Name.ToLower() + (i + 1 < pks.Count ? "," : string.Empty) #><#}#>) {
+        let inst = this.Instance;
+
+        try {
+            let res = await inst.delete(`/<#=modelHelper.Pluralize(table.Name).ToLower()#><#
+        for(int i = 0; i < pks.Count; ++i)
+        {
+            var pk = pks[i];
+    #>/${<#=pk.Name.ToLower()#>}<#}#>`);
+
+            return res;        
+        }
+        catch(error) {
+            return error.response;
+        }
+    }
+
+    async get<#= modelHelper.Pluralize(table.Name) #>()
+    {
+        let inst = this.Instance;
+
+        try {
+            let res = await inst.get(`/<#=modelHelper.Pluralize(table.Name).ToLower()#>`);
+
+            return res;
+        }
+        catch(error) {
+            return error.response;
+        }
+    }
+
+    async get<#= table.Name #>(<#
+        for(int i = 0; i < pks.Count; ++i)
+        {
+            var pk = pks[i];
+    #><#=pk.Name.ToLower() + (i + 1 < pks.Count ? "," : string.Empty) #><#}#>) {
+        let inst = this.Instance;
+
+        try {
+            let res = await inst.get(`/<#=modelHelper.Pluralize(table.Name).ToLower()#><#
+        for(int i = 0; i < pks.Count; ++i)
+        {
+            var pk = pks[i];
+    #>/${<#=pk.Name.ToLower()#>}<#}#>`);
+
+            return res;
+        }
+        catch(error) {
+            return error.response;
+        }
+    }
+}
+
+module.exports = <#= modelHelper.Pluralize(table.Name) #>Dal;

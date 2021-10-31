@@ -1,0 +1,245 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#@ parameter name="table" type="DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="T4DalGenerator.ModelHelper" #>
+<#@ parameter name="generator" type="T4DalGenerator.Generators.GeneratorBase"#>
+
+<# 
+    var pks = generator.GetPKColumns(table); 
+    var fks = generator.GetFKColumns(table).Select( c =>  c.FKRefTable ).Distinct();
+    var entityPlural = modelHelper.Pluralize(table.Name);
+#>
+
+
+import React from "react";
+import { Link, withRouter } from 'react-router-dom'
+import { DataGrid } from '@material-ui/data-grid';
+import Alert from '@material-ui/lab/Alert';
+import { Button } from '@material-ui/core';
+import constants from "../../constants";
+
+const PageHelper = require("../../helpers/PageHelper");
+const <#= entityPlural #>Dal = require('../../dal/<#= entityPlural #>Dal');
+<# 
+foreach(var fk in fks) 
+{
+    if(!fk.Equals(table.Name)) {
+#>
+
+const <#= modelHelper.Pluralize(fk) #>Dal = require('../../dal/<#= modelHelper.Pluralize(fk) #>Dal');
+<#
+    }
+}
+#>
+
+
+class <#= entityPlural #>Page extends React.Component {
+
+    _columns = null;
+    _pageHelper = null;
+
+    constructor(props) {
+        super(props);
+
+        this._pageHelper = new PageHelper(this.props);
+        let rooPath = '/admin/'; // set the page hierarchy here
+
+        this.state = { 
+            <#= entityPlural.ToLower() #>: [],
+            showError: false,
+            error: null,
+            urlThis: `${rooPath}<#= entityPlural.ToLower() #>`,
+            urlNewEntity: `${rooPath}<#= table.Name.ToLower() #>/new`,
+            urlEditEntity: `${rooPath}<#= table.Name.ToLower() #>/edit/`,
+        };
+        this._initColumns();
+       
+<# 
+foreach(var fk in fks) 
+{
+#>
+        this._get<#= modelHelper.Pluralize(fk) #> = this._get<#= modelHelper.Pluralize(fk) #>.bind(this);
+<#
+}
+#>
+        this._get<#= entityPlural #> = this._get<#= entityPlural #>.bind(this);
+        this._redirectToLogin = this._redirectToLogin.bind(this);
+
+        this.onRowClick = this.onRowClick.bind(this);
+    }
+
+    onRowClick(event) {
+        const row = event.row;
+        if(row) {
+            this.props.history.push(this.state.urlEditEntity + row.id);
+        }
+
+    }
+
+    componentDidMount() {
+        const token = localStorage.getItem(constants.SESSION_TOKEN_KEY);
+        console.log('Token: ', token);
+        if(token != null) {
+            let obj = this;
+<#
+var promisesDals = string.Empty;
+foreach(var fk in fks)
+{
+    if(!fk.Equals(table.Name)) {
+        promisesDals += "\t\t\tobj._get" + modelHelper.Pluralize(fk) +  "().then( () => {\r\n";
+    }
+}
+
+promisesDals += "\t\t\tobj._get" + modelHelper.Pluralize(table.Name) + "().then( () => {} );\r\n\t\t\t";
+
+foreach(var fk in fks)
+{
+    if(!fk.Equals(table.Name)) {
+        promisesDals += "});";
+    }
+}
+
+#>
+            <#= promisesDals #>
+        }
+        else {
+            console.log('No token - need to login')
+            this._redirectToLogin();           
+        }
+    }
+
+    render() {
+        let records = this._getRecords();
+
+        const styleError = {
+            display: this.state.showError ? "block" : "none"
+        }
+
+        return (
+            <div style={{ height: 500, width: '100%' }}>
+                <h3><#= entityPlural #></h3>                
+                <Alert severity="error" style={styleError}>Error: {this.state.error}</Alert>
+                <DataGrid columns={this._columns} rows={records}  onRowClick={ this.onRowClick }/>
+                <Button variant="contained" component={Link} color="primary" size="small" to={this.state.urlNewEntity} >+ <#= table.Name #></Button>        
+            </div>
+        );
+    }
+
+    _initColumns() {
+        this._columns = [
+<#
+foreach(var c in table.Columns)
+{
+#>
+                { field: '<#= c.Name #>', headerName: '<#= c.Name #>', width: 250 },
+<#
+}
+#>       
+        ]        
+    }
+
+    _getRecords() {
+        let records = [];
+
+        let cs = Object.values(this.state.<#= entityPlural.ToLower() #>);
+
+        for(let c in cs) {
+
+            let r = {
+                id: cs[c].ID,
+<#
+foreach(var c in table.Columns)
+{
+    if(string.IsNullOrEmpty(c.FKRefTable))
+    {
+#>
+                <#= c.Name #>: cs[c].<#= c.Name #>,
+<#
+    }
+    else 
+    {
+#>
+                <#= c.Name #>: cs[c].<#= c.Name #> ? this.state.<#= modelHelper.Pluralize(c.FKRefTable).ToLower() #>[ cs[c].<#= c.Name #> ].Name : "",
+<#
+    }
+}
+#>
+
+            };
+
+            records.push(r);
+        }
+
+        return records;
+    }
+
+<# 
+foreach(var fk in fks) 
+{
+#>
+    async _get<#= modelHelper.Pluralize(fk) #>() {
+        let updatedState = this.state;
+        updatedState.<#= modelHelper.Pluralize(fk).ToLower() #> = {};
+        let dal<#= modelHelper.Pluralize(fk) #> = new <#= modelHelper.Pluralize(fk) #>Dal();
+        let response = await dal<#= modelHelper.Pluralize(fk) #>.get<#= modelHelper.Pluralize(fk) #>();
+
+        if(response.status == constants.HTTP_OK)
+        {
+            for(let s in response.data)
+            {
+                updatedState.<#= modelHelper.Pluralize(fk).ToLower() #>[response.data[s].ID] = response.data[s];             
+            }
+        }
+        else if(response.status == constants.HTTP_Unauthorized) {
+            this._redirectToLogin();            
+        }
+        else {
+            this._showError(updatedState, response);                        
+        }
+
+        this.setState(updatedState);
+    }
+<#
+}
+#>    
+
+    async _get<#= entityPlural #>() {
+        let updatedState = this.state;
+        updatedState.<#= entityPlural.ToLower() #> = {};
+        let dal<#= entityPlural #> = new <#= entityPlural #>Dal();
+        let response = await dal<#= entityPlural #>.get<#= entityPlural #>();
+
+        if(response.status == constants.HTTP_OK)
+        {
+            for(let s in response.data)
+            {
+                updatedState.<#= entityPlural.ToLower() #>[response.data[s].ID] = response.data[s];             
+            }
+        }
+        else if(response.status == constants.HTTP_Unauthorized) {
+            this._redirectToLogin();            
+        }
+        else {
+            this._showError(updatedState, response);                        
+        }
+
+        this.setState(updatedState);
+    }
+
+    _showError(updatedState, response) {
+        var error = JSON.parse(response.data.response);
+        updatedState.showError = true;
+        updatedState.error = error.Message;
+    }
+
+    _redirectToLogin()
+    {        
+        this._pageHelper.redirectToLogin(this.state.urlThis);  
+    }
+}
+
+export default withRouter(<#= entityPlural #>Page);

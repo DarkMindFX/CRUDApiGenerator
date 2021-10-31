@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>PPT.PhotoPrint.API</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Helpers\EntityToDtoConvertor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="0nf5ky13.4eb~" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.0" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="5.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CRUD.Common\CRUD.Common.csproj" />
+    <ProjectReference Include="..\..\CRUD.DAL.MSSQL\CRUD.DAL.MSSQL.csproj" />
+    <ProjectReference Include="..\..\CRUD.DTO\CRUD.DTO.csproj" />
+    <ProjectReference Include="..\..\CRUD.Interfaces\CRUD.Interfaces.csproj" />
+    <ProjectReference Include="..\..\CRUD.Utils\CRUD.Utils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dal\Interfaces\" />
+  </ItemGroup>
+
+
+</Project>

@@ -1,0 +1,67 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#@ parameter name="tables" type="System.Collections.Generic.IList<DataModel.DataTable>" #>
+<#@ parameter name="modelHelper" type="T4DalGenerator.ModelHelper" #>
+<#@ parameter name="generator" type="T4DalGenerator.Generators.GeneratorBase"#>
+
+import logo from './logo.svg';
+import './App.css';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  Redirect
+} from 'react-router-dom';
+
+import React from 'react';
+
+import MainPage from './pages';
+import RegisterPage from './pages/register';
+import LogingPage from './pages/login';
+import LogoutPage from './pages/logout';
+
+<#
+    foreach(var t in tables) 
+    {
+#>
+import <#= modelHelper.Pluralize( t.Name ) #>Page from './pages/admin/<#= modelHelper.Pluralize( t.Name ).ToLower() #>';
+import <#= t.Name #>Page from './pages/admin/<#= t.Name.ToLower() #>';
+<#
+    }
+#>
+
+class App extends React.Component {
+
+  render() {
+    return (
+      <Router>
+       {/*All our Routes goes here!*/}
+       <Route exact path="/" component={MainPage} />
+       <Route exact path="/register" component={RegisterPage} />
+       <Route exact path="/login" component={LogingPage} />
+       <Route exact path="/logout" component={LogoutPage} />
+       
+
+       {/*Admin pages*/}
+<#
+    foreach(var t in tables) 
+    {
+#>
+       <Route exact path="/admin/<#= modelHelper.Pluralize( t.Name ).ToLower() #>" component={<#= modelHelper.Pluralize( t.Name ) #>Page} />
+       <Route exact path="/admin/<#= t.Name.ToLower() #>/:operation/:id?" component={<#= t.Name #>Page} />
+<#
+    }
+#>
+      
+      </Router>
+    );
+  }
+}
+
+export default App;

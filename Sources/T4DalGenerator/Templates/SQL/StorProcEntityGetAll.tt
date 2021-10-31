@@ -1,0 +1,32 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".sql"#>
+
+<#@ parameter name="table" type="DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="T4DalGenerator.ModelHelper" #>
+<#@ parameter name="generator" type="T4DalGenerator.Generators.GeneratorBase"#>
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF OBJECT_ID('p_<#= table.Name #>_GetAll', 'P') IS NOT NULL
+DROP PROC [dbo].[p_<#= table.Name #>_GetAll]
+GO
+
+CREATE PROCEDURE [dbo].[p_<#= table.Name #>_GetAll]
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT
+		e.*
+	FROM
+		[dbo].[<#= table.Name #>] e
+END
+GO

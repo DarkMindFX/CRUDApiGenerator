@@ -1,0 +1,76 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".sql"#>
+
+<#@ parameter name="table" type="DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="T4DalGenerator.ModelHelper" #>
+<#@ parameter name="generator" type="T4DalGenerator.Generators.GeneratorBase"#>
+
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF OBJECT_ID('p_<#= table.Name #>_GetDetails', 'P') IS NOT NULL
+DROP PROC [dbo].[p_<#= table.Name #>_GetDetails]
+GO
+
+CREATE PROCEDURE [dbo].[p_<#= table.Name #>_GetDetails]
+	<#
+		var pks = generator.GetPKColumns(table);
+		foreach(var c in pks)
+		{
+	#>
+	<#=generator.GenerateParamDeclaration(c) #>,	
+	<#
+		}//foreach
+	#>
+	@Found BIT OUTPUT
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	IF(EXISTS(	SELECT 1 FROM [dbo].[<#= table.Name #>] c 
+				WHERE 
+			<#
+				for(int i = 0; i < pks.Count; ++i)
+				{
+					var c = pks[i];
+					
+			#>
+					[<#=c.Name #>] = @<#=c.Name #>	<#= i + 1 < pks.Count ? "AND" : string.Empty #>
+			<#
+
+				}//for
+			#>
+	)) 
+	BEGIN
+		SET @Found = 1; -- notifying that record was found
+		
+		SELECT
+			e.*
+		FROM
+		[dbo].[<#= table.Name #>] e
+		WHERE 
+			<#
+				for(int i = 0; i < pks.Count; ++i)
+				{
+					var c = pks[i];
+					
+			#>
+					[<#=c.Name #>] = @<#=c.Name #>	<#= i + 1 < pks.Count ? "AND" : string.Empty #>
+			<#
+
+				}//for
+			#>
+	END
+	ELSE
+		SET @Found = 0;
+END
+GO

@@ -1,0 +1,14 @@
+{
+  "DALInitParams": {
+    "ConnectionString": "Data Source=DESKTOP-U0MUS24\\SQLEXPRESS; Initial Catalog=PhotoPrint; User ID=ppt_test_account; Password=PPTTestAccount2021;"
+  },
+
+  "DALInitParams_InvalidHost": {
+    "ConnectionString": "Data Source=nosuchhost; Initial Catalog=PhotoPrint; User ID=ppt_test_account; Password=PPTTestAccount2021;"
+  },
+
+  "DALInitParams_InvalidDb": {
+    "ConnectionString": "Data Source=DESKTOP-U0MUS24\\SQLEXPRESS; Initial Catalog=nosuchdb; User ID=hrt_test_account; Password=PPTTestAccount2021;"
+  }
+
+}

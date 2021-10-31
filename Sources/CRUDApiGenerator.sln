@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "T4DalGenerator", "T4DalGenerator\T4DalGenerator.csproj", "{B05A9231-5706-41D8-8253-BC42D2F11938}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataModel", "DataModel\DataModel.csproj", "{B3FD1426-522D-41CC-BE07-C961F2D213DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B05A9231-5706-41D8-8253-BC42D2F11938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B05A9231-5706-41D8-8253-BC42D2F11938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B05A9231-5706-41D8-8253-BC42D2F11938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B05A9231-5706-41D8-8253-BC42D2F11938}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3FD1426-522D-41CC-BE07-C961F2D213DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3FD1426-522D-41CC-BE07-C961F2D213DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3FD1426-522D-41CC-BE07-C961F2D213DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3FD1426-522D-41CC-BE07-C961F2D213DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4AFEC677-EDBA-4A58-AF86-BE6DE0BCD8AB}
+	EndGlobalSection
+EndGlobal

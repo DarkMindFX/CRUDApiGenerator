@@ -1,0 +1,302 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#@ parameter name="table" type="DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="T4DalGenerator.ModelHelper" #>
+<#@ parameter name="generator" type="T4DalGenerator.Generators.GeneratorBase"#>
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using PPT.PhotoPrint.API.Filters;
+using PPT.Interfaces.Entities;
+using PPT.Utils.Convertors;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Options;
+using PPT.PhotoPrint.API.Helpers;
+
+<# 
+    var pks = generator.GetPKColumns(table); 
+#>
+
+namespace PPT.PhotoPrint.API.Controllers.V1
+{
+    [Route("api/v1/[controller]")]
+    [ApiController]
+    [UnhandledExceptionFilter]
+    public class <#= modelHelper.Pluralize(table.Name) #>Controller : BaseController
+    {
+        private readonly Dal.I<#= table.Name #>Dal _dal<#= table.Name #>;
+        private readonly ILogger<<#= modelHelper.Pluralize(table.Name) #>Controller> _logger;
+        private readonly IOptions<AppSettings> _appSettings;
+
+
+        public <#= modelHelper.Pluralize(table.Name) #>Controller( Dal.I<#= table.Name #>Dal dal<#= table.Name #>,
+                                    ILogger<<#= modelHelper.Pluralize(table.Name) #>Controller> logger,
+                                    IOptions<AppSettings> appSettings)
+        {
+            _dal<#= table.Name #> = dal<#= table.Name #>; 
+            _logger = logger;
+            _appSettings = appSettings;
+        }
+
+        //[Authorize]
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            _logger.LogTrace($"{System.Reflection.MethodInfo.GetCurrentMethod()} Started");
+            IActionResult response = null;
+
+            var entities = _dal<#= table.Name #>.GetAll();
+
+            IList<DTO.<#= table.Name #>> dtos = new List<DTO.<#= table.Name #>>();
+
+            foreach (var p in entities)
+            {
+                var dto = <#= table.Name #>Convertor.Convert(p, this.Url);
+
+                dtos.Add(dto);
+            }
+
+            response = Ok(dtos);
+
+            _logger.LogTrace($"{System.Reflection.MethodInfo.GetCurrentMethod()} Ended");
+
+            return response;
+        }
+
+        //[Authorize]
+        [HttpGet("<#
+        for(int i = 0; i < pks.Count; ++i)
+        {
+            var pk = pks[i];
+            #>{<#=pk.Name.ToLower()#>}<#= i+1 < pks.Count ? "/" : string.Empty #><# } #>"), ActionName("Get<#= table.Name #>")]
+        public IActionResult Get(<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #><#= generator.DbTypeToType(pk) #> <#=pk.Name.ToLower() #><#= i+1 < pks.Count ? ", " : string.Empty #><# } #>)
+        {
+            _logger.LogTrace($"{System.Reflection.MethodInfo.GetCurrentMethod()} Started");
+
+            IActionResult response = null;
+
+            var entity = _dal<#= table.Name #>.Get(<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? ", " : string.Empty #><# } #>);
+            if (entity != null)
+            {
+                var dto = <#= table.Name #>Convertor.Convert(entity, this.Url);
+                response = Ok(dto);
+            }
+            else
+            {
+                response = StatusCode((int)HttpStatusCode.NotFound, $"<#= table.Name #> was not found [ids:{<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "}, {" : "}" #><# } #>]");
+            }
+
+            _logger.LogTrace($"{System.Reflection.MethodInfo.GetCurrentMethod()} Ended");
+
+            return response;
+        }
+
+        <#
+        foreach(var c in table.Columns)
+        {
+            if(!string.IsNullOrEmpty(c.FKRefTable))
+            {
+        #>//[Authorize]
+        [HttpGet("by<#= c.Name.ToLower() #>/{<#= c.Name.ToLower() #>}")]
+        public IActionResult GetBy<#= c.Name #>(<#= generator.DbTypeToType(c) #> <#=c.Name.ToLower() #>)
+        {
+            _logger.LogTrace($"{System.Reflection.MethodInfo.GetCurrentMethod()} Started");
+            IActionResult response = null;
+
+            var entities = _dal<#= table.Name #>.GetBy<#= c.Name #>(<#=c.Name.ToLower() #>);
+
+            IList<DTO.<#= table.Name #>> dtos = new List<DTO.<#= table.Name #>>();
+
+            foreach (var p in entities)
+            {
+                var dto = <#= table.Name #>Convertor.Convert(p, this.Url);
+
+                dtos.Add(dto);
+            }
+
+            response = Ok(dtos);
+
+            _logger.LogTrace($"{System.Reflection.MethodInfo.GetCurrentMethod()} Ended");
+
+            return response;
+        }
+        <#
+            }
+                
+        }
+        #>
+
+        //[Authorize]
+        [HttpDelete("<#
+        for(int i = 0; i < pks.Count; ++i)
+        {
+            var pk = pks[i];
+            #>{<#=pk.Name.ToLower()#>}<#= i+1 < pks.Count ? "/" : string.Empty #><# } #>"), ActionName("Delete<#= table.Name #>")]
+        public IActionResult Delete(<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #><#= generator.DbTypeToType(pk) #> <#=pk.Name.ToLower() #><#= i+1 < pks.Count ? ", " : string.Empty #><# } #>)
+        {
+            _logger.LogTrace($"{System.Reflection.MethodInfo.GetCurrentMethod()} Started");
+
+            IActionResult response = null;
+
+            var existingEntity = _dal<#= table.Name #>.Get(<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? ", " : string.Empty #><# } #>);
+
+            if (existingEntity != null)
+            {
+                bool removed = _dal<#= table.Name #>.Delete(<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? ", " : string.Empty #><# } #>);
+                if (removed)
+                {
+                    response = Ok();
+                }
+                else
+                {
+                    response = StatusCode((int)HttpStatusCode.InternalServerError, $"Failed to delete <#= table.Name #> [ids:{<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "}, {" : "}" #><# } #>]");
+                }
+            }
+            else
+            {
+                response = NotFound($"<#= table.Name #> not found [ids:{<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "}, {" : "}" #><# } #>]");
+            }
+
+            _logger.LogTrace($"{System.Reflection.MethodInfo.GetCurrentMethod()} Ended");
+
+            return response;
+        }
+
+        //[Authorize]
+        [HttpPost, ActionName("Insert<#= table.Name #>")]
+        public IActionResult Insert(DTO.<#= table.Name #> dto)
+        {
+            _logger.LogTrace($"{System.Reflection.MethodInfo.GetCurrentMethod()} Started");
+
+            IActionResult response = null;
+
+            var entity = <#= table.Name #>Convertor.Convert(dto);           
+
+            <#
+                if(table.HasColumn("CreatedDate") || table.HasColumn("CreatedByID"))
+                {
+            #>
+            base.SetCreatedModifiedProperties(entity, 
+                                    <#= table.HasColumn("CreatedDate") ? "\"CreatedDate\"" : "null" #>, 
+                                    <#= table.HasColumn("CreatedByID") ? "\"CreatedByID\"" : "null" #>); 
+            <#
+                }
+            #>
+
+            <#= table.Name #> newEntity = _dal<#= table.Name #>.Insert(entity);
+
+            response = StatusCode((int)HttpStatusCode.Created, <#= table.Name #>Convertor.Convert(newEntity, this.Url));
+
+            _logger.LogTrace($"{System.Reflection.MethodInfo.GetCurrentMethod()} Ended");
+
+            return response;
+        }
+
+
+        //[Authorize]
+        [HttpPut, ActionName("Update<#= table.Name #>")]
+        public IActionResult Update(DTO.<#= table.Name #> dto)
+        {
+            _logger.LogTrace($"{System.Reflection.MethodInfo.GetCurrentMethod()} Started");
+
+            IActionResult response = null;
+
+            var newEntity = <#= table.Name #>Convertor.Convert(dto);
+
+            var existingEntity = _dal<#= table.Name #>.Get(<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #>newEntity.<#= pk.Name #><#= i+1 < pks.Count ? ", " : string.Empty #><# } #>);           
+
+            if (existingEntity != null)
+            {
+            <#
+                if(table.HasColumn("CreatedDate"))
+                {
+            #>
+            newEntity.CreatedDate = existingEntity.CreatedDate; 
+            <#
+                }
+            #>
+            <#
+                if(table.HasColumn("CreatedByID"))
+                {
+            #>
+            newEntity.CreatedByID = existingEntity.CreatedByID; 
+            <#
+                }
+            #>
+            <#
+                if(table.HasColumn("ModifiedDate") || table.HasColumn("ModifiedByID"))
+                {
+                    
+            #>
+
+            base.SetCreatedModifiedProperties(newEntity, 
+                                    <#= table.HasColumn("ModifiedDate") ? "\"ModifiedDate\"" : "null" #>, 
+                                    <#= table.HasColumn("ModifiedByID") ? "\"ModifiedByID\"" : "null" #>); 
+            <#
+                }
+            #>
+                <#= table.Name #> entity = _dal<#= table.Name #>.Update(newEntity);
+
+                response = Ok(<#= table.Name #>Convertor.Convert(entity, this.Url));
+            }
+            else
+            {
+                response = NotFound($"<#= table.Name #> not found [ids:{<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #>newEntity.<#= pk.Name #><#= i+1 < pks.Count ? "}, {" : "}" #><# } #>]");
+            }
+
+            _logger.LogTrace($"{System.Reflection.MethodInfo.GetCurrentMethod()} Ended");
+
+            return response;
+        }
+    }
+}
+

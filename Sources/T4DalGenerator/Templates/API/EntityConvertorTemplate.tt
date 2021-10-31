@@ -1,0 +1,68 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#@ parameter name="table" type="DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="T4DalGenerator.ModelHelper" #>
+<#@ parameter name="generator" type="T4DalGenerator.Generators.GeneratorBase"#>
+
+
+
+
+using Microsoft.AspNetCore.Mvc;
+using System;
+
+namespace PPT.Utils.Convertors
+{
+    public class <#= table.Name #>Convertor
+    {
+        public static DTO.<#= table.Name #> Convert(Interfaces.Entities.<#= table.Name #> entity, IUrlHelper url)
+        {
+            var dto = new DTO.<#= table.Name #>()
+            {
+        <# 
+			foreach(var c in table.Columns) 
+			{
+		#>
+		        <#= c.Name #> = entity.<#= c.Name #>,
+
+		<#
+			}
+		#>		
+            };
+
+            <# var pks = generator.GetPKColumns(table); #>
+            if(url != null)
+            {
+                dto.Links.Add(new DTO.Link(url.Action("Get<#= table.Name #>", "<#= modelHelper.Pluralize(table.Name).ToLower() #>", new { <# for(int i = 0; i < pks.Count; ++i) { #><#=pks[i].Name.ToLower()#> = dto.<#=pks[i].Name#><#= i+1 < pks.Count ? "," : string.Empty #> <# } #> }), "self", "GET"));
+                dto.Links.Add(new DTO.Link(url.Action("Delete<#= table.Name #>", "<#= modelHelper.Pluralize(table.Name).ToLower() #>", new { <# for(int i = 0; i < pks.Count; ++i) { #><#=pks[i].Name.ToLower()#> = dto.<#=pks[i].Name#><#= i+1 < pks.Count ? "," : string.Empty #> <# } #> }), "delete_<#= table.Name.ToLower() #>", "DELETE"));
+                dto.Links.Add(new DTO.Link(url.Action("Insert<#= table.Name #>", "<#= modelHelper.Pluralize(table.Name).ToLower() #>"), "insert_<#= table.Name.ToLower() #>", "POST"));
+                dto.Links.Add(new DTO.Link(url.Action("Update<#= table.Name #>", "<#= modelHelper.Pluralize(table.Name).ToLower() #>"), "update_<#= table.Name.ToLower() #>", "PUT"));
+            }
+            return dto;
+
+        }
+
+        public static Interfaces.Entities.<#= table.Name #> Convert(DTO.<#= table.Name #> dto)
+        {
+            var entity = new Interfaces.Entities.<#= table.Name #>()
+            {
+                
+        <# 
+			foreach(var c in table.Columns) 
+			{
+		#>
+		        <#= c.Name #> = dto.<#= c.Name #>,
+
+		<#
+			}
+		#>		
+     
+            };
+
+            return entity;
+        }
+    }
+}

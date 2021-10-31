@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "T4DalGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "appsettings.PhotoPrint.json"
+    }
+  }
+}
