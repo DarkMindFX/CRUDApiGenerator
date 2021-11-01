@@ -37,6 +37,8 @@ namespace T4DalGenerator.Generators
             template.Session["generator"] = this;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
+            template.Session["IsSoftDelete"] = _genParams.Settings.IsSoftDelete;
+            template.Session["SoftDeleteField"] = _genParams.Settings.SoftDeleteField;
             template.Initialize();
 
             string content = template.TransformText();

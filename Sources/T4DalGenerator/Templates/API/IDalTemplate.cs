@@ -33,28 +33,28 @@ namespace T4DalGenerator.Templates.API
                     "tem.Text;\r\nusing System.Threading.Tasks;\r\nusing PPT.Interfaces.Entities;\r\nusing " +
                     "PPT.Interfaces;\r\n\r\nnamespace PPT.Interfaces\r\n{\r\n    public interface I");
             
-            #line 21 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 23 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal : IDalBase<");
             
-            #line 21 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 23 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(">\r\n    {\r\n        ");
             
-            #line 23 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 25 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" Get(");
             
-            #line 23 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 25 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
 
             var pks = generator.GetPKColumns(table);
             for(int i = 0; i < pks.Count; ++i)
@@ -65,33 +65,33 @@ namespace T4DalGenerator.Templates.API
             #line default
             #line hidden
             
-            #line 28 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToType(pk)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 28 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             
-            #line 28 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 28 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write(");\r\n\r\n        bool Delete(");
             
-            #line 30 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 32 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -101,33 +101,33 @@ namespace T4DalGenerator.Templates.API
             #line default
             #line hidden
             
-            #line 34 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 36 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToType(pk)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 34 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 36 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             
-            #line 34 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 36 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 34 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 36 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write(");\r\n\r\n        ");
             
-            #line 36 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 38 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
 
             foreach(var c in table.Columns)
             {
@@ -139,36 +139,91 @@ namespace T4DalGenerator.Templates.API
             #line hidden
             this.Write("IList<");
             
-            #line 41 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 43 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("> GetBy");
             
-            #line 41 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 43 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 41 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 43 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToType(c)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 41 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 43 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n        ");
             
-            #line 42 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            #line 44 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
   } } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        ");
+            
+            #line 46 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+
+            if(IsSoftDelete && table.HasColumn(SoftDeleteField))
+            {
+        
+            
+            #line default
+            #line hidden
+            this.Write("        bool Erase(");
+            
+            #line 50 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        
+            
+            #line default
+            #line hidden
+            
+            #line 54 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToType(pk)));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 54 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
+            
+            #line default
+            #line hidden
+            
+            #line 54 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
+            
+            #line default
+            #line hidden
+            
+            #line 54 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n        ");
+            
+            #line 55 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IDalTemplate.tt"
+
+            }
+        
             
             #line default
             #line hidden
@@ -214,6 +269,32 @@ private global::T4DalGenerator.Generators.GeneratorBase generator
     get
     {
         return this._generatorField;
+    }
+}
+
+private bool _IsSoftDeleteField;
+
+/// <summary>
+/// Access the IsSoftDelete parameter of the template.
+/// </summary>
+private bool IsSoftDelete
+{
+    get
+    {
+        return this._IsSoftDeleteField;
+    }
+}
+
+private string _SoftDeleteFieldField;
+
+/// <summary>
+/// Access the SoftDeleteField parameter of the template.
+/// </summary>
+private string SoftDeleteField
+{
+    get
+    {
+        return this._SoftDeleteFieldField;
     }
 }
 
@@ -265,6 +346,34 @@ if ((generatorValueAcquired == false))
     if ((data != null))
     {
         this._generatorField = ((global::T4DalGenerator.Generators.GeneratorBase)(data));
+    }
+}
+bool IsSoftDeleteValueAcquired = false;
+if (this.Session.ContainsKey("IsSoftDelete"))
+{
+    this._IsSoftDeleteField = ((bool)(this.Session["IsSoftDelete"]));
+    IsSoftDeleteValueAcquired = true;
+}
+if ((IsSoftDeleteValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("IsSoftDelete");
+    if ((data != null))
+    {
+        this._IsSoftDeleteField = ((bool)(data));
+    }
+}
+bool SoftDeleteFieldValueAcquired = false;
+if (this.Session.ContainsKey("SoftDeleteField"))
+{
+    this._SoftDeleteFieldField = ((string)(this.Session["SoftDeleteField"]));
+    SoftDeleteFieldValueAcquired = true;
+}
+if ((SoftDeleteFieldValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("SoftDeleteField");
+    if ((data != null))
+    {
+        this._SoftDeleteFieldField = ((string)(data));
     }
 }
 

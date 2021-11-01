@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace T4DalGenerator.Templates.API
+namespace T4DalGenerator.Templates.SQL
 {
     using System.Linq;
     using System.Text;
@@ -18,9 +18,9 @@ namespace T4DalGenerator.Templates.API
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
+    #line 1 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class IServiceDalTemplate : IServiceDalTemplateBase
+    public partial class StorProcEntityErase : StorProcEntityEraseBase
     {
 #line hidden
         /// <summary>
@@ -29,212 +29,158 @@ namespace T4DalGenerator.Templates.API
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\nusing PPT.Interfaces.Entities;\r\nusing System;\r\nusing System.Collections.Generic" +
-                    ";\r\nusing System.Text;\r\n\r\nnamespace PPT.PhotoPrint.API.Dal\r\n{\r\n    public interfa" +
-                    "ce I");
+            this.Write("\r\n\r\n\r\nSET ANSI_NULLS ON\r\nGO\r\nSET QUOTED_IDENTIFIER ON\r\nGO\r\n\r\nIF OBJECT_ID(\'p_");
             
-            #line 20 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
+            #line 19 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write("Dal : IDalBase<");
+            this.Write("_Erase\', \'P\') IS NOT NULL\r\nDROP PROC [dbo].[p_");
             
-            #line 20 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
+            #line 20 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(">\r\n    {\r\n        ");
+            this.Write("_Erase]\r\nGO\r\n\r\nCREATE PROCEDURE [dbo].[p_");
             
-            #line 22 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
+            #line 23 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(" Get(");
+            this.Write("_Erase]\r\n\t");
             
-            #line 22 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
+            #line 24 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
 
-            var pks = generator.GetPKColumns(table);
-            for(int i = 0; i < pks.Count; ++i)
-            {
-            var pk = pks[i];
-        
+		var pks = generator.GetPKColumns(table);
+		foreach(var c in pks)
+		{
+	
             
             #line default
             #line hidden
+            this.Write("\t");
             
-            #line 27 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToType(pk)));
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 27 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
+            #line 29 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(generator.GenerateParamDeclaration(c)));
             
             #line default
             #line hidden
+            this.Write(",\t\r\n\t");
             
-            #line 27 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
-            
-            #line default
-            #line hidden
-            
-            #line 27 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write(");\r\n\r\n        bool Delete(");
-            
-            #line 29 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
 
-            for(int i = 0; i < pks.Count; ++i)
-            {
-            var pk = pks[i];
-        
+		}//foreach
+	
             
             #line default
             #line hidden
+            this.Write("\t@Removed BIT OUTPUT\r\nAS\r\nBEGIN\r\n\t\r\n\tSET NOCOUNT ON;\r\n    \r\n\tIF( EXISTS( SELECT 1" +
+                    " FROM [dbo].[");
             
-            #line 33 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToType(pk)));
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 33 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
-            
-            #line default
-            #line hidden
-            
-            #line 33 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
-            
-            #line default
-            #line hidden
-            
-            #line 33 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write(");\r\n\r\n    ");
-            
-            #line 35 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
-
-            foreach(var c in table.Columns)
-            {
-                if(!string.IsNullOrEmpty(c.FKRefTable))
-                {
-    
-            
-            #line default
-            #line hidden
-            this.Write("        IList<");
-            
-            #line 41 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
+            #line 39 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write("> GetBy");
+            this.Write("]  \r\n\t\t\t\tWHERE \r\n\t\t\t");
             
-            #line 41 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
+            #line 41 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
+
+				for(int i = 0; i < pks.Count; ++i)
+				{
+					var c = pks[i];
+					
+			
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t\t[");
+            
+            #line 47 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
-            this.Write("(");
+            this.Write("] = @");
             
-            #line 41 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToType(c)));
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 41 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
+            #line 47 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
-            this.Write(");\r\n    ");
+            this.Write("\t");
             
-            #line 42 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
+            #line 47 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i + 1 < pks.Count ? "AND" : string.Empty));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t\t");
+            
+            #line 48 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
 
-                }
-            }
-    
-            
-            #line default
-            #line hidden
-            this.Write("\r\n    ");
-            
-            #line 47 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
 
-            if(IsSoftDelete && table.HasColumn(SoftDeleteField))
-            {
-        
+				}//for
+			
             
             #line default
             #line hidden
-            this.Write("        bool Erase(");
+            this.Write("\t) )\r\n\tBEGIN\r\n\t\r\n\t\tDELETE \r\n\t\tFROM \r\n\t\t\t[dbo].[");
             
-            #line 51 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
+            #line 57 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
+            
+            #line default
+            #line hidden
+            this.Write("] \t\r\n\t\tWHERE \r\n\t\t\t");
+            
+            #line 59 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
 
-            for(int i = 0; i < pks.Count; ++i)
-            {
-            var pk = pks[i];
-        
+				for(int i = 0; i < pks.Count; ++i)
+				{
+					var c = pks[i];
+			
             
             #line default
             #line hidden
+            this.Write("\t\t\t[");
             
-            #line 55 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToType(pk)));
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 55 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
+            #line 64 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
+            this.Write("] = @");
             
-            #line 55 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
-            
-            #line default
-            #line hidden
-            
-            #line 55 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
- } 
+            #line 64 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
-            this.Write(");\r\n        ");
+            this.Write("\t");
             
-            #line 56 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
+            #line 64 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i + 1 < pks.Count ? "AND" : string.Empty));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t\t");
+            
+            #line 65 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
 
-            }
-        
+				}//for
+			
             
             #line default
             #line hidden
-            this.Write("    }\r\n}\r\n");
+            this.Write("\r\n\t\tSET @Removed = 1\r\n\tEND\r\n\tELSE\r\n\t\tSET @Removed = 0\r\nEND\r\nGO\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\IServiceDalTemplate.tt"
+        #line 1 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityErase.tt"
 
 private global::DataModel.DataTable _tableField;
 
@@ -272,32 +218,6 @@ private global::T4DalGenerator.Generators.GeneratorBase generator
     get
     {
         return this._generatorField;
-    }
-}
-
-private bool _IsSoftDeleteField;
-
-/// <summary>
-/// Access the IsSoftDelete parameter of the template.
-/// </summary>
-private bool IsSoftDelete
-{
-    get
-    {
-        return this._IsSoftDeleteField;
-    }
-}
-
-private string _SoftDeleteFieldField;
-
-/// <summary>
-/// Access the SoftDeleteField parameter of the template.
-/// </summary>
-private string SoftDeleteField
-{
-    get
-    {
-        return this._SoftDeleteFieldField;
     }
 }
 
@@ -351,34 +271,6 @@ if ((generatorValueAcquired == false))
         this._generatorField = ((global::T4DalGenerator.Generators.GeneratorBase)(data));
     }
 }
-bool IsSoftDeleteValueAcquired = false;
-if (this.Session.ContainsKey("IsSoftDelete"))
-{
-    this._IsSoftDeleteField = ((bool)(this.Session["IsSoftDelete"]));
-    IsSoftDeleteValueAcquired = true;
-}
-if ((IsSoftDeleteValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("IsSoftDelete");
-    if ((data != null))
-    {
-        this._IsSoftDeleteField = ((bool)(data));
-    }
-}
-bool SoftDeleteFieldValueAcquired = false;
-if (this.Session.ContainsKey("SoftDeleteField"))
-{
-    this._SoftDeleteFieldField = ((string)(this.Session["SoftDeleteField"]));
-    SoftDeleteFieldValueAcquired = true;
-}
-if ((SoftDeleteFieldValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("SoftDeleteField");
-    if ((data != null))
-    {
-        this._SoftDeleteFieldField = ((string)(data));
-    }
-}
 
 
     }
@@ -397,7 +289,7 @@ if ((SoftDeleteFieldValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public class IServiceDalTemplateBase
+    public class StorProcEntityEraseBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

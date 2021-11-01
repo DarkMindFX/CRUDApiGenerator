@@ -44,28 +44,28 @@ namespace PPT.DAL.MSSQL
 {
     class ");
             
-            #line 23 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 25 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("DalInitParams : InitParamsImpl\r\n    {\r\n    }\r\n\r\n    [Export(\"MSSQL\", typeof(I");
             
-            #line 27 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 29 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal))]\r\n    public class ");
             
-            #line 28 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal: SQLDal, I");
             
-            #line 28 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -73,7 +73,7 @@ namespace PPT.DAL.MSSQL
             this.Write("Dal\r\n    {\r\n        public IInitParams CreateInitParams()\r\n        {\r\n           " +
                     " return new ");
             
-            #line 32 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 34 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -82,14 +82,14 @@ namespace PPT.DAL.MSSQL
                     "        {\r\n            InitDbConnection(initParams.Parameters[\"ConnectionString\"" +
                     "]);\r\n        }\r\n\r\n        public ");
             
-            #line 40 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 42 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" Get(");
             
-            #line 40 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 42 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
 
             var pks = generator.GetPKColumns(table);
             for(int i = 0; i < pks.Count; ++i)
@@ -100,40 +100,40 @@ namespace PPT.DAL.MSSQL
             #line default
             #line hidden
             
-            #line 46 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 48 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToType(pk)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 46 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 48 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             
-            #line 46 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 48 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 46 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 48 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            ");
             
-            #line 48 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 50 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" result = default(");
             
-            #line 48 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 50 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -141,7 +141,7 @@ namespace PPT.DAL.MSSQL
             this.Write(");\r\n\r\n            using (SqlConnection conn = OpenConnection())\r\n            {\r\n " +
                     "               SqlCommand cmd = new SqlCommand(\"p_");
             
-            #line 52 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 54 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -149,7 +149,7 @@ namespace PPT.DAL.MSSQL
             this.Write("_GetDetails\", conn);\r\n                cmd.CommandType = System.Data.CommandType.S" +
                     "toredProcedure;\r\n\r\n ");
             
-            #line 55 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 57 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -160,21 +160,21 @@ namespace PPT.DAL.MSSQL
             #line hidden
             this.Write("                AddParameter(   cmd, \"@");
             
-            #line 60 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 62 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             this.Write("\", System.Data.SqlDbType.");
             
-            #line 60 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 62 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToSqlDbType(pk)));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 60 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 62 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Type.CharMaxLength != null && pk.Type.CharMaxLength > 0 ? pk.Type.CharMaxLength : 0));
             
             #line default
@@ -182,14 +182,14 @@ namespace PPT.DAL.MSSQL
             this.Write(",\r\n                                ParameterDirection.Input, false, 0, 0, string." +
                     "Empty, DataRowVersion.Current, ");
             
-            #line 61 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 63 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n            \r\n            ");
             
-            #line 63 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 65 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
 
             }
             
@@ -205,7 +205,7 @@ namespace PPT.DAL.MSSQL
                 {
                     result = ");
             
-            #line 73 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 75 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -213,7 +213,7 @@ namespace PPT.DAL.MSSQL
             this.Write("FromRow(ds.Tables[0].Rows[0]);                    \r\n                }\r\n          " +
                     "  }\r\n\r\n            return result;\r\n        }\r\n\r\n        public bool Delete(");
             
-            #line 80 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 82 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -223,26 +223,26 @@ namespace PPT.DAL.MSSQL
             #line default
             #line hidden
             
-            #line 85 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 87 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToType(pk)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 85 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 87 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             
-            #line 85 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 87 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 85 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 87 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
 }
             
             #line default
@@ -251,7 +251,7 @@ namespace PPT.DAL.MSSQL
                     "n conn = OpenConnection())\r\n            {\r\n                SqlCommand cmd = new " +
                     "SqlCommand(\"p_");
             
-            #line 91 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 93 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -259,7 +259,7 @@ namespace PPT.DAL.MSSQL
             this.Write("_Delete\", conn);\r\n                cmd.CommandType = System.Data.CommandType.Store" +
                     "dProcedure;\r\n\r\n            ");
             
-            #line 94 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 96 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -270,35 +270,35 @@ namespace PPT.DAL.MSSQL
             #line hidden
             this.Write("                AddParameter(   cmd, \"@");
             
-            #line 99 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 101 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             this.Write("\", System.Data.SqlDbType.");
             
-            #line 99 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 101 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToSqlDbType(pk)));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 99 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 101 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Type.CharMaxLength != null && pk.Type.CharMaxLength > 0 ? pk.Type.CharMaxLength : 0));
             
             #line default
             #line hidden
             this.Write(", ParameterDirection.Input, false, 0, 0, string.Empty, DataRowVersion.Current, ");
             
-            #line 99 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 101 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n            \r\n            ");
             
-            #line 101 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 103 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
 
             }
             
@@ -315,9 +315,131 @@ namespace PPT.DAL.MSSQL
             return result;
         }
 
-        ");
+");
             
-            #line 114 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 116 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+
+        if(IsSoftDelete && table.HasColumn(SoftDeleteField))
+        {
+
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        public bool Erase(");
+            
+            #line 121 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        
+            
+            #line default
+            #line hidden
+            
+            #line 126 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToType(pk)));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 126 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
+            
+            #line default
+            #line hidden
+            
+            #line 126 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
+            
+            #line default
+            #line hidden
+            
+            #line 126 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write(")\r\n        {\r\n            bool result = false;\r\n\r\n            using (SqlConnectio" +
+                    "n conn = OpenConnection())\r\n            {\r\n                SqlCommand cmd = new " +
+                    "SqlCommand(\"p_");
+            
+            #line 132 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
+            
+            #line default
+            #line hidden
+            this.Write("_Erase\", conn);\r\n                cmd.CommandType = System.Data.CommandType.Stored" +
+                    "Procedure;\r\n            ");
+            
+            #line 134 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+
+            for(int i = 0; i < pks.Count; ++i)
+            {
+                var pk = pks[i];
+            
+            
+            #line default
+            #line hidden
+            this.Write("                AddParameter(   cmd, \"@");
+            
+            #line 139 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\", System.Data.SqlDbType.");
+            
+            #line 139 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToSqlDbType(pk)));
+            
+            #line default
+            #line hidden
+            this.Write(", ");
+            
+            #line 139 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Type.CharMaxLength != null && pk.Type.CharMaxLength > 0 ? pk.Type.CharMaxLength : 0));
+            
+            #line default
+            #line hidden
+            this.Write(", ParameterDirection.Input, false, 0, 0, string.Empty, DataRowVersion.Current, ");
+            
+            #line 139 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n            \r\n            ");
+            
+            #line 141 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+
+            }
+            
+            
+            #line default
+            #line hidden
+            this.Write(@"                var pFound = AddParameter(cmd, ""@Removed"", SqlDbType.Bit, 0, ParameterDirection.Output, false, 0, 0, string.Empty, DataRowVersion.Current, 0);
+
+                cmd.ExecuteNonQuery();
+
+                result = (bool)pFound.Value;
+            }
+
+            return result;
+        }
+");
+            
+            #line 153 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+
+        }
+
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        ");
+            
+            #line 157 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
 
         foreach(var c in table.Columns)
         {
@@ -329,84 +451,84 @@ namespace PPT.DAL.MSSQL
             #line hidden
             this.Write("        public IList<");
             
-            #line 120 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 163 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("> GetBy");
             
-            #line 120 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 163 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 120 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 163 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToType(c)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 120 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 163 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            var entitiesOut = base.GetBy<");
             
-            #line 122 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 165 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 122 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 165 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToType(c)));
             
             #line default
             #line hidden
             this.Write(">(\"p_");
             
-            #line 122 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 165 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("_GetBy");
             
-            #line 122 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 165 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("\", ");
             
-            #line 122 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 165 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(", \"@");
             
-            #line 122 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 165 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("\", SqlDbType.BigInt, 0, ");
             
-            #line 122 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 165 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("FromRow);\r\n\r\n            return entitiesOut;\r\n        }\r\n        ");
             
-            #line 126 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 169 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
 
                 }
         }
@@ -416,119 +538,119 @@ namespace PPT.DAL.MSSQL
             #line hidden
             this.Write("\r\n        public IList<");
             
-            #line 131 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 174 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("> GetAll()\r\n        {\r\n            IList<");
             
-            #line 133 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 176 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("> result = base.GetAll<");
             
-            #line 133 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 176 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(">(\"p_");
             
-            #line 133 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 176 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("_GetAll\", ");
             
-            #line 133 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 176 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("FromRow);\r\n\r\n            return result;\r\n        }\r\n\r\n        public ");
             
-            #line 138 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 181 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" Insert(");
             
-            #line 138 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 181 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" entity) \r\n        {\r\n            ");
             
-            #line 140 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 183 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" entityOut = base.Upsert<");
             
-            #line 140 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 183 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(">(\"p_");
             
-            #line 140 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 183 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("_Insert\", entity, AddUpsertParameters, ");
             
-            #line 140 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 183 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("FromRow);\r\n\r\n            return entityOut;\r\n        }\r\n\r\n        public ");
             
-            #line 145 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 188 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" Update(");
             
-            #line 145 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 188 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" entity) \r\n        {\r\n            ");
             
-            #line 147 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 190 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" entityOut = base.Upsert<");
             
-            #line 147 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 190 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(">(\"p_");
             
-            #line 147 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 190 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("_Update\", entity, AddUpsertParameters, ");
             
-            #line 147 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 190 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -536,14 +658,14 @@ namespace PPT.DAL.MSSQL
             this.Write("FromRow);\r\n\r\n            return entityOut;\r\n        }\r\n\r\n        protected SqlCom" +
                     "mand AddUpsertParameters(SqlCommand cmd, ");
             
-            #line 152 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 195 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" entity)\r\n        {\r\n        ");
             
-            #line 154 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 197 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
 
             foreach(var c in table.Columns)
             {
@@ -553,63 +675,63 @@ namespace PPT.DAL.MSSQL
             #line hidden
             this.Write("        SqlParameter p");
             
-            #line 158 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 201 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = new SqlParameter(\"@");
             
-            #line 158 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 201 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("\", System.Data.SqlDbType.");
             
-            #line 158 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 201 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToSqlDbType(c)));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 158 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 201 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Type.CharMaxLength != null && c.Type.CharMaxLength > 0 ? c.Type.CharMaxLength : 0));
             
             #line default
             #line hidden
             this.Write(", ParameterDirection.Input, false, 0, 0, \"");
             
-            #line 158 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 201 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("\", DataRowVersion.Current, (object)entity.");
             
-            #line 158 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 201 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" != null ? (object)entity.");
             
-            #line 158 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 201 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" : DBNull.Value);   cmd.Parameters.Add(p");
             
-            #line 158 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 201 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("); \r\n        ");
             
-            #line 159 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 202 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
 
             }
         
@@ -618,28 +740,28 @@ namespace PPT.DAL.MSSQL
             #line hidden
             this.Write("\r\n            return cmd;\r\n        }\r\n\r\n        protected ");
             
-            #line 166 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 209 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 166 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 209 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("FromRow(DataRow row)\r\n        {\r\n            var entity = new ");
             
-            #line 168 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 211 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("();\r\n\r\n        ");
             
-            #line 170 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 213 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
 
             foreach(var c in table.Columns)
             {
@@ -649,42 +771,42 @@ namespace PPT.DAL.MSSQL
             #line hidden
             this.Write("            entity.");
             
-            #line 174 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 217 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = !DBNull.Value.Equals(row[\"");
             
-            #line 174 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 217 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("\"]) ? (");
             
-            #line 174 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 217 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToType(c)));
             
             #line default
             #line hidden
             this.Write(")row[\"");
             
-            #line 174 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 217 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("\"] : default(");
             
-            #line 174 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 217 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(generator.DbTypeToType(c)));
             
             #line default
             #line hidden
             this.Write(");\r\n        ");
             
-            #line 175 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
+            #line 218 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\API\SQLDalImplTemplate.tt"
 
             }
         
@@ -736,6 +858,32 @@ private global::T4DalGenerator.Generators.GeneratorBase generator
     }
 }
 
+private bool _IsSoftDeleteField;
+
+/// <summary>
+/// Access the IsSoftDelete parameter of the template.
+/// </summary>
+private bool IsSoftDelete
+{
+    get
+    {
+        return this._IsSoftDeleteField;
+    }
+}
+
+private string _SoftDeleteFieldField;
+
+/// <summary>
+/// Access the SoftDeleteField parameter of the template.
+/// </summary>
+private string SoftDeleteField
+{
+    get
+    {
+        return this._SoftDeleteFieldField;
+    }
+}
+
 
 /// <summary>
 /// Initialize the template
@@ -784,6 +932,34 @@ if ((generatorValueAcquired == false))
     if ((data != null))
     {
         this._generatorField = ((global::T4DalGenerator.Generators.GeneratorBase)(data));
+    }
+}
+bool IsSoftDeleteValueAcquired = false;
+if (this.Session.ContainsKey("IsSoftDelete"))
+{
+    this._IsSoftDeleteField = ((bool)(this.Session["IsSoftDelete"]));
+    IsSoftDeleteValueAcquired = true;
+}
+if ((IsSoftDeleteValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("IsSoftDelete");
+    if ((data != null))
+    {
+        this._IsSoftDeleteField = ((bool)(data));
+    }
+}
+bool SoftDeleteFieldValueAcquired = false;
+if (this.Session.ContainsKey("SoftDeleteField"))
+{
+    this._SoftDeleteFieldField = ((string)(this.Session["SoftDeleteField"]));
+    SoftDeleteFieldValueAcquired = true;
+}
+if ((SoftDeleteFieldValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("SoftDeleteField");
+    if ((data != null))
+    {
+        this._SoftDeleteFieldField = ((string)(data));
     }
 }
 

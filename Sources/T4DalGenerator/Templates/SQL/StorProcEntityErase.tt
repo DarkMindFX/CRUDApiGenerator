@@ -8,8 +8,7 @@
 <#@ parameter name="table" type="DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="T4DalGenerator.ModelHelper" #>
 <#@ parameter name="generator" type="T4DalGenerator.Generators.GeneratorBase"#>
-<#@ parameter name="IsSoftDelete" type="System.Boolean" #>
-<#@ parameter name="SoftDeleteField" type="System.String" #>
+
 
 
 SET ANSI_NULLS ON
@@ -17,11 +16,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-IF OBJECT_ID('p_<#= table.Name #>_Delete', 'P') IS NOT NULL
-DROP PROC [dbo].[p_<#= table.Name #>_Delete]
+IF OBJECT_ID('p_<#= table.Name #>_Erase', 'P') IS NOT NULL
+DROP PROC [dbo].[p_<#= table.Name #>_Erase]
 GO
 
-CREATE PROCEDURE [dbo].[p_<#= table.Name #>_Delete]
+CREATE PROCEDURE [dbo].[p_<#= table.Name #>_Erase]
 	<#
 		var pks = generator.GetPKColumns(table);
 		foreach(var c in pks)
@@ -52,23 +51,10 @@ BEGIN
 			#>
 	) )
 	BEGIN
-	<#
-		if(!IsSoftDelete || !table.HasColumn(SoftDeleteField))
-		{
-	#>
+	
 		DELETE 
 		FROM 
-			[dbo].[<#= table.Name #>] 
-	<#
-		}
-		else
-		{
-	#>
-		UPDATE [dbo].[<#= table.Name #>]
-		SET <#= SoftDeleteField #> = 1
-	<#
-		}
-	#>
+			[dbo].[<#= table.Name #>] 	
 		WHERE 
 			<#
 				for(int i = 0; i < pks.Count; ++i)

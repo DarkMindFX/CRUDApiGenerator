@@ -9,10 +9,10 @@ using T4DalGenerator.Templates.API;
 
 namespace T4DalGenerator.Generators
 {
-    public class ConvertorsGenerator : GeneratorBase
+    public class SQLDalGenerator : GeneratorBase
     {
  
-        public ConvertorsGenerator(GeneratorParams genParams) : base(genParams)
+        public SQLDalGenerator(GeneratorParams genParams) : base(genParams)
         {
         }
 
@@ -29,14 +29,16 @@ namespace T4DalGenerator.Generators
 
         protected string GenerateEntity(ModelHelper modelHelper)
         {
-            string fileName = $"{_genParams.Table.Name}Convertor.cs";
+            string fileName = $"{_genParams.Table.Name}Dal.cs";
             string fileOut = Path.Combine(GetOutputFolder(), fileName);
 
-            var template = new EntityConvertorTemplate();
+            var template = new SQLDalImplTemplate();
             template.Session = new Dictionary<string, object>();
             template.Session["generator"] = this;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
+            template.Session["IsSoftDelete"] = _genParams.Settings.IsSoftDelete;
+            template.Session["SoftDeleteField"] = _genParams.Settings.SoftDeleteField;
             template.Initialize();
 
             string content = template.TransformText();
@@ -48,7 +50,7 @@ namespace T4DalGenerator.Generators
 
         protected string GetOutputFolder()
         {
-            string outFolder = Path.Combine(_genParams.Settings.OutputRoot, _genParams.Timestamp.ToString("yyyy-MM-dd HH-mm-ss"), _genParams.Settings.OutputFolders["Convertors"]);
+            string outFolder = Path.Combine(_genParams.Settings.OutputRoot, _genParams.Timestamp.ToString("yyyy-MM-dd HH-mm-ss"), _genParams.Settings.OutputFolders["DalImpl"]);
             if (!Directory.Exists(outFolder))
             {
                 Directory.CreateDirectory(outFolder);

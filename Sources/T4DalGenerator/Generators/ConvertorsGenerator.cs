@@ -9,10 +9,10 @@ using T4DalGenerator.Templates.API;
 
 namespace T4DalGenerator.Generators
 {
-    public class SQLDalGenerator : GeneratorBase
+    public class ConvertorsGenerator : GeneratorBase
     {
  
-        public SQLDalGenerator(GeneratorParams genParams) : base(genParams)
+        public ConvertorsGenerator(GeneratorParams genParams) : base(genParams)
         {
         }
 
@@ -29,10 +29,10 @@ namespace T4DalGenerator.Generators
 
         protected string GenerateEntity(ModelHelper modelHelper)
         {
-            string fileName = $"{_genParams.Table.Name}Dal.cs";
+            string fileName = $"{_genParams.Table.Name}Convertor.cs";
             string fileOut = Path.Combine(GetOutputFolder(), fileName);
 
-            var template = new SQLDalImplTemplate();
+            var template = new EntityConvertorTemplate();
             template.Session = new Dictionary<string, object>();
             template.Session["generator"] = this;
             template.Session["table"] = _genParams.Table;
@@ -48,7 +48,7 @@ namespace T4DalGenerator.Generators
 
         protected string GetOutputFolder()
         {
-            string outFolder = Path.Combine(_genParams.Settings.OutputRoot, _genParams.Timestamp.ToString("yyyy-MM-dd HH-mm-ss"), _genParams.Settings.OutputFolders["DalImpl"]);
+            string outFolder = Path.Combine(_genParams.Settings.OutputRoot, _genParams.Timestamp.ToString("yyyy-MM-dd HH-mm-ss"), _genParams.Settings.OutputFolders["Convertors"]);
             if (!Directory.Exists(outFolder))
             {
                 Directory.CreateDirectory(outFolder);

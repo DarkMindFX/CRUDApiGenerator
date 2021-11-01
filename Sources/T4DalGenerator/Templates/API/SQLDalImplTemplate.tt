@@ -7,6 +7,8 @@
 <#@ parameter name="table" type="DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="T4DalGenerator.ModelHelper" #>
 <#@ parameter name="generator" type="T4DalGenerator.Generators.GeneratorBase"#>
+<#@ parameter name="IsSoftDelete" type="System.Boolean" #>
+<#@ parameter name="SoftDeleteField" type="System.String" #>
 
 using System;
 using System.Collections.Generic;
@@ -110,6 +112,47 @@ namespace PPT.DAL.MSSQL
 
             return result;
         }
+
+<#
+        if(IsSoftDelete && table.HasColumn(SoftDeleteField))
+        {
+#>
+
+        public bool Erase(<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #>
+<#= generator.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>)
+        {
+            bool result = false;
+
+            using (SqlConnection conn = OpenConnection())
+            {
+                SqlCommand cmd = new SqlCommand("p_<#= table.Name #>_Erase", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            <#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+                var pk = pks[i];
+            #>
+                AddParameter(   cmd, "@<#= pk.Name #>", System.Data.SqlDbType.<#= generator.DbTypeToSqlDbType(pk) #>, <#= pk.Type.CharMaxLength != null && pk.Type.CharMaxLength > 0 ? pk.Type.CharMaxLength : 0 #>, ParameterDirection.Input, false, 0, 0, string.Empty, DataRowVersion.Current, <#= pk.Name #>);
+            
+            <#
+            }
+            #>
+                var pFound = AddParameter(cmd, "@Removed", SqlDbType.Bit, 0, ParameterDirection.Output, false, 0, 0, string.Empty, DataRowVersion.Current, 0);
+
+                cmd.ExecuteNonQuery();
+
+                result = (bool)pFound.Value;
+            }
+
+            return result;
+        }
+<#
+        }
+#>
 
         <#
         foreach(var c in table.Columns)

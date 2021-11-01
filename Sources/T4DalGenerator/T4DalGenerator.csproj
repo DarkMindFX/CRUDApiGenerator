@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
@@ -64,6 +65,21 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>IServiceDalTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\SQL\StorProcEntityErase.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StorProcEntityErase.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Tests\EraseSetupTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EraseSetupTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Tests\EraseTeardownTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EraseTeardownTemplate.tt</DependentUpon>
     </Compile>
     <Compile Update="Templates\UI\JsAppTemplate.cs">
       <DesignTime>True</DesignTime>
@@ -210,6 +226,18 @@
   <ItemGroup>
     <None Update="appsettings.PhotoPrint.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\SQL\StorProcEntityErase.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>StorProcEntityErase.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Tests\EraseSetupTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EraseSetupTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Tests\EraseTeardownTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EraseTeardownTemplate.cs</LastGenOutput>
     </None>
     <None Update="Templates\UI\JsAppTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

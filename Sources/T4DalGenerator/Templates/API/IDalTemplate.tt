@@ -7,6 +7,8 @@
 <#@ parameter name="table" type="DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="T4DalGenerator.ModelHelper" #>
 <#@ parameter name="generator" type="T4DalGenerator.Generators.GeneratorBase"#>
+<#@ parameter name="IsSoftDelete" type="System.Boolean" #>
+<#@ parameter name="SoftDeleteField" type="System.String" #>
 
 using System;
 using System.Collections.Generic;
@@ -40,6 +42,19 @@ namespace PPT.Interfaces
                 {
         #>IList<<#= table.Name #>> GetBy<#=c.Name #>(<#= generator.DbTypeToType(c) #> <#=c.Name #>);
         <#  } } #>
+
+        <#
+            if(IsSoftDelete && table.HasColumn(SoftDeleteField))
+            {
+        #>
+        bool Erase(<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #><#= generator.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><# } #>);
+        <#
+            }
+        #>
     }
 }
 

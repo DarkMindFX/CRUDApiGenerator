@@ -10,6 +10,8 @@
 <#@ parameter name="testValsGet" type="System.Collections.Generic.IDictionary<string,object>" #>
 <#@ parameter name="testValsInsert" type="System.Collections.Generic.IDictionary<string,object>" #>
 <#@ parameter name="testValsUpdateAfter" type="System.Collections.Generic.IDictionary<string,object>" #>
+<#@ parameter name="IsSoftDelete" type="System.Boolean" #>
+<#@ parameter name="SoftDeleteField" type="System.String" #>
 
 using PPT.DAL.MSSQL;
 using PPT.Interfaces;
@@ -427,6 +429,53 @@ namespace Test.PPT.DAL.MSSQL
                 Assert.Pass("Success - exception thrown as expected");
             }
         }
+
+<#
+    if(IsSoftDelete && table.HasColumn(SoftDeleteField))
+    {
+#>
+        [TestCase("<#= table.Name #>\\040.Erase.Success")]
+        public void <#= table.Name #>_Erase_Success(string caseName)
+        {
+            SqlConnection conn = OpenConnection("DALInitParams");
+            var dal = Prepare<#= table.Name #>Dal("DALInitParams");
+
+            IList<object> objIds = SetupCase(conn, caseName);
+<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+#>
+                var param<#= pks[i].Name #> = (<#= generator.DbTypeToType(pks[i]) #>)objIds[<#= i #>];
+<#
+            }
+#>
+            bool removed = dal.Erase(<# for(int i = 0; i < pks.Count; ++i) {#>param<#= pks[i].Name #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>);
+
+            TeardownCase(conn, caseName);
+
+            Assert.IsTrue(removed);
+        }
+
+        [Test]
+        public void <#= table.Name #>_Erase_InvalidId()
+        {
+            var dal = Prepare<#= table.Name #>Dal("DALInitParams");
+<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+#>
+                var param<#= pks[i].Name #> = Int64.MaxValue - 1;
+<#
+            }
+#>
+   
+            bool removed = dal.Erase(<# for(int i = 0; i < pks.Count; ++i) {#>param<#= pks[i].Name #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>);
+            Assert.IsFalse(removed);
+
+        }
+<#
+    }
+#>
 
         protected I<#= table.Name #>Dal Prepare<#= table.Name #>Dal(string configName)
         {

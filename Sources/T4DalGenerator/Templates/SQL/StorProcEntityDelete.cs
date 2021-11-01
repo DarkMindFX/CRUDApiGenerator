@@ -132,7 +132,7 @@ namespace T4DalGenerator.Templates.SQL
             
             #line 55 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\SQL\StorProcEntityDelete.tt"
 
-		if(!IsSoftDelete)
+		if(!IsSoftDelete || !table.HasColumn(SoftDeleteField))
 		{
 	
             

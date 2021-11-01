@@ -26,12 +26,14 @@ namespace T4DalGenerator.Generators
 
             string getUUID = NewUUID();
             string deleteUUID = NewUUID();
+            string eraseUUID = NewUUID();
             string insertUUID = NewUUID();
             string updateBeforeUUID = NewUUID();
             string updateAfterUUID = NewUUID();
 
             IDictionary<string, object> testValsGet = GenerateTestValues(_genParams.Table, getUUID);
             IDictionary<string, object> testValsDelete = GenerateTestValues(_genParams.Table, deleteUUID);
+            IDictionary<string, object> testValsErase = GenerateTestValues(_genParams.Table, eraseUUID);
             IDictionary<string, object> testValsInsert = GenerateTestValues(_genParams.Table, insertUUID);
             IDictionary<string, object> testValsUpdateBefore = GenerateTestValues(_genParams.Table, updateBeforeUUID);
             IDictionary<string, object> testValsUpdateAfter = GenerateTestValues(_genParams.Table, updateAfterUUID);
@@ -55,6 +57,11 @@ namespace T4DalGenerator.Generators
             files.Add(GenerateDeleteTeardown(modelHelper, testValsDelete));
             files.Add(GenerateUpdateSetup(modelHelper, testValsUpdateBefore));
             files.Add(GenerateUpdateTeardown(modelHelper, testValsUpdateBefore, testValsUpdateAfter));
+            if (_genParams.Settings.IsSoftDelete && _genParams.Table.HasColumn(_genParams.Settings.SoftDeleteField))
+            {
+                files.Add(GenerateEraseSetup(modelHelper, testValsErase));
+                files.Add(GenerateEraseTeardown(modelHelper, testValsErase));
+            }
 
             return files;
         }
@@ -77,6 +84,8 @@ namespace T4DalGenerator.Generators
             template.Session["testValsGet"] = testValsGet;
             template.Session["testValsInsert"] = testValsInsert;
             template.Session["testValsUpdateAfter"] = testValsUpdateAfter;
+            template.Session["IsSoftDelete"] = _genParams.Settings.IsSoftDelete;
+            template.Session["SoftDeleteField"] = _genParams.Settings.SoftDeleteField;
             template.Initialize();
 
             string content = template.TransformText();
@@ -297,6 +306,60 @@ namespace T4DalGenerator.Generators
             template.Session["modelHelper"] = modelHelper;
             template.Session["testValsUpdateBefore"] = testValsUpdateBefore;
             template.Session["testValsUpdateAfter"] = testValsUpdateAfter;
+            template.Initialize();
+
+            string content = template.TransformText();
+
+            File.WriteAllText(fileOut, content);
+
+            return fileOut;
+        }
+
+        protected string GenerateEraseSetup(ModelHelper modelHelper,
+                                            IDictionary<string, object> testValsErase)
+        {
+            string fileName = $"Setup.sql";
+            string fileOut = Path.Combine(GetOutputFolder(), "040.Erase.Success", fileName);
+            string dirOut = Path.GetDirectoryName(fileOut);
+
+            if (!Directory.Exists(dirOut))
+            {
+                Directory.CreateDirectory(dirOut);
+            }
+
+            var template = new EraseSetupTemplate();
+            template.Session = new Dictionary<string, object>();
+            template.Session["generator"] = this;
+            template.Session["table"] = _genParams.Table;
+            template.Session["modelHelper"] = modelHelper;
+            template.Session["testValsErase"] = testValsErase;
+            template.Initialize();
+
+            string content = template.TransformText();
+
+            File.WriteAllText(fileOut, content);
+
+            return fileOut;
+        }
+
+        protected string GenerateEraseTeardown(ModelHelper modelHelper,
+                                            IDictionary<string, object> testValsErase)
+        {
+            string fileName = $"Teardown.sql";
+            string fileOut = Path.Combine(GetOutputFolder(), "040.Erase.Success", fileName);
+            string dirOut = Path.GetDirectoryName(fileOut);
+
+            if (!Directory.Exists(dirOut))
+            {
+                Directory.CreateDirectory(dirOut);
+            }
+
+            var template = new EraseTeardownTemplate();
+            template.Session = new Dictionary<string, object>();
+            template.Session["generator"] = this;
+            template.Session["table"] = _genParams.Table;
+            template.Session["modelHelper"] = modelHelper;
+            template.Session["testValsErase"] = testValsErase;
             template.Initialize();
 
             string content = template.TransformText();

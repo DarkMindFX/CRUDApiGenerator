@@ -22,6 +22,10 @@ namespace T4DalGenerator.Generators
 
             var modelHelper = new ModelHelper();
 
+            if (_genParams.Settings.IsSoftDelete && _genParams.Table.HasColumn(_genParams.Settings.SoftDeleteField))
+            {
+                files.Add(GenerateErase(modelHelper));
+            }
             files.Add(GenerateDelete(modelHelper));
             files.Add(GenerateGetAll(modelHelper));
             files.Add(GenerateGetDetails(modelHelper));
@@ -36,6 +40,25 @@ namespace T4DalGenerator.Generators
             }
 
             return files;
+        }
+
+        protected string GenerateErase(ModelHelper modelHelper)
+        {
+            string fileName = $"p_{_genParams.Table.Name}_Erase.sql";
+            string fileOut = Path.Combine(GetOutputFolder(), fileName);
+            
+            var template = new StorProcEntityErase();
+            template.Session = new Dictionary<string, object>();
+            template.Session["generator"] = this;
+            template.Session["table"] = _genParams.Table;
+            template.Session["modelHelper"] = modelHelper;
+            template.Initialize();
+
+            string content = template.TransformText();
+
+            File.WriteAllText(fileOut, content);
+            
+            return fileOut;
         }
 
         protected string GenerateDelete(ModelHelper modelHelper)

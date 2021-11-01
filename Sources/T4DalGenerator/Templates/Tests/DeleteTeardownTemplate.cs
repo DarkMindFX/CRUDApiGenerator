@@ -186,10 +186,28 @@ namespace T4DalGenerator.Templates.Tests
             
             #line 87 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
 
+	if(IsSoftDelete)
+	{
+
+            
+            #line default
+            #line hidden
+            this.Write("\t\t");
+            
+            #line 91 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(SoftDeleteField));
+            
+            #line default
+            #line hidden
+            this.Write(" IN (0, 1) AND\r\n");
+            
+            #line 92 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
+
+	}
 	for(int i = 0; i < table.Columns.Count; ++i) 
 	{
 		var c = table.Columns[i];
-		if(!c.IsIdentity || ( c.Name == SoftDeleteField && !IsSoftDelete ))
+		if(!c.IsIdentity || (c.Name == SoftDeleteField && IsSoftDelete ))
 		{
 
             
@@ -197,45 +215,37 @@ namespace T4DalGenerator.Templates.Tests
             #line hidden
             this.Write("\t(CASE WHEN @");
             
-            #line 94 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
+            #line 100 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" IS NOT NULL THEN (CASE WHEN [");
             
-            #line 94 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
+            #line 100 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("] = @");
             
-            #line 94 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
+            #line 100 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
-            this.Write(" THEN 1 ELSE 0 END) ELSE 1 END) = 1 \r\n");
+            this.Write(" THEN 1 ELSE 0 END) ELSE 1 END) = 1 ");
             
-            #line 95 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
-
-		}
-
-            
-            #line default
-            #line hidden
-            this.Write("\t\t");
-            
-            #line 98 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
+            #line 100 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i + 1 < table.Columns.Count ? "AND" : string.Empty));
             
             #line default
             #line hidden
-            this.Write("\r\n");
+            this.Write(" \r\n");
             
-            #line 99 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
+            #line 101 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
 
+		}
 	}
 
             
@@ -243,7 +253,7 @@ namespace T4DalGenerator.Templates.Tests
             #line hidden
             this.Write("\r\nIF(@Fail = 1) \r\nBEGIN\r\n\tTHROW 51001, \'");
             
-            #line 105 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
+            #line 108 "D:\Projects\CRUDApiGenerator\Sources\T4DalGenerator\Templates\Tests\DeleteTeardownTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
