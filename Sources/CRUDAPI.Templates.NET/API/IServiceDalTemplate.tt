@@ -1,0 +1,60 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
+
+<#@ parameter name="IsSoftDelete" type="System.Boolean" #>
+<#@ parameter name="SoftDeleteField" type="System.String" #>
+
+using PPT.Interfaces.Entities;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace PPT.PhotoPrint.API.Dal
+{
+    public interface I<#= table.Name #>Dal : IDalBase<<#= table.Name #>>
+    {
+        <#= table.Name #> Get(<#
+            var pks = modelHelper.GetPKColumns(table);
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #><#= modelHelper.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><# } #>);
+
+        bool Delete(<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #><#= modelHelper.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><# } #>);
+
+    <#
+            foreach(var c in table.Columns)
+            {
+                if(!string.IsNullOrEmpty(c.FKRefTable))
+                {
+    #>
+        IList<<#= table.Name #>> GetBy<#=c.Name #>(<#= modelHelper.DbTypeToType(c) #> <#=c.Name #>);
+    <#
+                }
+            }
+    #>
+
+    <#
+            if(IsSoftDelete && table.HasColumn(SoftDeleteField))
+            {
+        #>
+        bool Erase(<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #><#= modelHelper.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><# } #>);
+        <#
+            }
+        #>
+    }
+}

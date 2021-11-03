@@ -1,0 +1,226 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
+
+<#@ parameter name="IsSoftDelete" type="System.Boolean" #>
+<#@ parameter name="SoftDeleteField" type="System.String" #>
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Data;
+using System.Data.SqlClient;
+using PPT.Common;
+using PPT.DAL.MSSQL;
+using PPT.Interfaces;
+using PPT.Interfaces.Entities;
+
+namespace PPT.DAL.MSSQL 
+{
+    class <#= table.Name #>DalInitParams : InitParamsImpl
+    {
+    }
+
+    [Export("MSSQL", typeof(I<#= table.Name #>Dal))]
+    public class <#= table.Name #>Dal: SQLDal, I<#= table.Name #>Dal
+    {
+        public IInitParams CreateInitParams()
+        {
+            return new <#= table.Name #>DalInitParams();
+        }
+
+        public void Init(IInitParams initParams)
+        {
+            InitDbConnection(initParams.Parameters["ConnectionString"]);
+        }
+
+        public <#= table.Name #> Get(<#
+            var pks = modelHelper.GetPKColumns(table);
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #>
+<#= modelHelper.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>)
+        {
+            <#= table.Name #> result = default(<#= table.Name #>);
+
+            using (SqlConnection conn = OpenConnection())
+            {
+                SqlCommand cmd = new SqlCommand("p_<#= table.Name #>_GetDetails", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+ <#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+                var pk = pks[i];
+            #>
+                AddParameter(   cmd, "@<#= pk.Name #>", System.Data.SqlDbType.<#= modelHelper.DbTypeToSqlDbType(pk) #>, <#= pk.Type.CharMaxLength != null && pk.Type.CharMaxLength > 0 ? pk.Type.CharMaxLength : 0 #>,
+                                ParameterDirection.Input, false, 0, 0, string.Empty, DataRowVersion.Current, <#= pk.Name #>);
+            
+            <#
+            }
+            #>
+
+                var pFound = AddParameter(cmd, "@Found", SqlDbType.Bit, 0, ParameterDirection.Output, false, 0, 0, string.Empty, DataRowVersion.Current, 0);
+
+                var ds = FillDataSet(cmd);
+
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    result = <#= table.Name #>FromRow(ds.Tables[0].Rows[0]);                    
+                }
+            }
+
+            return result;
+        }
+
+        public bool Delete(<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #>
+<#= modelHelper.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>)
+        {
+            bool result = false;
+
+            using (SqlConnection conn = OpenConnection())
+            {
+                SqlCommand cmd = new SqlCommand("p_<#= table.Name #>_Delete", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            <#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+                var pk = pks[i];
+            #>
+                AddParameter(   cmd, "@<#= pk.Name #>", System.Data.SqlDbType.<#= modelHelper.DbTypeToSqlDbType(pk) #>, <#= pk.Type.CharMaxLength != null && pk.Type.CharMaxLength > 0 ? pk.Type.CharMaxLength : 0 #>, ParameterDirection.Input, false, 0, 0, string.Empty, DataRowVersion.Current, <#= pk.Name #>);
+            
+            <#
+            }
+            #>
+                var pFound = AddParameter(cmd, "@Removed", SqlDbType.Bit, 0, ParameterDirection.Output, false, 0, 0, string.Empty, DataRowVersion.Current, 0);
+
+                cmd.ExecuteNonQuery();
+
+                result = (bool)pFound.Value;
+            }
+
+            return result;
+        }
+
+<#
+        if(IsSoftDelete && table.HasColumn(SoftDeleteField))
+        {
+#>
+
+        public bool Erase(<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #>
+<#= modelHelper.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>)
+        {
+            bool result = false;
+
+            using (SqlConnection conn = OpenConnection())
+            {
+                SqlCommand cmd = new SqlCommand("p_<#= table.Name #>_Erase", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            <#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+                var pk = pks[i];
+            #>
+                AddParameter(   cmd, "@<#= pk.Name #>", System.Data.SqlDbType.<#= modelHelper.DbTypeToSqlDbType(pk) #>, <#= pk.Type.CharMaxLength != null && pk.Type.CharMaxLength > 0 ? pk.Type.CharMaxLength : 0 #>, ParameterDirection.Input, false, 0, 0, string.Empty, DataRowVersion.Current, <#= pk.Name #>);
+            
+            <#
+            }
+            #>
+                var pFound = AddParameter(cmd, "@Removed", SqlDbType.Bit, 0, ParameterDirection.Output, false, 0, 0, string.Empty, DataRowVersion.Current, 0);
+
+                cmd.ExecuteNonQuery();
+
+                result = (bool)pFound.Value;
+            }
+
+            return result;
+        }
+<#
+        }
+#>
+
+        <#
+        foreach(var c in table.Columns)
+        {
+                if(!string.IsNullOrEmpty(c.FKRefTable))
+                {
+        #>
+        public IList<<#=table.Name #>> GetBy<#=c.Name #>(<#= modelHelper.DbTypeToType(c) #> <#=c.Name #>)
+        {
+            var entitiesOut = base.GetBy<<#= table.Name #>, <#= modelHelper.DbTypeToType(c) #>>("p_<#= table.Name #>_GetBy<#=c.Name #>", <#=c.Name #>, "@<#=c.Name #>", SqlDbType.BigInt, 0, <#= table.Name #>FromRow);
+
+            return entitiesOut;
+        }
+        <#
+                }
+        }
+        #>
+
+        public IList<<#= table.Name #>> GetAll()
+        {
+            IList<<#= table.Name #>> result = base.GetAll<<#= table.Name #>>("p_<#= table.Name #>_GetAll", <#= table.Name #>FromRow);
+
+            return result;
+        }
+
+        public <#= table.Name #> Insert(<#= table.Name #> entity) 
+        {
+            <#= table.Name #> entityOut = base.Upsert<<#= table.Name #>>("p_<#= table.Name #>_Insert", entity, AddUpsertParameters, <#= table.Name #>FromRow);
+
+            return entityOut;
+        }
+
+        public <#= table.Name #> Update(<#= table.Name #> entity) 
+        {
+            <#= table.Name #> entityOut = base.Upsert<<#= table.Name #>>("p_<#= table.Name #>_Update", entity, AddUpsertParameters, <#= table.Name #>FromRow);
+
+            return entityOut;
+        }
+
+        protected SqlCommand AddUpsertParameters(SqlCommand cmd, <#= table.Name #> entity)
+        {
+        <#
+            foreach(var c in table.Columns)
+            {
+        #>
+        SqlParameter p<#= c.Name #> = new SqlParameter("@<#= c.Name #>", System.Data.SqlDbType.<#= modelHelper.DbTypeToSqlDbType(c) #>, <#= c.Type.CharMaxLength != null && c.Type.CharMaxLength > 0 ? c.Type.CharMaxLength : 0 #>, ParameterDirection.Input, false, 0, 0, "<#= c.Name #>", DataRowVersion.Current, (object)entity.<#= c.Name #> != null ? (object)entity.<#= c.Name #> : DBNull.Value);   cmd.Parameters.Add(p<#= c.Name #>); 
+        <#
+            }
+        #>
+
+            return cmd;
+        }
+
+        protected <#= table.Name #> <#= table.Name #>FromRow(DataRow row)
+        {
+            var entity = new <#= table.Name #>();
+
+        <#
+            foreach(var c in table.Columns)
+            {
+        #>
+            entity.<#= c.Name #> = !DBNull.Value.Equals(row["<#= c.Name #>"]) ? (<#= modelHelper.DbTypeToType(c) #>)row["<#= c.Name #>"] : default(<#= modelHelper.DbTypeToType(c) #>);
+        <#
+            }
+        #>
+
+            return entity;
+        }
+        
+    }
+}

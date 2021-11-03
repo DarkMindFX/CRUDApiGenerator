@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataModel
+namespace CRUDAPI.DataModel
 {
     public class ModelExtractorParams
     {

@@ -1,4 +1,4 @@
-﻿using DataModel;
+﻿using CRUDAPI.DataModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace T4DalGenerator.Generators
+namespace CRUDAPI.Generators
 {
     public abstract class GeneratorBase : IGenerator
     {

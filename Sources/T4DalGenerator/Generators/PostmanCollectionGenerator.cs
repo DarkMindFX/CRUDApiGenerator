@@ -1,12 +1,10 @@
-﻿using System;
+﻿using CRUDAPI.DataModel;
+using CRUDAPI.Template.NET.Tests;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using T4DalGenerator.Templates.Tests;
 
-namespace T4DalGenerator.Generators
+namespace CRUDAPI.Generators
 {
 
     class PostmanCollectionGenerator : GeneratorBase
@@ -34,7 +32,7 @@ namespace T4DalGenerator.Generators
 
             var template = new PostmanCollectionTemplate();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["tables"] = _genParams.Tables;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();

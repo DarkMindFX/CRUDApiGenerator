@@ -1,10 +1,10 @@
-﻿using DataModel;
+﻿using CRUDAPI.DataModel;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using T4DalGenerator.Generators;
-using T4DalGenerator.Templates;
+using CRUDAPI.Generators;
+using CRUDAPI.Settings;
 
 namespace T4DalGenerator
 {
@@ -49,7 +49,7 @@ namespace T4DalGenerator
             Generate<EntitiesGenerator>(tables, settings, timestamp);
             Generate<SQLDalGenerator>(tables, settings, timestamp);
             Generate<SQLDalTestGenerator>(tables, settings, timestamp);
-            /*
+            
             
             Generate<DtosGenerator>(tables, settings, timestamp);
             Generate<IServiceDalsGenerator>(tables, settings, timestamp);
@@ -65,7 +65,7 @@ namespace T4DalGenerator
             GenerateSingle<JsDtosIndexGenerator>(tables, settings, timestamp);
             GenerateSingle<PostmanCollectionGenerator>(tables, settings, timestamp);
             GenerateSingle<JsAppGenerator>(tables, settings, timestamp);
-            */
+            
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("SUCCESS! ");
             Console.ForegroundColor = ConsoleColor.White;
@@ -74,14 +74,14 @@ namespace T4DalGenerator
 
         }
 
-        private static IList<string> Generate<TGenerator>(IList<DataModel.DataTable> tables, DalCreatorSettings settings, DateTime timestamp) where TGenerator : IGenerator
+        private static IList<string> Generate<TGenerator>(IList<CRUDAPI.DataModel.DataTable> tables, DalCreatorSettings settings, DateTime timestamp) where TGenerator : IGenerator
         {
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write($"Running {typeof(TGenerator).ToString()} ...");
 
             List<string> result = new List<string>();
-            var genParams = new Generators.GeneratorParams()
+            var genParams = new CRUDAPI.Generators.GeneratorParams()
             {
                 Settings = settings,
                 Timestamp = timestamp,
@@ -102,10 +102,10 @@ namespace T4DalGenerator
             return result;
         }
 
-        private static IList<string> GenerateSingle<TGenerator>(IList<DataModel.DataTable> tables, DalCreatorSettings settings, DateTime timestamp) where TGenerator : IGenerator
+        private static IList<string> GenerateSingle<TGenerator>(IList<CRUDAPI.DataModel.DataTable> tables, DalCreatorSettings settings, DateTime timestamp) where TGenerator : IGenerator
         {
             List<string> result = new List<string>();
-            var genParams = new Generators.GeneratorParams()
+            var genParams = new CRUDAPI.Generators.GeneratorParams()
             {
                 Settings = settings,
                 Timestamp = timestamp,

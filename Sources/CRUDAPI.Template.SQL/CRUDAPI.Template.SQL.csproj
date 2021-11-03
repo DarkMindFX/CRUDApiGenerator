@@ -1,0 +1,89 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net4.8</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CodeDom" Version="5.0.0" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataModel\CRUDAPI.DataModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="SQL\StorProcEntityDelete.cs">
+      <DependentUpon>StorProcEntityDelete.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="SQL\StorProcEntityErase.cs">
+      <DependentUpon>StorProcEntityErase.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="SQL\StorProcEntityGetAll.cs">
+      <DependentUpon>StorProcEntityGetAll.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="SQL\StorProcEntityGetByField.cs">
+      <DependentUpon>StorProcEntityGetByField.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="SQL\StorProcEntityGetDetails.cs">
+      <DependentUpon>StorProcEntityGetDetails.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="SQL\StorProcEntityInsert.cs">
+      <DependentUpon>StorProcEntityInsert.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="SQL\StorProcEntityUpdate.cs">
+      <DependentUpon>StorProcEntityUpdate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SQL\StorProcEntityDelete.tt">
+      <LastGenOutput>StorProcEntityDelete.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="SQL\StorProcEntityErase.tt">
+      <LastGenOutput>StorProcEntityErase.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="SQL\StorProcEntityGetAll.tt">
+      <LastGenOutput>StorProcEntityGetAll.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="SQL\StorProcEntityGetByField.tt">
+      <LastGenOutput>StorProcEntityGetByField.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="SQL\StorProcEntityGetDetails.tt">
+      <LastGenOutput>StorProcEntityGetDetails.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="SQL\StorProcEntityInsert.tt">
+      <LastGenOutput>StorProcEntityInsert.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="SQL\StorProcEntityUpdate.tt">
+      <LastGenOutput>StorProcEntityUpdate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

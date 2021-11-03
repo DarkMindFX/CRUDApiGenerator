@@ -1,13 +1,11 @@
-﻿using System;
+﻿using CRUDAPI.DataModel;
+using CRUDAPI.Template.React.UI;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using T4DalGenerator.Templates;
-using T4DalGenerator.Templates.UI;
 
-namespace T4DalGenerator.Generators
+
+namespace CRUDAPI.Generators
 {
     class JsAppGenerator : GeneratorBase
     {
@@ -34,7 +32,7 @@ namespace T4DalGenerator.Generators
 
             var template = new JsAppTemplate();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["tables"] = _genParams.Tables;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();

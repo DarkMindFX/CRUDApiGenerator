@@ -1,0 +1,459 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
+
+<#@ parameter name="testValsGet" type="System.Collections.Generic.IDictionary<string,object>" #>
+<#@ parameter name="testValsInsert" type="System.Collections.Generic.IDictionary<string,object>" #>
+<#@ parameter name="testValsUpdateAfter" type="System.Collections.Generic.IDictionary<string,object>" #>
+
+using PPT.DTO;
+using PPT.Utils.Convertors;
+using PhotoPrint.Test.E2E.API;
+using Microsoft.AspNetCore.Mvc.Testing;
+using System;
+using System.Collections.Generic;
+using System.Net.Http.Headers;
+using System.Net;
+using Xunit; 
+<#
+		var pks = modelHelper.GetPKColumns(table);
+#>
+
+namespace Test.E2E.PhotoPrint.API.Controllers.V1
+{
+    public class Test<#= modelHelper.Pluralize(table.Name) #>Controller : E2ETestBase, IClassFixture<WebApplicationFactory<PPT.PhotoPrint.API.Startup>>
+    {
+        public Test<#= modelHelper.Pluralize(table.Name) #>Controller(WebApplicationFactory<PPT.PhotoPrint.API.Startup> factory) : base(factory)
+        {
+            _testParams = GetTestParams("GenericControllerTestSettings");
+        }
+
+        [Fact]
+        public void <#= table.Name #>_GetAll_Success()
+        {
+            using (var client = _factory.CreateClient())
+            {
+                var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
+
+                var respGetAll = client.GetAsync($"/api/v1/<#= modelHelper.Pluralize(table.Name).ToLower() #>");
+
+                Assert.Equal(HttpStatusCode.OK, respGetAll.Result.StatusCode);
+
+                IList<<#= table.Name #>> dtos = ExtractContentJson<List<<#= table.Name #>>>(respGetAll.Result.Content);
+
+                Assert.NotEmpty(dtos);
+            }
+        }
+
+        [Fact]
+        public void <#= table.Name #>_Get_Success()
+        {
+            PPT.Interfaces.Entities.<#= table.Name #> testEntity = AddTestEntity();
+            using (var client = _factory.CreateClient())
+            {
+                var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
+                try
+                {
+<#
+            string keys = string.Empty;
+            for(int i = 0; i < pks.Count; ++i)
+            {
+                keys += "{param" + pks[i].Name + "}" + (i+1 < pks.Count ? "/" : string.Empty);
+#>
+                var param<#= pks[i].Name #> = testEntity.<#= pks[i].Name #>;
+<#
+            }
+#>
+                    var respGet = client.GetAsync($"/api/v1/<#= modelHelper.Pluralize(table.Name).ToLower() #>/<#= keys #>");
+
+                    Assert.Equal(HttpStatusCode.OK, respGet.Result.StatusCode);
+
+                    <#= table.Name #> dto = ExtractContentJson<<#= table.Name #>>(respGet.Result.Content);
+
+                    Assert.NotNull(dto);
+                    Assert.NotNull(dto.Links);
+                }
+                finally
+                {
+                    RemoveTestEntity(testEntity);
+                }
+            }
+        }
+
+        [Fact]
+        public void <#= table.Name #>_Get_InvalidID()
+        {
+            using (var client = _factory.CreateClient())
+            {
+                var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
+<#
+            keys = string.Empty;
+            for(int i = 0; i < pks.Count; ++i)
+            {
+                keys += "{param" + pks[i].Name + "}" + (i+1 < pks.Count ? "/" : string.Empty);
+#>
+                var param<#= pks[i].Name #> = Int64.MaxValue;
+<#
+            }
+#>
+
+                var respGet = client.GetAsync($"/api/v1/<#= modelHelper.Pluralize(table.Name).ToLower() #>/<#= keys #>");
+
+                Assert.Equal(HttpStatusCode.NotFound, respGet.Result.StatusCode);
+            }
+        }
+
+        [Fact]
+        public void <#= table.Name #>_Delete_Success()
+        {
+            var testEntity = AddTestEntity();
+            using (var client = _factory.CreateClient())
+            {
+                var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
+                try
+                {
+<#
+            keys = string.Empty;
+            for(int i = 0; i < pks.Count; ++i)
+            {
+                keys += "{param" + pks[i].Name + "}" + (i+1 < pks.Count ? "/" : string.Empty);
+#>
+                var param<#= pks[i].Name #> = testEntity.<#= pks[i].Name #>;
+<#
+            }
+#>
+
+                    var respDel = client.DeleteAsync($"/api/v1/<#= modelHelper.Pluralize(table.Name).ToLower() #>/<#= keys #>");
+
+                    Assert.Equal(HttpStatusCode.OK, respDel.Result.StatusCode);
+                }
+                finally
+                {
+                    RemoveTestEntity(testEntity);
+                }
+            }
+        }
+
+        [Fact]
+        public void <#= table.Name #>_Delete_InvalidID()
+        {
+            using (var client = _factory.CreateClient())
+            {
+                var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
+<#
+            keys = string.Empty;
+            for(int i = 0; i < pks.Count; ++i)
+            {
+                keys += "{param" + pks[i].Name + "}" + (i+1 < pks.Count ? "/" : string.Empty);
+#>
+                var param<#= pks[i].Name #> = Int64.MaxValue;
+<#
+            }
+#>
+
+                var respDel = client.DeleteAsync($"/api/v1/<#= modelHelper.Pluralize(table.Name).ToLower() #>/<#= keys #>");
+
+                Assert.Equal(HttpStatusCode.NotFound, respDel.Result.StatusCode);
+            }
+        }
+
+        [Fact]
+        public void <#= table.Name #>_Insert_Success()
+        {
+            using (var client = _factory.CreateClient())
+            {
+                var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
+
+                PPT.Interfaces.Entities.<#= table.Name #> testEntity = CreateTestEntity();
+                PPT.Interfaces.Entities.<#= table.Name #> respEntity = null;
+                try
+                {
+                    var reqDto = <#= table.Name #>Convertor.Convert(testEntity, null);
+
+                    var content = CreateContentJson(reqDto);
+
+                    var respInsert = client.PostAsync($"/api/v1/<#= modelHelper.Pluralize(table.Name).ToLower() #>/", content);
+
+                    Assert.Equal(HttpStatusCode.Created, respInsert.Result.StatusCode);
+
+                    <#= table.Name #> respDto = ExtractContentJson<<#= table.Name #>>(respInsert.Result.Content);
+
+                <#
+                foreach(var c in table.Columns)
+                {
+                    if(c.IsPK) {
+                #>
+                    Assert.NotNull(respDto.<#= c.Name #>);
+                <#
+                    }
+                    else {
+                #>
+                    Assert.Equal(reqDto.<#= c.Name #>, respDto.<#= c.Name #>);
+                <#
+                    }
+                }
+                #>
+
+                    respEntity = <#= table.Name #>Convertor.Convert(respDto);
+                }
+                finally
+                {
+                    RemoveTestEntity(respEntity);
+                }
+            }
+        }
+
+        [Fact]
+        public void <#= table.Name #>_Update_Success()
+        {
+            using (var client = _factory.CreateClient())
+            {
+                var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
+
+                PPT.Interfaces.Entities.<#= table.Name #> testEntity = AddTestEntity();
+                try
+                {
+            <#
+                foreach(var c in table.Columns)
+                {
+                    Type columnType = modelHelper.GetColumnType(c);
+                    if(!c.IsIdentity && !c.IsPK && testValsUpdateAfter.ContainsKey(c.Name))
+                    {
+                        if(columnType == typeof(DateTime))
+                        {
+              #>
+              testEntity.<#= c.Name #> = DateTime.Parse("<#= testValsUpdateAfter[c.Name].ToString() #>");
+              <#
+                        }
+                        else if(columnType == typeof(string))
+                        {
+              #>
+              testEntity.<#= c.Name #> = "<#= testValsUpdateAfter[c.Name].ToString() #>";
+              <#
+                        }
+                        else if(columnType == typeof(bool))
+                        {
+              #>
+              testEntity.<#= c.Name #> = <#= testValsUpdateAfter[c.Name].ToString().ToLower() #>;              
+              <#
+                        }
+                        else if(testValsUpdateAfter[c.Name] != null)
+                        {
+              #>
+              testEntity.<#= c.Name #> = <#= testValsUpdateAfter[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty) #> ;
+              <#
+                        }
+                    }                    
+                }
+            #>
+
+                    var reqDto = <#= table.Name #>Convertor.Convert(testEntity, null);
+
+                    var content = CreateContentJson(reqDto);
+
+                    var respUpdate = client.PutAsync($"/api/v1/<#= modelHelper.Pluralize(table.Name).ToLower() #>/", content);
+
+                    Assert.Equal(HttpStatusCode.OK, respUpdate.Result.StatusCode);
+
+                    <#= table.Name #> respDto = ExtractContentJson<<#= table.Name #>>(respUpdate.Result.Content);
+
+                 <#
+                foreach(var c in table.Columns)
+                {
+                    if(c.IsPK) {
+                #>
+                    Assert.NotNull(respDto.<#= c.Name #>);
+                <#
+                    }
+                    else {
+                #>
+                    Assert.Equal(reqDto.<#= c.Name #>, respDto.<#= c.Name #>);
+                <#
+                    }
+                }
+                #>
+
+                }
+                finally
+                {
+                    RemoveTestEntity(testEntity);
+                }
+            }
+        }
+
+        [Fact]
+        public void <#= table.Name #>_Update_InvalidID()
+        {
+            using (var client = _factory.CreateClient())
+            {
+                var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
+
+                PPT.Interfaces.Entities.<#= table.Name #> testEntity = CreateTestEntity();
+                try
+                {
+              <#
+                foreach(var c in table.Columns)
+                {
+                    Type columnType = modelHelper.GetColumnType(c);
+                    if(!c.IsIdentity && testValsUpdateAfter.ContainsKey(c.Name))
+                    {
+                        if(columnType == typeof(DateTime))
+                        {
+              #>
+              testEntity.<#= c.Name #> = DateTime.Parse("<#= testValsUpdateAfter[c.Name].ToString() #>");
+              <#
+                        }
+                        else if(columnType == typeof(string))
+                        {
+              #>
+              testEntity.<#= c.Name #> = "<#= testValsUpdateAfter[c.Name].ToString() #>";
+              <#
+                        }
+                        else if(columnType == typeof(bool))
+                        {
+              #>
+              testEntity.<#= c.Name #> = <#= testValsUpdateAfter[c.Name].ToString().ToLower() #>;              
+              <#
+                        }
+                        else if(testValsUpdateAfter[c.Name] != null)
+                        {
+              #>
+              testEntity.<#= c.Name #> = <#= testValsUpdateAfter[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty) #>;
+              <#
+                        }
+                    }
+                    else if(c.IsPK)
+                    {
+               #>
+               testEntity.<#= c.Name #> = Int64.MaxValue;
+               <#
+                    }
+                }
+            #>
+
+                    var reqDto = <#= table.Name #>Convertor.Convert(testEntity, null);
+
+                    var content = CreateContentJson(reqDto);
+
+                    var respUpdate = client.PutAsync($"/api/v1/<#= modelHelper.Pluralize(table.Name).ToLower() #>/", content);
+
+                    Assert.Equal(HttpStatusCode.NotFound, respUpdate.Result.StatusCode);
+                }
+                finally
+                {
+                    RemoveTestEntity(testEntity);
+                }
+            }
+        }
+
+        #region Support methods
+
+        protected bool RemoveTestEntity(PPT.Interfaces.Entities.<#= table.Name #> entity)
+        {
+            if (entity != null)
+            {
+                var dal = CreateDal();
+
+                return dal.Delete(
+                <#
+                    for(int i = 0; i < pks.Count; ++i)
+                    {
+                #>
+                        entity.<#= pks[i].Name #><#= i+1 < pks.Count ? "," : string.Empty #>
+                <#
+                    }
+                #>);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        protected PPT.Interfaces.Entities.<#= table.Name #> CreateTestEntity()
+        {
+            var entity = new PPT.Interfaces.Entities.<#= table.Name #>();
+            <#
+                foreach(var c in table.Columns)
+                {
+                    Type columnType = modelHelper.GetColumnType(c);
+                    if(!c.IsIdentity && testValsInsert.ContainsKey(c.Name))
+                    {
+                        if(columnType == typeof(DateTime))
+                        {
+              #>
+              entity.<#= c.Name #> = DateTime.Parse("<#= testValsInsert[c.Name].ToString() #>");
+              <#
+                        }
+                        else if(columnType == typeof(string))
+                        {
+              #>
+              entity.<#= c.Name #> = "<#= testValsInsert[c.Name].ToString() #>";
+              <#
+                        }
+                        else if(columnType == typeof(bool))
+                        {
+              #>
+              entity.<#= c.Name #> = <#= testValsInsert[c.Name].ToString().ToLower() #>;              
+              <#
+                        }
+                        else if(testValsInsert[c.Name] != null)
+                        {
+              #>
+              entity.<#= c.Name #> = <#= testValsInsert[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty) #>;
+              <#
+                        }
+                    }
+                }
+            #>
+
+            return entity;
+        }
+
+        protected PPT.Interfaces.Entities.<#= table.Name #> AddTestEntity()
+        {
+            PPT.Interfaces.Entities.<#= table.Name #> result = null;
+
+            var entity = CreateTestEntity();
+
+            var dal = CreateDal();
+            result = dal.Insert(entity);
+
+            return result;
+        }
+
+        private PPT.Interfaces.I<#= table.Name #>Dal CreateDal()
+        {
+            var initParams = GetTestParams("DALInitParams");
+
+            PPT.Interfaces.I<#= table.Name #>Dal dal = new PPT.DAL.MSSQL.<#= table.Name #>Dal();
+            var dalInitParams = dal.CreateInitParams();
+            dalInitParams.Parameters["ConnectionString"] = (string)initParams.Settings["ConnectionString"];
+            dal.Init(dalInitParams);
+
+            return dal;
+        }
+        #endregion
+    }
+}

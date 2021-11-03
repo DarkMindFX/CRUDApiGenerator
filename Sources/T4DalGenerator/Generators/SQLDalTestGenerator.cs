@@ -1,15 +1,13 @@
-﻿using System;
+﻿using CRUDAPI.DataModel;
+using CRUDAPI.Template.NET.Tests;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using T4DalGenerator.Templates;
-using T4DalGenerator.Templates.Tests;
 
-namespace T4DalGenerator.Generators
+namespace CRUDAPI.Generators
 {
     public class SQLDalTestGenerator : GeneratorBase
     {
@@ -39,7 +37,7 @@ namespace T4DalGenerator.Generators
             IDictionary<string, object> testValsUpdateAfter = GenerateTestValues(_genParams.Table, updateAfterUUID);
 
             // PKs should stay the same
-            var pks = this.GetPKColumns(_genParams.Table);
+            var pks = modelHelper.GetPKColumns(_genParams.Table);
             foreach(var pk in pks)
             {
                 if (testValsUpdateBefore.ContainsKey(pk.Name))
@@ -78,7 +76,7 @@ namespace T4DalGenerator.Generators
 
             var template = new TestDalTemplate();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["testValsGet"] = testValsGet;
@@ -109,7 +107,7 @@ namespace T4DalGenerator.Generators
 
             var template = new GetDetailsSetupTemplate();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["testValsGet"] = testValsGet;
@@ -136,7 +134,7 @@ namespace T4DalGenerator.Generators
 
             var template = new GetDetailsTeardownTemplate();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["testValsGet"] = testValsGet;
@@ -163,7 +161,7 @@ namespace T4DalGenerator.Generators
 
             var template = new InsertSetupTemplate();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["testValsInsert"] = testValsInsert;
@@ -190,7 +188,7 @@ namespace T4DalGenerator.Generators
 
             var template = new InsertTeardownTemplate();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["testValsInsert"] = testValsInsert;
@@ -217,7 +215,7 @@ namespace T4DalGenerator.Generators
 
             var template = new DeleteSetupTemplate();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["testValsDelete"] = testValsDelete;
@@ -244,7 +242,7 @@ namespace T4DalGenerator.Generators
 
             var template = new DeleteTeardownTemplate();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["testValsDelete"] = testValsDelete;
@@ -273,7 +271,7 @@ namespace T4DalGenerator.Generators
 
             var template = new UpdateSetupTemplate();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["testValsUpdateBefore"] = testValsUpdateBefore;
@@ -301,7 +299,7 @@ namespace T4DalGenerator.Generators
 
             var template = new UpdateTeardownTemplate();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["testValsUpdateBefore"] = testValsUpdateBefore;
@@ -329,7 +327,7 @@ namespace T4DalGenerator.Generators
 
             var template = new EraseSetupTemplate();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["testValsErase"] = testValsErase;
@@ -356,7 +354,7 @@ namespace T4DalGenerator.Generators
 
             var template = new EraseTeardownTemplate();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["testValsErase"] = testValsErase;
@@ -382,7 +380,7 @@ namespace T4DalGenerator.Generators
         }
 
         #region Support methods
-        private IDictionary<string, object> GenerateTestValues(DataModel.DataTable table, string uuid)
+        private IDictionary<string, object> GenerateTestValues(CRUDAPI.DataModel.DataTable table, string uuid)
         {
             IDictionary<string, object> result = new Dictionary<string, object>();
 
@@ -398,10 +396,11 @@ namespace T4DalGenerator.Generators
             return result;
         }
 
-        private object GetRandomValue(DataModel.DataColumn c, string uuid)
+        private object GetRandomValue(CRUDAPI.DataModel.DataColumn c, string uuid)
         {
+            var modelHelper = new ModelHelper();
             object result = null;
-            Type columnType = base.GetColumnType(c);
+            Type columnType = modelHelper.GetColumnType(c);
 
             if (!string.IsNullOrEmpty(c.FKRefTable) && !string.IsNullOrEmpty(c.FKRefColumn))
             {

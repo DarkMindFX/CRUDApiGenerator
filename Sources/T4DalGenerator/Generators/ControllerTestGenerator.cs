@@ -6,10 +6,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using T4DalGenerator.Templates;
-using T4DalGenerator.Templates.Tests;
+using CRUDAPI.DataModel;
+using CRUDAPI.Template.NET.Tests;
 
-namespace T4DalGenerator.Generators
+namespace CRUDAPI.Generators
 {
     public class ControllerTestGenerator : GeneratorBase
     {
@@ -37,7 +37,7 @@ namespace T4DalGenerator.Generators
             IDictionary<string, object> testValsUpdateAfter = GenerateTestValues(_genParams.Table, updateAfterUUID);
 
             // PKs should stay the same
-            var pks = this.GetPKColumns(_genParams.Table);
+            var pks = modelHelper.GetPKColumns(_genParams.Table);
             foreach(var pk in pks)
             {
                 if (testValsUpdateBefore.ContainsKey(pk.Name))
@@ -64,7 +64,7 @@ namespace T4DalGenerator.Generators
 
             var template = new TestControllerTemplate();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["testValsGet"] = testValsGet;
@@ -112,8 +112,9 @@ namespace T4DalGenerator.Generators
 
         private object GetRandomValue(DataModel.DataColumn c, string uuid)
         {
+            var modelHelper = new ModelHelper();
             object result = null;
-            Type columnType = base.GetColumnType(c);
+            Type columnType = modelHelper.GetColumnType(c);
 
             if (!string.IsNullOrEmpty(c.FKRefTable) && !string.IsNullOrEmpty(c.FKRefColumn))
             {

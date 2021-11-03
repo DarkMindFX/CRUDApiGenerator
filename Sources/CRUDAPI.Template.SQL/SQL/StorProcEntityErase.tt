@@ -1,0 +1,74 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".sql"#>
+
+<#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
+
+
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF OBJECT_ID('p_<#= table.Name #>_Erase', 'P') IS NOT NULL
+DROP PROC [dbo].[p_<#= table.Name #>_Erase]
+GO
+
+CREATE PROCEDURE [dbo].[p_<#= table.Name #>_Erase]
+	<#
+		var pks = modelHelper.GetPKColumns(table);
+		foreach(var c in pks)
+		{
+	#>
+	<#=modelHelper.GenerateParamDeclaration(c) #>,	
+	<#
+		}//foreach
+	#>
+	@Removed BIT OUTPUT
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+    
+	IF( EXISTS( SELECT 1 FROM [dbo].[<#= table.Name #>]  
+				WHERE 
+			<#
+				for(int i = 0; i < pks.Count; ++i)
+				{
+					var c = pks[i];
+					
+			#>
+				[<#=c.Name #>] = @<#=c.Name #>	<#= i + 1 < pks.Count ? "AND" : string.Empty #>
+			<#
+
+				}//for
+			#>
+	) )
+	BEGIN
+	
+		DELETE 
+		FROM 
+			[dbo].[<#= table.Name #>] 	
+		WHERE 
+			<#
+				for(int i = 0; i < pks.Count; ++i)
+				{
+					var c = pks[i];
+			#>
+			[<#=c.Name #>] = @<#=c.Name #>	<#= i + 1 < pks.Count ? "AND" : string.Empty #>
+			<#
+				}//for
+			#>
+
+		SET @Removed = 1
+	END
+	ELSE
+		SET @Removed = 0
+END
+GO

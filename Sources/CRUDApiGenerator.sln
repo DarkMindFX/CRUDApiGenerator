@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "T4DalGenerator", "T4DalGenerator\T4DalGenerator.csproj", "{B05A9231-5706-41D8-8253-BC42D2F11938}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDAPI.Generator", "T4DalGenerator\CRUDAPI.Generator.csproj", "{B05A9231-5706-41D8-8253-BC42D2F11938}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataModel", "DataModel\DataModel.csproj", "{B3FD1426-522D-41CC-BE07-C961F2D213DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDAPI.DataModel", "DataModel\CRUDAPI.DataModel.csproj", "{B3FD1426-522D-41CC-BE07-C961F2D213DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDAPI.Templates.NET", "CRUDAPI.Templates.NET\CRUDAPI.Templates.NET.csproj", "{4A7BDA07-DBF4-48F8-B452-B6B5EF47F5AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDAPI.Template.React", "CRUDAPI.Template.React\CRUDAPI.Template.React.csproj", "{9929764B-B3D1-4592-B369-BAE6002765CE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDAPI.Template.SQL", "CRUDAPI.Template.SQL\CRUDAPI.Template.SQL.csproj", "{44C79679-91FE-4F59-9BD6-82B98F9F053D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDAPI.Settings", "CRUDAPI.Settings\CRUDAPI.Settings.csproj", "{0A206483-903D-4BF1-89B6-91F5DD65610D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +29,22 @@ Global
 		{B3FD1426-522D-41CC-BE07-C961F2D213DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3FD1426-522D-41CC-BE07-C961F2D213DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3FD1426-522D-41CC-BE07-C961F2D213DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A7BDA07-DBF4-48F8-B452-B6B5EF47F5AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A7BDA07-DBF4-48F8-B452-B6B5EF47F5AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A7BDA07-DBF4-48F8-B452-B6B5EF47F5AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A7BDA07-DBF4-48F8-B452-B6B5EF47F5AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9929764B-B3D1-4592-B369-BAE6002765CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9929764B-B3D1-4592-B369-BAE6002765CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9929764B-B3D1-4592-B369-BAE6002765CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9929764B-B3D1-4592-B369-BAE6002765CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44C79679-91FE-4F59-9BD6-82B98F9F053D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44C79679-91FE-4F59-9BD6-82B98F9F053D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44C79679-91FE-4F59-9BD6-82B98F9F053D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44C79679-91FE-4F59-9BD6-82B98F9F053D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A206483-903D-4BF1-89B6-91F5DD65610D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A206483-903D-4BF1-89B6-91F5DD65610D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A206483-903D-4BF1-89B6-91F5DD65610D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A206483-903D-4BF1-89B6-91F5DD65610D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

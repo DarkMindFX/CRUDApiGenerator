@@ -1,13 +1,10 @@
-﻿using System;
+﻿using CRUDAPI.DataModel;
+using CRUDAPI.Template.SQL.SQL;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using T4DalGenerator.Templates;
-using T4DalGenerator.Templates.SQL;
 
-namespace T4DalGenerator.Generators
+namespace CRUDAPI.Generators
 {
     public class StorProcsGenerator : GeneratorBase
     {
@@ -49,7 +46,7 @@ namespace T4DalGenerator.Generators
             
             var template = new StorProcEntityErase();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -68,7 +65,7 @@ namespace T4DalGenerator.Generators
 
             var template = new StorProcEntityDelete();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["IsSoftDelete"] = _genParams.Settings.IsSoftDelete;
@@ -89,7 +86,7 @@ namespace T4DalGenerator.Generators
 
             var template = new StorProcEntityGetAll();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -108,7 +105,7 @@ namespace T4DalGenerator.Generators
 
             var template = new StorProcEntityGetDetails();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -127,7 +124,7 @@ namespace T4DalGenerator.Generators
 
             var template = new StorProcEntityGetByField();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["column"] = column;
             template.Session["modelHelper"] = modelHelper;
@@ -147,7 +144,7 @@ namespace T4DalGenerator.Generators
 
             var template = new StorProcEntityUpdate();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -166,7 +163,7 @@ namespace T4DalGenerator.Generators
 
             var template = new StorProcEntityInsert();
             template.Session = new Dictionary<string, object>();
-            template.Session["generator"] = this;
+            
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();

@@ -1,15 +1,16 @@
-﻿using System;
+﻿using CRUDAPI.Settings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace T4DalGenerator.Generators
+namespace CRUDAPI.Generators
 {
     public class GeneratorParams
     {
-        public IList<DataModel.DataTable> Tables { get; set; }
-        public DataModel.DataTable Table { get; set; }
+        public IList<CRUDAPI.DataModel.DataTable> Tables { get; set; }
+        public CRUDAPI.DataModel.DataTable Table { get; set; }
 
         public DalCreatorSettings Settings { get; set; }
 

@@ -1,0 +1,231 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net4.8</TargetFramework>
+    <RootNamespace>CRUDAPI.Template.NET</RootNamespace>
+    <AssemblyName>CRUDAPI.Template.NET</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CodeDom" Version="5.0.0" />
+    <PackageReference Include="System.Reactive.Runtime.Remoting" Version="5.0.0" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataModel\CRUDAPI.DataModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Web.Extensions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="API\DtoTemplate.cs">
+      <DependentUpon>DtoTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="API\EntityControllerTemplate.cs">
+      <DependentUpon>EntityControllerTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="API\EntityConvertorTemplate.cs">
+      <DependentUpon>EntityConvertorTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="API\EntityTemplate.cs">
+      <DependentUpon>EntityTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="API\IDalTemplate.cs">
+      <DependentUpon>IDalTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="API\IServiceDalTemplate.cs">
+      <DependentUpon>IServiceDalTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="API\ServiceDalImplTemplate.cs">
+      <DependentUpon>ServiceDalImplTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="API\SQLDalImplTemplate.cs">
+      <DependentUpon>SQLDalImplTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="API\StartupTemplate.cs">
+      <DependentUpon>StartupTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Tests\DeleteSetupTemplate.cs">
+      <DependentUpon>DeleteSetupTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Tests\DeleteTeardownTemplate.cs">
+      <DependentUpon>DeleteTeardownTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Tests\EraseSetupTemplate.cs">
+      <DependentUpon>EraseSetupTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Tests\EraseTeardownTemplate.cs">
+      <DependentUpon>EraseTeardownTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Tests\GetDetailsSetupTemplate.cs">
+      <DependentUpon>GetDetailsSetupTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Tests\GetDetailsTeardownTemplate.cs">
+      <DependentUpon>GetDetailsTeardownTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Tests\InsertSetupTemplate.cs">
+      <DependentUpon>InsertSetupTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Tests\InsertTeardownTemplate.cs">
+      <DependentUpon>InsertTeardownTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Tests\PostmanCollectionTemplate.cs">
+      <DependentUpon>PostmanCollectionTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Tests\TestControllerTemplate.cs">
+      <DependentUpon>TestControllerTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Tests\TestDalTemplate.cs">
+      <DependentUpon>TestDalTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Tests\UpdateSetupTemplate.cs">
+      <DependentUpon>UpdateSetupTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Tests\UpdateTeardownTemplate.cs">
+      <DependentUpon>UpdateTeardownTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="API\DtoTemplate.tt">
+      <LastGenOutput>DtoTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="API\EntityControllerTemplate.tt">
+      <LastGenOutput>EntityControllerTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="API\EntityConvertorTemplate.tt">
+      <LastGenOutput>EntityConvertorTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="API\EntityTemplate.tt">
+      <LastGenOutput>EntityTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="API\IDalTemplate.tt">
+      <LastGenOutput>IDalTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="API\IServiceDalTemplate.tt">
+      <LastGenOutput>IServiceDalTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="API\ServiceDalImplTemplate.tt">
+      <LastGenOutput>ServiceDalImplTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="API\SQLDalImplTemplate.tt">
+      <LastGenOutput>SQLDalImplTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="API\StartupTemplate.tt">
+      <LastGenOutput>StartupTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Tests\DeleteSetupTemplate.tt">
+      <LastGenOutput>DeleteSetupTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Tests\DeleteTeardownTemplate.tt">
+      <LastGenOutput>DeleteTeardownTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Tests\EraseSetupTemplate.tt">
+      <LastGenOutput>EraseSetupTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Tests\EraseTeardownTemplate.tt">
+      <LastGenOutput>EraseTeardownTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Tests\GetDetailsSetupTemplate.tt">
+      <LastGenOutput>GetDetailsSetupTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Tests\GetDetailsTeardownTemplate.tt">
+      <LastGenOutput>GetDetailsTeardownTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Tests\InsertSetupTemplate.tt">
+      <LastGenOutput>InsertSetupTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Tests\InsertTeardownTemplate.tt">
+      <LastGenOutput>InsertTeardownTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Tests\PostmanCollectionTemplate.tt">
+      <LastGenOutput>PostmanCollectionTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Tests\TestControllerTemplate.tt">
+      <LastGenOutput>TestControllerTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Tests\TestDalTemplate.tt">
+      <LastGenOutput>TestDalTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Tests\UpdateSetupTemplate.tt">
+      <LastGenOutput>UpdateSetupTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Tests\UpdateTeardownTemplate.tt">
+      <LastGenOutput>UpdateTeardownTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>
