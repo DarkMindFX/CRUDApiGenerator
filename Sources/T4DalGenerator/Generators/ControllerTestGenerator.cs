@@ -70,6 +70,9 @@ namespace CRUDAPI.Generators
             template.Session["testValsGet"] = testValsGet;
             template.Session["testValsInsert"] = testValsInsert;
             template.Session["testValsUpdateAfter"] = testValsUpdateAfter;
+            template.Session["IsSoftDelete"] = _genParams.Settings.IsSoftDelete;
+            template.Session["SoftDeleteField"] = _genParams.Settings.SoftDeleteField;
+
             template.Initialize();
 
             string content = template.TransformText();

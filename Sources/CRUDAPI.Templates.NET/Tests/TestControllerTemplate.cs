@@ -34,7 +34,7 @@ namespace CRUDAPI.Template.NET.Tests
                     "ing Microsoft.AspNetCore.Mvc.Testing;\r\nusing System;\r\nusing System.Collections.G" +
                     "eneric;\r\nusing System.Net.Http.Headers;\r\nusing System.Net;\r\nusing Xunit; \r\n");
             
-            #line 23 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 25 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
 		var pks = modelHelper.GetPKColumns(table);
 
@@ -43,7 +43,7 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("\r\nnamespace Test.E2E.PhotoPrint.API.Controllers.V1\r\n{\r\n    public class Test");
             
-            #line 29 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(table.Name)));
             
             #line default
@@ -51,7 +51,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("Controller : E2ETestBase, IClassFixture<WebApplicationFactory<PPT.PhotoPrint.API." +
                     "Startup>>\r\n    {\r\n        public Test");
             
-            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 33 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(table.Name)));
             
             #line default
@@ -60,7 +60,7 @@ namespace CRUDAPI.Template.NET.Tests
                     "ory)\r\n        {\r\n            _testParams = GetTestParams(\"GenericControllerTestS" +
                     "ettings\");\r\n        }\r\n\r\n        [Fact]\r\n        public void ");
             
-            #line 37 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 39 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -75,7 +75,7 @@ namespace CRUDAPI.Template.NET.Tests
 
                 var respGetAll = client.GetAsync($""/api/v1/");
             
-            #line 45 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 47 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(table.Name).ToLower()));
             
             #line default
@@ -83,14 +83,14 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("\");\r\n\r\n                Assert.Equal(HttpStatusCode.OK, respGetAll.Result.StatusCo" +
                     "de);\r\n\r\n                IList<");
             
-            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 51 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("> dtos = ExtractContentJson<List<");
             
-            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 51 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -98,14 +98,14 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write(">>(respGetAll.Result.Content);\r\n\r\n                Assert.NotEmpty(dtos);\r\n       " +
                     "     }\r\n        }\r\n\r\n        [Fact]\r\n        public void ");
             
-            #line 56 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("_Get_Success()\r\n        {\r\n            PPT.Interfaces.Entities.");
             
-            #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 60 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -120,7 +120,7 @@ namespace CRUDAPI.Template.NET.Tests
                 {
 ");
             
-            #line 66 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 68 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
             string keys = string.Empty;
             for(int i = 0; i < pks.Count; ++i)
@@ -132,21 +132,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                var param");
             
-            #line 72 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 74 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(" = testEntity.");
             
-            #line 72 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 74 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 73 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 75 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
             }
 
@@ -155,14 +155,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                    var respGet = client.GetAsync($\"/api/v1/");
             
-            #line 76 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 78 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(table.Name).ToLower()));
             
             #line default
             #line hidden
             this.Write("/");
             
-            #line 76 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 78 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(keys));
             
             #line default
@@ -170,14 +170,14 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("\");\r\n\r\n                    Assert.Equal(HttpStatusCode.OK, respGet.Result.StatusC" +
                     "ode);\r\n\r\n                    ");
             
-            #line 80 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 82 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" dto = ExtractContentJson<");
             
-            #line 80 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 82 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -197,7 +197,7 @@ namespace CRUDAPI.Template.NET.Tests
         [Fact]
         public void ");
             
-            #line 93 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 95 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -211,7 +211,7 @@ namespace CRUDAPI.Template.NET.Tests
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(""Bearer"", respLogin.Token);
 ");
             
-            #line 100 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 102 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
             keys = string.Empty;
             for(int i = 0; i < pks.Count; ++i)
@@ -223,14 +223,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                var param");
             
-            #line 106 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 108 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(" = Int64.MaxValue;\r\n");
             
-            #line 107 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 109 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
             }
 
@@ -239,14 +239,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("\r\n                var respGet = client.GetAsync($\"/api/v1/");
             
-            #line 111 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 113 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(table.Name).ToLower()));
             
             #line default
             #line hidden
             this.Write("/");
             
-            #line 111 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 113 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(keys));
             
             #line default
@@ -254,7 +254,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("\");\r\n\r\n                Assert.Equal(HttpStatusCode.NotFound, respGet.Result.Statu" +
                     "sCode);\r\n            }\r\n        }\r\n\r\n        [Fact]\r\n        public void ");
             
-            #line 118 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 120 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -271,7 +271,7 @@ namespace CRUDAPI.Template.NET.Tests
                 {
 ");
             
-            #line 128 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 130 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
             keys = string.Empty;
             for(int i = 0; i < pks.Count; ++i)
@@ -283,21 +283,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                var param");
             
-            #line 134 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 136 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(" = testEntity.");
             
-            #line 134 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 136 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 135 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 137 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
             }
 
@@ -306,14 +306,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("\r\n                    var respDel = client.DeleteAsync($\"/api/v1/");
             
-            #line 139 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 141 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(table.Name).ToLower()));
             
             #line default
             #line hidden
             this.Write("/");
             
-            #line 139 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 141 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(keys));
             
             #line default
@@ -332,7 +332,7 @@ namespace CRUDAPI.Template.NET.Tests
         [Fact]
         public void ");
             
-            #line 151 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 153 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -346,7 +346,7 @@ namespace CRUDAPI.Template.NET.Tests
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(""Bearer"", respLogin.Token);
 ");
             
-            #line 158 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 160 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
             keys = string.Empty;
             for(int i = 0; i < pks.Count; ++i)
@@ -358,14 +358,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                var param");
             
-            #line 164 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 166 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(" = Int64.MaxValue;\r\n");
             
-            #line 165 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 167 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
             }
 
@@ -374,14 +374,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("\r\n                var respDel = client.DeleteAsync($\"/api/v1/");
             
-            #line 169 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 171 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(table.Name).ToLower()));
             
             #line default
             #line hidden
             this.Write("/");
             
-            #line 169 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 171 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(keys));
             
             #line default
@@ -389,7 +389,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("\");\r\n\r\n                Assert.Equal(HttpStatusCode.NotFound, respDel.Result.Statu" +
                     "sCode);\r\n            }\r\n        }\r\n\r\n        [Fact]\r\n        public void ");
             
-            #line 176 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 178 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -404,14 +404,14 @@ namespace CRUDAPI.Template.NET.Tests
 
                 PPT.Interfaces.Entities.");
             
-            #line 184 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 186 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" testEntity = CreateTestEntity();\r\n                PPT.Interfaces.Entities.");
             
-            #line 185 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 187 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -419,7 +419,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write(" respEntity = null;\r\n                try\r\n                {\r\n                    " +
                     "var reqDto = ");
             
-            #line 188 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 190 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -428,7 +428,7 @@ namespace CRUDAPI.Template.NET.Tests
                     "ontentJson(reqDto);\r\n\r\n                    var respInsert = client.PostAsync($\"/" +
                     "api/v1/");
             
-            #line 192 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 194 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(table.Name).ToLower()));
             
             #line default
@@ -436,21 +436,21 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("/\", content);\r\n\r\n                    Assert.Equal(HttpStatusCode.Created, respIns" +
                     "ert.Result.StatusCode);\r\n\r\n                    ");
             
-            #line 196 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 198 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" respDto = ExtractContentJson<");
             
-            #line 196 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 198 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(">(respInsert.Result.Content);\r\n\r\n                ");
             
-            #line 198 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 200 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -461,14 +461,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                    Assert.NotNull(respDto.");
             
-            #line 203 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 205 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n                ");
             
-            #line 204 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 206 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                     }
                     else {
@@ -478,21 +478,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                    Assert.Equal(reqDto.");
             
-            #line 208 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 210 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(", respDto.");
             
-            #line 208 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 210 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n                ");
             
-            #line 209 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 211 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                     }
                 }
@@ -502,7 +502,7 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("\r\n                    respEntity = ");
             
-            #line 214 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 216 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -511,7 +511,7 @@ namespace CRUDAPI.Template.NET.Tests
                     "        {\r\n                    RemoveTestEntity(respEntity);\r\n                }\r" +
                     "\n            }\r\n        }\r\n\r\n        [Fact]\r\n        public void ");
             
-            #line 224 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 226 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -526,7 +526,7 @@ namespace CRUDAPI.Template.NET.Tests
 
                 PPT.Interfaces.Entities.");
             
-            #line 232 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 234 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -534,7 +534,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write(" testEntity = AddTestEntity();\r\n                try\r\n                {\r\n         " +
                     "   ");
             
-            #line 235 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 237 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -549,21 +549,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              testEntity.");
             
-            #line 244 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 246 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = DateTime.Parse(\"");
             
-            #line 244 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 246 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\");\r\n              ");
             
-            #line 245 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 247 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                         }
                         else if(columnType == typeof(string))
@@ -574,21 +574,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              testEntity.");
             
-            #line 250 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 252 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = \"");
             
-            #line 250 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 252 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\";\r\n              ");
             
-            #line 251 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 253 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                         }
                         else if(columnType == typeof(bool))
@@ -599,21 +599,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              testEntity.");
             
-            #line 256 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 258 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 256 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 258 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString().ToLower()));
             
             #line default
             #line hidden
             this.Write(";              \r\n              ");
             
-            #line 257 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 259 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                         }
                         else if(testValsUpdateAfter[c.Name] != null)
@@ -624,21 +624,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              testEntity.");
             
-            #line 262 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 264 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 262 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 264 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty)));
             
             #line default
             #line hidden
             this.Write(" ;\r\n              ");
             
-            #line 263 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 265 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                         }
                     }                    
@@ -649,7 +649,7 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("\r\n                    var reqDto = ");
             
-            #line 269 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 271 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -658,7 +658,7 @@ namespace CRUDAPI.Template.NET.Tests
                     "ontentJson(reqDto);\r\n\r\n                    var respUpdate = client.PutAsync($\"/a" +
                     "pi/v1/");
             
-            #line 273 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 275 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(table.Name).ToLower()));
             
             #line default
@@ -666,21 +666,21 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("/\", content);\r\n\r\n                    Assert.Equal(HttpStatusCode.OK, respUpdate.R" +
                     "esult.StatusCode);\r\n\r\n                    ");
             
-            #line 277 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 279 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" respDto = ExtractContentJson<");
             
-            #line 277 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 279 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(">(respUpdate.Result.Content);\r\n\r\n                 ");
             
-            #line 279 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 281 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -691,14 +691,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                    Assert.NotNull(respDto.");
             
-            #line 284 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 286 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n                ");
             
-            #line 285 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 287 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                     }
                     else {
@@ -708,21 +708,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                    Assert.Equal(reqDto.");
             
-            #line 289 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 291 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(", respDto.");
             
-            #line 289 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 291 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n                ");
             
-            #line 290 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 292 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                     }
                 }
@@ -734,7 +734,7 @@ namespace CRUDAPI.Template.NET.Tests
                     "    RemoveTestEntity(testEntity);\r\n                }\r\n            }\r\n        }\r\n" +
                     "\r\n        [Fact]\r\n        public void ");
             
-            #line 304 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 306 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -749,7 +749,7 @@ namespace CRUDAPI.Template.NET.Tests
 
                 PPT.Interfaces.Entities.");
             
-            #line 312 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 314 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -757,7 +757,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write(" testEntity = CreateTestEntity();\r\n                try\r\n                {\r\n      " +
                     "        ");
             
-            #line 315 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 317 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -772,21 +772,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              testEntity.");
             
-            #line 324 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 326 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = DateTime.Parse(\"");
             
-            #line 324 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 326 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\");\r\n              ");
             
-            #line 325 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 327 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                         }
                         else if(columnType == typeof(string))
@@ -797,21 +797,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              testEntity.");
             
-            #line 330 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 332 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = \"");
             
-            #line 330 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 332 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\";\r\n              ");
             
-            #line 331 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 333 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                         }
                         else if(columnType == typeof(bool))
@@ -822,21 +822,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              testEntity.");
             
-            #line 336 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 338 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 336 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 338 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString().ToLower()));
             
             #line default
             #line hidden
             this.Write(";              \r\n              ");
             
-            #line 337 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 339 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                         }
                         else if(testValsUpdateAfter[c.Name] != null)
@@ -847,21 +847,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              testEntity.");
             
-            #line 342 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 344 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 342 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 344 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty)));
             
             #line default
             #line hidden
             this.Write(";\r\n              ");
             
-            #line 343 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 345 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                         }
                     }
@@ -873,14 +873,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("               testEntity.");
             
-            #line 349 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 351 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = Int64.MaxValue;\r\n               ");
             
-            #line 350 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 352 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                     }
                 }
@@ -890,7 +890,7 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("\r\n                    var reqDto = ");
             
-            #line 355 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 357 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -899,7 +899,7 @@ namespace CRUDAPI.Template.NET.Tests
                     "ontentJson(reqDto);\r\n\r\n                    var respUpdate = client.PutAsync($\"/a" +
                     "pi/v1/");
             
-            #line 359 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 361 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(table.Name).ToLower()));
             
             #line default
@@ -919,16 +919,25 @@ namespace CRUDAPI.Template.NET.Tests
 
         protected bool RemoveTestEntity(PPT.Interfaces.Entities.");
             
-            #line 372 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 374 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" entity)\r\n        {\r\n            if (entity != null)\r\n            {\r\n            " +
-                    "    var dal = CreateDal();\r\n\r\n                return dal.Delete(\r\n              " +
-                    "  ");
+                    "    var dal = CreateDal();\r\n\r\n\r\n");
             
-            #line 379 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 381 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+ 
+    if(IsSoftDelete && table.HasColumn(SoftDeleteField))
+    {
+
+            
+            #line default
+            #line hidden
+            this.Write("        return dal.Erase(");
+            
+            #line 385 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                     for(int i = 0; i < pks.Count; ++i)
                     {
@@ -938,30 +947,82 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                        entity.");
             
-            #line 383 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 389 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             
-            #line 383 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 389 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             this.Write("\r\n                ");
             
-            #line 384 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 390 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                     }
                 
             
             #line default
             #line hidden
-            this.Write(");\r\n            }\r\n            else\r\n            {\r\n                return false;" +
-                    "\r\n            }\r\n        }\r\n\r\n        protected PPT.Interfaces.Entities.");
+            this.Write(");\r\n");
             
-            #line 394 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 393 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+
+    }
+    else
+    {
+
+            
+            #line default
+            #line hidden
+            this.Write("\r\n                return dal.Delete(");
+            
+            #line 399 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+
+                    for(int i = 0; i < pks.Count; ++i)
+                    {
+                
+            
+            #line default
+            #line hidden
+            this.Write("                        entity.");
+            
+            #line 403 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
+            
+            #line default
+            #line hidden
+            
+            #line 403 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n                ");
+            
+            #line 404 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+
+                    }
+                
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n");
+            
+            #line 407 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+
+    }
+
+            
+            #line default
+            #line hidden
+            this.Write("            }\r\n            else\r\n            {\r\n                return false;\r\n  " +
+                    "          }\r\n        }\r\n\r\n        protected PPT.Interfaces.Entities.");
+            
+            #line 417 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -969,14 +1030,14 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write(" CreateTestEntity()\r\n        {\r\n            var entity = new PPT.Interfaces.Entit" +
                     "ies.");
             
-            #line 396 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 419 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("();\r\n            ");
             
-            #line 397 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 420 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -991,21 +1052,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 406 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 429 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = DateTime.Parse(\"");
             
-            #line 406 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 429 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\");\r\n              ");
             
-            #line 407 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 430 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                         }
                         else if(columnType == typeof(string))
@@ -1016,21 +1077,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 412 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 435 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = \"");
             
-            #line 412 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 435 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\";\r\n              ");
             
-            #line 413 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 436 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                         }
                         else if(columnType == typeof(bool))
@@ -1041,21 +1102,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 418 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 441 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 418 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 441 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString().ToLower()));
             
             #line default
             #line hidden
             this.Write(";              \r\n              ");
             
-            #line 419 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 442 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                         }
                         else if(testValsInsert[c.Name] != null)
@@ -1066,21 +1127,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 424 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 447 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 424 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 447 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty)));
             
             #line default
             #line hidden
             this.Write(";\r\n              ");
             
-            #line 425 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 448 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
 
                         }
                     }
@@ -1092,14 +1153,14 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("\r\n            return entity;\r\n        }\r\n\r\n        protected PPT.Interfaces.Entit" +
                     "ies.");
             
-            #line 434 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 457 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" AddTestEntity()\r\n        {\r\n            PPT.Interfaces.Entities.");
             
-            #line 436 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 459 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -1108,7 +1169,7 @@ namespace CRUDAPI.Template.NET.Tests
                     "r dal = CreateDal();\r\n            result = dal.Insert(entity);\r\n\r\n            re" +
                     "turn result;\r\n        }\r\n\r\n        private PPT.Interfaces.I");
             
-            #line 446 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 469 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -1116,14 +1177,14 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("Dal CreateDal()\r\n        {\r\n            var initParams = GetTestParams(\"DALInitPa" +
                     "rams\");\r\n\r\n            PPT.Interfaces.I");
             
-            #line 450 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 473 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal dal = new PPT.DAL.MSSQL.");
             
-            #line 450 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            #line 473 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -1209,6 +1270,32 @@ private global::System.Collections.Generic.IDictionary<string,object> testValsUp
     }
 }
 
+private bool _IsSoftDeleteField;
+
+/// <summary>
+/// Access the IsSoftDelete parameter of the template.
+/// </summary>
+private bool IsSoftDelete
+{
+    get
+    {
+        return this._IsSoftDeleteField;
+    }
+}
+
+private string _SoftDeleteFieldField;
+
+/// <summary>
+/// Access the SoftDeleteField parameter of the template.
+/// </summary>
+private string SoftDeleteField
+{
+    get
+    {
+        return this._SoftDeleteFieldField;
+    }
+}
+
 
 /// <summary>
 /// Initialize the template
@@ -1285,6 +1372,34 @@ if ((testValsUpdateAfterValueAcquired == false))
     if ((data != null))
     {
         this._testValsUpdateAfterField = ((global::System.Collections.Generic.IDictionary<string,object>)(data));
+    }
+}
+bool IsSoftDeleteValueAcquired = false;
+if (this.Session.ContainsKey("IsSoftDelete"))
+{
+    this._IsSoftDeleteField = ((bool)(this.Session["IsSoftDelete"]));
+    IsSoftDeleteValueAcquired = true;
+}
+if ((IsSoftDeleteValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("IsSoftDelete");
+    if ((data != null))
+    {
+        this._IsSoftDeleteField = ((bool)(data));
+    }
+}
+bool SoftDeleteFieldValueAcquired = false;
+if (this.Session.ContainsKey("SoftDeleteField"))
+{
+    this._SoftDeleteFieldField = ((string)(this.Session["SoftDeleteField"]));
+    SoftDeleteFieldValueAcquired = true;
+}
+if ((SoftDeleteFieldValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("SoftDeleteField");
+    if ((data != null))
+    {
+        this._SoftDeleteFieldField = ((string)(data));
     }
 }
 

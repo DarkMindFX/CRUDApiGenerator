@@ -103,7 +103,7 @@ namespace CRUDAPI.Template.NET.Tests
             
             #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\DeleteTeardownTemplate.tt"
 
-	if(IsSoftDelete)
+	if(IsSoftDelete && table.HasColumn(SoftDeleteField))
 	{
 
             
@@ -132,7 +132,7 @@ namespace CRUDAPI.Template.NET.Tests
 	for(int i = 0; i < table.Columns.Count; ++i) 
 	{
 		var c = table.Columns[i];
-		if(!c.IsIdentity)
+		if(!c.IsIdentity && (!IsSoftDelete || c.Name != SoftDeleteField ))
 		{
 
             
@@ -171,6 +171,24 @@ namespace CRUDAPI.Template.NET.Tests
             #line 75 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\DeleteTeardownTemplate.tt"
 
 		}
+		else
+		{
+
+            
+            #line default
+            #line hidden
+            this.Write("\t1=1 ");
+            
+            #line 80 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\DeleteTeardownTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i + 1 < table.Columns.Count ? "AND" : string.Empty));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 81 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\DeleteTeardownTemplate.tt"
+
+		}
 	}
 
             
@@ -178,37 +196,19 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write(" ))\r\n\t\t\t\t\t\r\nBEGIN\r\n\tSET @Fail = 1\r\nEND\r\n\r\nDELETE FROM \r\n\t[dbo].[");
             
-            #line 85 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\DeleteTeardownTemplate.tt"
+            #line 91 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\DeleteTeardownTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("]\r\n\tWHERE \r\n");
             
-            #line 87 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\DeleteTeardownTemplate.tt"
+            #line 93 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\DeleteTeardownTemplate.tt"
 
-	if(IsSoftDelete)
-	{
-
-            
-            #line default
-            #line hidden
-            this.Write("\t\t");
-            
-            #line 91 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\DeleteTeardownTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(SoftDeleteField));
-            
-            #line default
-            #line hidden
-            this.Write(" IN (0, 1) AND\r\n");
-            
-            #line 92 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\DeleteTeardownTemplate.tt"
-
-	}
 	for(int i = 0; i < table.Columns.Count; ++i) 
 	{
 		var c = table.Columns[i];
-		if(!c.IsIdentity || (c.Name == SoftDeleteField && IsSoftDelete ))
+		if(!c.IsIdentity && (!IsSoftDelete || c.Name != SoftDeleteField ))
 		{
 
             
@@ -247,6 +247,24 @@ namespace CRUDAPI.Template.NET.Tests
             #line 101 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\DeleteTeardownTemplate.tt"
 
 		}
+		else
+		{
+
+            
+            #line default
+            #line hidden
+            this.Write("\t1=1 ");
+            
+            #line 106 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\DeleteTeardownTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i + 1 < table.Columns.Count ? "AND" : string.Empty));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 107 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\DeleteTeardownTemplate.tt"
+
+		}
 	}
 
             
@@ -254,7 +272,7 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("\r\nIF(@Fail = 1) \r\nBEGIN\r\n\tTHROW 51001, \'");
             
-            #line 108 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\DeleteTeardownTemplate.tt"
+            #line 114 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\DeleteTeardownTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default

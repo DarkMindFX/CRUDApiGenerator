@@ -10,6 +10,8 @@
 <#@ parameter name="testValsGet" type="System.Collections.Generic.IDictionary<string,object>" #>
 <#@ parameter name="testValsInsert" type="System.Collections.Generic.IDictionary<string,object>" #>
 <#@ parameter name="testValsUpdateAfter" type="System.Collections.Generic.IDictionary<string,object>" #>
+<#@ parameter name="IsSoftDelete" type="System.Boolean" #>
+<#@ parameter name="SoftDeleteField" type="System.String" #>
 
 using PPT.DTO;
 using PPT.Utils.Convertors;
@@ -375,8 +377,12 @@ namespace Test.E2E.PhotoPrint.API.Controllers.V1
             {
                 var dal = CreateDal();
 
-                return dal.Delete(
-                <#
+
+<# 
+    if(IsSoftDelete && table.HasColumn(SoftDeleteField))
+    {
+#>
+        return dal.Erase(<#
                     for(int i = 0; i < pks.Count; ++i)
                     {
                 #>
@@ -384,6 +390,23 @@ namespace Test.E2E.PhotoPrint.API.Controllers.V1
                 <#
                     }
                 #>);
+<#
+    }
+    else
+    {
+#>
+
+                return dal.Delete(<#
+                    for(int i = 0; i < pks.Count; ++i)
+                    {
+                #>
+                        entity.<#= pks[i].Name #><#= i+1 < pks.Count ? "," : string.Empty #>
+                <#
+                    }
+                #>);
+<#
+    }
+#>
             }
             else
             {

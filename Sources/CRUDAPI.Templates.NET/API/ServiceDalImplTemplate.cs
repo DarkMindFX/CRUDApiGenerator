@@ -33,63 +33,63 @@ namespace CRUDAPI.Template.NET.API
                     "em.ComponentModel.Composition;\r\nusing System.Linq;\r\n\r\nnamespace PPT.PhotoPrint.A" +
                     "PI.Dal\r\n{\r\n    [Export(typeof(I");
             
-            #line 18 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 20 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal))]\r\n    public class ");
             
-            #line 19 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 21 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal : DalBaseImpl<");
             
-            #line 19 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 21 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(", Interfaces.I");
             
-            #line 19 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 21 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal>, I");
             
-            #line 19 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 21 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal\r\n    {\r\n\r\n        public ");
             
-            #line 22 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 24 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal(Interfaces.I");
             
-            #line 22 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 24 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal dalImpl) : base(dalImpl)\r\n        {\r\n        }\r\n\r\n        public ");
             
-            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" Get(");
             
-            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
 
             var pks = modelHelper.GetPKColumns(table);
             for(int i = 0; i < pks.Count; ++i)
@@ -100,33 +100,33 @@ namespace CRUDAPI.Template.NET.API
             #line default
             #line hidden
             
-            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 33 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(pk)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 33 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             
-            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 33 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 33 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            return _dalImpl.Get(");
             
-            #line 33 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 35 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -136,26 +136,26 @@ namespace CRUDAPI.Template.NET.API
             #line hidden
             this.Write("            ");
             
-            #line 37 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 39 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             
-            #line 37 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 39 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 37 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 39 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write(");\r\n        }\r\n\r\n        public bool Delete(");
             
-            #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 42 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -165,33 +165,33 @@ namespace CRUDAPI.Template.NET.API
             #line default
             #line hidden
             
-            #line 44 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 46 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(pk)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 44 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 46 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             
-            #line 44 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 46 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 44 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 46 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            return _dalImpl.Delete(");
             
-            #line 46 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 48 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -201,26 +201,110 @@ namespace CRUDAPI.Template.NET.API
             #line hidden
             this.Write("            ");
             
-            #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 52 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             
-            #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 52 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 52 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write(");\r\n        }\r\n\r\n        ");
+            this.Write(");\r\n        }\r\n\r\n");
             
-            #line 53 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 55 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+
+    if(IsSoftDelete && table.HasColumn(SoftDeleteField))
+    {
+
+            
+            #line default
+            #line hidden
+            this.Write("        public bool Erase(");
+            
+            #line 59 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        
+            
+            #line default
+            #line hidden
+            
+            #line 63 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(pk)));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 63 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
+            
+            #line default
+            #line hidden
+            
+            #line 63 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
+            
+            #line default
+            #line hidden
+            
+            #line 63 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write(")\r\n        {\r\n            return _dalImpl.Delete(");
+            
+            #line 65 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i]; 
+            
+            #line default
+            #line hidden
+            this.Write("            ");
+            
+            #line 69 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
+            
+            #line default
+            #line hidden
+            
+            #line 69 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
+            
+            #line default
+            #line hidden
+            
+            #line 69 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n        }\r\n");
+            
+            #line 71 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+
+    }
+
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        ");
+            
+            #line 75 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
 
         foreach(var c in table.Columns)
         {
@@ -232,49 +316,49 @@ namespace CRUDAPI.Template.NET.API
             #line hidden
             this.Write("public IList<");
             
-            #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 80 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("> GetBy");
             
-            #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 80 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 80 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(c)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 80 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            return _dalImpl.GetBy");
             
-            #line 60 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 82 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 60 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 82 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n        }\r\n        ");
             
-            #line 62 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            #line 84 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
 
             }
         }
@@ -314,6 +398,32 @@ private global::CRUDAPI.DataModel.ModelHelper modelHelper
     }
 }
 
+private bool _IsSoftDeleteField;
+
+/// <summary>
+/// Access the IsSoftDelete parameter of the template.
+/// </summary>
+private bool IsSoftDelete
+{
+    get
+    {
+        return this._IsSoftDeleteField;
+    }
+}
+
+private string _SoftDeleteFieldField;
+
+/// <summary>
+/// Access the SoftDeleteField parameter of the template.
+/// </summary>
+private string SoftDeleteField
+{
+    get
+    {
+        return this._SoftDeleteFieldField;
+    }
+}
+
 
 /// <summary>
 /// Initialize the template
@@ -348,6 +458,34 @@ if ((modelHelperValueAcquired == false))
     if ((data != null))
     {
         this._modelHelperField = ((global::CRUDAPI.DataModel.ModelHelper)(data));
+    }
+}
+bool IsSoftDeleteValueAcquired = false;
+if (this.Session.ContainsKey("IsSoftDelete"))
+{
+    this._IsSoftDeleteField = ((bool)(this.Session["IsSoftDelete"]));
+    IsSoftDeleteValueAcquired = true;
+}
+if ((IsSoftDeleteValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("IsSoftDelete");
+    if ((data != null))
+    {
+        this._IsSoftDeleteField = ((bool)(data));
+    }
+}
+bool SoftDeleteFieldValueAcquired = false;
+if (this.Session.ContainsKey("SoftDeleteField"))
+{
+    this._SoftDeleteFieldField = ((string)(this.Session["SoftDeleteField"]));
+    SoftDeleteFieldValueAcquired = true;
+}
+if ((SoftDeleteFieldValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("SoftDeleteField");
+    if ((data != null))
+    {
+        this._SoftDeleteFieldField = ((string)(data));
     }
 }
 

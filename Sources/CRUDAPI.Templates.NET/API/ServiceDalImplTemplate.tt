@@ -6,6 +6,8 @@
 
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
+<#@ parameter name="IsSoftDelete" type="System.Boolean" #>
+<#@ parameter name="SoftDeleteField" type="System.String" #>
 
 
 using PPT.Interfaces.Entities;
@@ -49,6 +51,26 @@ namespace PPT.PhotoPrint.API.Dal
             var pk = pks[i]; #>
             <#= pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><# } #>);
         }
+
+<#
+    if(IsSoftDelete && table.HasColumn(SoftDeleteField))
+    {
+#>
+        public bool Erase(<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #><#= modelHelper.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><# } #>)
+        {
+            return _dalImpl.Delete(<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i]; #>
+            <#= pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><# } #>);
+        }
+<#
+    }
+#>
 
         <#
         foreach(var c in table.Columns)

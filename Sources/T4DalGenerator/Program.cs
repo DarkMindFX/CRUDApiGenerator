@@ -104,6 +104,9 @@ namespace T4DalGenerator
 
         private static IList<string> GenerateSingle<TGenerator>(IList<CRUDAPI.DataModel.DataTable> tables, DalCreatorSettings settings, DateTime timestamp) where TGenerator : IGenerator
         {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write($"Running {typeof(TGenerator).ToString()} ...");
+
             List<string> result = new List<string>();
             var genParams = new CRUDAPI.Generators.GeneratorParams()
             {
@@ -116,6 +119,9 @@ namespace T4DalGenerator
 
             var files = generator.Generate();
             result.AddRange(files);
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("DONE");
 
             return result;
         }
