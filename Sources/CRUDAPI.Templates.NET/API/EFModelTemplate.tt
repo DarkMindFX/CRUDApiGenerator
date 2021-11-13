@@ -1,0 +1,63 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
+<#@ parameter name="refTables" type="System.Collections.Generic.IList<CRUDAPI.DataModel.DataTable>" #>
+
+using System;
+using System.Collections.Generic;
+
+#nullable disable
+
+namespace PPT.DAL.EF.Models
+{
+    public partial class <#= table.Name #>
+    {
+        public Address()
+        {
+        <#
+            foreach(var t in refTables)
+            {
+        #>
+            <#= modelHelper.Pluralize(t.Name) #> = new HashSet<<#= t.Name #>>();
+        <#
+            }
+        #>
+        }
+
+        <# 
+			foreach(var c in table.Columns) 
+			{
+		#>
+		public <#= modelHelper.DbTypeToType(c) #> <#=c.Name #> { get; set; }
+		<#
+			}
+		#>	
+
+
+        <#
+        foreach(var c in table.Columns)
+        {
+            if(!string.IsNullOrEmpty(c.FKRefTable))
+            {
+        #>
+        public virtual <#= c.FKRefTable #> <#= modelHelper.WithoutID( c.Name ) #> { get; set; }
+        <#
+            }
+        }
+        #>
+
+        <#
+            foreach(var t in refTables)
+            {
+        #>
+        public virtual ICollection<<#= t.Name #>> <#= modelHelper.Pluralize(t.Name) #> { get; set; }
+        <#
+            }
+        #>
+    }
+}

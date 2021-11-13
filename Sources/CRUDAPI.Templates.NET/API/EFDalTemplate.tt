@@ -1,0 +1,217 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
+<#@ parameter name="projectName" type="System.String" #>
+<#@ parameter name="IsSoftDelete" type="System.Boolean" #>
+<#@ parameter name="SoftDeleteField" type="System.String" #>
+
+using PPT.DAL.EF.Models;
+using PPT.Interfaces;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Linq;
+
+namespace PPT.DAL.EF.Dals
+{
+    class <#= table.Name #>DalInitParams : InitParamsImpl
+    {
+    }
+
+    [Export("EF", typeof(I<#= table.Name #>Dal))]
+    public class <#= table.Name #>Dal : I<#= table.Name #>Dal
+    {
+        <#= projectName #>Context dbContext;
+
+        public IInitParams CreateInitParams()
+        {
+            return new <#= table.Name #>DalInitParams();
+        }
+
+        public bool Delete(<#
+            var pks = modelHelper.GetPKColumns(table);
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #>
+<#= modelHelper.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>)
+        {
+            var entity = dbContext.<#= modelHelper.Pluralize( table.Name ) #>.Find(ID);
+            if (entity != null)
+            {
+                entity.IsDeleted = true;
+                dbContext.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+<#
+    if(IsSoftDelete && table.HasColumn(SoftDeleteField))
+    {
+#>
+        public bool Erase(<#
+            var pks = modelHelper.GetPKColumns(table);
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #>
+<#= modelHelper.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>)
+        {
+            var entity = dbContext.<#= modelHelper.Pluralize( table.Name ) #>.Where( e => e.ID == ID).FirstOrDefault();
+            if (entity != null)
+            {
+                var entityEntry = dbContext.Remove<Models.<#= table.Name #>>(entity);
+                dbContext.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+<#
+    }
+#>
+
+        public PPT.Interfaces.Entities.<#= table.Name #> Get(<#
+            var pks = modelHelper.GetPKColumns(table);
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #>
+<#= modelHelper.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>)
+        {
+            PPT.Interfaces.Entities.<#= table.Name #> result = null;
+            var entity = dbContext.<#= modelHelper.Pluralize(table.Name) #>.Where(e => e.ID == ID).FirstOrDefault();
+            if (entity != null)
+            {
+                result = Convertors.<#= table.Name #>Convertor.FromEFEntity(entity);
+            }
+            return result;
+        }
+
+        public IList<PPT.Interfaces.Entities.<#= table.Name #>> GetAll()
+        {
+            var entities = dbContext.<#= modelHelper.Pluralize(table.Name) #>.ToList();
+
+            IList<PPT.Interfaces.Entities.<#= table.Name #>> result = ToList(entities);
+            
+            return result;
+        }
+
+        public IList<PPT.Interfaces.Entities.Address> GetByAddressTypeID(long AddressTypeID)
+        {
+            var entities = dbContext.Addresses.Where(e => e.AddressTypeID == AddressTypeID).ToList();
+
+            IList<PPT.Interfaces.Entities.Address> result = ToList(entities);
+
+            return result;
+        }
+
+        public IList<PPT.Interfaces.Entities.Address> GetByCityID(long CityID)
+        {
+            var entities = dbContext.Addresses.Where(e => e.CityID == CityID).ToList();
+
+            IList<PPT.Interfaces.Entities.Address> result = ToList(entities);
+
+            return result;
+        }
+
+        public IList<PPT.Interfaces.Entities.Address> GetByCreatedByID(long CreatedByID)
+        {
+            var entities = dbContext.Addresses.Where(e => e.CreatedByID == CreatedByID).ToList();
+
+            IList<PPT.Interfaces.Entities.Address> result = ToList(entities);
+
+            return result;
+        }
+
+        public IList<PPT.Interfaces.Entities.Address> GetByModifiedByID(long? ModifiedByID)
+        {
+            var entities = dbContext.Addresses.Where(e => e.ModifiedByID == ModifiedByID).ToList();
+
+            IList<PPT.Interfaces.Entities.Address> result = ToList(entities);
+
+            return result;
+        }
+
+        public void Init(IInitParams initParams)
+        {
+            dbContext = new PhotoPrintContext(initParams.Parameters["ConnectionString"]);
+        }
+
+        public PPT.Interfaces.Entities.Address Insert(PPT.Interfaces.Entities.Address entity)
+        {
+            PPT.Interfaces.Entities.Address result = null;
+            var efEntity = Convertors.AddressConvertor.ToEFEntity(entity);
+            var efEntityEntry = dbContext.Add<PPT.DAL.EF.Models.Address>(efEntity);
+            dbContext.SaveChanges();
+
+            result = Convertors.AddressConvertor.FromEFEntity(efEntityEntry.Entity);
+
+            return result;
+        }
+
+        public PPT.Interfaces.Entities.Address Update(PPT.Interfaces.Entities.Address entity)
+        {
+            PPT.Interfaces.Entities.Address result = null;
+            var efEntity = dbContext.Addresses.Where(e => e.ID == entity.ID).FirstOrDefault();
+            if (efEntity != null)
+            {
+                efEntity.AddressTypeID = entity.AddressTypeID;
+
+                efEntity.Title = entity.Title;
+
+                efEntity.CityID = entity.CityID;
+
+                efEntity.Street = entity.Street;
+
+                efEntity.BuildingNo = entity.BuildingNo;
+
+                efEntity.ApartmentNo = entity.ApartmentNo;
+
+                efEntity.Comment = entity.Comment;
+
+                efEntity.CreatedByID = entity.CreatedByID;
+
+                efEntity.CreatedDate = entity.CreatedDate;
+
+                efEntity.ModifiedByID = entity.ModifiedByID;
+
+                efEntity.ModifiedDate = entity.ModifiedDate;
+
+                efEntity.IsDeleted = entity.IsDeleted;
+
+                dbContext.SaveChanges();
+
+                efEntity = dbContext.Addresses.Where(e => e.ID == entity.ID).FirstOrDefault();
+                result = Convertors.AddressConvertor.FromEFEntity(efEntity);
+            }
+            return result;
+        }
+
+        #region Support methods
+        IList<PPT.Interfaces.Entities.Address> ToList(IList<PPT.DAL.EF.Models.Address> entities)
+        {
+            IList<PPT.Interfaces.Entities.Address> result = new List<PPT.Interfaces.Entities.Address>();
+            if (entities != null)
+            {
+                foreach (var e in entities)
+                {
+                    result.Add(Convertors.AddressConvertor.FromEFEntity(e));
+                }
+            }
+            return result;
+        }
+        
+        #endregion
+    }
+}

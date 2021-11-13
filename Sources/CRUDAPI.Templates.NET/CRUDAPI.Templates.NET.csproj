@@ -26,6 +26,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="API\EFModelTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EFModelTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Update="API\EntityControllerTemplate.cs">
       <DependentUpon>EntityControllerTemplate.tt</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -137,6 +142,10 @@
     <None Update="API\DtoTemplate.tt">
       <LastGenOutput>DtoTemplate.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="API\EFModelTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EFModelTemplate.cs</LastGenOutput>
     </None>
     <None Update="API\EntityControllerTemplate.tt">
       <LastGenOutput>EntityControllerTemplate.cs</LastGenOutput>

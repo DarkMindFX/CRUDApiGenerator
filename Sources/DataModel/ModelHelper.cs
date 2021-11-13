@@ -29,6 +29,16 @@ namespace CRUDAPI.DataModel
 
             return result;
         }
+
+        public string WithoutID(string name)
+        {
+            string result = name;
+            if(name.ToUpper().EndsWith("ID"))
+            {
+                result = name.Remove(name.ToUpper().LastIndexOf("ID"), 2);
+            }
+            return result;
+        }
         
         public string DbTypeToType(DataModel.DataColumn c)
         {

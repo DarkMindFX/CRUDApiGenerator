@@ -49,8 +49,9 @@ namespace T4DalGenerator
             Generate<EntitiesGenerator>(tables, settings, timestamp);
             Generate<SQLDalGenerator>(tables, settings, timestamp);
             Generate<SQLDalTestGenerator>(tables, settings, timestamp);
-            
-            
+
+            Generate<EFModelGenerator>(tables, settings, timestamp);
+            /*
             Generate<DtosGenerator>(tables, settings, timestamp);
             Generate<IServiceDalsGenerator>(tables, settings, timestamp);
             Generate<ServiceDalsImplGenerator>(tables, settings, timestamp);
@@ -65,7 +66,7 @@ namespace T4DalGenerator
             GenerateSingle<JsDtosIndexGenerator>(tables, settings, timestamp);
             GenerateSingle<PostmanCollectionGenerator>(tables, settings, timestamp);
             GenerateSingle<JsAppGenerator>(tables, settings, timestamp);
-            
+            */
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("SUCCESS! ");
             Console.ForegroundColor = ConsoleColor.White;
@@ -85,6 +86,7 @@ namespace T4DalGenerator
             {
                 Settings = settings,
                 Timestamp = timestamp,
+                Tables = tables
             };
 
             var generator = (TGenerator)Activator.CreateInstance(typeof(TGenerator), new object[] { genParams });
