@@ -29,7 +29,7 @@ namespace CRUDAPI.Template.React.UI
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\nconst HateosDto = require(\'./HateosDto\')\r\n\r\nclass ");
+            this.Write("\r\nimport HateosDto from \'./HateosDto\'\r\n\r\nclass ");
             
             #line 12 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -83,7 +83,7 @@ namespace CRUDAPI.Template.React.UI
             
             #line default
             #line hidden
-            this.Write("\t\t\r\n}\r\n\r\nmodule.exports = ");
+            this.Write("\t\t\r\n}\r\n\r\nexport default ");
             
             #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));

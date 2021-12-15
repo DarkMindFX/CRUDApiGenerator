@@ -14,4 +14,4 @@ class PageHelper
     }    
 }
 
-module.exports = PageHelper;
+export default PageHelper;

@@ -7,7 +7,7 @@
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 
-const HateosDto = require('./HateosDto')
+import HateosDto from './HateosDto'
 
 class <#= table.Name #>Dto extends HateosDto {
 		<# 
@@ -23,4 +23,4 @@ class <#= table.Name #>Dto extends HateosDto {
 		#>		
 }
 
-module.exports = <#= table.Name #>Dto;
+export default <#= table.Name #>Dto;

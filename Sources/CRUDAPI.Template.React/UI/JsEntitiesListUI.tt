@@ -21,15 +21,15 @@ import Alert from '@material-ui/lab/Alert';
 import { Button } from '@material-ui/core';
 import constants from "../../constants";
 
-const PageHelper = require("../../helpers/PageHelper");
-const <#= entityPlural #>Dal = require('../../dal/<#= entityPlural #>Dal');
+import PageHelper from "../../helpers/PageHelper";
+import <#= entityPlural #>Dal from '../../dal/<#= entityPlural #>Dal';
 <# 
 foreach(var fk in fks) 
 {
     if(!fk.Equals(table.Name)) {
 #>
 
-const <#= modelHelper.Pluralize(fk) #>Dal = require('../../dal/<#= modelHelper.Pluralize(fk) #>Dal');
+import <#= modelHelper.Pluralize(fk) #>Dal from '../../dal/<#= modelHelper.Pluralize(fk) #>Dal';
 <#
     }
 }

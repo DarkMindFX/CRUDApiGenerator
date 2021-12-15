@@ -22,4 +22,4 @@ const constants = {
     HTTP_NotImplemented: 501
 }
 
-module.exports = constants;
+export default constants;

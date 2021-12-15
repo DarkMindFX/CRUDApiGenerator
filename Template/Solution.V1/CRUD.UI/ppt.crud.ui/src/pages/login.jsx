@@ -5,7 +5,7 @@ import { Button } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import constants from '../constants';
 import queryString from 'query-string'
-const UsersDal = require('../dal/UsersDal')
+import UsersDal from '../dal/UsersDal';
 
 class LoginPage extends React.Component {
 

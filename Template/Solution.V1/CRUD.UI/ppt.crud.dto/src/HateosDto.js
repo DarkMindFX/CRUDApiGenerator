@@ -10,4 +10,4 @@ class HateosDto {
 
 }
 
-module.exports = HateosDto;
+export default HateosDto;

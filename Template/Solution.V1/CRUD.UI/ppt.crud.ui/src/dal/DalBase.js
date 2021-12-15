@@ -1,6 +1,6 @@
 
-const constants = require('../constants');
-const axios = require('axios');
+import constants from '../constants';
+import axios from 'axios';
 
 class DalBase {
 
@@ -31,4 +31,4 @@ class DalBase {
 
 }
 
-module.exports = DalBase;
+export default DalBase;

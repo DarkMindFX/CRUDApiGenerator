@@ -11,4 +11,4 @@ class HealthResponse {
     set message(val) { this._message = val; }
 }
 
-module.exports = HealthResponse;
+export default HealthResponse;

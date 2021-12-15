@@ -26,6 +26,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="API\EFDalTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EFDalTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Update="API\EFModelTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -142,6 +147,10 @@
     <None Update="API\DtoTemplate.tt">
       <LastGenOutput>DtoTemplate.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="API\EFDalTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EFDalTemplate.cs</LastGenOutput>
     </None>
     <None Update="API\EFModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

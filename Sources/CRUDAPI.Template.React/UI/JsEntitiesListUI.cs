@@ -49,22 +49,22 @@ import Alert from '@material-ui/lab/Alert';
 import { Button } from '@material-ui/core';
 import constants from ""../../constants"";
 
-const PageHelper = require(""../../helpers/PageHelper"");
-const ");
+import PageHelper from ""../../helpers/PageHelper"";
+import ");
             
             #line 25 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntitiesListUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityPlural));
             
             #line default
             #line hidden
-            this.Write("Dal = require(\'../../dal/");
+            this.Write("Dal from \'../../dal/");
             
             #line 25 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntitiesListUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityPlural));
             
             #line default
             #line hidden
-            this.Write("Dal\');\r\n");
+            this.Write("Dal\';\r\n");
             
             #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntitiesListUI.tt"
  
@@ -75,21 +75,21 @@ foreach(var fk in fks)
             
             #line default
             #line hidden
-            this.Write("\r\nconst ");
+            this.Write("\r\nimport ");
             
             #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntitiesListUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk)));
             
             #line default
             #line hidden
-            this.Write("Dal = require(\'../../dal/");
+            this.Write("Dal from \'../../dal/");
             
             #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntitiesListUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk)));
             
             #line default
             #line hidden
-            this.Write("Dal\');\r\n");
+            this.Write("Dal\';\r\n");
             
             #line 33 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntitiesListUI.tt"
 

@@ -10,6 +10,10 @@
 <#@ parameter name="IsSoftDelete" type="System.Boolean" #>
 <#@ parameter name="SoftDeleteField" type="System.String" #>
 
+<#
+var pks = modelHelper.GetPKColumns(table);
+#>
+
 using PPT.DAL.EF.Models;
 using PPT.Interfaces;
 using System.Collections.Generic;
@@ -33,7 +37,7 @@ namespace PPT.DAL.EF.Dals
         }
 
         public bool Delete(<#
-            var pks = modelHelper.GetPKColumns(table);
+            
             for(int i = 0; i < pks.Count; ++i)
             {
             var pk = pks[i];
@@ -58,14 +62,18 @@ namespace PPT.DAL.EF.Dals
     {
 #>
         public bool Erase(<#
-            var pks = modelHelper.GetPKColumns(table);
             for(int i = 0; i < pks.Count; ++i)
             {
             var pk = pks[i];
         #>
 <#= modelHelper.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>)
         {
-            var entity = dbContext.<#= modelHelper.Pluralize( table.Name ) #>.Where( e => e.ID == ID).FirstOrDefault();
+            var entity = dbContext.<#= modelHelper.Pluralize( table.Name ) #>.Where( e => <#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #>
+        e.<#=pk.Name #> = <#=pk.Name #>  <#= i+1 < pks.Count ? "&&" : string.Empty #><#}#>).FirstOrDefault();
             if (entity != null)
             {
                 var entityEntry = dbContext.Remove<Models.<#= table.Name #>>(entity);
@@ -82,7 +90,6 @@ namespace PPT.DAL.EF.Dals
 #>
 
         public PPT.Interfaces.Entities.<#= table.Name #> Get(<#
-            var pks = modelHelper.GetPKColumns(table);
             for(int i = 0; i < pks.Count; ++i)
             {
             var pk = pks[i];
@@ -90,7 +97,12 @@ namespace PPT.DAL.EF.Dals
 <#= modelHelper.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>)
         {
             PPT.Interfaces.Entities.<#= table.Name #> result = null;
-            var entity = dbContext.<#= modelHelper.Pluralize(table.Name) #>.Where(e => e.ID == ID).FirstOrDefault();
+            var entity = dbContext.<#= modelHelper.Pluralize(table.Name) #>.Where(e => <#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #>
+        e.<#=pk.Name #> = <#=pk.Name #>  <#= i+1 < pks.Count ? "&&" : string.Empty #><#}#>).FirstOrDefault();
             if (entity != null)
             {
                 result = Convertors.<#= table.Name #>Convertor.FromEFEntity(entity);
@@ -107,41 +119,25 @@ namespace PPT.DAL.EF.Dals
             return result;
         }
 
-        public IList<PPT.Interfaces.Entities.Address> GetByAddressTypeID(long AddressTypeID)
+        <#
+        foreach(var c in table.Columns)
         {
-            var entities = dbContext.Addresses.Where(e => e.AddressTypeID == AddressTypeID).ToList();
+                if(!string.IsNullOrEmpty(c.FKRefTable))
+                {
+        #>
+        public IList<<#=table.Name #>> GetBy<#=c.Name #>(<#= modelHelper.DbTypeToType(c) #> <#=c.Name #>)
+        {
+            var entities = dbContext.<#= modelHelper.Pluralize(table.Name) #>.Where(e => e.<#=c.Name #> == <#=c.Name #>).ToList();
 
             IList<PPT.Interfaces.Entities.Address> result = ToList(entities);
 
             return result;
         }
-
-        public IList<PPT.Interfaces.Entities.Address> GetByCityID(long CityID)
-        {
-            var entities = dbContext.Addresses.Where(e => e.CityID == CityID).ToList();
-
-            IList<PPT.Interfaces.Entities.Address> result = ToList(entities);
-
-            return result;
+        <#
+                }
         }
-
-        public IList<PPT.Interfaces.Entities.Address> GetByCreatedByID(long CreatedByID)
-        {
-            var entities = dbContext.Addresses.Where(e => e.CreatedByID == CreatedByID).ToList();
-
-            IList<PPT.Interfaces.Entities.Address> result = ToList(entities);
-
-            return result;
-        }
-
-        public IList<PPT.Interfaces.Entities.Address> GetByModifiedByID(long? ModifiedByID)
-        {
-            var entities = dbContext.Addresses.Where(e => e.ModifiedByID == ModifiedByID).ToList();
-
-            IList<PPT.Interfaces.Entities.Address> result = ToList(entities);
-
-            return result;
-        }
+        #>
+        
 
         public void Init(IInitParams initParams)
         {
@@ -163,7 +159,12 @@ namespace PPT.DAL.EF.Dals
         public PPT.Interfaces.Entities.Address Update(PPT.Interfaces.Entities.Address entity)
         {
             PPT.Interfaces.Entities.Address result = null;
-            var efEntity = dbContext.Addresses.Where(e => e.ID == entity.ID).FirstOrDefault();
+            var efEntity = dbContext.Addresses.Where(e => <#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #>
+        e.<#=pk.Name #> = <#=pk.Name #>  <#= i+1 < pks.Count ? "&&" : string.Empty #><#}#>).FirstOrDefault();
             if (efEntity != null)
             {
                 efEntity.AddressTypeID = entity.AddressTypeID;

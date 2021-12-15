@@ -50,7 +50,7 @@
     <Compile Update="UI\JsEntityUI.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>JsEntityUI2.tt</DependentUpon>
+      <DependentUpon>JsEntityUI.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -76,7 +76,7 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
     </None>
     <None Update="UI\JsEntityUI.tt">
-      <LastGenOutput>JsEntityUI2.cs</LastGenOutput>
+      <LastGenOutput>JsEntityUI.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
     </None>
   </ItemGroup>

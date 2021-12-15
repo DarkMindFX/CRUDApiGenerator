@@ -4,24 +4,23 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
-
 <#@ parameter name="tables" type="System.Collections.Generic.IList<CRUDAPI.DataModel.DataTable>" #>
 
-const Error = require('./src/Error')
-const HateosDto = require('./src/HateosDto')
-const HealthResponse = require('./src/Health')
-const { LoginRequest, LoginResponse } = require('./src/Login')
+import Error from './src/Error';
+import HateosDto from './src/HateosDto';
+import HealthResponse from './src/Health';
+import { LoginRequest, LoginResponse } from './src/Login';
 
 <#
     foreach(var table in tables)
     {
 #>
-const <#= table.Name #>Dto = require('./src/<#= table.Name #>Dto')
+import <#= table.Name #>Dto from './src/<#= table.Name #>Dto';
 <#
     }
 #>
 
-module.exports = {
+export {
     Error,
     HealthResponse,
     LoginRequest,

@@ -28,22 +28,21 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Checkbox from '@material-ui/core/Checkbox';
 
-const constants = require('../../constants');
-const { v4: uuidv4 } = require('uuid');
-const PageHelper = require("../../helpers/PageHelper");
-const <#= entityPlural #>Dal = require('../../dal/<#= entityPlural #>Dal');
+import constants from '../../constants';
+import PageHelper from "../../helpers/PageHelper";
+import <#= entityPlural #>Dal from '../../dal/<#= entityPlural #>Dal';
 <# 
 foreach(var fk in fks) 
 {
     if(!fk.Equals(table.Name)) {
 #>
 
-const <#= modelHelper.Pluralize(fk) #>Dal = require('../../dal/<#= modelHelper.Pluralize(fk) #>Dal');
+import <#= modelHelper.Pluralize(fk) #>Dal from '../../dal/<#= modelHelper.Pluralize(fk) #>Dal';
 <#
     }
 }
 #>
-const { <#= table.Name #>Dto } = require('ppt.photoprint.dto')
+import { <#= table.Name #>Dto } from 'ppt.photoprint.dto';
 
 
 class <#= table.Name #>Page extends React.Component {

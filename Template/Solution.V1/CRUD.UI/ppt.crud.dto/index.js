@@ -1,12 +1,12 @@
 
 
-const Error = require('./src/Error')
-const HateosDto = require('./src/HateosDto')
-const HealthResponse = require('./src/Health')
-const { LoginRequest, LoginResponse } = require('./src/Login')
+import Error from './src/Error';
+import HateosDto from './src/HateosDto';
+import HealthResponse from './src/Health';
+import { LoginRequest, LoginResponse } from './src/Login';
 
 
-module.exports = {
+export default {
     Error,
     HealthResponse,
     LoginRequest,

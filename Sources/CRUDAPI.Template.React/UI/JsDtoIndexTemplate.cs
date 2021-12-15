@@ -28,12 +28,12 @@ namespace CRUDAPI.Template.React.UI
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\n\r\n");
-            this.Write("\r\nconst Error = require(\'./src/Error\')\r\nconst HateosDto = require(\'./src/HateosDt" +
-                    "o\')\r\nconst HealthResponse = require(\'./src/Health\')\r\nconst { LoginRequest, Login" +
-                    "Response } = require(\'./src/Login\')\r\n\r\n");
+            this.Write("\r\n");
+            this.Write("\r\nimport Error from \'./src/Error\';\r\nimport HateosDto from \'./src/HateosDto\';\r\nimp" +
+                    "ort HealthResponse from \'./src/Health\';\r\nimport { LoginRequest, LoginResponse } " +
+                    "from \'./src/Login\';\r\n\r\n");
             
-            #line 15 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
+            #line 14 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
 
     foreach(var table in tables)
     {
@@ -41,33 +41,33 @@ namespace CRUDAPI.Template.React.UI
             
             #line default
             #line hidden
-            this.Write("const ");
+            this.Write("import ");
             
-            #line 19 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
+            #line 18 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write("Dto = require(\'./src/");
+            this.Write("Dto from \'./src/");
             
-            #line 19 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
+            #line 18 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write("Dto\')\r\n");
+            this.Write("Dto\';\r\n");
             
-            #line 20 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
+            #line 19 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
 
     }
 
             
             #line default
             #line hidden
-            this.Write("\r\nmodule.exports = {\r\n    Error,\r\n    HealthResponse,\r\n    LoginRequest,\r\n    Log" +
-                    "inResponse,\r\n    HateosDto,   \r\n    \r\n");
+            this.Write("\r\nexport {\r\n    Error,\r\n    HealthResponse,\r\n    LoginRequest,\r\n    LoginResponse" +
+                    ",\r\n    HateosDto,   \r\n    \r\n");
             
-            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
 
     foreach(var table in tables)
     {
@@ -77,21 +77,21 @@ namespace CRUDAPI.Template.React.UI
             #line hidden
             this.Write("    ");
             
-            #line 35 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
+            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dto");
             
-            #line 35 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
+            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table != tables.Last() ? "," : string.Empty));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 36 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
+            #line 35 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsDtoIndexTemplate.tt"
 
     }
 

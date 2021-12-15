@@ -7,10 +7,10 @@
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 
-const axios = require('axios');
-const constants = require('../constants');
+import axios from 'axios';
+import constants from '../constants';
 
-const DalBase = require('./DalBase');
+import DalBase from './DalBase';
 
 <# var pks = modelHelper.GetPKColumns(table); #>
 
@@ -104,4 +104,4 @@ class <#= modelHelper.Pluralize(table.Name) #>Dal extends DalBase {
     }
 }
 
-module.exports = <#= modelHelper.Pluralize(table.Name) #>Dal;
+export default <#= modelHelper.Pluralize(table.Name) #>Dal;

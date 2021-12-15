@@ -18,9 +18,9 @@ namespace CRUDAPI.Template.React.UI
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+    #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class JsEntityUI : JsEntityUI2Base
+    public partial class JsEntityUI : JsEntityUIBase
     {
 #line hidden
         /// <summary>
@@ -31,7 +31,7 @@ namespace CRUDAPI.Template.React.UI
             this.Write("\r\n");
             this.Write("\r\n");
             
-            #line 10 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 10 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
  
     var pks = modelHelper.GetPKColumns(table); 
     var fks = modelHelper.GetFKColumns(table).Select( c => c.FKRefTable ).Distinct();
@@ -56,26 +56,25 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Checkbox from '@material-ui/core/Checkbox';
 
-const constants = require('../../constants');
-const { v4: uuidv4 } = require('uuid');
-const PageHelper = require(""../../helpers/PageHelper"");
-const ");
+import constants from '../../constants';
+import PageHelper from ""../../helpers/PageHelper"";
+import ");
             
-            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 33 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityPlural));
             
             #line default
             #line hidden
-            this.Write("Dal = require(\'../../dal/");
+            this.Write("Dal from \'../../dal/");
             
-            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 33 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityPlural));
             
             #line default
             #line hidden
-            this.Write("Dal\');\r\n");
+            this.Write("Dal\';\r\n");
             
-            #line 35 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
  
 foreach(var fk in fks) 
 {
@@ -84,23 +83,23 @@ foreach(var fk in fks)
             
             #line default
             #line hidden
-            this.Write("\r\nconst ");
+            this.Write("\r\nimport ");
             
-            #line 41 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk)));
             
             #line default
             #line hidden
-            this.Write("Dal = require(\'../../dal/");
+            this.Write("Dal from \'../../dal/");
             
-            #line 41 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk)));
             
             #line default
             #line hidden
-            this.Write("Dal\');\r\n");
+            this.Write("Dal\';\r\n");
             
-            #line 42 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 41 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
     }
 }
@@ -108,16 +107,16 @@ foreach(var fk in fks)
             
             #line default
             #line hidden
-            this.Write("const { ");
+            this.Write("import { ");
             
-            #line 46 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 45 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write("Dto } = require(\'ppt.photoprint.dto\')\r\n\r\n\r\nclass ");
+            this.Write("Dto } from \'ppt.photoprint.dto\';\r\n\r\n\r\nclass ");
             
-            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 48 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -141,14 +140,14 @@ foreach(var fk in fks)
                                         paramOperation.toLowerCase() == 'edit' ? true : false) : false,
             ");
             
-            #line 66 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 65 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write(": this._createEmpty");
             
-            #line 66 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 65 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -157,21 +156,21 @@ foreach(var fk in fks)
                     "           showSuccess: false,\r\n            error: null,\r\n            success: n" +
                     "ull,\r\n            urlEntities: `${rooPath}");
             
-            #line 73 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 72 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityPlural.ToLower()));
             
             #line default
             #line hidden
             this.Write("`,\r\n            urlThis: `${rooPath}");
             
-            #line 74 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 73 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write("/${paramOperation}` + (paramId ? `/${paramId}` : ``)\r\n        };\r\n\r\n");
             
-            #line 77 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 76 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
 foreach(var c in table.Columns.Where(c => !c.IsIdentity))
 {
@@ -181,21 +180,21 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("        this.on");
             
-            #line 81 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 80 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("Changed = this.on");
             
-            #line 81 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 80 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("Changed.bind(this);\r\n");
             
-            #line 82 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 81 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
 }
 
@@ -204,14 +203,14 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("        this._get");
             
-            #line 85 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 84 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" = this._get");
             
-            #line 85 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 84 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -227,7 +226,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
 
 ");
             
-            #line 94 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 93 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
 foreach(var c in table.Columns.Where(c => !c.IsIdentity))
 {
@@ -237,21 +236,21 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("        this.on");
             
-            #line 98 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 97 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("Changed = this.on");
             
-            #line 98 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 97 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("Changed.bind(this);\r\n");
             
-            #line 99 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 98 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
 }
 
@@ -262,7 +261,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
                     "m(constants.SESSION_TOKEN_KEY);\r\n        console.log(\'Token: \', token);\r\n       " +
                     " if(token != null) {\r\n            let obj = this;\r\n");
             
-            #line 111 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 110 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
 var promisesDals = string.Empty;
 foreach(var fk in fks)
@@ -283,7 +282,7 @@ foreach(var fk in fks)
             #line hidden
             this.Write("            ");
             
-            #line 126 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 125 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(promisesDals));
             
             #line default
@@ -291,7 +290,7 @@ foreach(var fk in fks)
             this.Write("\r\n        }\r\n        else {\r\n            console.log(\'No token - need to login\')\r" +
                     "\n            this._redirectToLogin();           \r\n        }\r\n    }\r\n\r\n");
             
-            #line 134 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 133 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
 foreach(var c in table.Columns.Where(c => !c.IsIdentity))
 {
@@ -301,7 +300,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("    on");
             
-            #line 138 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 137 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
@@ -309,7 +308,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write("Changed(event) {\r\n\r\n        let updatedState = this.state;\r\n        let newVal = " +
                     "null;\r\n");
             
-            #line 142 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 141 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
     var columnType = modelHelper.GetColumnType(c);
     if(columnType == typeof(Int32) || columnType == typeof(Int64))
@@ -320,7 +319,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("        newVal = parseInt(event.target.value);\r\n");
             
-            #line 148 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 147 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
     }
     else if(columnType == typeof(float) || columnType == typeof(decimal))
@@ -331,7 +330,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("        newVal = parseFloat(event.target.value);\r\n");
             
-            #line 154 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 153 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
     }
     else if(columnType == typeof(bool))
@@ -342,7 +341,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("        newVal = event.target.checked;\r\n");
             
-            #line 160 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 159 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
     }
     else {
@@ -352,7 +351,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("        newVal = event.target.value\r\n");
             
-            #line 165 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 164 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
     }
 
@@ -361,21 +360,21 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("        updatedState.");
             
-            #line 168 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 167 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 168 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 167 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = newVal;\r\n\r\n        this.setState(updatedState);\r\n    }\r\n\r\n");
             
-            #line 173 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 172 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
 } // foreach
 
@@ -384,42 +383,42 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("\r\n\r\n    onSaveClicked() {\r\n\r\n        console.log(\"Saving ");
             
-            #line 180 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 179 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(": \", this.state.");
             
-            #line 180 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 179 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write(");\r\n        \r\n        if(this._validateForm()) {\r\n            const req");
             
-            #line 183 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 182 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" = new ");
             
-            #line 183 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 182 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dto();\r\n            req");
             
-            #line 184 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 183 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(".ID = this.state.id;\r\n");
             
-            #line 185 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 184 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
     foreach(var c in table.Columns.Where(c => !c.IsIdentity))
     {
@@ -429,35 +428,35 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("            req");
             
-            #line 189 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 188 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 189 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 188 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = this.state.");
             
-            #line 189 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 188 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 189 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 188 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 190 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 189 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
     }
 
@@ -466,35 +465,35 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("\r\n            console.log(\"Saving ");
             
-            #line 194 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 193 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(": \", req");
             
-            #line 194 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 193 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("); \r\n        \r\n            let dal");
             
-            #line 196 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 195 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityPlural));
             
             #line default
             #line hidden
             this.Write(" = new ");
             
-            #line 196 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 195 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityPlural));
             
             #line default
             #line hidden
             this.Write("Dal();\r\n\r\n            let obj = this;\r\n\r\n            function upsert");
             
-            #line 200 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 199 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -509,7 +508,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
                         updatedState.id = response.data.ID;
                         updatedState.success = `");
             
-            #line 208 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 207 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -517,7 +516,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write(" was created. ID: ${updatedState.id}`;\r\n                    }\r\n                  " +
                     "  else {\r\n                        updatedState.success = `");
             
-            #line 211 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 210 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -546,28 +545,28 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             if(this.state.id != null) {
                 dal");
             
-            #line 233 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 232 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityPlural));
             
             #line default
             #line hidden
             this.Write(".update");
             
-            #line 233 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 232 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("(req");
             
-            #line 233 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 232 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(")\r\n                                        .then( (res) => { upsert");
             
-            #line 234 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 233 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -575,28 +574,28 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write("Then(res); } )\r\n                                        .catch( (err) => { upsert" +
                     "Catch(err); });\r\n            }\r\n            else {\r\n                dal");
             
-            #line 238 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 237 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityPlural));
             
             #line default
             #line hidden
             this.Write(".insert");
             
-            #line 238 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 237 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("(req");
             
-            #line 238 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 237 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(")\r\n                                        .then( (res) => { upsert");
             
-            #line 239 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 238 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -625,28 +624,28 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
         
         let dal");
             
-            #line 261 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 260 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityPlural));
             
             #line default
             #line hidden
             this.Write(" = new ");
             
-            #line 261 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 260 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityPlural));
             
             #line default
             #line hidden
             this.Write("Dal();\r\n        let obj = this;\r\n\r\n        dal");
             
-            #line 264 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 263 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityPlural));
             
             #line default
             #line hidden
             this.Write(".delete");
             
-            #line 264 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 263 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -680,7 +679,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
 
 ");
             
-            #line 291 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 290 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
     foreach(var fk in fkCols)
     {
@@ -690,21 +689,21 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("        const lst");
             
-            #line 295 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 294 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk.Name)));
             
             #line default
             #line hidden
             this.Write("Fields = [\"Name\"];\r\n        const lst");
             
-            #line 296 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 295 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk.Name)));
             
             #line default
             #line hidden
             this.Write(" = this._prepareOptionsList( this.state.");
             
-            #line 296 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 295 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk.FKRefTable).ToLower()));
             
             #line default
@@ -712,7 +711,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write(" \r\n                                                                    ? Object.v" +
                     "alues(this.state.");
             
-            #line 297 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 296 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk.FKRefTable).ToLower()));
             
             #line default
@@ -720,21 +719,21 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write(") : null, \r\n                                                                    l" +
                     "st");
             
-            #line 298 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 297 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk.Name)));
             
             #line default
             #line hidden
             this.Write("Fields,\r\n                                                                    ");
             
-            #line 299 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 298 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(fk.IsNullable ? "true" : "false"));
             
             #line default
             #line hidden
             this.Write(" );\r\n");
             
-            #line 300 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 299 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
     }
 
@@ -745,14 +744,14 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
                     "  <tbody>\r\n                        <tr>\r\n                            <td style={" +
                     "{width: 450}}>\r\n                                <h2>");
             
-            #line 309 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 308 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(": { this.state.");
             
-            #line 309 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 308 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name.ToLower()));
             
             #line default
@@ -778,7 +777,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
                         </tr> 
  ");
             
-            #line 328 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 327 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
 foreach(var c in table.Columns.Where(c => !c.IsIdentity))
 {
@@ -790,7 +789,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write("   \r\n                        <tr>\r\n                            <td colSpan={2}>\r\n" +
                     "");
             
-            #line 335 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 334 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
 
     if(columnType == typeof(bool))
@@ -802,7 +801,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write("                                <FormControlLabel\r\n                              " +
                     "      key=\"lbl");
             
-            #line 341 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 340 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
@@ -810,14 +809,14 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write("\"                        \r\n                                    control = {\r\n     " +
                     "                                   <Checkbox   checked={ this.state.");
             
-            #line 343 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 342 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 343 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 342 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
@@ -825,14 +824,14 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write(" ? true : false } \r\n                                                    onChange=" +
                     "{(event) => this.on");
             
-            #line 344 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 343 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("Changed(event)} \r\n                                                    name=\"");
             
-            #line 345 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 344 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
@@ -840,14 +839,14 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write("\" />\r\n                                        }\r\n                                " +
                     "    label=\"");
             
-            #line 347 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 346 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("\"\r\n                                />\r\n");
             
-            #line 349 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 348 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
     }
     else if(string.IsNullOrEmpty(c.FKRefTable))
@@ -858,7 +857,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("                                <TextField  id=\"");
             
-            #line 354 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 353 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
@@ -867,35 +866,35 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
                     "                      type=\"text\" \r\n                                            " +
                     "variant=\"filled\" \r\n                                            label=\"");
             
-            #line 358 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 357 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("\" \r\n                                            value={this.state.");
             
-            #line 359 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 358 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 359 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 358 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("}\r\n                                            onChange={ (event) => { this.on");
             
-            #line 360 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 359 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("Changed(event) } }\r\n                                            />\r\n\r\n");
             
-            #line 363 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 362 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
     }
     else
@@ -906,7 +905,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("                                <TextField  key=\"cb");
             
-            #line 368 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 367 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
@@ -915,42 +914,42 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
                     "                      select \r\n                                            label" +
                     "=\"");
             
-            #line 371 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 370 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("\" \r\n                                            value={ (this.state.");
             
-            #line 372 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 371 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write(" && this.state.");
             
-            #line 372 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 371 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 372 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 371 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(") ? \r\n                                                        this.state.");
             
-            #line 373 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 372 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 373 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 372 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
@@ -958,7 +957,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write(" : \'-1\' }\r\n                                                        onChange={ (ev" +
                     "ent) => this.on");
             
-            #line 374 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 373 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
@@ -966,7 +965,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write("Changed(event) }>\r\n                                        {\r\n                   " +
                     "                         lst");
             
-            #line 376 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 375 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(c.Name)));
             
             #line default
@@ -974,7 +973,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write(" \r\n                                        }\r\n                                </T" +
                     "extField>\r\n\r\n");
             
-            #line 380 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 379 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
     }
 
@@ -984,7 +983,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write("                                \r\n                            </td>\r\n            " +
                     "            </tr> \r\n");
             
-            #line 386 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 385 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
 }
 
@@ -999,7 +998,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
                 <Dialog open={this.state.showDeleteConfirm} onClose={() => { this.onDeleteCancel() }} aria-labelledby=""form-dialog-title"">
                     <DialogTitle id=""form-dialog-title"">Delete ");
             
-            #line 394 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 393 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -1007,7 +1006,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write("</DialogTitle>\r\n                    <DialogContent>\r\n                    <DialogC" +
                     "ontentText>\r\n                        Are you sure you want to delete this ");
             
-            #line 397 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 396 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -1031,35 +1030,35 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
 
     _createEmpty");
             
-            #line 414 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 413 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Obj() {\r\n        let ");
             
-            #line 415 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 414 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write(" = new ");
             
-            #line 415 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 414 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dto();\r\n\r\n        return ");
             
-            #line 417 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 416 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write(";\r\n    }\r\n\r\n    async _get");
             
-            #line 420 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 419 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -1067,28 +1066,28 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write("()\r\n    {\r\n        if(this.state.id) {\r\n            let updatedState = this.state" +
                     ";\r\n                  \r\n            let dal");
             
-            #line 425 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 424 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityPlural));
             
             #line default
             #line hidden
             this.Write(" = new ");
             
-            #line 425 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 424 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityPlural));
             
             #line default
             #line hidden
             this.Write("Dal();\r\n            let response = await dal");
             
-            #line 426 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 425 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(entityPlural));
             
             #line default
             #line hidden
             this.Write(".get");
             
-            #line 426 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 425 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -1096,7 +1095,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write("(this.state.id);\r\n\r\n            if(response.status == constants.HTTP_OK)\r\n       " +
                     "     {\r\n                updatedState.");
             
-            #line 430 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 429 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name.ToLower()));
             
             #line default
@@ -1118,7 +1117,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
 
 ");
             
-            #line 445 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 444 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
  
     foreach(var fk in fks) 
     {
@@ -1128,42 +1127,42 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             #line hidden
             this.Write("    async _get");
             
-            #line 449 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 448 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk)));
             
             #line default
             #line hidden
             this.Write("() {\r\n        let updatedState = this.state;\r\n        updatedState.");
             
-            #line 451 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 450 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk).ToLower()));
             
             #line default
             #line hidden
             this.Write(" = {};\r\n        let dal");
             
-            #line 452 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 451 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk)));
             
             #line default
             #line hidden
             this.Write(" = new ");
             
-            #line 452 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 451 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk)));
             
             #line default
             #line hidden
             this.Write("Dal();\r\n        let response = await dal");
             
-            #line 453 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 452 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk)));
             
             #line default
             #line hidden
             this.Write(".get");
             
-            #line 453 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 452 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk)));
             
             #line default
@@ -1171,7 +1170,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
             this.Write("();\r\n\r\n        if(response.status == constants.HTTP_OK)\r\n        {\r\n            f" +
                     "or(let s in response.data)\r\n            {\r\n                updatedState.");
             
-            #line 459 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 458 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(fk).ToLower()));
             
             #line default
@@ -1191,7 +1190,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
 
 ");
             
-            #line 472 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 471 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
     }
 
@@ -1258,7 +1257,7 @@ foreach(var c in table.Columns.Where(c => !c.IsIdentity))
 
 export default withRouter(");
             
-            #line 532 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+            #line 531 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -1267,7 +1266,7 @@ export default withRouter(");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI2.tt"
+        #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsEntityUI.tt"
 
 private global::CRUDAPI.DataModel.DataTable _tableField;
 
@@ -1349,7 +1348,7 @@ if ((modelHelperValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public class JsEntityUI2Base
+    public class JsEntityUIBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

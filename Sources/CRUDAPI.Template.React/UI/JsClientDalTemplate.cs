@@ -29,8 +29,8 @@ namespace CRUDAPI.Template.React.UI
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\nconst axios = require(\'axios\');\r\nconst constants = require(\'../constants\');\r\n\r\n" +
-                    "const DalBase = require(\'./DalBase\');\r\n\r\n");
+            this.Write("\r\nimport axios from \'axios\';\r\nimport constants from \'../constants\';\r\n\r\nimport Dal" +
+                    "Base from \'./DalBase\';\r\n\r\n");
             
             #line 15 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsClientDalTemplate.tt"
  var pks = modelHelper.GetPKColumns(table); 
@@ -248,7 +248,7 @@ namespace CRUDAPI.Template.React.UI
             #line default
             #line hidden
             this.Write("`);\r\n\r\n            return res;\r\n        }\r\n        catch(error) {\r\n            re" +
-                    "turn error.response;\r\n        }\r\n    }\r\n}\r\n\r\nmodule.exports = ");
+                    "turn error.response;\r\n        }\r\n    }\r\n}\r\n\r\nexport default ");
             
             #line 107 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Template.React\UI\JsClientDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(table.Name)));

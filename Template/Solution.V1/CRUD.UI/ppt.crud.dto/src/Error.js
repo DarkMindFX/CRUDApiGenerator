@@ -15,4 +15,4 @@ class Error
     set code(val) { this._code = val; } 
 }
 
-module.exports = Error;
+export default Error;

@@ -21,7 +21,7 @@ class LoginResponse {
     get expires()   { return this.Expires; }
 }
 
-module.exports = {
+export {
     LoginRequest,
     LoginResponse
 }
