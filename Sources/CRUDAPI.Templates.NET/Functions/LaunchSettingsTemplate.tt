@@ -9,7 +9,7 @@
 
 {
   "profiles": {
-    "PhotoPrint.Functions.<#= table.Name #>": {
+    "PPT.Functions.<#= table.Name #>": {
       "commandName": "Project",
       "commandLineArgs": "--port 8082",
       "environmentVariables": {

@@ -1,0 +1,55 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
+
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AzureFunctionsVersion>v4</AzureFunctionsVersion>
+	<_FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput>
+	<RootNamespace>PPT.Functions.<#= table.Name #></RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Core" Version="3.0.30" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Http" Version="3.0.12" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CRUD.DAL.MSSQL\CRUD.DAL.MSSQL.csproj" />
+    <ProjectReference Include="..\..\CRUD.DTO\CRUD.DTO.csproj" />
+    <ProjectReference Include="..\..\CRUD.Interfaces\CRUD.Interfaces.csproj" />
+    <ProjectReference Include="..\..\CRUD.Services.Common\CRUD.Services.Common.csproj" />
+    <ProjectReference Include="..\..\CRUD.Services.DAL\CRUD.Services.DAL.csproj" />
+    <ProjectReference Include="..\..\CRUD.Utils\CRUD.Utils.csproj" />
+    <ProjectReference Include="..\PPT.Functions.Common\CRUD.Functions.Common.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="host.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="local.settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+</Project>
+

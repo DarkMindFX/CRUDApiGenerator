@@ -81,6 +81,46 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>DeleteFunctionTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Update="Functions\HostJosnTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HostJosnTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Functions\HostSettingsJsonTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HostSettingsJsonTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Functions\LaunchSettingsTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LaunchSettingsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Functions\ResourcesDesignerTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResourcesDesignerTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Functions\ResourcesResxTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResourcesResxTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Functions\ServiceDependenciesJsonTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ServiceDependenciesJsonTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Functions\ServiceDependenciesLocalJsonTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ServiceDependenciesLocalJsonTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Functions\StartupTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StartupTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Update="Tests\DeleteSetupTemplate.cs">
       <DependentUpon>DeleteSetupTemplate.tt</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -196,6 +236,38 @@
     <None Update="Functions\DeleteFunctionTemplate.tt">
       <LastGenOutput>DeleteFunctionTemplate.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Functions\HostJosnTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HostJosnTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Functions\HostSettingsJsonTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HostSettingsJsonTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Functions\LaunchSettingsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>LaunchSettingsTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Functions\ResourcesDesignerTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ResourcesDesignerTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Functions\ResourcesResxTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ResourcesResxTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Functions\ServiceDependenciesJsonTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ServiceDependenciesJsonTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Functions\ServiceDependenciesLocalJsonTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ServiceDependenciesLocalJsonTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Functions\StartupTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>StartupTemplate.cs</LastGenOutput>
     </None>
     <None Update="Tests\DeleteSetupTemplate.tt">
       <LastGenOutput>DeleteSetupTemplate.cs</LastGenOutput>

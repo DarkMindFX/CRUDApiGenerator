@@ -18,9 +18,9 @@ namespace CRUDAPI.Template.NET.Functions
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\LaunchSettingsTemplate.tt"
+    #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\HostJosnTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public partial class LaunchSettingsTemplate : LaunchSettingsTemplateBase
+    public partial class HostJosnTemplate : HostJosnTemplateBase
     {
 #line hidden
         /// <summary>
@@ -29,34 +29,13 @@ namespace CRUDAPI.Template.NET.Functions
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\n{\r\n  \"profiles\": {\r\n    \"PPT.Functions.");
-            
-            #line 12 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\LaunchSettingsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
-            
-            #line default
-            #line hidden
-            this.Write(@""": {
-      ""commandName"": ""Project"",
-      ""commandLineArgs"": ""--port 8082"",
-      ""environmentVariables"": {
-        ""ServiceConfig__DALType"": ""MSSQL"",
-        ""ASPNETCORE_ENVIRONMENT"": ""Development"",
-        ""ServiceConfig__DalInitParams__ConnectionString"": ""Data Source=127.0.0.1; Initial Catalog=PhotoPrint; User ID=ppt_svc_api; Password=PPTServiceApi2021!;"",
-        ""ServiceConfig__AppSettings__Secret"": ""{87397166-0CED-4296-B3A8-B902417DEE01}"",
-        ""ServiceConfig__StorageInitParams__ContainerName"": ""photoprint-images-dev"",
-        ""ServiceConfig__StorageInitParams__StorageUrl"": ""http://127.0.0.1:10000/devstoreaccount1"",
-        ""ServiceConfig__AppSettings__SessionTimeout"": ""3600"",
-        ""ServiceConfig__StorageInitParams__StorageConnectionString"": ""BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;""
-      }
-    }
-  }
-}
-");
+            this.Write("\r\n{\r\n    \"version\": \"2.0\",\r\n    \"logging\": {\r\n        \"applicationInsights\": {\r\n " +
+                    "           \"samplingSettings\": {\r\n                \"isEnabled\": true,\r\n          " +
+                    "      \"excludedTypes\": \"Request\"\r\n            }\r\n        }\r\n    }\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\LaunchSettingsTemplate.tt"
+        #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\HostJosnTemplate.tt"
 
 private global::CRUDAPI.DataModel.DataTable _tableField;
 
@@ -68,19 +47,6 @@ private global::CRUDAPI.DataModel.DataTable table
     get
     {
         return this._tableField;
-    }
-}
-
-private global::CRUDAPI.DataModel.ModelHelper _modelHelperField;
-
-/// <summary>
-/// Access the modelHelper parameter of the template.
-/// </summary>
-private global::CRUDAPI.DataModel.ModelHelper modelHelper
-{
-    get
-    {
-        return this._modelHelperField;
     }
 }
 
@@ -106,20 +72,6 @@ if ((tableValueAcquired == false))
         this._tableField = ((global::CRUDAPI.DataModel.DataTable)(data));
     }
 }
-bool modelHelperValueAcquired = false;
-if (this.Session.ContainsKey("modelHelper"))
-{
-    this._modelHelperField = ((global::CRUDAPI.DataModel.ModelHelper)(this.Session["modelHelper"]));
-    modelHelperValueAcquired = true;
-}
-if ((modelHelperValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("modelHelper");
-    if ((data != null))
-    {
-        this._modelHelperField = ((global::CRUDAPI.DataModel.ModelHelper)(data));
-    }
-}
 
 
     }
@@ -138,7 +90,7 @@ if ((modelHelperValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public class LaunchSettingsTemplateBase
+    public class HostJosnTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;
