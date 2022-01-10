@@ -76,6 +76,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="Functions\DeleteFunctionTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DeleteFunctionTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Update="Tests\DeleteSetupTemplate.cs">
       <DependentUpon>DeleteSetupTemplate.tt</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -186,6 +191,10 @@
     </None>
     <None Update="API\StartupTemplate.tt">
       <LastGenOutput>StartupTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Functions\DeleteFunctionTemplate.tt">
+      <LastGenOutput>DeleteFunctionTemplate.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
     </None>
     <None Update="Tests\DeleteSetupTemplate.tt">

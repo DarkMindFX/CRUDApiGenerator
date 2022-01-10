@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Test.E2E.Functions.User": {
+      "commandName": "Project"
+    }
+  }
+}
