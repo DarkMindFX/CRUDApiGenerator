@@ -21,6 +21,10 @@ namespace CRUDAPI.Settings
 
         public string SoftDeleteField { get; set; }
 
+        public string APIVersion { get; set; } 
+
         public Dictionary<string, string> OutputFolders { get; set; }
+
+        public string FunctionProjectNameTemplate { get; set; }
     }
 }

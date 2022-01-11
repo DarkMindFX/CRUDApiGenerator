@@ -27,7 +27,7 @@
     <ProjectReference Include="..\..\CRUD.Services.Common\CRUD.Services.Common.csproj" />
     <ProjectReference Include="..\..\CRUD.Services.DAL\CRUD.Services.DAL.csproj" />
     <ProjectReference Include="..\..\CRUD.Utils\CRUD.Utils.csproj" />
-    <ProjectReference Include="..\PPT.Functions.Common\CRUD.Functions.Common.csproj" />
+    <ProjectReference Include="..\CRUD.Functions.Common\CRUD.Functions.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">

@@ -81,15 +81,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>DeleteFunctionTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Update="Functions\FunctionCsprojTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FunctionCsprojTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Update="Functions\HostJosnTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>HostJosnTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Update="Functions\HostSettingsJsonTemplate.cs">
+    <Compile Update="Functions\LocalSettingsJsonTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>HostSettingsJsonTemplate.tt</DependentUpon>
+      <DependentUpon>LocalSettingsJsonTemplate.tt</DependentUpon>
     </Compile>
     <Compile Update="Functions\LaunchSettingsTemplate.cs">
       <DesignTime>True</DesignTime>
@@ -237,13 +242,17 @@
       <LastGenOutput>DeleteFunctionTemplate.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
     </None>
+    <None Update="Functions\FunctionCsprojTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FunctionCsprojTemplate.cs</LastGenOutput>
+    </None>
     <None Update="Functions\HostJosnTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>HostJosnTemplate.cs</LastGenOutput>
     </None>
-    <None Update="Functions\HostSettingsJsonTemplate.tt">
+    <None Update="Functions\LocalSettingsJsonTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>HostSettingsJsonTemplate.cs</LastGenOutput>
+      <LastGenOutput>LocalSettingsJsonTemplate.cs</LastGenOutput>
     </None>
     <None Update="Functions\LaunchSettingsTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

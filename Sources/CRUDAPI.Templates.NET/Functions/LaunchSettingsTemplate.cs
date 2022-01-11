@@ -29,7 +29,7 @@ namespace CRUDAPI.Template.NET.Functions
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\n{\r\n  \"profiles\": {\r\n    \"PPT.Functions.");
+            this.Write("\r\n{\r\n  \"profiles\": {\r\n    \"CRUD.Functions.");
             
             #line 12 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\LaunchSettingsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));

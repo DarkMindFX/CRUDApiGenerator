@@ -143,6 +143,5 @@ namespace CRUDAPI.Generators
         {
             return Guid.NewGuid().ToString().Replace("-", string.Empty).Replace("{", string.Empty).Replace("}", string.Empty);
         }
-
     }
 }

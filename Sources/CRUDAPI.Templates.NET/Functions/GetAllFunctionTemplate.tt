@@ -1,0 +1,69 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
+
+<#
+var pks = modelHelper.GetPKColumns(table);
+var tableNamePlural = modelHelper.Pluralize( table.Name );
+#>
+
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using PPT.Services.Dal;
+using System.Collections.Generic;
+using PPT.Utils.Convertors;
+using System;
+using PPT.Functions.Common;
+
+namespace PPT.Functions.<#= table.Name #>.V1
+{
+    public class GetAll : FunctionBase
+    {
+        private readonly IUserDal _dal<#= table.Name #>;
+        public GetAll(IHttpContextAccessor httpContextAccessor, IUserDal dal<#= table.Name #>) : base(httpContextAccessor)
+        {
+            _dal<#= table.Name #> = dal<#= table.Name #>;
+        }
+
+        [Authorize]
+        [FunctionName("<#= tableNamePlural #>GetAll")]
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "v1/<#= tableNamePlural.ToLower() #>")] HttpRequest req,
+            ILogger log)
+        {
+            IActionResult result = null;
+            var funHelper = new PPT.Functions.Common.FunctionHelper();
+            log.LogInformation($"{System.Reflection.MethodInfo.GetCurrentMethod()} Started");
+
+            try
+            {
+                var entities = _dal<#= table.Name #>.GetAll();
+                var dtos = new List<PPT.DTO.<#= table.Name #>>();
+                foreach (var e in entities)
+                {
+                    dtos.Add(UserConvertor.Convert(e, null));
+                }
+
+                result = new OkObjectResult(funHelper.ToJosn(dtos));
+            }
+            catch(Exception ex)
+            {
+                log.LogError(ex.ToString());
+            }
+
+            log.LogInformation($"{System.Reflection.MethodInfo.GetCurrentMethod()} Ended");
+
+            return result;
+        }
+    }
+}
+

@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 
-namespace PPT.PhotoPrint.API.Dal
+namespace PPT.Services.Dal
 {
     [Export(typeof(I<#= table.Name #>Dal))]
     public class <#= table.Name #>Dal : DalBaseImpl<<#= table.Name #>, Interfaces.I<#= table.Name #>Dal>, I<#= table.Name #>Dal

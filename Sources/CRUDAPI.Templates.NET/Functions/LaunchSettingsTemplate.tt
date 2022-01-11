@@ -9,7 +9,7 @@
 
 {
   "profiles": {
-    "PPT.Functions.<#= table.Name #>": {
+    "CRUD.Functions.<#= table.Name #>": {
       "commandName": "Project",
       "commandLineArgs": "--port 8082",
       "environmentVariables": {

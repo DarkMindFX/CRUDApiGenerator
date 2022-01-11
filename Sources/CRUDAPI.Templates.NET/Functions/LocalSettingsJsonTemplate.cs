@@ -18,9 +18,9 @@ namespace CRUDAPI.Template.NET.Functions
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\HostSettingsJsonTemplate.tt"
+    #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\LocalSettingsJsonTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public partial class HostSettingsJsonTemplate : HostSettingsJsonTemplateBase
+    public partial class LocalSettingsJsonTemplate : LocalSettingsJsonTemplateBase
     {
 #line hidden
         /// <summary>
@@ -35,7 +35,7 @@ namespace CRUDAPI.Template.NET.Functions
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\HostSettingsJsonTemplate.tt"
+        #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\LocalSettingsJsonTemplate.tt"
 
 private global::CRUDAPI.DataModel.DataTable _tableField;
 
@@ -90,7 +90,7 @@ if ((tableValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public class HostSettingsJsonTemplateBase
+    public class LocalSettingsJsonTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

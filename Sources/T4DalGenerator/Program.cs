@@ -12,65 +12,77 @@ namespace T4DalGenerator
     {
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("Reading config...");
+            try
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("Reading config...");
 
-            var config = PrepareConfig(args[0]);
+                var config = PrepareConfig(args[0]);
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("DONE");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("DONE");
 
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("Reading data model...");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("Reading data model...");
 
-            ModelExtractorParams initParams = new ModelExtractorParams();
-            var settings = config.GetSection("DalCreatorSettings").Get<DalCreatorSettings>();
-            initParams.ConnectionString = settings.ConnectionString;
+                ModelExtractorParams initParams = new ModelExtractorParams();
+                var settings = config.GetSection("DalCreatorSettings").Get<DalCreatorSettings>();
+                initParams.ConnectionString = settings.ConnectionString;
 
-            ModelExtractor extractor = new ModelExtractor();
-            extractor.Init(initParams);
-            var tables = extractor.GetModel();
+                ModelExtractor extractor = new ModelExtractor();
+                extractor.Init(initParams);
+                var tables = extractor.GetModel();
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("DONE");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("DONE");
 
-            var timestamp = DateTime.Now;
+                var timestamp = DateTime.Now;
 
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Preparing output folder...");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Preparing output folder...");
 
-            PrepareSolutionsFolder(settings, timestamp);
+                PrepareSolutionsFolder(settings, timestamp);
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Preparing output folder...DONE");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Preparing output folder...DONE");
 
-            Generate<StorProcsGenerator>(tables, settings, timestamp);            
-            Generate<IDalsGenerator>(tables, settings, timestamp);
-            Generate<EntitiesGenerator>(tables, settings, timestamp);
-            Generate<SQLDalGenerator>(tables, settings, timestamp);
-            Generate<SQLDalTestGenerator>(tables, settings, timestamp);
+                Generate<StorProcsGenerator>(tables, settings, timestamp);
+                Generate<IDalsGenerator>(tables, settings, timestamp);
+                Generate<EntitiesGenerator>(tables, settings, timestamp);
+                Generate<SQLDalGenerator>(tables, settings, timestamp);
+                Generate<SQLDalTestGenerator>(tables, settings, timestamp);
 
-            Generate<EFModelGenerator>(tables, settings, timestamp);
-            
-            Generate<DtosGenerator>(tables, settings, timestamp);
-            Generate<IServiceDalsGenerator>(tables, settings, timestamp);
-            Generate<ServiceDalsImplGenerator>(tables, settings, timestamp);
-            Generate<ConvertorsGenerator>(tables, settings, timestamp);
-            Generate<EntityControllerGenerator>(tables, settings, timestamp);
-            GenerateSingle<StartupGenerator>(tables, settings, timestamp);
-            Generate<ControllerTestGenerator>(tables, settings, timestamp);
-            Generate<JsDtosGenerator>(tables, settings, timestamp);
-            Generate<JsClientDalGenerator>(tables, settings, timestamp);
-            Generate<JsEntitiesListsUIGenerator>(tables, settings, timestamp);
-            Generate<JsEntityUIGenerator>(tables, settings, timestamp);
-            GenerateSingle<JsDtosIndexGenerator>(tables, settings, timestamp);
-            GenerateSingle<PostmanCollectionGenerator>(tables, settings, timestamp);
-            GenerateSingle<JsAppGenerator>(tables, settings, timestamp);
-            
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("SUCCESS! ");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"Result: 'Output\\{timestamp.ToString("yyyy-MM-dd HH-mm-ss")}' - Press Enter to close");
+                Generate<EFModelGenerator>(tables, settings, timestamp);
+
+                Generate<DtosGenerator>(tables, settings, timestamp);
+                Generate<IServiceDalsGenerator>(tables, settings, timestamp);
+                Generate<ServiceDalsImplGenerator>(tables, settings, timestamp);
+                Generate<ConvertorsGenerator>(tables, settings, timestamp);
+                Generate<EntityControllerGenerator>(tables, settings, timestamp);
+                GenerateSingle<StartupGenerator>(tables, settings, timestamp);
+                Generate<ControllerTestGenerator>(tables, settings, timestamp);
+
+                Generate<EntityFunctionGenerator>(tables, settings, timestamp);
+
+                Generate<JsDtosGenerator>(tables, settings, timestamp);
+                Generate<JsClientDalGenerator>(tables, settings, timestamp);
+                Generate<JsEntitiesListsUIGenerator>(tables, settings, timestamp);
+                Generate<JsEntityUIGenerator>(tables, settings, timestamp);
+                GenerateSingle<JsDtosIndexGenerator>(tables, settings, timestamp);
+                GenerateSingle<PostmanCollectionGenerator>(tables, settings, timestamp);
+                GenerateSingle<JsAppGenerator>(tables, settings, timestamp);
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("SUCCESS! ");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"Result: 'Output\\{timestamp.ToString("yyyy-MM-dd HH-mm-ss")}' - Press Enter to close");
+            }
+            catch(Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Exception: {ex.Message}");
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+            }
             Console.ReadLine();
 
         }

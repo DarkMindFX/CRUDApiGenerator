@@ -18,9 +18,9 @@ namespace CRUDAPI.Template.NET.Functions
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+    #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public partial class FunctionCsprojTemplate : FunctionCsprojTemplateBase
+    public partial class GetAllFunctionTemplate : GetAllFunctionTemplateBase
     {
 #line hidden
         /// <summary>
@@ -29,44 +29,128 @@ namespace CRUDAPI.Template.NET.Functions
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\n<Project Sdk=\"Microsoft.NET.Sdk\">\r\n  <PropertyGroup>\r\n    <TargetFramework>net5" +
-                    ".0</TargetFramework>\r\n    <AzureFunctionsVersion>v4</AzureFunctionsVersion>\r\n\t<_" +
-                    "FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput>\r\n\t<RootNamespace>PPT.F" +
-                    "unctions.");
+            this.Write("\r\n");
             
-            #line 14 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 10 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+
+var pks = modelHelper.GetPKColumns(table);
+var tableNamePlural = modelHelper.Pluralize( table.Name );
+
+            
+            #line default
+            #line hidden
+            this.Write(@"
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using PPT.Services.Dal;
+using System.Collections.Generic;
+using PPT.Utils.Convertors;
+using System;
+using PPT.Functions.Common;
+
+namespace PPT.Functions.");
+            
+            #line 27 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write("</RootNamespace>\r\n  </PropertyGroup>\r\n  <ItemGroup>\r\n    <PackageReference Includ" +
-                    "e=\"Microsoft.AspNetCore.Mvc.Abstractions\" Version=\"2.2.0\" />\r\n    <PackageRefere" +
-                    "nce Include=\"Microsoft.Azure.Functions.Extensions\" Version=\"1.1.0\" />\r\n    <Pack" +
-                    "ageReference Include=\"Microsoft.Azure.WebJobs.Core\" Version=\"3.0.30\" />\r\n    <Pa" +
-                    "ckageReference Include=\"Microsoft.Azure.WebJobs.Extensions.Http\" Version=\"3.0.12" +
-                    "\" />\r\n    <PackageReference Include=\"Microsoft.NET.Sdk.Functions\" Version=\"4.0.1" +
-                    "\" />\r\n  </ItemGroup>\r\n  <ItemGroup>\r\n    <ProjectReference Include=\"..\\..\\CRUD.D" +
-                    "AL.MSSQL\\CRUD.DAL.MSSQL.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\CRUD.DT" +
-                    "O\\CRUD.DTO.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\CRUD.Interfaces\\CRUD" +
-                    ".Interfaces.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\CRUD.Services.Commo" +
-                    "n\\CRUD.Services.Common.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\CRUD.Ser" +
-                    "vices.DAL\\CRUD.Services.DAL.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\CRU" +
-                    "D.Utils\\CRUD.Utils.csproj\" />\r\n    <ProjectReference Include=\"..\\CRUD.Functions." +
-                    "Common\\CRUD.Functions.Common.csproj\" />\r\n  </ItemGroup>\r\n  <ItemGroup>\r\n    <Com" +
-                    "pile Update=\"Properties\\Resources.Designer.cs\">\r\n      <DesignTime>True</DesignT" +
-                    "ime>\r\n      <AutoGen>True</AutoGen>\r\n      <DependentUpon>Resources.resx</Depend" +
-                    "entUpon>\r\n    </Compile>\r\n  </ItemGroup>\r\n  <ItemGroup>\r\n    <EmbeddedResource U" +
-                    "pdate=\"Properties\\Resources.resx\">\r\n      <Generator>ResXFileCodeGenerator</Gene" +
-                    "rator>\r\n      <LastGenOutput>Resources.Designer.cs</LastGenOutput>\r\n    </Embedd" +
-                    "edResource>\r\n  </ItemGroup>\r\n  <ItemGroup>\r\n    <None Update=\"host.json\">\r\n     " +
-                    " <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>\r\n    </None>\r\n   " +
-                    " <None Update=\"local.settings.json\">\r\n      <CopyToOutputDirectory>PreserveNewes" +
-                    "t</CopyToOutputDirectory>\r\n      <CopyToPublishDirectory>Never</CopyToPublishDir" +
-                    "ectory>\r\n    </None>\r\n  </ItemGroup>\r\n</Project>\r\n\r\n");
+            this.Write(".V1\r\n{\r\n    public class GetAll : FunctionBase\r\n    {\r\n        private readonly I" +
+                    "UserDal _dal");
+            
+            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n        public GetAll(IHttpContextAccessor httpContextAccessor, IUserDal dal");
+            
+            #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
+            
+            #line default
+            #line hidden
+            this.Write(") : base(httpContextAccessor)\r\n        {\r\n            _dal");
+            
+            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" = dal");
+            
+            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n        }\r\n\r\n        [Authorize]\r\n        [FunctionName(\"");
+            
+            #line 38 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural));
+            
+            #line default
+            #line hidden
+            this.Write("GetAll\")]\r\n        public async Task<IActionResult> Run(\r\n            [HttpTrigge" +
+                    "r(AuthorizationLevel.Anonymous, \"get\", Route = \"v1/");
+            
+            #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural.ToLower()));
+            
+            #line default
+            #line hidden
+            this.Write(@""")] HttpRequest req,
+            ILogger log)
+        {
+            IActionResult result = null;
+            var funHelper = new PPT.Functions.Common.FunctionHelper();
+            log.LogInformation($""{System.Reflection.MethodInfo.GetCurrentMethod()} Started"");
+
+            try
+            {
+                var entities = _dal");
+            
+            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
+            
+            #line default
+            #line hidden
+            this.Write(".GetAll();\r\n                var dtos = new List<PPT.DTO.");
+            
+            #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
+            
+            #line default
+            #line hidden
+            this.Write(@">();
+                foreach (var e in entities)
+                {
+                    dtos.Add(UserConvertor.Convert(e, null));
+                }
+
+                result = new OkObjectResult(funHelper.ToJosn(dtos));
+            }
+            catch(Exception ex)
+            {
+                log.LogError(ex.ToString());
+            }
+
+            log.LogInformation($""{System.Reflection.MethodInfo.GetCurrentMethod()} Ended"");
+
+            return result;
+        }
+    }
+}
+
+");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+        #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
 
 private global::CRUDAPI.DataModel.DataTable _tableField;
 
@@ -78,6 +162,19 @@ private global::CRUDAPI.DataModel.DataTable table
     get
     {
         return this._tableField;
+    }
+}
+
+private global::CRUDAPI.DataModel.ModelHelper _modelHelperField;
+
+/// <summary>
+/// Access the modelHelper parameter of the template.
+/// </summary>
+private global::CRUDAPI.DataModel.ModelHelper modelHelper
+{
+    get
+    {
+        return this._modelHelperField;
     }
 }
 
@@ -103,6 +200,20 @@ if ((tableValueAcquired == false))
         this._tableField = ((global::CRUDAPI.DataModel.DataTable)(data));
     }
 }
+bool modelHelperValueAcquired = false;
+if (this.Session.ContainsKey("modelHelper"))
+{
+    this._modelHelperField = ((global::CRUDAPI.DataModel.ModelHelper)(this.Session["modelHelper"]));
+    modelHelperValueAcquired = true;
+}
+if ((modelHelperValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("modelHelper");
+    if ((data != null))
+    {
+        this._modelHelperField = ((global::CRUDAPI.DataModel.ModelHelper)(data));
+    }
+}
 
 
     }
@@ -121,7 +232,7 @@ if ((tableValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public class FunctionCsprojTemplateBase
+    public class GetAllFunctionTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;
