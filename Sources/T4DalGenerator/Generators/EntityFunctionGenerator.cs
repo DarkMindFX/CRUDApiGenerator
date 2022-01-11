@@ -32,11 +32,13 @@ namespace CRUDAPI.Generators
 
             files.Add(GenerateDelete(rootFolder, modelHelper));
             files.Add(GenerateGetAll(rootFolder, modelHelper));
+            files.Add(GenerateGetDetails(rootFolder, modelHelper));
+            files.Add(GenerateInsert(rootFolder, modelHelper));
+            files.Add(GenerateUpdate(rootFolder, modelHelper));
 
             return files;
         }
 
-  
 
         private string GenerateFunctionProjFile(string rootFolder, ModelHelper modelHelper)
         {
@@ -269,6 +271,78 @@ namespace CRUDAPI.Generators
             string fileOut = Path.Combine(rootFolder, fileName);
 
             var template = new GetAllFunctionTemplate();
+            template.Session = new Dictionary<string, object>();
+
+            template.Session["table"] = _genParams.Table;
+            template.Session["modelHelper"] = modelHelper;
+            template.Initialize();
+
+            string content = template.TransformText();
+
+            File.WriteAllText(fileOut, content);
+
+            return fileOut;
+        }
+
+        private string GenerateGetDetails(string rootFolder, ModelHelper modelHelper)
+        {
+            string fileName = $"GetDetails.cs";
+            rootFolder = Path.Combine(rootFolder, _genParams.Settings.APIVersion);
+            if (!Directory.Exists(rootFolder))
+            {
+                Directory.CreateDirectory(rootFolder);
+            }
+            string fileOut = Path.Combine(rootFolder, fileName);
+
+            var template = new GetDetailsFunctionTemplate();
+            template.Session = new Dictionary<string, object>();
+
+            template.Session["table"] = _genParams.Table;
+            template.Session["modelHelper"] = modelHelper;
+            template.Initialize();
+
+            string content = template.TransformText();
+
+            File.WriteAllText(fileOut, content);
+
+            return fileOut;
+        }
+
+        private string GenerateInsert(string rootFolder, ModelHelper modelHelper)
+        {
+            string fileName = $"Insert.cs";
+            rootFolder = Path.Combine(rootFolder, _genParams.Settings.APIVersion);
+            if (!Directory.Exists(rootFolder))
+            {
+                Directory.CreateDirectory(rootFolder);
+            }
+            string fileOut = Path.Combine(rootFolder, fileName);
+
+            var template = new InsertFuncrtionTemplate();
+            template.Session = new Dictionary<string, object>();
+
+            template.Session["table"] = _genParams.Table;
+            template.Session["modelHelper"] = modelHelper;
+            template.Initialize();
+
+            string content = template.TransformText();
+
+            File.WriteAllText(fileOut, content);
+
+            return fileOut;
+        }
+
+        private string GenerateUpdate(string rootFolder, ModelHelper modelHelper)
+        {
+            string fileName = $"Update.cs";
+            rootFolder = Path.Combine(rootFolder, _genParams.Settings.APIVersion);
+            if (!Directory.Exists(rootFolder))
+            {
+                Directory.CreateDirectory(rootFolder);
+            }
+            string fileOut = Path.Combine(rootFolder, fileName);
+
+            var template = new UpdateFunctionTemplate();
             template.Session = new Dictionary<string, object>();
 
             template.Session["table"] = _genParams.Table;
