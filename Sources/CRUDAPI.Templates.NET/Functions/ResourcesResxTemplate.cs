@@ -28,63 +28,62 @@ namespace CRUDAPI.Template.NET.Functions
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\n");
-            this.Write("\r\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<root>\r\n\t<!-- \r\n\t\tMicrosoft ResX Schema" +
-                    "\r\n\r\n\t\tVersion 1.3\r\n\r\n\t\tThe primary goals of this format is to allow a simple XML" +
-                    " format \r\n\t\tthat is mostly human readable. The generation and parsing of the \r\n\t" +
-                    "\tvarious data types are done through the TypeConverter classes \r\n\t\tassociated wi" +
-                    "th the data types.\r\n\r\n\t\tExample:\r\n\r\n\t\t... ado.net/XML headers & schema ...\r\n\t\t<r" +
-                    "esheader name=\"resmimetype\">text/microsoft-resx</resheader>\r\n\t\t<resheader name=\"" +
-                    "version\">1.3</resheader>\r\n\t\t<resheader name=\"reader\">System.Resources.ResXResour" +
-                    "ceReader, System.Windows.Forms, ...</resheader>\r\n\t\t<resheader name=\"writer\">Syst" +
-                    "em.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>\r\n\t\t<data " +
-                    "name=\"Name1\">this is my long string</data>\r\n\t\t<data name=\"Color1\" type=\"System.D" +
-                    "rawing.Color, System.Drawing\">Blue</data>\r\n\t\t<data name=\"Bitmap1\" mimetype=\"appl" +
-                    "ication/x-microsoft.net.object.binary.base64\">\r\n\t\t\t[base64 mime encoded serializ" +
-                    "ed .NET Framework object]\r\n\t\t</data>\r\n\t\t<data name=\"Icon1\" type=\"System.Drawing." +
-                    "Icon, System.Drawing\" mimetype=\"application/x-microsoft.net.object.bytearray.bas" +
-                    "e64\">\r\n\t\t\t[base64 mime encoded string representing a byte array form of the .NET" +
-                    " Framework object]\r\n\t\t</data>\r\n\r\n\t\tThere are any number of \"resheader\" rows that" +
-                    " contain simple \r\n\t\tname/value pairs.\r\n\r\n\t\tEach data row contains a name, and va" +
-                    "lue. The row also contains a \r\n\t\ttype or mimetype. Type corresponds to a .NET cl" +
-                    "ass that support \r\n\t\ttext/value conversion through the TypeConverter architectur" +
-                    "e. \r\n\t\tClasses that don\'t support this are serialized and stored with the \r\n\t\tmi" +
-                    "metype set.\r\n\r\n\t\tThe mimetype is used for serialized objects, and tells the \r\n\t\t" +
-                    "ResXResourceReader how to depersist the object. This is currently not \r\n\t\textens" +
-                    "ible. For a given mimetype the value must be set accordingly:\r\n\r\n\t\tNote - applic" +
-                    "ation/x-microsoft.net.object.binary.base64 is the format \r\n\t\tthat the ResXResour" +
-                    "ceWriter will generate, however the reader can \r\n\t\tread any of the formats liste" +
-                    "d below.\r\n\r\n\t\tmimetype: application/x-microsoft.net.object.binary.base64\r\n\t\tvalu" +
-                    "e   : The object must be serialized with \r\n\t\t\t: System.Serialization.Formatters." +
-                    "Binary.BinaryFormatter\r\n\t\t\t: and then encoded with base64 encoding.\r\n\r\n\t\tmimetyp" +
-                    "e: application/x-microsoft.net.object.soap.base64\r\n\t\tvalue   : The object must b" +
-                    "e serialized with \r\n\t\t\t: System.Runtime.Serialization.Formatters.Soap.SoapFormat" +
-                    "ter\r\n\t\t\t: and then encoded with base64 encoding.\r\n\r\n\t\tmimetype: application/x-mi" +
-                    "crosoft.net.object.bytearray.base64\r\n\t\tvalue   : The object must be serialized i" +
-                    "nto a byte array \r\n\t\t\t: using a System.ComponentModel.TypeConverter\r\n\t\t\t: and th" +
-                    "en encoded with base64 encoding.\r\n\t-->\r\n\t\r\n\t<xsd:schema id=\"root\" xmlns=\"\" xmlns" +
-                    ":xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:msdata=\"urn:schemas-microsoft-com:" +
-                    "xml-msdata\">\r\n\t\t<xsd:element name=\"root\" msdata:IsDataSet=\"true\">\r\n\t\t\t<xsd:compl" +
-                    "exType>\r\n\t\t\t\t<xsd:choice maxOccurs=\"unbounded\">\r\n\t\t\t\t\t<xsd:element name=\"data\">\r" +
-                    "\n\t\t\t\t\t\t<xsd:complexType>\r\n\t\t\t\t\t\t\t<xsd:sequence>\r\n\t\t\t\t\t\t\t\t<xsd:element name=\"valu" +
-                    "e\" type=\"xsd:string\" minOccurs=\"0\" msdata:Ordinal=\"1\" />\r\n\t\t\t\t\t\t\t\t<xsd:element n" +
-                    "ame=\"comment\" type=\"xsd:string\" minOccurs=\"0\" msdata:Ordinal=\"2\" />\r\n\t\t\t\t\t\t\t</xs" +
-                    "d:sequence>\r\n\t\t\t\t\t\t\t<xsd:attribute name=\"name\" type=\"xsd:string\" msdata:Ordinal=" +
-                    "\"1\" />\r\n\t\t\t\t\t\t\t<xsd:attribute name=\"type\" type=\"xsd:string\" msdata:Ordinal=\"3\" /" +
-                    ">\r\n\t\t\t\t\t\t\t<xsd:attribute name=\"mimetype\" type=\"xsd:string\" msdata:Ordinal=\"4\" />" +
-                    "\r\n\t\t\t\t\t\t</xsd:complexType>\r\n\t\t\t\t\t</xsd:element>\r\n\t\t\t\t\t<xsd:element name=\"reshead" +
-                    "er\">\r\n\t\t\t\t\t\t<xsd:complexType>\r\n\t\t\t\t\t\t\t<xsd:sequence>\r\n\t\t\t\t\t\t\t\t<xsd:element name=" +
-                    "\"value\" type=\"xsd:string\" minOccurs=\"0\" msdata:Ordinal=\"1\" />\r\n\t\t\t\t\t\t\t</xsd:sequ" +
-                    "ence>\r\n\t\t\t\t\t\t\t<xsd:attribute name=\"name\" type=\"xsd:string\" use=\"required\" />\r\n\t\t" +
-                    "\t\t\t\t</xsd:complexType>\r\n\t\t\t\t\t</xsd:element>\r\n\t\t\t\t</xsd:choice>\r\n\t\t\t</xsd:complex" +
-                    "Type>\r\n\t\t</xsd:element>\r\n\t</xsd:schema>\r\n\t<resheader name=\"resmimetype\">\r\n\t\t<val" +
-                    "ue>text/microsoft-resx</value>\r\n\t</resheader>\r\n\t<resheader name=\"version\">\r\n\t\t<v" +
-                    "alue>1.3</value>\r\n\t</resheader>\r\n\t<resheader name=\"reader\">\r\n\t\t<value>System.Res" +
-                    "ources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neu" +
-                    "tral, PublicKeyToken=b77a5c561934e089</value>\r\n\t</resheader>\r\n\t<resheader name=\"" +
-                    "writer\">\r\n\t\t<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Ve" +
-                    "rsion=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>\r\n\t</r" +
-                    "esheader>\r\n</root>");
+            this.Write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<root>\r\n\t<!-- \r\n\t\tMicrosoft ResX Schema\r\n" +
+                    "\r\n\t\tVersion 1.3\r\n\r\n\t\tThe primary goals of this format is to allow a simple XML f" +
+                    "ormat \r\n\t\tthat is mostly human readable. The generation and parsing of the \r\n\t\tv" +
+                    "arious data types are done through the TypeConverter classes \r\n\t\tassociated with" +
+                    " the data types.\r\n\r\n\t\tExample:\r\n\r\n\t\t... ado.net/XML headers & schema ...\r\n\t\t<res" +
+                    "header name=\"resmimetype\">text/microsoft-resx</resheader>\r\n\t\t<resheader name=\"ve" +
+                    "rsion\">1.3</resheader>\r\n\t\t<resheader name=\"reader\">System.Resources.ResXResource" +
+                    "Reader, System.Windows.Forms, ...</resheader>\r\n\t\t<resheader name=\"writer\">System" +
+                    ".Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>\r\n\t\t<data na" +
+                    "me=\"Name1\">this is my long string</data>\r\n\t\t<data name=\"Color1\" type=\"System.Dra" +
+                    "wing.Color, System.Drawing\">Blue</data>\r\n\t\t<data name=\"Bitmap1\" mimetype=\"applic" +
+                    "ation/x-microsoft.net.object.binary.base64\">\r\n\t\t\t[base64 mime encoded serialized" +
+                    " .NET Framework object]\r\n\t\t</data>\r\n\t\t<data name=\"Icon1\" type=\"System.Drawing.Ic" +
+                    "on, System.Drawing\" mimetype=\"application/x-microsoft.net.object.bytearray.base6" +
+                    "4\">\r\n\t\t\t[base64 mime encoded string representing a byte array form of the .NET F" +
+                    "ramework object]\r\n\t\t</data>\r\n\r\n\t\tThere are any number of \"resheader\" rows that c" +
+                    "ontain simple \r\n\t\tname/value pairs.\r\n\r\n\t\tEach data row contains a name, and valu" +
+                    "e. The row also contains a \r\n\t\ttype or mimetype. Type corresponds to a .NET clas" +
+                    "s that support \r\n\t\ttext/value conversion through the TypeConverter architecture." +
+                    " \r\n\t\tClasses that don\'t support this are serialized and stored with the \r\n\t\tmime" +
+                    "type set.\r\n\r\n\t\tThe mimetype is used for serialized objects, and tells the \r\n\t\tRe" +
+                    "sXResourceReader how to depersist the object. This is currently not \r\n\t\textensib" +
+                    "le. For a given mimetype the value must be set accordingly:\r\n\r\n\t\tNote - applicat" +
+                    "ion/x-microsoft.net.object.binary.base64 is the format \r\n\t\tthat the ResXResource" +
+                    "Writer will generate, however the reader can \r\n\t\tread any of the formats listed " +
+                    "below.\r\n\r\n\t\tmimetype: application/x-microsoft.net.object.binary.base64\r\n\t\tvalue " +
+                    "  : The object must be serialized with \r\n\t\t\t: System.Serialization.Formatters.Bi" +
+                    "nary.BinaryFormatter\r\n\t\t\t: and then encoded with base64 encoding.\r\n\r\n\t\tmimetype:" +
+                    " application/x-microsoft.net.object.soap.base64\r\n\t\tvalue   : The object must be " +
+                    "serialized with \r\n\t\t\t: System.Runtime.Serialization.Formatters.Soap.SoapFormatte" +
+                    "r\r\n\t\t\t: and then encoded with base64 encoding.\r\n\r\n\t\tmimetype: application/x-micr" +
+                    "osoft.net.object.bytearray.base64\r\n\t\tvalue   : The object must be serialized int" +
+                    "o a byte array \r\n\t\t\t: using a System.ComponentModel.TypeConverter\r\n\t\t\t: and then" +
+                    " encoded with base64 encoding.\r\n\t-->\r\n\t\r\n\t<xsd:schema id=\"root\" xmlns=\"\" xmlns:x" +
+                    "sd=\"http://www.w3.org/2001/XMLSchema\" xmlns:msdata=\"urn:schemas-microsoft-com:xm" +
+                    "l-msdata\">\r\n\t\t<xsd:element name=\"root\" msdata:IsDataSet=\"true\">\r\n\t\t\t<xsd:complex" +
+                    "Type>\r\n\t\t\t\t<xsd:choice maxOccurs=\"unbounded\">\r\n\t\t\t\t\t<xsd:element name=\"data\">\r\n\t" +
+                    "\t\t\t\t\t<xsd:complexType>\r\n\t\t\t\t\t\t\t<xsd:sequence>\r\n\t\t\t\t\t\t\t\t<xsd:element name=\"value\"" +
+                    " type=\"xsd:string\" minOccurs=\"0\" msdata:Ordinal=\"1\" />\r\n\t\t\t\t\t\t\t\t<xsd:element nam" +
+                    "e=\"comment\" type=\"xsd:string\" minOccurs=\"0\" msdata:Ordinal=\"2\" />\r\n\t\t\t\t\t\t\t</xsd:" +
+                    "sequence>\r\n\t\t\t\t\t\t\t<xsd:attribute name=\"name\" type=\"xsd:string\" msdata:Ordinal=\"1" +
+                    "\" />\r\n\t\t\t\t\t\t\t<xsd:attribute name=\"type\" type=\"xsd:string\" msdata:Ordinal=\"3\" />\r" +
+                    "\n\t\t\t\t\t\t\t<xsd:attribute name=\"mimetype\" type=\"xsd:string\" msdata:Ordinal=\"4\" />\r\n" +
+                    "\t\t\t\t\t\t</xsd:complexType>\r\n\t\t\t\t\t</xsd:element>\r\n\t\t\t\t\t<xsd:element name=\"resheader" +
+                    "\">\r\n\t\t\t\t\t\t<xsd:complexType>\r\n\t\t\t\t\t\t\t<xsd:sequence>\r\n\t\t\t\t\t\t\t\t<xsd:element name=\"v" +
+                    "alue\" type=\"xsd:string\" minOccurs=\"0\" msdata:Ordinal=\"1\" />\r\n\t\t\t\t\t\t\t</xsd:sequen" +
+                    "ce>\r\n\t\t\t\t\t\t\t<xsd:attribute name=\"name\" type=\"xsd:string\" use=\"required\" />\r\n\t\t\t\t" +
+                    "\t\t</xsd:complexType>\r\n\t\t\t\t\t</xsd:element>\r\n\t\t\t\t</xsd:choice>\r\n\t\t\t</xsd:complexTy" +
+                    "pe>\r\n\t\t</xsd:element>\r\n\t</xsd:schema>\r\n\t<resheader name=\"resmimetype\">\r\n\t\t<value" +
+                    ">text/microsoft-resx</value>\r\n\t</resheader>\r\n\t<resheader name=\"version\">\r\n\t\t<val" +
+                    "ue>1.3</value>\r\n\t</resheader>\r\n\t<resheader name=\"reader\">\r\n\t\t<value>System.Resou" +
+                    "rces.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutr" +
+                    "al, PublicKeyToken=b77a5c561934e089</value>\r\n\t</resheader>\r\n\t<resheader name=\"wr" +
+                    "iter\">\r\n\t\t<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Vers" +
+                    "ion=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>\r\n\t</res" +
+                    "header>\r\n</root>");
             return this.GenerationEnvironment.ToString();
         }
         

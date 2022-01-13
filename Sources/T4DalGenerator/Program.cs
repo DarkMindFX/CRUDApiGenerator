@@ -63,6 +63,7 @@ namespace T4DalGenerator
                 Generate<ControllerTestGenerator>(tables, settings, timestamp);
 
                 Generate<EntityFunctionGenerator>(tables, settings, timestamp);
+                Generate<FunctionsTestsGenerator>(tables, settings, timestamp);
 
                 Generate<JsDtosGenerator>(tables, settings, timestamp);
                 Generate<JsClientDalGenerator>(tables, settings, timestamp);

@@ -206,6 +206,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="Tests\TestFunctionsTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TestFunctionsTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Update="Tests\UpdateSetupTemplate.cs">
       <DependentUpon>UpdateSetupTemplate.tt</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -366,6 +371,10 @@
     <None Update="Tests\TestDalTemplate.tt">
       <LastGenOutput>TestDalTemplate.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Tests\TestFunctionsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TestFunctionsTemplate.cs</LastGenOutput>
     </None>
     <None Update="Tests\UpdateSetupTemplate.tt">
       <LastGenOutput>UpdateSetupTemplate.cs</LastGenOutput>

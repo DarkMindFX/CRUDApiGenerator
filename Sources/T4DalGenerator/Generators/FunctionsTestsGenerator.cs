@@ -1,20 +1,19 @@
-﻿using System;
+﻿using CRUDAPI.DataModel;
+using CRUDAPI.Generators;
+using CRUDAPI.Template.NET.Tests;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CRUDAPI.DataModel;
-using CRUDAPI.Template.NET.Tests;
 
 namespace CRUDAPI.Generators
 {
-    public class ControllerTestGenerator : TestGeneratorBase
+    public class FunctionsTestsGenerator  : TestGeneratorBase
     {
 
-        public ControllerTestGenerator(GeneratorParams genParams) : base(genParams)
+        public FunctionsTestsGenerator(GeneratorParams genParams) : base(genParams)
         {
         }
 
@@ -38,7 +37,7 @@ namespace CRUDAPI.Generators
 
             // PKs should stay the same
             var pks = modelHelper.GetPKColumns(_genParams.Table);
-            foreach(var pk in pks)
+            foreach (var pk in pks)
             {
                 if (testValsUpdateBefore.ContainsKey(pk.Name))
                 {
@@ -47,24 +46,23 @@ namespace CRUDAPI.Generators
             }
 
             files.Add(GenerateTestClass(modelHelper, testValsGet, testValsInsert, testValsUpdateAfter));
-           
 
             return files;
         }
 
 
 
-        protected string GenerateTestClass(ModelHelper modelHelper, 
+        protected string GenerateTestClass(ModelHelper modelHelper,
                                             IDictionary<string, object> testValsGet,
                                             IDictionary<string, object> testValsInsert,
                                             IDictionary<string, object> testValsUpdateAfter)
         {
-            string fileName = $"Test{modelHelper.Pluralize(_genParams.Table.Name)}Controller.cs";
+            string fileName = $"TestFunctions{_genParams.Table.Name}.cs";
             string fileOut = Path.Combine(GetOutputFolder(), fileName);
 
-            var template = new TestControllerTemplate();
+            var template = new TestFunctionsTemplate();
             template.Session = new Dictionary<string, object>();
-            
+
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["testValsGet"] = testValsGet;
@@ -82,13 +80,13 @@ namespace CRUDAPI.Generators
             return fileOut;
         }
 
-        
+
 
         protected string GetOutputFolder()
         {
-            string outFolder = Path.Combine(_genParams.Settings.OutputRoot, 
-                                            _genParams.Timestamp.ToString("yyyy-MM-dd HH-mm-ss"), 
-                                            _genParams.Settings.OutputFolders["ControllerTests"],
+            string outFolder = Path.Combine(_genParams.Settings.OutputRoot,
+                                            _genParams.Timestamp.ToString("yyyy-MM-dd HH-mm-ss"),
+                                            _genParams.Settings.OutputFolders["FunctionTests"],
                                             _genParams.Settings.APIVersion);
             if (!Directory.Exists(outFolder))
             {
@@ -97,7 +95,5 @@ namespace CRUDAPI.Generators
 
             return outFolder;
         }
-
-        
     }
 }

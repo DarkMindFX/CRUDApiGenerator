@@ -60,14 +60,28 @@ namespace PPT.Functions.");
             #line default
             #line hidden
             this.Write(".V1\r\n{\r\n    public class GetAll : FunctionBase\r\n    {\r\n        private readonly I" +
-                    "UserDal _dal");
+                    "");
             
             #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(";\r\n        public GetAll(IHttpContextAccessor httpContextAccessor, IUserDal dal");
+            this.Write("Dal _dal");
+            
+            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n        public GetAll(IHttpContextAccessor httpContextAccessor, I");
+            
+            #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
+            
+            #line default
+            #line hidden
+            this.Write("Dal dal");
             
             #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));

@@ -28,8 +28,8 @@ namespace PPT.Functions.<#= table.Name #>.V1
 {
     public class GetAll : FunctionBase
     {
-        private readonly IUserDal _dal<#= table.Name #>;
-        public GetAll(IHttpContextAccessor httpContextAccessor, IUserDal dal<#= table.Name #>) : base(httpContextAccessor)
+        private readonly I<#= table.Name #>Dal _dal<#= table.Name #>;
+        public GetAll(IHttpContextAccessor httpContextAccessor, I<#= table.Name #>Dal dal<#= table.Name #>) : base(httpContextAccessor)
         {
             _dal<#= table.Name #> = dal<#= table.Name #>;
         }

@@ -1,0 +1,491 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
+<#@ parameter name="testValsGet" type="System.Collections.Generic.IDictionary<string,object>" #>
+<#@ parameter name="testValsInsert" type="System.Collections.Generic.IDictionary<string,object>" #>
+<#@ parameter name="testValsUpdateAfter" type="System.Collections.Generic.IDictionary<string,object>" #>
+<#@ parameter name="IsSoftDelete" type="System.Boolean" #>
+<#@ parameter name="SoftDeleteField" type="System.String" #>
+<#
+var pks = modelHelper.GetPKColumns(table);
+var tableNamePlural = modelHelper.Pluralize( table.Name );
+#>
+
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using NUnit.Framework;
+using PPT.Utils.Convertors;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Text.Json;
+using System.Threading.Tasks;
+using PPT.Test.Functions.Common;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace PPT.Test.E2E.Functions
+{
+    public class Test<#= table.Name #>Functions : FunctionTestBase
+    {
+        private readonly ILogger _logger = TestFactory.CreateLogger();
+        private PPT.Functions.<#= table.Name #>.Startup _startup;
+        private IHost _host;
+
+
+        public Test<#= table.Name #>Functions()
+        {
+            _testParams = GetTestParams("GenericFunctionTestSettings");
+        }
+
+        [SetUp]
+        public void Setup()
+        {
+            var initParams = GetTestParams("DALInitParams");
+
+            // Function replies on env vars for config
+            Environment.SetEnvironmentVariable(PPT.Functions.Common.Constants.ENV_DAL_TYPE, _testParams.Settings["DALType"].ToString());
+            Environment.SetEnvironmentVariable(PPT.Functions.Common.Constants.ENV_SQL_CONNECTION_STRING, (string)initParams.Settings["ConnectionString"]);
+            Environment.SetEnvironmentVariable(PPT.Functions.Common.Constants.ENV_JWT_SECRET, (string)_testParams.Settings["JWTSecret"]);
+            Environment.SetEnvironmentVariable(PPT.Functions.Common.Constants.ENV_SESSION_TIMEOUT, (string)_testParams.Settings["JWTSessionTimeout"]);
+
+            _startup = new PPT.Functions.<#= table.Name #>.Startup();
+            _host = new HostBuilder()
+                .ConfigureWebJobs(_startup.Configure)                
+                .Build();
+        }
+
+        [Test]
+        public async Task <#= tableNamePlural #>GetAll_Success()
+        {
+            var request = TestFactory.CreateHttpRequest();
+
+            var function = GetFunction<PPT.Functions.<#= table.Name #>.V1.GetAll>(_host);
+
+            var response = (ObjectResult)await function.Run(request, _logger);
+
+            Assert.IsNotNull(response);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.StatusCode);
+
+            var dtos = JsonSerializer.Deserialize<List<PPT.DTO.<#= table.Name #>>>(response.Value.ToString());
+
+            Assert.NotNull(dtos);
+            Assert.IsNotEmpty(dtos);
+        }
+
+        [Test]
+        public async Task <#= tableNamePlural #>GetDetails_Success()
+        {
+            PPT.Interfaces.Entities.<#= table.Name #> testEntity = AddTestEntity();
+
+            try
+            {
+                var request = TestFactory.CreateHttpRequest();
+                var response = (ObjectResult)await(GetFunction<PPT.Functions.<#= table.Name #>.V1.GetDetails>(_host)).Run(request,
+<#
+	for(int i = 0; i < pks.Count; ++i)
+    {
+#>
+					testEntity.<#= pks[i].Name #>,
+<#
+	}
+#>
+					_logger);
+
+                Assert.IsNotNull(response);
+                Assert.AreEqual((int)HttpStatusCode.OK, response.StatusCode);
+
+                var dto = JsonSerializer.Deserialize<PPT.DTO.<#= table.Name #>>(response.Value.ToString());
+
+                Assert.NotNull(dto);
+                Assert.AreEqual(testEntity.ID, dto.ID);
+            }
+            finally
+            {
+                RemoveTestEntity(testEntity);
+            }
+
+        }
+
+        [Test]
+        public async Task <#= tableNamePlural #>GetDetails_NotFound()
+        {
+<#
+		for(int i = 0; i < pks.Count; ++i)
+		{         
+#>
+			var param<#= pks[i].Name #> = Int64.MaxValue;
+<#
+		}
+#>
+            var request = TestFactory.CreateHttpRequest();
+            var response = (ObjectResult)await(GetFunction<PPT.Functions.<#= table.Name #>.V1.GetDetails>(_host)).Run(request, 
+<#
+		for(int i = 0; i < pks.Count; ++i)
+		{         
+#>
+				param<#= pks[i].Name #>,
+<#
+		}
+#>
+			_logger);
+
+            Assert.IsNotNull(response);
+            Assert.AreEqual((int)HttpStatusCode.NotFound, response.StatusCode);
+        }
+
+        [Test]
+        public async Task <#= tableNamePlural #>Delete_Success()
+        {
+            PPT.Interfaces.Entities.<#= table.Name #> testEntity = AddTestEntity();
+
+            try
+            {
+                var request = TestFactory.CreateHttpRequest();
+                var response = (StatusCodeResult)await(GetFunction<PPT.Functions.<#= table.Name #>.V1.Delete>(_host)).Run(request, 
+				<#
+					for(int i = 0; i < pks.Count; ++i)
+					{
+				#>
+					testEntity.<#= pks[i].Name #>,
+				<#
+					}
+				#>				
+				_logger);
+
+                Assert.IsNotNull(response);
+                Assert.AreEqual((int)HttpStatusCode.OK, response.StatusCode);
+            }
+            finally
+            {
+                RemoveTestEntity(testEntity);
+            }
+        }
+
+        [Test]
+        public async Task <#= tableNamePlural #>Delete_NotFound()
+        {
+<#
+		for(int i = 0; i < pks.Count; ++i)
+		{         
+#>
+			var param<#= pks[i].Name #> = Int64.MaxValue;
+<#
+		}
+#>
+            var request = TestFactory.CreateHttpRequest();
+            var response = (ObjectResult)await(GetFunction<PPT.Functions.<#= table.Name #>.V1.Delete>(_host)).Run(request, 
+<#
+		for(int i = 0; i < pks.Count; ++i)
+		{         
+#>
+				param<#= pks[i].Name #>,
+<#
+		}
+#>
+				_logger);
+
+            Assert.IsNotNull(response);
+            Assert.AreEqual((int)HttpStatusCode.NotFound, response.StatusCode);
+        }
+
+        [Test]
+        public async Task <#= tableNamePlural #>Insert_Success()
+        {
+            PPT.Interfaces.Entities.<#= table.Name #> testEntity = CreateTestEntity();
+
+            try
+            {
+                var dtoReq = PPT.Utils.Convertors.<#= table.Name #>Convertor.Convert(testEntity, null);
+
+                var request = TestFactory.CreateHttpRequest(dtoReq);
+                var response = (ObjectResult)await(GetFunction<PPT.Functions.<#= table.Name #>.V1.Insert>(_host)).Run(request, _logger);
+
+                Assert.IsNotNull(response);
+                Assert.AreEqual((int)HttpStatusCode.Created, response.StatusCode);
+
+                var dto = JsonSerializer.Deserialize<PPT.DTO.<#= table.Name #>>(response.Value.ToString());
+
+                Assert.NotNull(dto);
+
+		<#
+				for(int i = 0; i < pks.Count; ++i)
+				{         
+		#>
+				testEntity.<#= pks[i].Name #> = dto.<#= pks[i].Name #>;
+		<#
+				}
+		#>
+
+		<#
+                foreach(var c in table.Columns)
+                {
+                    if(c.IsPK) {
+        #>
+                    Assert.NotNull(dto.<#= c.Name #>);
+        <#
+                    }
+                    else {
+        #>
+                    Assert.AreEqual(dtoReq.<#= c.Name #>, dto.<#= c.Name #>);
+		<#
+                    }
+                }
+		#>
+            }
+            finally
+            {
+                RemoveTestEntity(testEntity);
+            }
+        }
+
+        [Test]
+        public async Task <#= tableNamePlural #>Update_Success()
+        {
+            PPT.Interfaces.Entities.<#= table.Name #> testEntity = AddTestEntity();
+
+            try
+            {
+              <#
+                foreach(var c in table.Columns)
+                {
+                    Type columnType = modelHelper.GetColumnType(c);
+                    if(!c.IsIdentity && !c.IsPK && testValsUpdateAfter.ContainsKey(c.Name))
+                    {
+                        if(columnType == typeof(DateTime))
+                        {
+              #>
+              testEntity.<#= c.Name #> = DateTime.Parse("<#= testValsUpdateAfter[c.Name].ToString() #>");
+              <#
+                        }
+                        else if(columnType == typeof(string))
+                        {
+              #>
+              testEntity.<#= c.Name #> = "<#= testValsUpdateAfter[c.Name].ToString() #>";
+              <#
+                        }
+                        else if(columnType == typeof(bool))
+                        {
+              #>
+              testEntity.<#= c.Name #> = <#= testValsUpdateAfter[c.Name].ToString().ToLower() #>;              
+              <#
+                        }
+                        else if(testValsUpdateAfter[c.Name] != null)
+                        {
+              #>
+              testEntity.<#= c.Name #> = <#= testValsUpdateAfter[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty) #> ;
+              <#
+                        }
+                    }                    
+                }
+			  #>
+
+                var reqDto = <#= table.Name #>Convertor.Convert(testEntity, null);
+
+                var request = TestFactory.CreateHttpRequest(reqDto);
+                var response = (ObjectResult)await(GetFunction<PPT.Functions.<#= table.Name #>.V1.Update>(_host)).Run(request, _logger);
+
+                Assert.IsNotNull(response);
+                Assert.AreEqual((int)HttpStatusCode.OK, response.StatusCode);
+
+				var dto = JsonSerializer.Deserialize<PPT.DTO.<#= table.Name #>>(response.Value.ToString());
+
+				<#
+                foreach(var c in table.Columns)
+                {
+                    if(c.IsPK) {
+                #>
+                    Assert.NotNull(dto.<#= c.Name #>);
+                <#
+                    }
+                    else {
+                #>
+                    Assert.AreEqual(reqDto.<#= c.Name #>, dto.<#= c.Name #>);
+                <#
+                    }
+                }
+                #>
+            }
+            finally
+            {
+                RemoveTestEntity(testEntity);
+            }
+        }
+
+        [Test]
+        public async Task <#= tableNamePlural #>Update_NotFound()
+        {
+            PPT.Interfaces.Entities.<#= table.Name #> testEntity = CreateTestEntity();
+
+            try
+            {
+              <#
+                foreach(var c in table.Columns)
+                {
+                    Type columnType = modelHelper.GetColumnType(c);
+                    if(!c.IsIdentity && testValsUpdateAfter.ContainsKey(c.Name))
+                    {
+                        if(columnType == typeof(DateTime))
+                        {
+              #>
+              testEntity.<#= c.Name #> = DateTime.Parse("<#= testValsUpdateAfter[c.Name].ToString() #>");
+              <#
+                        }
+                        else if(columnType == typeof(string))
+                        {
+              #>
+              testEntity.<#= c.Name #> = "<#= testValsUpdateAfter[c.Name].ToString() #>";
+              <#
+                        }
+                        else if(columnType == typeof(bool))
+                        {
+              #>
+              testEntity.<#= c.Name #> = <#= testValsUpdateAfter[c.Name].ToString().ToLower() #>;              
+              <#
+                        }
+                        else if(testValsUpdateAfter[c.Name] != null)
+                        {
+              #>
+              testEntity.<#= c.Name #> = <#= testValsUpdateAfter[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty) #>;
+              <#
+                        }
+                    }
+                    else if(c.IsPK)
+                    {
+               #>
+               testEntity.<#= c.Name #> = Int64.MaxValue;
+               <#
+                    }
+                }
+				#>
+
+                var reqDto = <#= table.Name #>Convertor.Convert(testEntity, null);
+
+                var request = TestFactory.CreateHttpRequest(reqDto);
+                var response = (ObjectResult)await(GetFunction<PPT.Functions.<#= table.Name #>.V1.Update>(_host)).Run(request, _logger);
+
+                Assert.IsNotNull(response);
+                Assert.AreEqual((int)HttpStatusCode.NotFound, response.StatusCode);
+            }
+            finally
+            {
+                RemoveTestEntity(testEntity);
+            }
+        }
+
+		#region Support methods
+
+        protected bool RemoveTestEntity(PPT.Interfaces.Entities.<#= table.Name #> entity)
+        {
+            if (entity != null)
+            {
+                var dal = CreateDal();
+
+
+<# 
+    if(IsSoftDelete && table.HasColumn(SoftDeleteField))
+    {
+#>
+        return dal.Erase(<#
+                    for(int i = 0; i < pks.Count; ++i)
+                    {
+                #>
+                        entity.<#= pks[i].Name #><#= i+1 < pks.Count ? "," : string.Empty #>
+                <#
+                    }
+                #>);
+<#
+    }
+    else
+    {
+#>
+
+                return dal.Delete(<#
+                    for(int i = 0; i < pks.Count; ++i)
+                    {
+                #>
+                        entity.<#= pks[i].Name #><#= i+1 < pks.Count ? "," : string.Empty #>
+                <#
+                    }
+                #>);
+<#
+    }
+#>
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        protected PPT.Interfaces.Entities.<#= table.Name #> CreateTestEntity()
+        {
+            var entity = new PPT.Interfaces.Entities.<#= table.Name #>();
+            <#
+                foreach(var c in table.Columns)
+                {
+                    Type columnType = modelHelper.GetColumnType(c);
+                    if(!c.IsIdentity && testValsInsert.ContainsKey(c.Name))
+                    {
+                        if(columnType == typeof(DateTime))
+                        {
+              #>
+              entity.<#= c.Name #> = DateTime.Parse("<#= testValsInsert[c.Name].ToString() #>");
+              <#
+                        }
+                        else if(columnType == typeof(string))
+                        {
+              #>
+              entity.<#= c.Name #> = "<#= testValsInsert[c.Name].ToString() #>";
+              <#
+                        }
+                        else if(columnType == typeof(bool))
+                        {
+              #>
+              entity.<#= c.Name #> = <#= testValsInsert[c.Name].ToString().ToLower() #>;              
+              <#
+                        }
+                        else if(testValsInsert[c.Name] != null)
+                        {
+              #>
+              entity.<#= c.Name #> = <#= testValsInsert[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty) #>;
+              <#
+                        }
+                    }
+                }
+            #>
+
+            return entity;
+        }
+
+        protected PPT.Interfaces.Entities.<#= table.Name #> AddTestEntity()
+        {
+            PPT.Interfaces.Entities.<#= table.Name #> result = null;
+
+            var entity = CreateTestEntity();
+
+            var dal = CreateDal();
+            result = dal.Insert(entity);
+
+            return result;
+        }
+
+        private PPT.Interfaces.I<#= table.Name #>Dal CreateDal()
+        {
+            var initParams = GetTestParams("DALInitParams");
+
+            PPT.Interfaces.I<#= table.Name #>Dal dal = new PPT.DAL.MSSQL.<#= table.Name #>Dal();
+            var dalInitParams = dal.CreateInitParams();
+            dalInitParams.Parameters["ConnectionString"] = (string)initParams.Settings["ConnectionString"];
+            dal.Init(dalInitParams);
+
+            return dal;
+        }
+        #endregion
+    }
+}

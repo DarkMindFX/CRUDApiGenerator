@@ -3,9 +3,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
-
 <?xml version="1.0" encoding="utf-8"?>
 <root>
 	<!-- 
