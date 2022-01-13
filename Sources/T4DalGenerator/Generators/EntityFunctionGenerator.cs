@@ -35,6 +35,10 @@ namespace CRUDAPI.Generators
             files.Add(GenerateGetDetails(rootFolder, modelHelper));
             files.Add(GenerateInsert(rootFolder, modelHelper));
             files.Add(GenerateUpdate(rootFolder, modelHelper));
+            if(_genParams.Settings.IsSoftDelete && _genParams.Table.HasColumn(_genParams.Settings.SoftDeleteField))
+            {
+                files.Add(GenerateErase(rootFolder, modelHelper));
+            }
 
             return files;
         }
@@ -247,6 +251,30 @@ namespace CRUDAPI.Generators
             string fileOut = Path.Combine(rootFolder, fileName);
 
             var template = new DeleteFunctionTemplate();
+            template.Session = new Dictionary<string, object>();
+
+            template.Session["table"] = _genParams.Table;
+            template.Session["modelHelper"] = modelHelper;
+            template.Initialize();
+
+            string content = template.TransformText();
+
+            File.WriteAllText(fileOut, content);
+
+            return fileOut;
+        }
+
+        private string GenerateErase(string rootFolder, ModelHelper modelHelper)
+        {
+            string fileName = $"Erase.cs";
+            rootFolder = Path.Combine(rootFolder, _genParams.Settings.APIVersion);
+            if (!Directory.Exists(rootFolder))
+            {
+                Directory.CreateDirectory(rootFolder);
+            }
+            string fileOut = Path.Combine(rootFolder, fileName);
+
+            var template = new EraseFunctionTemplate();
             template.Session = new Dictionary<string, object>();
 
             template.Session["table"] = _genParams.Table;

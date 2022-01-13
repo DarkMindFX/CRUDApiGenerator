@@ -81,6 +81,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>DeleteFunctionTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Update="Functions\EraseFunctionTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EraseFunctionTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Update="Functions\FunctionCsprojTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -261,6 +266,10 @@
     <None Update="Functions\DeleteFunctionTemplate.tt">
       <LastGenOutput>DeleteFunctionTemplate.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Functions\EraseFunctionTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EraseFunctionTemplate.cs</LastGenOutput>
     </None>
     <None Update="Functions\FunctionCsprojTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

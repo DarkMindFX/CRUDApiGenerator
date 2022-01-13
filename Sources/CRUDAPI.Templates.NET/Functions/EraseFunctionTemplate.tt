@@ -20,28 +20,27 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using PPT.Services.Dal;
-using PPT.Utils.Convertors;
 using System.Net;
 using PPT.Functions.Common;
 
 namespace PPT.Functions.<#= table.Name #>.V1
 {
-    public class GetDetails : FunctionBase
+    public class Erase : FunctionBase
     {
         private readonly I<#= table.Name #>Dal _dal<#= table.Name #>;
 
-        public GetDetails(IHttpContextAccessor httpContextAccessor, I<#= table.Name #>Dal dal<#= table.Name #>) : base(httpContextAccessor)
+        public Erase(IHttpContextAccessor httpContextAccessor, I<#= table.Name #>Dal dal<#= table.Name #>) : base(httpContextAccessor)
         {
             _dal<#= table.Name #> = dal<#= table.Name #>;
         }
 
-        [Authorize]    
-        [FunctionName("<#= tableNamePlural #>GetDetails")]
+        [Authorize]
+        [FunctionName("<#= tableNamePlural #>Erase")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "v1/<#= tableNamePlural.ToLower() #>/{<#for(int i = 0; i < pks.Count; ++i)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "v1/<#= tableNamePlural.ToLower() #>/{<#for(int i = 0; i < pks.Count; ++i)
             {
             var pk = pks[i];
-            #><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "/" : string.Empty #><#}#>}")] HttpRequest req,
+            #><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "}/{" : string.Empty #><#}#>}")] HttpRequest req,
             <#
             
             for(int i = 0; i < pks.Count; ++i)
@@ -56,26 +55,44 @@ namespace PPT.Functions.<#= table.Name #>.V1
 
             try
             {
-                var e = _dal<#= table.Name #>.Get(<#for(int i = 0; i < pks.Count; ++i)
-													{
-													var pk = pks[i];
-													#><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>);
-                if (e != null)
+                var user = _dal<#= table.Name #>.Get(<#for(int i = 0; i < pks.Count; ++i)
+					{
+					var pk = pks[i];
+					#><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>);
+                if (user != null)
                 {
-                    var dtos = <#= table.Name #>Convertor.Convert(e, null);
+                    bool isRemoved = _dal<#= table.Name #>.Erase(<#for(int i = 0; i < pks.Count; ++i)
+					{
+					var pk = pks[i];
+					#><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>);
 
-                    result = new OkObjectResult(funHelper.ToJosn(dtos));
+                    if (isRemoved)
+                    {
+                        result = new OkResult();
+                    }
+                    else
+                    {
+                        result = new ObjectResult(funHelper.ToJosn(new PPT.DTO.Error()
+                        {
+                            Code = (int)HttpStatusCode.InternalServerError,
+                            Message = $"<#= table.Name #> was found, but item was not deleted [ids:{<#for(int i = 0; i < pks.Count; ++i)
+                                            {
+                                            var pk = pks[i];
+                                        #><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "}, {" : "}" #><# } #>]"
+                        }))
+                        {
+                            StatusCode = (int)HttpStatusCode.InternalServerError
+                        };
+                    }
                 }
                 else
                 {
                     result = new ObjectResult(funHelper.ToJosn(new PPT.DTO.Error()
                     {
                         Code = (int)HttpStatusCode.NotFound,
-                        Message = $"<#= table.Name #> was found, but item was not deleted [ids:{<#
-                                            for(int i = 0; i < pks.Count; ++i)
-                                            {
-                                            var pk = pks[i];
-                                        #><#= pk.Name.ToLower() #><#= i+1 < pks.Count ? "}, {" : "}" #><# } #>]"
+                        Message = $"<#= table.Name #> was not found [ids:{<#for(int i = 0; i < pks.Count; ++i)
+                                        {
+                                        var pk = pks[i];#><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "}, {" : "}" #><# } #>]"
                     }))
                     {
                         StatusCode = (int)HttpStatusCode.NotFound

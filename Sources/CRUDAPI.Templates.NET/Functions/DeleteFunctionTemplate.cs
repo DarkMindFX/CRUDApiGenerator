@@ -116,9 +116,37 @@ namespace PPT.Functions.");
             
             #line default
             #line hidden
-            this.Write("/{id}\")] HttpRequest req,\r\n            ");
+            this.Write("/{");
             
-            #line 41 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+            
+            
+            #line default
+            #line hidden
+            
+            #line 43 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
+            
+            #line default
+            #line hidden
+            
+            #line 43 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "}/{" : string.Empty));
+            
+            #line default
+            #line hidden
+            
+            #line 43 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write("}\")] HttpRequest req,\r\n            ");
+            
+            #line 44 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
 
             
             for(int i = 0; i < pks.Count; ++i)
@@ -128,29 +156,27 @@ namespace PPT.Functions.");
             
             #line default
             #line hidden
-            this.Write("                ");
             
-            #line 47 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(pk)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 47 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
+            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
             
             #line default
             #line hidden
             
-            #line 47 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
-            this.Write("\r\n            ");
             
-            #line 48 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
 }
             
             #line default
@@ -166,20 +192,76 @@ namespace PPT.Functions.");
             {
                 var user = _dal");
             
-            #line 57 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(".Get(id);\r\n                if (user != null)\r\n                {\r\n                " +
-                    "    bool isRemoved = _dal");
+            this.Write(".Get(");
             
-            #line 60 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+for(int i = 0; i < pks.Count; ++i)
+					{
+					var pk = pks[i];
+					
+            
+            #line default
+            #line hidden
+            
+            #line 61 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
+            
+            #line default
+            #line hidden
+            
+            #line 61 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
+            
+            #line default
+            #line hidden
+            
+            #line 61 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n                if (user != null)\r\n                {\r\n                    boo" +
+                    "l isRemoved = _dal");
+            
+            #line 64 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(@".Delete(id);
+            this.Write(".Delete(");
+            
+            #line 64 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+for(int i = 0; i < pks.Count; ++i)
+					{
+					var pk = pks[i];
+					
+            
+            #line default
+            #line hidden
+            
+            #line 67 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
+            
+            #line default
+            #line hidden
+            
+            #line 67 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
+            
+            #line default
+            #line hidden
+            
+            #line 67 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write(@");
 
                     if (isRemoved)
                     {
@@ -192,38 +274,35 @@ namespace PPT.Functions.");
                             Code = (int)HttpStatusCode.InternalServerError,
                             Message = $""");
             
-            #line 71 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            #line 78 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" was found, but item was not deleted [ids:{");
             
-            #line 71 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
-
-                                            for(int i = 0; i < pks.Count; ++i)
+            #line 78 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+for(int i = 0; i < pks.Count; ++i)
                                             {
                                             var pk = pks[i];
                                         
             
             #line default
             #line hidden
-            this.Write("                                        ");
             
-            #line 76 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            #line 81 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
             
             #line default
             #line hidden
-            this.Write("\r\n                                        ");
             
-            #line 77 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            #line 81 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "}, {" : "}"));
             
             #line default
             #line hidden
             
-            #line 77 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            #line 81 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
  } 
             
             #line default
@@ -242,30 +321,26 @@ namespace PPT.Functions.");
                         Code = (int)HttpStatusCode.NotFound,
                         Message = $""");
             
-            #line 89 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            #line 93 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" was not found [ids:{");
             
-            #line 89 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
-
-                                        for(int i = 0; i < pks.Count; ++i)
+            #line 93 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+for(int i = 0; i < pks.Count; ++i)
                                         {
                                         var pk = pks[i];
-                                    
             
             #line default
             #line hidden
-            this.Write("                                    ");
             
-            #line 94 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
+            #line 95 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
             
             #line default
             #line hidden
-            this.Write("\r\n                                    ");
             
             #line 95 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\DeleteFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "}, {" : "}"));

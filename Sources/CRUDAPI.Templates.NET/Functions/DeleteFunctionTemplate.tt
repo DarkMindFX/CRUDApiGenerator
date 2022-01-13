@@ -37,15 +37,16 @@ namespace PPT.Functions.<#= table.Name #>.V1
         [Authorize]
         [FunctionName("<#= tableNamePlural #>Delete")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "v1/<#= tableNamePlural.ToLower() #>/{id}")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "v1/<#= tableNamePlural.ToLower() #>/{<#for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+            #><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "}/{" : string.Empty #><#}#>}")] HttpRequest req,
             <#
             
             for(int i = 0; i < pks.Count; ++i)
             {
             var pk = pks[i];
-            #>
-                <#= modelHelper.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #>
-            <#}#>,
+            #><#= modelHelper.DbTypeToType(pk) #> <#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>,
             ILogger log)
         {
             IActionResult result = null;
@@ -54,10 +55,16 @@ namespace PPT.Functions.<#= table.Name #>.V1
 
             try
             {
-                var user = _dal<#= table.Name #>.Get(id);
+                var user = _dal<#= table.Name #>.Get(<#for(int i = 0; i < pks.Count; ++i)
+					{
+					var pk = pks[i];
+					#><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>);
                 if (user != null)
                 {
-                    bool isRemoved = _dal<#= table.Name #>.Delete(id);
+                    bool isRemoved = _dal<#= table.Name #>.Delete(<#for(int i = 0; i < pks.Count; ++i)
+					{
+					var pk = pks[i];
+					#><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>);
 
                     if (isRemoved)
                     {
@@ -68,13 +75,10 @@ namespace PPT.Functions.<#= table.Name #>.V1
                         result = new ObjectResult(funHelper.ToJosn(new PPT.DTO.Error()
                         {
                             Code = (int)HttpStatusCode.InternalServerError,
-                            Message = $"<#= table.Name #> was found, but item was not deleted [ids:{<#
-                                            for(int i = 0; i < pks.Count; ++i)
+                            Message = $"<#= table.Name #> was found, but item was not deleted [ids:{<#for(int i = 0; i < pks.Count; ++i)
                                             {
                                             var pk = pks[i];
-                                        #>
-                                        <#=pk.Name.ToLower() #>
-                                        <#= i+1 < pks.Count ? "}, {" : "}" #><# } #>]"
+                                        #><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "}, {" : "}" #><# } #>]"
                         }))
                         {
                             StatusCode = (int)HttpStatusCode.InternalServerError
@@ -86,13 +90,9 @@ namespace PPT.Functions.<#= table.Name #>.V1
                     result = new ObjectResult(funHelper.ToJosn(new PPT.DTO.Error()
                     {
                         Code = (int)HttpStatusCode.NotFound,
-                        Message = $"<#= table.Name #> was not found [ids:{<#
-                                        for(int i = 0; i < pks.Count; ++i)
+                        Message = $"<#= table.Name #> was not found [ids:{<#for(int i = 0; i < pks.Count; ++i)
                                         {
-                                        var pk = pks[i];
-                                    #>
-                                    <#=pk.Name.ToLower() #>
-                                    <#= i+1 < pks.Count ? "}, {" : "}" #><# } #>]"
+                                        var pk = pks[i];#><#=pk.Name.ToLower() #><#= i+1 < pks.Count ? "}, {" : "}" #><# } #>]"
                     }))
                     {
                         StatusCode = (int)HttpStatusCode.NotFound

@@ -18,9 +18,9 @@ namespace CRUDAPI.Template.NET.Functions
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+    #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public partial class GetAllFunctionTemplate : GetAllFunctionTemplateBase
+    public partial class EraseFunctionTemplate : EraseFunctionTemplateBase
     {
 #line hidden
         /// <summary>
@@ -31,7 +31,7 @@ namespace CRUDAPI.Template.NET.Functions
             this.Write("\r\n");
             this.Write("\r\n");
             
-            #line 10 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            #line 10 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
 
 var pks = modelHelper.GetPKColumns(table);
 var tableNamePlural = modelHelper.Pluralize( table.Name );
@@ -40,6 +40,7 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line default
             #line hidden
             this.Write(@"
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -47,63 +48,139 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using PPT.Services.Dal;
-using System.Collections.Generic;
-using PPT.Utils.Convertors;
-using System;
+using System.Net;
 using PPT.Functions.Common;
 
 namespace PPT.Functions.");
             
-            #line 27 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(".V1\r\n{\r\n    public class GetAll : FunctionBase\r\n    {\r\n        private readonly I" +
-                    "UserDal _dal");
+            this.Write(".V1\r\n{\r\n    public class Erase : FunctionBase\r\n    {\r\n        private readonly I");
             
-            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(";\r\n        public GetAll(IHttpContextAccessor httpContextAccessor, IUserDal dal");
+            this.Write("Dal _dal");
             
-            #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n\r\n        public Erase(IHttpContextAccessor httpContextAccessor, I");
+            
+            #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
+            
+            #line default
+            #line hidden
+            this.Write("Dal dal");
+            
+            #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(") : base(httpContextAccessor)\r\n        {\r\n            _dal");
             
-            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" = dal");
             
-            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(";\r\n        }\r\n\r\n        [Authorize]\r\n        [FunctionName(\"");
             
-            #line 38 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            #line 38 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural));
             
             #line default
             #line hidden
-            this.Write("GetAll\")]\r\n        public async Task<IActionResult> Run(\r\n            [HttpTrigge" +
-                    "r(AuthorizationLevel.Anonymous, \"get\", Route = \"v1/");
+            this.Write("Erase\")]\r\n        public async Task<IActionResult> Run(\r\n            [HttpTrigger" +
+                    "(AuthorizationLevel.Anonymous, \"delete\", Route = \"v1/");
             
-            #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural.ToLower()));
             
             #line default
             #line hidden
-            this.Write(@""")] HttpRequest req,
+            this.Write("/{");
+            
+            #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+            
+            
+            #line default
+            #line hidden
+            
+            #line 43 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
+            
+            #line default
+            #line hidden
+            
+            #line 43 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "}/{" : string.Empty));
+            
+            #line default
+            #line hidden
+            
+            #line 43 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write("}\")] HttpRequest req,\r\n            ");
+            
+            #line 44 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+
+            
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+            
+            
+            #line default
+            #line hidden
+            
+            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(pk)));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
+            
+            #line default
+            #line hidden
+            
+            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
+            
+            #line default
+            #line hidden
+            
+            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write(@",
             ILogger log)
         {
             IActionResult result = null;
@@ -112,34 +189,177 @@ namespace PPT.Functions.");
 
             try
             {
-                var entities = _dal");
+                var user = _dal");
             
-            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(".GetAll();\r\n                var dtos = new List<PPT.DTO.");
+            this.Write(".Get(");
             
-            #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+for(int i = 0; i < pks.Count; ++i)
+					{
+					var pk = pks[i];
+					
+            
+            #line default
+            #line hidden
+            
+            #line 61 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
+            
+            #line default
+            #line hidden
+            
+            #line 61 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
+            
+            #line default
+            #line hidden
+            
+            #line 61 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n                if (user != null)\r\n                {\r\n                    boo" +
+                    "l isRemoved = _dal");
+            
+            #line 64 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(">();\r\n                foreach (var e in entities)\r\n                {\r\n           " +
-                    "         dtos.Add(");
+            this.Write(".Erase(");
             
-            #line 53 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
+            #line 64 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+for(int i = 0; i < pks.Count; ++i)
+					{
+					var pk = pks[i];
+					
             
             #line default
             #line hidden
-            this.Write(@"Convertor.Convert(e, null));
-                }
+            
+            #line 67 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
+            
+            #line default
+            #line hidden
+            
+            #line 67 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
+            
+            #line default
+            #line hidden
+            
+            #line 67 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write(@");
 
-                result = new OkObjectResult(funHelper.ToJosn(dtos));
+                    if (isRemoved)
+                    {
+                        result = new OkResult();
+                    }
+                    else
+                    {
+                        result = new ObjectResult(funHelper.ToJosn(new PPT.DTO.Error()
+                        {
+                            Code = (int)HttpStatusCode.InternalServerError,
+                            Message = $""");
+            
+            #line 78 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" was found, but item was not deleted [ids:{");
+            
+            #line 78 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+for(int i = 0; i < pks.Count; ++i)
+                                            {
+                                            var pk = pks[i];
+                                        
+            
+            #line default
+            #line hidden
+            
+            #line 81 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
+            
+            #line default
+            #line hidden
+            
+            #line 81 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "}, {" : "}"));
+            
+            #line default
+            #line hidden
+            
+            #line 81 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write(@"]""
+                        }))
+                        {
+                            StatusCode = (int)HttpStatusCode.InternalServerError
+                        };
+                    }
+                }
+                else
+                {
+                    result = new ObjectResult(funHelper.ToJosn(new PPT.DTO.Error()
+                    {
+                        Code = (int)HttpStatusCode.NotFound,
+                        Message = $""");
+            
+            #line 93 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" was not found [ids:{");
+            
+            #line 93 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+for(int i = 0; i < pks.Count; ++i)
+                                        {
+                                        var pk = pks[i];
+            
+            #line default
+            #line hidden
+            
+            #line 95 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
+            
+            #line default
+            #line hidden
+            
+            #line 95 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "}, {" : "}"));
+            
+            #line default
+            #line hidden
+            
+            #line 95 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write(@"]""
+                    }))
+                    {
+                        StatusCode = (int)HttpStatusCode.NotFound
+                    };
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 log.LogError(ex.ToString());
             }
@@ -150,12 +370,11 @@ namespace PPT.Functions.");
         }
     }
 }
-
 ");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+        #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
 
 private global::CRUDAPI.DataModel.DataTable _tableField;
 
@@ -237,7 +456,7 @@ if ((modelHelperValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public class GetAllFunctionTemplateBase
+    public class EraseFunctionTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;
