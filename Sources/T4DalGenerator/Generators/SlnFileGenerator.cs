@@ -44,6 +44,13 @@ namespace CRUDAPI.Generator
 
             string content = template.TransformText();
 
+            // deleting other sln files - if exist
+            var slnFiles = Directory.GetFiles(GetOutputFolder(), "*.sln");
+            foreach(var slnFile in slnFiles)
+            {
+                File.Delete(slnFile);
+            }
+
             File.WriteAllText(fileOut, content);
 
             return fileOut;
