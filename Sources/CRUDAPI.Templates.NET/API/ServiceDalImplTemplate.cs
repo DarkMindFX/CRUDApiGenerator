@@ -29,9 +29,22 @@ namespace CRUDAPI.Template.NET.API
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\n\r\nusing PPT.Interfaces.Entities;\r\nusing System.Collections.Generic;\r\nusing Syst" +
-                    "em.ComponentModel.Composition;\r\nusing System.Linq;\r\n\r\nnamespace PPT.Services.Dal" +
-                    "\r\n{\r\n    [Export(typeof(I");
+            this.Write("\r\nusing ");
+            
+            #line 13 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities;\r\nusing System.Collections.Generic;\r\nusing System.ComponentM" +
+                    "odel.Composition;\r\nusing System.Linq;\r\n\r\nnamespace ");
+            
+            #line 18 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Services.Dal\r\n{\r\n    [Export(typeof(I");
             
             #line 20 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -372,6 +385,19 @@ namespace CRUDAPI.Template.NET.API
         
         #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\ServiceDalImplTemplate.tt"
 
+private string _RootNamespaceField;
+
+/// <summary>
+/// Access the RootNamespace parameter of the template.
+/// </summary>
+private string RootNamespace
+{
+    get
+    {
+        return this._RootNamespaceField;
+    }
+}
+
 private global::CRUDAPI.DataModel.DataTable _tableField;
 
 /// <summary>
@@ -432,6 +458,20 @@ public virtual void Initialize()
 {
     if ((this.Errors.HasErrors == false))
     {
+bool RootNamespaceValueAcquired = false;
+if (this.Session.ContainsKey("RootNamespace"))
+{
+    this._RootNamespaceField = ((string)(this.Session["RootNamespace"]));
+    RootNamespaceValueAcquired = true;
+}
+if ((RootNamespaceValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("RootNamespace");
+    if ((data != null))
+    {
+        this._RootNamespaceField = ((string)(data));
+    }
+}
 bool tableValueAcquired = false;
 if (this.Session.ContainsKey("table"))
 {

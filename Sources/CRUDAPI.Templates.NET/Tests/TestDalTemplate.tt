@@ -4,6 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 
@@ -13,9 +14,9 @@
 <#@ parameter name="IsSoftDelete" type="System.Boolean" #>
 <#@ parameter name="SoftDeleteField" type="System.String" #>
 
-using PPT.DAL.MSSQL;
-using PPT.Interfaces;
-using PPT.Interfaces.Entities;
+using <#= RootNamespace #>.DAL.MSSQL;
+using <#= RootNamespace #>.Interfaces;
+using <#= RootNamespace #>.Interfaces.Entities;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System;

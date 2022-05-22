@@ -31,46 +31,66 @@ namespace CRUDAPI.Template.NET.API
             this.Write("\r\n");
             this.Write("\r\n");
             
-            #line 13 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 14 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 
 var pks = modelHelper.GetPKColumns(table);
 
             
             #line default
             #line hidden
-            this.Write("\r\nusing PPT.DAL.EF.Models;\r\nusing PPT.Interfaces;\r\nusing System.Collections.Gener" +
-                    "ic;\r\nusing System.ComponentModel.Composition;\r\nusing System.Linq;\r\n\r\nnamespace P" +
-                    "PT.DAL.EF.Dals\r\n{\r\n    class ");
+            this.Write("\r\nusing ");
             
-            #line 25 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 18 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.EF.Models;\r\nusing ");
+            
+            #line 19 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces;\r\nusing System.Collections.Generic;\r\nusing System.ComponentModel.Comp" +
+                    "osition;\r\nusing System.Linq;\r\n\r\nnamespace ");
+            
+            #line 24 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.EF.Dals\r\n{\r\n    class ");
+            
+            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("DalInitParams : InitParamsImpl\r\n    {\r\n    }\r\n\r\n    [Export(\"EF\", typeof(I");
             
-            #line 29 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal))]\r\n    public class ");
             
-            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal : I");
             
-            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal\r\n    {\r\n        ");
             
-            #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 33 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(projectName));
             
             #line default
@@ -78,14 +98,14 @@ var pks = modelHelper.GetPKColumns(table);
             this.Write("Context dbContext;\r\n\r\n        public IInitParams CreateInitParams()\r\n        {\r\n " +
                     "           return new ");
             
-            #line 36 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 37 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("DalInitParams();\r\n        }\r\n\r\n        public bool Delete(");
             
-            #line 39 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 
             
             for(int i = 0; i < pks.Count; ++i)
@@ -96,33 +116,33 @@ var pks = modelHelper.GetPKColumns(table);
             #line default
             #line hidden
             
-            #line 45 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 46 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(pk)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 45 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 46 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             
-            #line 45 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 46 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 45 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 46 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            var entity = dbContext.");
             
-            #line 47 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 48 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize( table.Name )));
             
             #line default
@@ -142,7 +162,7 @@ var pks = modelHelper.GetPKColumns(table);
 
 ");
             
-            #line 60 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 61 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 
     if(IsSoftDelete && table.HasColumn(SoftDeleteField))
     {
@@ -152,7 +172,7 @@ var pks = modelHelper.GetPKColumns(table);
             #line hidden
             this.Write("        public bool Erase(");
             
-            #line 64 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 65 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -162,40 +182,40 @@ var pks = modelHelper.GetPKColumns(table);
             #line default
             #line hidden
             
-            #line 69 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 70 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(pk)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 69 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 70 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             
-            #line 69 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 70 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 69 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 70 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            var entity = dbContext.");
             
-            #line 71 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 72 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize( table.Name )));
             
             #line default
             #line hidden
             this.Write(".Where( e => ");
             
-            #line 71 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 72 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -206,27 +226,27 @@ var pks = modelHelper.GetPKColumns(table);
             #line hidden
             this.Write("        e.");
             
-            #line 76 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 77 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 76 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 77 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             this.Write("  ");
             
-            #line 76 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 77 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "&&" : string.Empty));
             
             #line default
             #line hidden
             
-            #line 76 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 77 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 }
             
             #line default
@@ -234,7 +254,7 @@ var pks = modelHelper.GetPKColumns(table);
             this.Write(").FirstOrDefault();\r\n            if (entity != null)\r\n            {\r\n            " +
                     "    var entityEntry = dbContext.Remove<Models.");
             
-            #line 79 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 80 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -243,7 +263,7 @@ var pks = modelHelper.GetPKColumns(table);
                     ";\r\n            }\r\n            else\r\n            {\r\n                return false;" +
                     "\r\n            }\r\n        }\r\n");
             
-            #line 88 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 89 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 
     }
 
@@ -252,14 +272,14 @@ var pks = modelHelper.GetPKColumns(table);
             #line hidden
             this.Write("\r\n        public PPT.Interfaces.Entities.");
             
-            #line 92 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 93 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" Get(");
             
-            #line 92 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 93 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -269,47 +289,47 @@ var pks = modelHelper.GetPKColumns(table);
             #line default
             #line hidden
             
-            #line 97 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 98 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(pk)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 97 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 98 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             
-            #line 97 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 98 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 97 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 98 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            PPT.Interfaces.Entities.");
             
-            #line 99 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 100 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" result = null;\r\n            var entity = dbContext.");
             
-            #line 100 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 101 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(table.Name)));
             
             #line default
             #line hidden
             this.Write(".Where(e => ");
             
-            #line 100 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 101 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -320,27 +340,27 @@ var pks = modelHelper.GetPKColumns(table);
             #line hidden
             this.Write("        e.");
             
-            #line 105 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 106 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 105 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 106 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             this.Write("  ");
             
-            #line 105 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 106 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "&&" : string.Empty));
             
             #line default
             #line hidden
             
-            #line 105 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 106 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 }
             
             #line default
@@ -348,7 +368,7 @@ var pks = modelHelper.GetPKColumns(table);
             this.Write(").FirstOrDefault();\r\n            if (entity != null)\r\n            {\r\n            " +
                     "    result = Convertors.");
             
-            #line 108 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 109 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -356,21 +376,21 @@ var pks = modelHelper.GetPKColumns(table);
             this.Write("Convertor.FromEFEntity(entity);\r\n            }\r\n            return result;\r\n     " +
                     "   }\r\n\r\n        public IList<PPT.Interfaces.Entities.");
             
-            #line 113 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 114 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("> GetAll()\r\n        {\r\n            var entities = dbContext.");
             
-            #line 115 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 116 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(table.Name)));
             
             #line default
             #line hidden
             this.Write(".ToList();\r\n\r\n            IList<PPT.Interfaces.Entities.");
             
-            #line 117 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 118 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -378,7 +398,7 @@ var pks = modelHelper.GetPKColumns(table);
             this.Write("> result = ToList(entities);\r\n            \r\n            return result;\r\n        }" +
                     "\r\n\r\n        ");
             
-            #line 122 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 123 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 
         foreach(var c in table.Columns)
         {
@@ -390,49 +410,49 @@ var pks = modelHelper.GetPKColumns(table);
             #line hidden
             this.Write("        public IList<");
             
-            #line 128 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 129 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("> GetBy");
             
-            #line 128 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 129 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 128 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 129 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(c)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 128 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 129 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            var entities = dbContext.");
             
-            #line 130 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 131 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(table.Name)));
             
             #line default
             #line hidden
             this.Write(".Where(e => e.");
             
-            #line 130 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 131 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" == ");
             
-            #line 130 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 131 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
@@ -440,7 +460,7 @@ var pks = modelHelper.GetPKColumns(table);
             this.Write(").ToList();\r\n\r\n            IList<PPT.Interfaces.Entities.Address> result = ToList" +
                     "(entities);\r\n\r\n            return result;\r\n        }\r\n        ");
             
-            #line 136 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 137 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 
                 }
         }
@@ -452,7 +472,7 @@ var pks = modelHelper.GetPKColumns(table);
 
         public void Init(IInitParams initParams)
         {
-            dbContext = new CRUDContext(initParams.Parameters[""ConnectionString""]);
+            dbContext = new PhotoPrintContext(initParams.Parameters[""ConnectionString""]);
         }
 
         public PPT.Interfaces.Entities.Address Insert(PPT.Interfaces.Entities.Address entity)
@@ -472,7 +492,7 @@ var pks = modelHelper.GetPKColumns(table);
             PPT.Interfaces.Entities.Address result = null;
             var efEntity = dbContext.Addresses.Where(e => ");
             
-            #line 162 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 163 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -483,27 +503,27 @@ var pks = modelHelper.GetPKColumns(table);
             #line hidden
             this.Write("        e.");
             
-            #line 167 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 168 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 167 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 168 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
             
             #line default
             #line hidden
             this.Write("  ");
             
-            #line 167 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 168 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "&&" : string.Empty));
             
             #line default
             #line hidden
             
-            #line 167 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+            #line 168 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
 }
             
             #line default
@@ -533,6 +553,19 @@ var pks = modelHelper.GetPKColumns(table);
         }
         
         #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
+
+private string _RootNamespaceField;
+
+/// <summary>
+/// Access the RootNamespace parameter of the template.
+/// </summary>
+private string RootNamespace
+{
+    get
+    {
+        return this._RootNamespaceField;
+    }
+}
 
 private global::CRUDAPI.DataModel.DataTable _tableField;
 
@@ -607,6 +640,20 @@ public virtual void Initialize()
 {
     if ((this.Errors.HasErrors == false))
     {
+bool RootNamespaceValueAcquired = false;
+if (this.Session.ContainsKey("RootNamespace"))
+{
+    this._RootNamespaceField = ((string)(this.Session["RootNamespace"]));
+    RootNamespaceValueAcquired = true;
+}
+if ((RootNamespaceValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("RootNamespace");
+    if ((data != null))
+    {
+        this._RootNamespaceField = ((string)(data));
+    }
+}
 bool tableValueAcquired = false;
 if (this.Session.ContainsKey("table"))
 {

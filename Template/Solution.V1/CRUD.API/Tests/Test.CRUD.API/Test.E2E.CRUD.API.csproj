@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyName>Test.E2E.PhotoPrint.API</AssemblyName>
+    <AssemblyName>Test.E2E.API</AssemblyName>
 
     <RootNamespace>Test.E2E.API</RootNamespace>
   </PropertyGroup>

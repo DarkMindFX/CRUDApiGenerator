@@ -28,8 +28,9 @@ namespace CRUDAPI.Template.NET.Tests
         /// </summary>
         public virtual string TransformText()
         {
+            this.Write("\r\n");
             
-            #line 13 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 15 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
 var pks = modelHelper.GetPKColumns(table);
 var tableNamePlural = modelHelper.Pluralize( table.Name );
@@ -37,26 +38,33 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             
             #line default
             #line hidden
-            this.Write(@"
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using NUnit.Framework;
-using PPT.Utils.Convertors;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text.Json;
-using System.Threading.Tasks;
-using PPT.Test.Functions.Common;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace PPT.Test.E2E.Functions
-{
-    public class Test");
+            this.Write("\r\nusing Microsoft.AspNetCore.Http;\r\nusing Microsoft.AspNetCore.Mvc;\r\nusing Micros" +
+                    "oft.Extensions.Logging;\r\nusing NUnit.Framework;\r\nusing ");
+            
+            #line 24 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Utils.Convertors;\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing Syste" +
+                    "m.Net;\r\nusing System.Text.Json;\r\nusing System.Threading.Tasks;\r\nusing ");
+            
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Test.Functions.Common;\r\nusing Microsoft.Extensions.Hosting;\r\nusing Microsoft.Ext" +
+                    "ensions.DependencyInjection;\r\n\r\nnamespace ");
             
             #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Test.E2E.Functions\r\n{\r\n    public class Test");
+            
+            #line 36 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -64,14 +72,14 @@ namespace PPT.Test.E2E.Functions
             this.Write("Functions : FunctionTestBase\r\n    {\r\n        private readonly ILogger _logger = T" +
                     "estFactory.CreateLogger();\r\n        private PPT.Functions.");
             
-            #line 37 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 39 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(".Startup _startup;\r\n        private IHost _host;\r\n\r\n\r\n        public Test");
             
-            #line 41 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 43 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -94,7 +102,7 @@ namespace PPT.Test.E2E.Functions
 
             _startup = new PPT.Functions.");
             
-            #line 57 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 59 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -103,7 +111,7 @@ namespace PPT.Test.E2E.Functions
                     "Jobs(_startup.Configure)                \r\n                .Build();\r\n        }\r\n" +
                     "\r\n        [Test]\r\n        public async Task ");
             
-            #line 64 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 66 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural));
             
             #line default
@@ -111,7 +119,7 @@ namespace PPT.Test.E2E.Functions
             this.Write("GetAll_Success()\r\n        {\r\n            var request = TestFactory.CreateHttpRequ" +
                     "est();\r\n\r\n            var function = GetFunction<PPT.Functions.");
             
-            #line 68 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 70 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -125,7 +133,7 @@ namespace PPT.Test.E2E.Functions
 
             var dtos = JsonSerializer.Deserialize<List<PPT.DTO.");
             
-            #line 75 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 77 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -134,14 +142,14 @@ namespace PPT.Test.E2E.Functions
                     "Assert.IsNotEmpty(dtos);\r\n        }\r\n\r\n        [Test]\r\n        public async Task" +
                     " ");
             
-            #line 82 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 84 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural));
             
             #line default
             #line hidden
             this.Write("GetDetails_Success()\r\n        {\r\n            PPT.Interfaces.Entities.");
             
-            #line 84 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 86 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -150,14 +158,14 @@ namespace PPT.Test.E2E.Functions
                     " var request = TestFactory.CreateHttpRequest();\r\n                var response = " +
                     "(ObjectResult)await(GetFunction<PPT.Functions.");
             
-            #line 89 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 91 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(".V1.GetDetails>(_host)).Run(request,\r\n");
             
-            #line 90 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 92 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
 	for(int i = 0; i < pks.Count; ++i)
     {
@@ -167,14 +175,14 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("\t\t\t\t\ttestEntity.");
             
-            #line 94 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 96 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(",\r\n");
             
-            #line 95 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 97 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
 	}
 
@@ -185,7 +193,7 @@ namespace PPT.Test.E2E.Functions
                     "sert.AreEqual((int)HttpStatusCode.OK, response.StatusCode);\r\n\r\n                v" +
                     "ar dto = JsonSerializer.Deserialize<PPT.DTO.");
             
-            #line 103 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 105 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -205,14 +213,14 @@ namespace PPT.Test.E2E.Functions
         [Test]
         public async Task ");
             
-            #line 116 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 118 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural));
             
             #line default
             #line hidden
             this.Write("GetDetails_NotFound()\r\n        {\r\n");
             
-            #line 118 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 120 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
 		for(int i = 0; i < pks.Count; ++i)
 		{         
@@ -222,14 +230,14 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("\t\t\tvar param");
             
-            #line 122 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 124 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(" = Int64.MaxValue;\r\n");
             
-            #line 123 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 125 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
 		}
 
@@ -239,14 +247,14 @@ namespace PPT.Test.E2E.Functions
             this.Write("            var request = TestFactory.CreateHttpRequest();\r\n            var respo" +
                     "nse = (ObjectResult)await(GetFunction<PPT.Functions.");
             
-            #line 127 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 129 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(".V1.GetDetails>(_host)).Run(request, \r\n");
             
-            #line 128 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 130 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
 		for(int i = 0; i < pks.Count; ++i)
 		{         
@@ -256,14 +264,14 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("\t\t\t\tparam");
             
-            #line 132 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 134 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(",\r\n");
             
-            #line 133 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 135 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
 		}
 
@@ -274,14 +282,14 @@ namespace PPT.Test.E2E.Functions
                     "ual((int)HttpStatusCode.NotFound, response.StatusCode);\r\n        }\r\n\r\n        [T" +
                     "est]\r\n        public async Task ");
             
-            #line 143 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 145 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural));
             
             #line default
             #line hidden
             this.Write("Delete_Success()\r\n        {\r\n            PPT.Interfaces.Entities.");
             
-            #line 145 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 147 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -290,14 +298,14 @@ namespace PPT.Test.E2E.Functions
                     " var request = TestFactory.CreateHttpRequest();\r\n                var response = " +
                     "(StatusCodeResult)await(GetFunction<PPT.Functions.");
             
-            #line 150 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 152 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(".V1.Delete>(_host)).Run(request, \r\n\t\t\t\t");
             
-            #line 151 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 153 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
 					for(int i = 0; i < pks.Count; ++i)
 					{
@@ -307,14 +315,14 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("\t\t\t\t\ttestEntity.");
             
-            #line 155 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 157 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t");
             
-            #line 156 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 158 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
 					}
 				
@@ -336,14 +344,14 @@ namespace PPT.Test.E2E.Functions
         [Test]
         public async Task ");
             
-            #line 171 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 173 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural));
             
             #line default
             #line hidden
             this.Write("Delete_NotFound()\r\n        {\r\n");
             
-            #line 173 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 175 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
 		for(int i = 0; i < pks.Count; ++i)
 		{         
@@ -353,14 +361,14 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("\t\t\tvar param");
             
-            #line 177 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 179 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(" = Int64.MaxValue;\r\n");
             
-            #line 178 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 180 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
 		}
 
@@ -370,14 +378,14 @@ namespace PPT.Test.E2E.Functions
             this.Write("            var request = TestFactory.CreateHttpRequest();\r\n            var respo" +
                     "nse = (ObjectResult)await(GetFunction<PPT.Functions.");
             
-            #line 182 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 184 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(".V1.Delete>(_host)).Run(request, \r\n");
             
-            #line 183 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 185 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
 		for(int i = 0; i < pks.Count; ++i)
 		{         
@@ -387,14 +395,14 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("\t\t\t\tparam");
             
-            #line 187 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 189 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(",\r\n");
             
-            #line 188 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 190 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
 		}
 
@@ -405,14 +413,14 @@ namespace PPT.Test.E2E.Functions
                     "qual((int)HttpStatusCode.NotFound, response.StatusCode);\r\n        }\r\n\r\n        [" +
                     "Test]\r\n        public async Task ");
             
-            #line 198 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 200 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural));
             
             #line default
             #line hidden
             this.Write("Insert_Success()\r\n        {\r\n            PPT.Interfaces.Entities.");
             
-            #line 200 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 202 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -420,7 +428,7 @@ namespace PPT.Test.E2E.Functions
             this.Write(" testEntity = CreateTestEntity();\r\n\r\n            try\r\n            {\r\n            " +
                     "    var dtoReq = PPT.Utils.Convertors.");
             
-            #line 204 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 206 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -429,7 +437,7 @@ namespace PPT.Test.E2E.Functions
                     ".CreateHttpRequest(dtoReq);\r\n                var response = (ObjectResult)await(" +
                     "GetFunction<PPT.Functions.");
             
-            #line 207 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 209 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -438,14 +446,14 @@ namespace PPT.Test.E2E.Functions
                     "sponse);\r\n                Assert.AreEqual((int)HttpStatusCode.Created, response." +
                     "StatusCode);\r\n\r\n                var dto = JsonSerializer.Deserialize<PPT.DTO.");
             
-            #line 212 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 214 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(">(response.Value.ToString());\r\n\r\n                Assert.NotNull(dto);\r\n\r\n\t\t");
             
-            #line 216 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 218 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
 				for(int i = 0; i < pks.Count; ++i)
 				{         
@@ -455,21 +463,21 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("\t\t\t\ttestEntity.");
             
-            #line 220 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 222 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(" = dto.");
             
-            #line 220 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 222 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(";\r\n\t\t");
             
-            #line 221 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 223 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
 				}
 		
@@ -478,7 +486,7 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("\r\n\t\t");
             
-            #line 225 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 227 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -489,14 +497,14 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("                    Assert.NotNull(dto.");
             
-            #line 230 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 232 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n        ");
             
-            #line 231 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 233 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                     }
                     else {
@@ -506,21 +514,21 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("                    Assert.AreEqual(dtoReq.");
             
-            #line 235 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 237 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(", dto.");
             
-            #line 235 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 237 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n\t\t");
             
-            #line 236 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 238 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                     }
                 }
@@ -532,21 +540,21 @@ namespace PPT.Test.E2E.Functions
                     "ty(testEntity);\r\n            }\r\n        }\r\n\r\n        [Test]\r\n        public asyn" +
                     "c Task ");
             
-            #line 248 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 250 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural));
             
             #line default
             #line hidden
             this.Write("Update_Success()\r\n        {\r\n            PPT.Interfaces.Entities.");
             
-            #line 250 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 252 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" testEntity = AddTestEntity();\r\n\r\n            try\r\n            {\r\n              ");
             
-            #line 254 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 256 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -561,21 +569,21 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("              testEntity.");
             
-            #line 263 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 265 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = DateTime.Parse(\"");
             
-            #line 263 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 265 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\");\r\n              ");
             
-            #line 264 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 266 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                         }
                         else if(columnType == typeof(string))
@@ -586,21 +594,21 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("              testEntity.");
             
-            #line 269 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 271 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = \"");
             
-            #line 269 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 271 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\";\r\n              ");
             
-            #line 270 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 272 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                         }
                         else if(columnType == typeof(bool))
@@ -611,21 +619,21 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("              testEntity.");
             
-            #line 275 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 277 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 275 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 277 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString().ToLower()));
             
             #line default
             #line hidden
             this.Write(";              \r\n              ");
             
-            #line 276 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 278 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                         }
                         else if(testValsUpdateAfter[c.Name] != null)
@@ -636,21 +644,21 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("              testEntity.");
             
-            #line 281 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 283 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 281 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 283 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty)));
             
             #line default
             #line hidden
             this.Write(" ;\r\n              ");
             
-            #line 282 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 284 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                         }
                     }                    
@@ -661,7 +669,7 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("\r\n                var reqDto = ");
             
-            #line 288 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 290 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -670,7 +678,7 @@ namespace PPT.Test.E2E.Functions
                     ".CreateHttpRequest(reqDto);\r\n                var response = (ObjectResult)await(" +
                     "GetFunction<PPT.Functions.");
             
-            #line 291 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 293 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -679,14 +687,14 @@ namespace PPT.Test.E2E.Functions
                     "sponse);\r\n                Assert.AreEqual((int)HttpStatusCode.OK, response.Statu" +
                     "sCode);\r\n\r\n\t\t\t\tvar dto = JsonSerializer.Deserialize<PPT.DTO.");
             
-            #line 296 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 298 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(">(response.Value.ToString());\r\n\r\n\t\t\t\t");
             
-            #line 298 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 300 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -697,14 +705,14 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("                    Assert.NotNull(dto.");
             
-            #line 303 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 305 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n                ");
             
-            #line 304 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 306 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                     }
                     else {
@@ -714,21 +722,21 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("                    Assert.AreEqual(reqDto.");
             
-            #line 308 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 310 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(", dto.");
             
-            #line 308 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 310 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n                ");
             
-            #line 309 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 311 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                     }
                 }
@@ -740,14 +748,14 @@ namespace PPT.Test.E2E.Functions
                     "ty(testEntity);\r\n            }\r\n        }\r\n\r\n        [Test]\r\n        public asyn" +
                     "c Task ");
             
-            #line 321 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 323 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural));
             
             #line default
             #line hidden
             this.Write("Update_NotFound()\r\n        {\r\n            PPT.Interfaces.Entities.");
             
-            #line 323 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 325 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -755,7 +763,7 @@ namespace PPT.Test.E2E.Functions
             this.Write(" testEntity = CreateTestEntity();\r\n\r\n            try\r\n            {\r\n            " +
                     "  ");
             
-            #line 327 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 329 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -770,21 +778,21 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("              testEntity.");
             
-            #line 336 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 338 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = DateTime.Parse(\"");
             
-            #line 336 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 338 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\");\r\n              ");
             
-            #line 337 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 339 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                         }
                         else if(columnType == typeof(string))
@@ -795,21 +803,21 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("              testEntity.");
             
-            #line 342 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 344 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = \"");
             
-            #line 342 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 344 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\";\r\n              ");
             
-            #line 343 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 345 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                         }
                         else if(columnType == typeof(bool))
@@ -820,21 +828,21 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("              testEntity.");
             
-            #line 348 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 350 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 348 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 350 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString().ToLower()));
             
             #line default
             #line hidden
             this.Write(";              \r\n              ");
             
-            #line 349 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 351 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                         }
                         else if(testValsUpdateAfter[c.Name] != null)
@@ -845,21 +853,21 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("              testEntity.");
             
-            #line 354 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 356 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 354 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 356 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty)));
             
             #line default
             #line hidden
             this.Write(";\r\n              ");
             
-            #line 355 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 357 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                         }
                     }
@@ -871,14 +879,14 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("               testEntity.");
             
-            #line 361 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 363 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = Int64.MaxValue;\r\n               ");
             
-            #line 362 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 364 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                     }
                 }
@@ -888,7 +896,7 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("\r\n                var reqDto = ");
             
-            #line 367 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 369 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -897,7 +905,7 @@ namespace PPT.Test.E2E.Functions
                     ".CreateHttpRequest(reqDto);\r\n                var response = (ObjectResult)await(" +
                     "GetFunction<PPT.Functions.");
             
-            #line 370 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 372 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -917,7 +925,7 @@ namespace PPT.Test.E2E.Functions
 
         protected bool RemoveTestEntity(PPT.Interfaces.Entities.");
             
-            #line 383 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 385 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -925,7 +933,7 @@ namespace PPT.Test.E2E.Functions
             this.Write(" entity)\r\n        {\r\n            if (entity != null)\r\n            {\r\n            " +
                     "    var dal = CreateDal();\r\n\r\n\r\n");
             
-            #line 390 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 392 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
  
     if(IsSoftDelete && table.HasColumn(SoftDeleteField))
     {
@@ -935,7 +943,7 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("        return dal.Erase(");
             
-            #line 394 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 396 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                     for(int i = 0; i < pks.Count; ++i)
                     {
@@ -945,20 +953,20 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("                        entity.");
             
-            #line 398 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 400 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             
-            #line 398 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 400 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             this.Write("\r\n                ");
             
-            #line 399 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 401 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                     }
                 
@@ -967,7 +975,7 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write(");\r\n");
             
-            #line 402 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 404 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
     }
     else
@@ -978,7 +986,7 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("\r\n                return dal.Delete(");
             
-            #line 408 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 410 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                     for(int i = 0; i < pks.Count; ++i)
                     {
@@ -988,20 +996,20 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("                        entity.");
             
-            #line 412 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 414 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             
-            #line 412 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 414 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             this.Write("\r\n                ");
             
-            #line 413 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 415 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                     }
                 
@@ -1010,7 +1018,7 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write(");\r\n");
             
-            #line 416 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 418 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
     }
 
@@ -1020,7 +1028,7 @@ namespace PPT.Test.E2E.Functions
             this.Write("            }\r\n            else\r\n            {\r\n                return false;\r\n  " +
                     "          }\r\n        }\r\n\r\n        protected PPT.Interfaces.Entities.");
             
-            #line 426 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 428 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -1028,14 +1036,14 @@ namespace PPT.Test.E2E.Functions
             this.Write(" CreateTestEntity()\r\n        {\r\n            var entity = new PPT.Interfaces.Entit" +
                     "ies.");
             
-            #line 428 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 430 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("();\r\n            ");
             
-            #line 429 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 431 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -1050,21 +1058,21 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("              entity.");
             
-            #line 438 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 440 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = DateTime.Parse(\"");
             
-            #line 438 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 440 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\");\r\n              ");
             
-            #line 439 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 441 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                         }
                         else if(columnType == typeof(string))
@@ -1075,21 +1083,21 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("              entity.");
             
-            #line 444 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 446 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = \"");
             
-            #line 444 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 446 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\";\r\n              ");
             
-            #line 445 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 447 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                         }
                         else if(columnType == typeof(bool))
@@ -1100,21 +1108,21 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("              entity.");
             
-            #line 450 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 452 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 450 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 452 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString().ToLower()));
             
             #line default
             #line hidden
             this.Write(";              \r\n              ");
             
-            #line 451 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 453 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                         }
                         else if(testValsInsert[c.Name] != null)
@@ -1125,21 +1133,21 @@ namespace PPT.Test.E2E.Functions
             #line hidden
             this.Write("              entity.");
             
-            #line 456 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 458 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 456 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 458 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty)));
             
             #line default
             #line hidden
             this.Write(";\r\n              ");
             
-            #line 457 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 459 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
 
                         }
                     }
@@ -1151,14 +1159,14 @@ namespace PPT.Test.E2E.Functions
             this.Write("\r\n            return entity;\r\n        }\r\n\r\n        protected PPT.Interfaces.Entit" +
                     "ies.");
             
-            #line 466 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 468 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" AddTestEntity()\r\n        {\r\n            PPT.Interfaces.Entities.");
             
-            #line 468 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 470 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -1167,7 +1175,7 @@ namespace PPT.Test.E2E.Functions
                     "r dal = CreateDal();\r\n            result = dal.Insert(entity);\r\n\r\n            re" +
                     "turn result;\r\n        }\r\n\r\n        private PPT.Interfaces.I");
             
-            #line 478 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 480 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -1175,14 +1183,14 @@ namespace PPT.Test.E2E.Functions
             this.Write("Dal CreateDal()\r\n        {\r\n            var initParams = GetTestParams(\"DALInitPa" +
                     "rams\");\r\n\r\n            PPT.Interfaces.I");
             
-            #line 482 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 484 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal dal = new PPT.DAL.MSSQL.");
             
-            #line 482 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            #line 484 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -1201,6 +1209,19 @@ namespace PPT.Test.E2E.Functions
         }
         
         #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+
+private string _RootNamespaceField;
+
+/// <summary>
+/// Access the RootNamespace parameter of the template.
+/// </summary>
+private string RootNamespace
+{
+    get
+    {
+        return this._RootNamespaceField;
+    }
+}
 
 private global::CRUDAPI.DataModel.DataTable _tableField;
 
@@ -1301,6 +1322,20 @@ public virtual void Initialize()
 {
     if ((this.Errors.HasErrors == false))
     {
+bool RootNamespaceValueAcquired = false;
+if (this.Session.ContainsKey("RootNamespace"))
+{
+    this._RootNamespaceField = ((string)(this.Session["RootNamespace"]));
+    RootNamespaceValueAcquired = true;
+}
+if ((RootNamespaceValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("RootNamespace");
+    if ((data != null))
+    {
+        this._RootNamespaceField = ((string)(data));
+    }
+}
 bool tableValueAcquired = false;
 if (this.Session.ContainsKey("table"))
 {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PPT.PhotoPrint.API.Dal
+namespace PPT.API.Dal
 {
     public class DalBaseImpl<TEntity, TDal> : IDalBase<TEntity> where TDal : PPT.Interfaces.IDalBase<TEntity>
     {

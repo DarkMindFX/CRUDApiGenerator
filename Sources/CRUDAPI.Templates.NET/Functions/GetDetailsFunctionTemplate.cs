@@ -31,7 +31,7 @@ namespace CRUDAPI.Template.NET.Functions
             this.Write("\r\n");
             this.Write("\r\n");
             
-            #line 10 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 11 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
 
 var pks = modelHelper.GetPKColumns(table);
 var tableNamePlural = modelHelper.Pluralize( table.Name );
@@ -39,22 +39,39 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             
             #line default
             #line hidden
-            this.Write(@"
-using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using PPT.Services.Dal;
-using PPT.Utils.Convertors;
-using System.Net;
-using PPT.Functions.Common;
-
-namespace PPT.Functions.");
+            this.Write("\r\nusing System;\r\nusing System.Threading.Tasks;\r\nusing Microsoft.AspNetCore.Mvc;\r\n" +
+                    "using Microsoft.Azure.WebJobs;\r\nusing Microsoft.Azure.WebJobs.Extensions.Http;\r\n" +
+                    "using Microsoft.AspNetCore.Http;\r\nusing Microsoft.Extensions.Logging;\r\nusing ");
             
-            #line 27 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 23 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Services.Dal;\r\nusing ");
+            
+            #line 24 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Utils.Convertors;\r\nusing System.Net;\r\nusing ");
+            
+            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.Common;\r\n\r\nnamespace ");
+            
+            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
+            
+            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -62,49 +79,49 @@ namespace PPT.Functions.");
             this.Write(".V1\r\n{\r\n    public class GetDetails : FunctionBase\r\n    {\r\n        private readon" +
                     "ly I");
             
-            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal _dal");
             
-            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(";\r\n\r\n        public GetDetails(IHttpContextAccessor httpContextAccessor, I");
             
-            #line 33 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal dal");
             
-            #line 33 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(") : base(httpContextAccessor)\r\n        {\r\n            _dal");
             
-            #line 35 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 36 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" = dal");
             
-            #line 35 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 36 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(";\r\n        }\r\n\r\n        [Authorize]    \r\n        [FunctionName(\"");
             
-            #line 39 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural));
             
             #line default
@@ -112,14 +129,14 @@ namespace PPT.Functions.");
             this.Write("GetDetails\")]\r\n        public async Task<IActionResult> Run(\r\n            [HttpTr" +
                     "igger(AuthorizationLevel.Anonymous, \"get\", Route = \"v1/");
             
-            #line 41 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 42 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural.ToLower()));
             
             #line default
             #line hidden
             this.Write("/{");
             
-            #line 41 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 42 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
 for(int i = 0; i < pks.Count; ++i)
             {
             var pk = pks[i];
@@ -128,26 +145,26 @@ for(int i = 0; i < pks.Count; ++i)
             #line default
             #line hidden
             
-            #line 44 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 45 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
             
             #line default
             #line hidden
             
-            #line 44 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 45 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "/" : string.Empty));
             
             #line default
             #line hidden
             
-            #line 44 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 45 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("}\")] HttpRequest req,\r\n            ");
             
-            #line 45 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 46 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
 
             
             for(int i = 0; i < pks.Count; ++i)
@@ -158,26 +175,26 @@ for(int i = 0; i < pks.Count; ++i)
             #line default
             #line hidden
             
-            #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 51 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(pk)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 51 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
             
             #line default
             #line hidden
             
-            #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 51 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 51 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
 }
             
             #line default
@@ -193,14 +210,14 @@ for(int i = 0; i < pks.Count; ++i)
             {
                 var e = _dal");
             
-            #line 59 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 60 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(".Get(");
             
-            #line 59 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 60 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
 for(int i = 0; i < pks.Count; ++i)
 													{
 													var pk = pks[i];
@@ -209,19 +226,19 @@ for(int i = 0; i < pks.Count; ++i)
             #line default
             #line hidden
             
-            #line 62 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 63 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
             
             #line default
             #line hidden
             
-            #line 62 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 63 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 62 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 63 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
 }
             
             #line default
@@ -229,7 +246,7 @@ for(int i = 0; i < pks.Count; ++i)
             this.Write(");\r\n                if (e != null)\r\n                {\r\n                    var dt" +
                     "os = ");
             
-            #line 65 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 66 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -245,14 +262,14 @@ for(int i = 0; i < pks.Count; ++i)
                         Code = (int)HttpStatusCode.NotFound,
                         Message = $""");
             
-            #line 74 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 75 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" was found, but item was not deleted [ids:{");
             
-            #line 74 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 75 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
 
                                             for(int i = 0; i < pks.Count; ++i)
                                             {
@@ -262,19 +279,19 @@ for(int i = 0; i < pks.Count; ++i)
             #line default
             #line hidden
             
-            #line 78 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 79 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name.ToLower()));
             
             #line default
             #line hidden
             
-            #line 78 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 79 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "}, {" : "}"));
             
             #line default
             #line hidden
             
-            #line 78 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            #line 79 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
  } 
             
             #line default
@@ -301,6 +318,19 @@ for(int i = 0; i < pks.Count; ++i)
         }
         
         #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+
+private string _RootNamespaceField;
+
+/// <summary>
+/// Access the RootNamespace parameter of the template.
+/// </summary>
+private string RootNamespace
+{
+    get
+    {
+        return this._RootNamespaceField;
+    }
+}
 
 private global::CRUDAPI.DataModel.DataTable _tableField;
 
@@ -336,6 +366,20 @@ public virtual void Initialize()
 {
     if ((this.Errors.HasErrors == false))
     {
+bool RootNamespaceValueAcquired = false;
+if (this.Session.ContainsKey("RootNamespace"))
+{
+    this._RootNamespaceField = ((string)(this.Session["RootNamespace"]));
+    RootNamespaceValueAcquired = true;
+}
+if ((RootNamespaceValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("RootNamespace");
+    if ((data != null))
+    {
+        this._RootNamespaceField = ((string)(data));
+    }
+}
 bool tableValueAcquired = false;
 if (this.Session.ContainsKey("table"))
 {

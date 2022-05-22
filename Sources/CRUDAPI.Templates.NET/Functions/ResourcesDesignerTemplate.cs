@@ -40,9 +40,16 @@ namespace CRUDAPI.Template.NET.Functions
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PPT.Functions.");
+namespace ");
             
-            #line 20 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\ResourcesDesignerTemplate.tt"
+            #line 21 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\ResourcesDesignerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
+            
+            #line 21 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\ResourcesDesignerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -69,7 +76,7 @@ namespace PPT.Functions.");
                     " null)) {\r\n                    global::System.Resources.ResourceManager temp = n" +
                     "ew global::System.Resources.ResourceManager(\"PPT.Functions.");
             
-            #line 51 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\ResourcesDesignerTemplate.tt"
+            #line 52 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\ResourcesDesignerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -100,6 +107,19 @@ namespace PPT.Functions.");
         }
         
         #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\ResourcesDesignerTemplate.tt"
+
+private string _RootNamespaceField;
+
+/// <summary>
+/// Access the RootNamespace parameter of the template.
+/// </summary>
+private string RootNamespace
+{
+    get
+    {
+        return this._RootNamespaceField;
+    }
+}
 
 private global::CRUDAPI.DataModel.DataTable _tableField;
 
@@ -135,6 +155,20 @@ public virtual void Initialize()
 {
     if ((this.Errors.HasErrors == false))
     {
+bool RootNamespaceValueAcquired = false;
+if (this.Session.ContainsKey("RootNamespace"))
+{
+    this._RootNamespaceField = ((string)(this.Session["RootNamespace"]));
+    RootNamespaceValueAcquired = true;
+}
+if ((RootNamespaceValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("RootNamespace");
+    if ((data != null))
+    {
+        this._RootNamespaceField = ((string)(data));
+    }
+}
 bool tableValueAcquired = false;
 if (this.Session.ContainsKey("table"))
 {

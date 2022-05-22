@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace PPT.PhotoPrint.API.Helpers
+namespace PPT.API.Helpers
 {
     public class ServiceConfig
     {

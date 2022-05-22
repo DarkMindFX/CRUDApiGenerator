@@ -1,4 +1,5 @@
 ﻿using CRUDAPI.DataModel;
+using CRUDAPI.Generators;
 using CRUDAPI.Template.NET.API;
 using System;
 using System.Collections.Generic;
@@ -7,36 +8,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRUDAPI.Generators
+namespace CRUDAPI.Generator
 {
-    public class EntityControllerGenerator : GeneratorBase
+    class SlnFileGenerator : GeneratorBase
     {
 
-        public EntityControllerGenerator(GeneratorParams genParams) : base(genParams)
+        public SlnFileGenerator(GeneratorParams genParams) : base(genParams)
         {
         }
 
         public override IList<string> Generate()
         {
-            IList<string> files = new List<string>();
+            IList<string> result = new List<string>();
 
             var modelHelper = new ModelHelper();
 
-            files.Add(GenerateEntity(modelHelper));
+            result.Add(GenerateSetup(modelHelper));
 
-            return files;
+            return result;
         }
 
-        protected string GenerateEntity(ModelHelper modelHelper)
+        protected string GenerateSetup(ModelHelper modelHelper)
         {
-            string fileName = $"{modelHelper.Pluralize(_genParams.Table.Name)}Controller.cs";
+            string fileName = $"{base._genParams.Settings.RootNamespace}.API.sln";
             string fileOut = Path.Combine(GetOutputFolder(), fileName);
 
-            var template = new EntityControllerTemplate();
+            var template = new SolutionTemplate();
             template.Session = new Dictionary<string, object>();
 
             template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
-            template.Session["table"] = _genParams.Table;
+            template.Session["FunctionProjectNameTemplate"] = _genParams.Settings.FunctionProjectNameTemplate;
+            template.Session["tables"] = _genParams.Tables;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
 
@@ -49,10 +51,7 @@ namespace CRUDAPI.Generators
 
         protected string GetOutputFolder()
         {
-            string outFolder = Path.Combine(_genParams.Settings.OutputRoot, 
-                                            _genParams.Timestamp.ToString("yyyy-MM-dd HH-mm-ss"), 
-                                            _genParams.Settings.OutputFolders["Controllers"], 
-                                            _genParams.Settings.APIVersion);
+            string outFolder = Path.Combine(_genParams.Settings.OutputRoot, _genParams.Timestamp.ToString("yyyy-MM-dd HH-mm-ss"), _genParams.Settings.OutputFolders["SlnFileDest"]);
             if (!Directory.Exists(outFolder))
             {
                 Directory.CreateDirectory(outFolder);

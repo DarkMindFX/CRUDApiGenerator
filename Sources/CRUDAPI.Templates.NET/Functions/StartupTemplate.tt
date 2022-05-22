@@ -4,6 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 
@@ -14,10 +15,10 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
 
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-using PPT.Functions.Common;
+using <#= RootNamespace #>.Functions.Common;
 
 [assembly: FunctionsStartup(typeof(PPT.Functions.<#= table.Name #>.Startup))]
-namespace PPT.Functions.<#= table.Name #>
+namespace <#=RootNamespace #>.Functions.<#= table.Name #>
 {
     public class Startup : FunctionStartupBase
     {

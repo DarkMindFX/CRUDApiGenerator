@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using CRUDAPI.Generators;
 using CRUDAPI.Settings;
+using CRUDAPI.Generator;
 
 namespace T4DalGenerator
 {
@@ -60,6 +61,7 @@ namespace T4DalGenerator
                 Generate<ConvertorsGenerator>(tables, settings, timestamp);
                 Generate<EntityControllerGenerator>(tables, settings, timestamp);
                 GenerateSingle<StartupGenerator>(tables, settings, timestamp);
+                GenerateSingle<SlnFileGenerator>(tables, settings, timestamp);
                 Generate<ControllerTestGenerator>(tables, settings, timestamp);
 
                 Generate<EntityFunctionGenerator>(tables, settings, timestamp);

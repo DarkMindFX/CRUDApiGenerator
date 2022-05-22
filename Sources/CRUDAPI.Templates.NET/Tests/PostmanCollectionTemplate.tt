@@ -5,6 +5,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Web.Script.Serialization" #>
 
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="tables" type="System.Collections.Generic.IList<CRUDAPI.DataModel.DataTable>" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 
@@ -15,7 +16,7 @@
 {
 	"info": {
 		"_postman_id": "BC1C4F03-F7A1-4A11-8F35-EDB40AD47891",
-		"name": "PhotoPrint.API",
+		"name": "API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [

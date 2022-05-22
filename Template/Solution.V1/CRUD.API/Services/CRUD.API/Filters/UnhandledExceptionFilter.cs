@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using PhotoPrint.API.Exceptions;
+using API.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -10,7 +10,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace PPT.PhotoPrint.API.Filters
+namespace PPT.API.Filters
 {
     public class UnhandledExceptionFilter : ExceptionFilterAttribute
     {

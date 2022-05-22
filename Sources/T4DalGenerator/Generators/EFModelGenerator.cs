@@ -34,6 +34,7 @@ namespace CRUDAPI.Generators
             var template = new EFModelTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["refTables"] = GetRefTables(_genParams.Table.Name, _genParams.Tables);

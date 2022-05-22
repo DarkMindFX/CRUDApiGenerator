@@ -31,7 +31,8 @@ namespace CRUDAPI.Generators
 
             var template = new StartupTemplate();
             template.Session = new Dictionary<string, object>();
-            
+
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["tables"] = _genParams.Tables;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();

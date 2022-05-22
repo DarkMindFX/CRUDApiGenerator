@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace PPT.PhotoPrint.API
+namespace PPT.API
 {
     public class Program
     {
@@ -20,7 +20,7 @@ namespace PPT.PhotoPrint.API
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<PPT.PhotoPrint.API.Startup>();
+                    webBuilder.UseStartup<PPT.API.Startup>();
                 });
     }
 }

@@ -4,6 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 

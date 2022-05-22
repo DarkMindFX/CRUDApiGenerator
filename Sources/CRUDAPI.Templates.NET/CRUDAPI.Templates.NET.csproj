@@ -66,6 +66,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="API\SolutionTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SolutionTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Update="API\SQLDalImplTemplate.cs">
       <DependentUpon>SQLDalImplTemplate.tt</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -259,6 +264,10 @@
     <None Update="API\ServiceDalImplTemplate.tt">
       <LastGenOutput>ServiceDalImplTemplate.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="API\SolutionTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SolutionTemplate.cs</LastGenOutput>
     </None>
     <None Update="API\SQLDalImplTemplate.tt">
       <LastGenOutput>SQLDalImplTemplate.cs</LastGenOutput>

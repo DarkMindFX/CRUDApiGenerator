@@ -28,6 +28,7 @@ namespace CRUDAPI.Template.NET.Functions
         /// </summary>
         public virtual string TransformText()
         {
+            this.Write("\r\n");
             this.Write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<root>\r\n\t<!-- \r\n\t\tMicrosoft ResX Schema\r\n" +
                     "\r\n\t\tVersion 1.3\r\n\r\n\t\tThe primary goals of this format is to allow a simple XML f" +
                     "ormat \r\n\t\tthat is mostly human readable. The generation and parsing of the \r\n\t\tv" +
@@ -89,6 +90,19 @@ namespace CRUDAPI.Template.NET.Functions
         
         #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\ResourcesResxTemplate.tt"
 
+private string _RootNamespaceField;
+
+/// <summary>
+/// Access the RootNamespace parameter of the template.
+/// </summary>
+private string RootNamespace
+{
+    get
+    {
+        return this._RootNamespaceField;
+    }
+}
+
 private global::CRUDAPI.DataModel.DataTable _tableField;
 
 /// <summary>
@@ -110,6 +124,20 @@ public virtual void Initialize()
 {
     if ((this.Errors.HasErrors == false))
     {
+bool RootNamespaceValueAcquired = false;
+if (this.Session.ContainsKey("RootNamespace"))
+{
+    this._RootNamespaceField = ((string)(this.Session["RootNamespace"]));
+    RootNamespaceValueAcquired = true;
+}
+if ((RootNamespaceValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("RootNamespace");
+    if ((data != null))
+    {
+        this._RootNamespaceField = ((string)(data));
+    }
+}
 bool tableValueAcquired = false;
 if (this.Session.ContainsKey("table"))
 {

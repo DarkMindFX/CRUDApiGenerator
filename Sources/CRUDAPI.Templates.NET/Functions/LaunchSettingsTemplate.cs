@@ -31,7 +31,7 @@ namespace CRUDAPI.Template.NET.Functions
             this.Write("\r\n");
             this.Write("\r\n{\r\n  \"profiles\": {\r\n    \"CRUD.Functions.");
             
-            #line 12 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\LaunchSettingsTemplate.tt"
+            #line 13 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\LaunchSettingsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -57,6 +57,19 @@ namespace CRUDAPI.Template.NET.Functions
         }
         
         #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\LaunchSettingsTemplate.tt"
+
+private string _RootNamespaceField;
+
+/// <summary>
+/// Access the RootNamespace parameter of the template.
+/// </summary>
+private string RootNamespace
+{
+    get
+    {
+        return this._RootNamespaceField;
+    }
+}
 
 private global::CRUDAPI.DataModel.DataTable _tableField;
 
@@ -92,6 +105,20 @@ public virtual void Initialize()
 {
     if ((this.Errors.HasErrors == false))
     {
+bool RootNamespaceValueAcquired = false;
+if (this.Session.ContainsKey("RootNamespace"))
+{
+    this._RootNamespaceField = ((string)(this.Session["RootNamespace"]));
+    RootNamespaceValueAcquired = true;
+}
+if ((RootNamespaceValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("RootNamespace");
+    if ((data != null))
+    {
+        this._RootNamespaceField = ((string)(data));
+    }
+}
 bool tableValueAcquired = false;
 if (this.Session.ContainsKey("table"))
 {

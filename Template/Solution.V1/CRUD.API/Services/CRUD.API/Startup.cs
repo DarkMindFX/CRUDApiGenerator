@@ -7,8 +7,8 @@ using System.ComponentModel.Composition.Hosting;
 using System.IO;
 using System.Reflection;
 using System.Text;
-using PPT.PhotoPrint.API.Helpers;
-using PPT.PhotoPrint.API.MiddleWare;
+using PPT.API.Helpers;
+using PPT.API.MiddleWare;
 using PPT.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -17,7 +17,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace PPT.PhotoPrint.API
+namespace PPT.API
 {
     public class Startup
     {

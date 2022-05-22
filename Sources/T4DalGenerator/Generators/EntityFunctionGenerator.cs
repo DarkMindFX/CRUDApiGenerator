@@ -71,6 +71,7 @@ namespace CRUDAPI.Generators
             var template = new HostJosnTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -90,6 +91,7 @@ namespace CRUDAPI.Generators
             var template = new LocalSettingsJsonTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -109,6 +111,7 @@ namespace CRUDAPI.Generators
             var template = new StartupTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -133,6 +136,7 @@ namespace CRUDAPI.Generators
             var template = new ResourcesResxTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -157,6 +161,7 @@ namespace CRUDAPI.Generators
             var template = new ResourcesDesignerTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -181,6 +186,7 @@ namespace CRUDAPI.Generators
             var template = new LaunchSettingsTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -205,6 +211,7 @@ namespace CRUDAPI.Generators
             var template = new ServiceDependenciesJsonTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -229,6 +236,7 @@ namespace CRUDAPI.Generators
             var template = new ServiceDependenciesLocalJsonTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -253,6 +261,7 @@ namespace CRUDAPI.Generators
             var template = new DeleteFunctionTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -277,6 +286,7 @@ namespace CRUDAPI.Generators
             var template = new EraseFunctionTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -301,6 +311,7 @@ namespace CRUDAPI.Generators
             var template = new GetAllFunctionTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -325,6 +336,7 @@ namespace CRUDAPI.Generators
             var template = new GetDetailsFunctionTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -349,6 +361,7 @@ namespace CRUDAPI.Generators
             var template = new InsertFuncrtionTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -373,6 +386,7 @@ namespace CRUDAPI.Generators
             var template = new UpdateFunctionTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();

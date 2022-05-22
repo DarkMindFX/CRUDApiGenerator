@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using PPT.Interfaces;
-using PPT.PhotoPrint.API.Filters;
+using PPT.API.Filters;
 
-namespace PPT.PhotoPrint.API.Controllers.V1
+namespace PPT.API.Controllers.V1
 {
     [ApiController]
     [UnhandledExceptionFilter]
@@ -33,10 +33,10 @@ namespace PPT.PhotoPrint.API.Controllers.V1
         {
             var dto = new DTO.HealthResponse();
             dto.Timestamp = DateTime.UtcNow;
-            dto.Message = "PPT.PhotoPrint.API health details";
+            dto.Message = "PPT.API health details";
 
             dto.Diagnostics = new Dictionary<string, object>();
-            dto.Diagnostics["PPT.PhotoPrint.API"] = "OK";
+            dto.Diagnostics["PPT.API"] = "OK";
 
             bool canConnectDal = CanConnectDal();
             dto.Diagnostics["DAL"] = canConnectDal ? "OK" : "FAIL";

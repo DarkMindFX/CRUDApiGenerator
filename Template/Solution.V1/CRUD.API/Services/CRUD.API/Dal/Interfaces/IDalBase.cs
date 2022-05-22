@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PPT.PhotoPrint.API.Dal
+namespace PPT.API.Dal
 {
     public interface IDalBase<TEntity> 
     {

@@ -4,17 +4,14 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
-
-
-
-
 
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace PPT.Utils.Convertors
+namespace <#=RootNamespace #>.Utils.Convertors
 {
     public class <#= table.Name #>Convertor
     {

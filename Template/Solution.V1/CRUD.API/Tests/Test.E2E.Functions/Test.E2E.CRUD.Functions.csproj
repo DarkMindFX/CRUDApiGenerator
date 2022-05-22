@@ -19,6 +19,7 @@
     <ProjectReference Include="..\..\CRUD.DAL.MSSQL\CRUD.DAL.MSSQL.csproj" />
     <ProjectReference Include="..\..\CRUD.DTO\CRUD.DTO.csproj" />
     <ProjectReference Include="..\..\CRUD.Services.DAL\CRUD.Services.DAL.csproj" />
+    <ProjectReference Include="..\..\CRUD.Utils\CRUD.Utils.csproj" />
     <ProjectReference Include="..\Test.Functions.Common\Test.Functions.Common.csproj" />
   </ItemGroup>
 

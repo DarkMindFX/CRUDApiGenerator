@@ -3,6 +3,8 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
+
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 <#@ parameter name="testValsGet" type="System.Collections.Generic.IDictionary<string,object>" #>
@@ -19,17 +21,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NUnit.Framework;
-using PPT.Utils.Convertors;
+using <#= RootNamespace #>.Utils.Convertors;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
-using PPT.Test.Functions.Common;
+using <#= RootNamespace #>.Test.Functions.Common;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace PPT.Test.E2E.Functions
+namespace <#=RootNamespace #>.Test.E2E.Functions
 {
     public class Test<#= table.Name #>Functions : FunctionTestBase
     {

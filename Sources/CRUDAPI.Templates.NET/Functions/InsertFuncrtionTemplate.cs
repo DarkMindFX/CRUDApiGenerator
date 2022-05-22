@@ -31,7 +31,7 @@ namespace CRUDAPI.Template.NET.Functions
             this.Write("\r\n");
             this.Write("\r\n");
             
-            #line 10 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 11 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
 
 var pks = modelHelper.GetPKColumns(table);
 var tableNamePlural = modelHelper.Pluralize( table.Name );
@@ -49,15 +49,44 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using PPT.Utils.Convertors;
-using PPT.Services.Common.Helpers;
-using PPT.Services.Dal;
-using System.Net;
-using PPT.Functions.Common;
-
-namespace PPT.Functions.");
+using ");
             
-            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 25 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Utils.Convertors;\r\nusing ");
+            
+            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Services.Common.Helpers;\r\nusing ");
+            
+            #line 27 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Services.Dal;\r\nusing System.Net;\r\nusing ");
+            
+            #line 29 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.Common;\r\n\r\nnamespace ");
+            
+            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
+            
+            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -65,49 +94,49 @@ namespace PPT.Functions.");
             this.Write(".V1\r\n{\r\n    public class Insert : FunctionBase\r\n    {\r\n        private readonly I" +
                     "");
             
-            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 35 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal _dal");
             
-            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 35 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(";\r\n\r\n        public Insert(IHttpContextAccessor httpContextAccessor, I");
             
-            #line 36 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 37 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal dal");
             
-            #line 36 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 37 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(") : base(httpContextAccessor)\r\n        {\r\n            _dal");
             
-            #line 38 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 39 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" = dal");
             
-            #line 38 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 39 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(";\r\n        }\r\n\r\n        [Authorize]\r\n        [FunctionName(\"");
             
-            #line 42 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 43 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural));
             
             #line default
@@ -115,7 +144,7 @@ namespace PPT.Functions.");
             this.Write("Insert\")]\r\n        public async Task<IActionResult> Run(\r\n            [HttpTrigge" +
                     "r(AuthorizationLevel.Function, \"post\", Route = \"v1/");
             
-            #line 44 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 45 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNamePlural.ToLower()));
             
             #line default
@@ -133,21 +162,21 @@ namespace PPT.Functions.");
 
                 var dto = JsonConvert.DeserializeObject<PPT.DTO.");
             
-            #line 55 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 56 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(">(content);\r\n\r\n                var entity = ");
             
-            #line 57 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Convertor.Convert(dto);\r\n\r\n\t\t\t\t");
             
-            #line 59 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 60 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
 
                 if(table.HasColumn("CreatedDate") || table.HasColumn("CreatedByID"))
                 {
@@ -157,14 +186,14 @@ namespace PPT.Functions.");
             #line hidden
             this.Write("\t\t\t\tfunHelper.SetCreatedModifiedProperties(entity, \r\n\t\t\t\t\t\t\t\t\t\t");
             
-            #line 64 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 65 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.HasColumn("CreatedDate") ? "\"CreatedDate\"" : "null"));
             
             #line default
             #line hidden
             this.Write(", \r\n\t\t\t\t\t\t\t\t\t\t");
             
-            #line 65 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 66 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.HasColumn("CreatedByID") ? "\"CreatedByID\"" : "null"));
             
             #line default
@@ -172,7 +201,7 @@ namespace PPT.Functions.");
             this.Write(",\r\n\t\t\t\t\t\t\t\t\t\t(PPT.Interfaces.Entities.User)req.HttpContext.Items[\"User\"]); \r\n\t\t\t\t" +
                     "");
             
-            #line 67 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 68 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
 
 					}
 				
@@ -181,14 +210,14 @@ namespace PPT.Functions.");
             #line hidden
             this.Write("\r\n                PPT.Interfaces.Entities.");
             
-            #line 71 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 72 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" newEntity = _dal");
             
-            #line 71 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 72 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -196,7 +225,7 @@ namespace PPT.Functions.");
             this.Write(".Insert(entity);\r\n\r\n                if (newEntity != null)\r\n                {\r\n  " +
                     "                  result = new ObjectResult(funHelper.ToJosn(");
             
-            #line 75 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 76 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -213,7 +242,7 @@ namespace PPT.Functions.");
                         Code = (int)HttpStatusCode.InternalServerError,
                         Message = $""Something went wrong. ");
             
-            #line 85 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+            #line 86 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -240,6 +269,19 @@ namespace PPT.Functions.");
         }
         
         #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\InsertFuncrtionTemplate.tt"
+
+private string _RootNamespaceField;
+
+/// <summary>
+/// Access the RootNamespace parameter of the template.
+/// </summary>
+private string RootNamespace
+{
+    get
+    {
+        return this._RootNamespaceField;
+    }
+}
 
 private global::CRUDAPI.DataModel.DataTable _tableField;
 
@@ -275,6 +317,20 @@ public virtual void Initialize()
 {
     if ((this.Errors.HasErrors == false))
     {
+bool RootNamespaceValueAcquired = false;
+if (this.Session.ContainsKey("RootNamespace"))
+{
+    this._RootNamespaceField = ((string)(this.Session["RootNamespace"]));
+    RootNamespaceValueAcquired = true;
+}
+if ((RootNamespaceValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("RootNamespace");
+    if ((data != null))
+    {
+        this._RootNamespaceField = ((string)(data));
+    }
+}
 bool tableValueAcquired = false;
 if (this.Session.ContainsKey("table"))
 {

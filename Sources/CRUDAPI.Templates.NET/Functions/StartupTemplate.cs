@@ -31,7 +31,7 @@ namespace CRUDAPI.Template.NET.Functions
             this.Write("\r\n");
             this.Write("\r\n");
             
-            #line 10 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
+            #line 11 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
 
 var pks = modelHelper.GetPKColumns(table);
 var tableNamePlural = modelHelper.Pluralize( table.Name );
@@ -40,17 +40,30 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line default
             #line hidden
             this.Write("\r\nusing Microsoft.Azure.Functions.Extensions.DependencyInjection;\r\nusing Microsof" +
-                    "t.Extensions.DependencyInjection;\r\nusing PPT.Functions.Common;\r\n\r\n[assembly: Fun" +
-                    "ctionsStartup(typeof(PPT.Functions.");
+                    "t.Extensions.DependencyInjection;\r\nusing ");
             
-            #line 19 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
+            #line 18 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.Common;\r\n\r\n[assembly: FunctionsStartup(typeof(PPT.Functions.");
+            
+            #line 20 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(".Startup))]\r\nnamespace PPT.Functions.");
+            this.Write(".Startup))]\r\nnamespace ");
             
-            #line 20 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
+            #line 21 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
+            
+            #line 21 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -59,42 +72,42 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
                     "de void Configure(IFunctionsHostBuilder builder)\r\n        {\r\n            base.Co" +
                     "nfigure(builder);\r\n\r\n            var dal");
             
-            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
+            #line 29 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal = InitDal<Interfaces.I");
             
-            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
+            #line 29 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal>();\r\n            builder.Services.AddSingleton<Interfaces.I");
             
-            #line 29 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal>(dal");
             
-            #line 29 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal);\r\n            builder.Services.AddSingleton<PPT.Services.Dal.I");
             
-            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
+            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal, PPT.Services.Dal.");
             
-            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
+            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -104,6 +117,19 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
         }
         
         #line 1 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
+
+private string _RootNamespaceField;
+
+/// <summary>
+/// Access the RootNamespace parameter of the template.
+/// </summary>
+private string RootNamespace
+{
+    get
+    {
+        return this._RootNamespaceField;
+    }
+}
 
 private global::CRUDAPI.DataModel.DataTable _tableField;
 
@@ -139,6 +165,20 @@ public virtual void Initialize()
 {
     if ((this.Errors.HasErrors == false))
     {
+bool RootNamespaceValueAcquired = false;
+if (this.Session.ContainsKey("RootNamespace"))
+{
+    this._RootNamespaceField = ((string)(this.Session["RootNamespace"]));
+    RootNamespaceValueAcquired = true;
+}
+if ((RootNamespaceValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("RootNamespace");
+    if ((data != null))
+    {
+        this._RootNamespaceField = ((string)(data));
+    }
+}
 bool tableValueAcquired = false;
 if (this.Session.ContainsKey("table"))
 {

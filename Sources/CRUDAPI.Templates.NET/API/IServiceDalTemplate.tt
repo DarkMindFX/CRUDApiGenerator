@@ -4,18 +4,19 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 
 <#@ parameter name="IsSoftDelete" type="System.Boolean" #>
 <#@ parameter name="SoftDeleteField" type="System.String" #>
 
-using PPT.Interfaces.Entities;
+using <#= RootNamespace #>.Interfaces.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PPT.Services.Dal
+namespace <#=RootNamespace #>.Services.Dal
 {
     public interface I<#= table.Name #>Dal : IDalBase<<#= table.Name #>>
     {

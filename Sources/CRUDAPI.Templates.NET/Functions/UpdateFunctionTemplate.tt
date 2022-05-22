@@ -4,6 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 
@@ -22,13 +23,13 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using PPT.Utils.Convertors;
+using <#= RootNamespace #>.Utils.Convertors;
 using System.Net;
-using PPT.Services.Dal;
-using PPT.Services.Common.Helpers;
-using PPT.Functions.Common;
+using <#= RootNamespace #>.Services.Dal;
+using <#= RootNamespace #>.Services.Common.Helpers;
+using <#= RootNamespace #>.Functions.Common;
 
-namespace PPT.Functions.<#= table.Name #>.V1
+namespace <#=RootNamespace #>.Functions.<#= table.Name #>.V1
 {
     public class Update : FunctionBase
     {

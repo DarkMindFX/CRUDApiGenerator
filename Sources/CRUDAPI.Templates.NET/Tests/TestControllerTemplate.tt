@@ -4,6 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 
@@ -13,9 +14,9 @@
 <#@ parameter name="IsSoftDelete" type="System.Boolean" #>
 <#@ parameter name="SoftDeleteField" type="System.String" #>
 
-using PPT.DTO;
-using PPT.Utils.Convertors;
-using PhotoPrint.Test.E2E.API;
+using <#= RootNamespace #>.DTO;
+using <#= RootNamespace #>.Utils.Convertors;
+using Test.E2E.API;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System;
 using System.Collections.Generic;
@@ -26,11 +27,11 @@ using Xunit;
 		var pks = modelHelper.GetPKColumns(table);
 #>
 
-namespace Test.E2E.PhotoPrint.API.Controllers.V1
+namespace Test.E2E.API.Controllers.V1
 {
-    public class Test<#= modelHelper.Pluralize(table.Name) #>Controller : E2ETestBase, IClassFixture<WebApplicationFactory<PPT.PhotoPrint.API.Startup>>
+    public class Test<#= modelHelper.Pluralize(table.Name) #>Controller : E2ETestBase, IClassFixture<WebApplicationFactory<PPT.API.Startup>>
     {
-        public Test<#= modelHelper.Pluralize(table.Name) #>Controller(WebApplicationFactory<PPT.PhotoPrint.API.Startup> factory) : base(factory)
+        public Test<#= modelHelper.Pluralize(table.Name) #>Controller(WebApplicationFactory<PPT.API.Startup> factory) : base(factory)
         {
             _testParams = GetTestParams("GenericControllerTestSettings");
         }

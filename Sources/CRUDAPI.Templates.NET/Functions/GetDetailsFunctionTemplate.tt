@@ -4,6 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 
@@ -19,12 +20,12 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using PPT.Services.Dal;
-using PPT.Utils.Convertors;
+using <#= RootNamespace #>.Services.Dal;
+using <#= RootNamespace #>.Utils.Convertors;
 using System.Net;
-using PPT.Functions.Common;
+using <#= RootNamespace #>.Functions.Common;
 
-namespace PPT.Functions.<#= table.Name #>.V1
+namespace <#=RootNamespace #>.Functions.<#= table.Name #>.V1
 {
     public class GetDetails : FunctionBase
     {

@@ -4,8 +4,9 @@ using PPT.Interfaces.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using PPT.Services.Dal;
 
-namespace PPT.PhotoPrint.API.Dal
+namespace PPT.Services.Dal
 {
     public interface IUserDal : IDalBase<User>
     {

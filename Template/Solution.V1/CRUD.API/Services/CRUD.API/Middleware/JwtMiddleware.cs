@@ -8,10 +8,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PPT.PhotoPrint.API.Helpers;
-using PPT.PhotoPrint.API.Dal;
+using PPT.API.Helpers;
+using PPT.API.Dal;
 
-namespace PPT.PhotoPrint.API.MiddleWare
+namespace PPT.API.MiddleWare
 {
     public class JwtMiddleware
     {

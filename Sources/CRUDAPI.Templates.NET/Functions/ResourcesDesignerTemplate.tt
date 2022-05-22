@@ -4,6 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 
@@ -17,7 +18,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PPT.Functions.<#= table.Name #>.Properties {
+namespace <#=RootNamespace #>.Functions.<#= table.Name #>.Properties {
     using System;
     
     

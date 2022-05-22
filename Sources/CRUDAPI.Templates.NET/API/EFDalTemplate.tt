@@ -4,6 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 <#@ parameter name="projectName" type="System.String" #>
@@ -14,13 +15,13 @@
 var pks = modelHelper.GetPKColumns(table);
 #>
 
-using PPT.DAL.EF.Models;
-using PPT.Interfaces;
+using <#= RootNamespace #>.DAL.EF.Models;
+using <#= RootNamespace #>.Interfaces;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 
-namespace PPT.DAL.EF.Dals
+namespace <#=RootNamespace #>.DAL.EF.Dals
 {
     class <#= table.Name #>DalInitParams : InitParamsImpl
     {

@@ -4,6 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 
@@ -15,10 +16,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PPT.Interfaces.Entities;
-using PPT.Interfaces;
+using <#= RootNamespace #>.Interfaces.Entities;
+using <#= RootNamespace #>.Interfaces;
 
-namespace PPT.Interfaces
+namespace <#=RootNamespace #>.Interfaces
 {
     public interface I<#= table.Name #>Dal : IDalBase<<#= table.Name #>>
     {

@@ -1,5 +1,4 @@
-﻿using PPT.DAL.MSSQL;
-using PPT.Interfaces;
+﻿
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using NUnit.Framework;

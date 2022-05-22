@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Reflection;
 
-namespace PPT.PhotoPrint.API.Controllers.V1
+namespace PPT.API.Controllers.V1
 {
     public class BaseController : ControllerBase
     {

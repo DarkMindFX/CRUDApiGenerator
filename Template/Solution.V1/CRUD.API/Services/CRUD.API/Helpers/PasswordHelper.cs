@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPT.PhotoPrint.API.Helpers
+namespace PPT.API.Helpers
 {
     public class PasswordHelper
     {

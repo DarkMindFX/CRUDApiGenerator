@@ -4,6 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 <#@ parameter name="refTables" type="System.Collections.Generic.IList<CRUDAPI.DataModel.DataTable>" #>
@@ -13,11 +14,11 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace PPT.DAL.EF.Models
+namespace <#=RootNamespace #>.DAL.EF.Models
 {
     public partial class <#= table.Name #>
     {
-        public Address()
+        public <#= table.Name #>()
         {
         <#
             foreach(var t in refTables)

@@ -76,7 +76,8 @@ namespace CRUDAPI.Generators
 
             var template = new TestDalTemplate();
             template.Session = new Dictionary<string, object>();
-            
+
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Session["testValsGet"] = testValsGet;

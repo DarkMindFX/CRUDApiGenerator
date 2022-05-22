@@ -4,6 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
 
@@ -15,12 +16,12 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Data;
 using System.Data.SqlClient;
-using PPT.Common;
-using PPT.DAL.MSSQL;
-using PPT.Interfaces;
-using PPT.Interfaces.Entities;
+using <#= RootNamespace #>.Common;
+using <#= RootNamespace #>.DAL.MSSQL;
+using <#= RootNamespace #>.Interfaces;
+using <#= RootNamespace #>.Interfaces.Entities;
 
-namespace PPT.DAL.MSSQL 
+namespace <#=RootNamespace #>.DAL.MSSQL 
 {
     class <#= table.Name #>DalInitParams : InitParamsImpl
     {

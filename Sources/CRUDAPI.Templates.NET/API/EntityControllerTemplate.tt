@@ -4,41 +4,41 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
+<#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
-
-
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using PPT.PhotoPrint.API.Filters;
-using PPT.Interfaces.Entities;
-using PPT.Utils.Convertors;
+using <#= RootNamespace #>.API.Filters;
+using <#= RootNamespace #>.Interfaces.Entities;
+using <#= RootNamespace #>.Utils.Convertors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
-using PPT.PhotoPrint.API.Helpers;
+using <#= RootNamespace #>.API.Helpers;
+using <#= RootNamespace #>.Services.Dal;
 
 <# 
     var pks = modelHelper.GetPKColumns(table); 
 #>
 
-namespace PPT.PhotoPrint.API.Controllers.V1
+namespace <#=RootNamespace #>.API.Controllers.V1
 {
     [Route("api/v1/[controller]")]
     [ApiController]
     [UnhandledExceptionFilter]
     public class <#= modelHelper.Pluralize(table.Name) #>Controller : BaseController
     {
-        private readonly Dal.I<#= table.Name #>Dal _dal<#= table.Name #>;
+        private readonly I<#= table.Name #>Dal _dal<#= table.Name #>;
         private readonly ILogger<<#= modelHelper.Pluralize(table.Name) #>Controller> _logger;
         private readonly IOptions<AppSettings> _appSettings;
 
 
-        public <#= modelHelper.Pluralize(table.Name) #>Controller( Dal.I<#= table.Name #>Dal dal<#= table.Name #>,
+        public <#= modelHelper.Pluralize(table.Name) #>Controller( I<#= table.Name #>Dal dal<#= table.Name #>,
                                     ILogger<<#= modelHelper.Pluralize(table.Name) #>Controller> logger,
                                     IOptions<AppSettings> appSettings)
         {
