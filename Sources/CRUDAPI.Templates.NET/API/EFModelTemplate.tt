@@ -11,6 +11,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -33,6 +35,21 @@ namespace <#=RootNamespace #>.DAL.EF.Models
         <# 
 			foreach(var c in table.Columns) 
 			{
+				if(c.IsPK)
+				{
+		#>
+
+		[Key]
+		<#
+				}
+
+				if(!string.IsNullOrEmpty(c.FKConstraintName))
+				{
+		#>
+
+		[ForeignKey("<#= c.FKConstraintName #>")]
+		<#
+				}
 		#>
 		public <#= modelHelper.DbTypeToType(c) #> <#=c.Name #> { get; set; }
 		<#

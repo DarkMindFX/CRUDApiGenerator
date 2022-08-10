@@ -122,6 +122,7 @@ namespace CRUDAPI.DataModel
                     column.IsPK = (bool)r["is_primary_key"];
                     column.FKRefTable = !DBNull.Value.Equals(r["primary_table"]) ? (string)r["primary_table"] : null;
                     column.FKRefColumn = !DBNull.Value.Equals(r["pk_column_name"]) ? (string)r["pk_column_name"] : null;
+                    column.FKConstraintName = !DBNull.Value.Equals(r["fk_constraint_name"]) ? (string)r["fk_constraint_name"] : null;
 
                     result.Add(column);
                 }

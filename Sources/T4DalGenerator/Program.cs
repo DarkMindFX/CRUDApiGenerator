@@ -108,9 +108,12 @@ namespace T4DalGenerator
 
             foreach (var t in tables)
             {
-                genParams.Table = t;
-                var files = generator.Generate();
-                result.AddRange(files);
+                if (t.Name.IndexOf("sys") != 0)
+                {
+                    genParams.Table = t;
+                    var files = generator.Generate();
+                    result.AddRange(files);
+                }
             }
 
             Console.ForegroundColor = ConsoleColor.Green;

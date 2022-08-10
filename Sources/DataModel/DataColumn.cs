@@ -24,6 +24,8 @@ namespace CRUDAPI.DataModel
 
         public string FKRefColumn { get; set; }
 
+        public string FKConstraintName { get; set; }
+
         public DataType FKRefColumnType { get; set; }
 
         public override string ToString()

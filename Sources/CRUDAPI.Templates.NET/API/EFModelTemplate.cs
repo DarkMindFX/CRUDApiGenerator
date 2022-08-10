@@ -29,31 +29,32 @@ namespace CRUDAPI.Template.NET.API
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\n\r\n#nullable disable\r\n\r\nnamesp" +
-                    "ace ");
+            this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.ComponentModel.D" +
+                    "ataAnnotations;\r\nusing System.ComponentModel.DataAnnotations.Schema;\r\n\r\n#nullabl" +
+                    "e disable\r\n\r\nnamespace ");
             
-            #line 17 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 19 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".DAL.EF.Models\r\n{\r\n    public partial class ");
             
-            #line 19 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 21 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public ");
             
-            #line 21 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 23 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("()\r\n        {\r\n        ");
             
-            #line 23 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 25 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
 
             foreach(var t in refTables)
             {
@@ -63,21 +64,21 @@ namespace CRUDAPI.Template.NET.API
             #line hidden
             this.Write("            ");
             
-            #line 27 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 29 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(t.Name)));
             
             #line default
             #line hidden
             this.Write(" = new HashSet<");
             
-            #line 27 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 29 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(t.Name));
             
             #line default
             #line hidden
             this.Write(">();\r\n        ");
             
-            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
 
             }
         
@@ -86,31 +87,61 @@ namespace CRUDAPI.Template.NET.API
             #line hidden
             this.Write("        }\r\n\r\n        ");
             
-            #line 33 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 35 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
  
 			foreach(var c in table.Columns) 
 			{
+				if(c.IsPK)
+				{
+		
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t[Key]\r\n\t\t");
+            
+            #line 43 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+
+				}
+
+				if(!string.IsNullOrEmpty(c.FKConstraintName))
+				{
+		
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t[ForeignKey(\"");
+            
+            #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(c.FKConstraintName));
+            
+            #line default
+            #line hidden
+            this.Write("\")]\r\n\t\t");
+            
+            #line 51 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+
+				}
 		
             
             #line default
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 37 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 54 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(c)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 37 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 54 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n\t\t");
             
-            #line 38 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 55 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
 
 			}
 		
@@ -119,7 +150,7 @@ namespace CRUDAPI.Template.NET.API
             #line hidden
             this.Write("\t\r\n\r\n\r\n        ");
             
-            #line 43 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 60 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
 
         foreach(var c in table.Columns)
         {
@@ -131,21 +162,21 @@ namespace CRUDAPI.Template.NET.API
             #line hidden
             this.Write("        public virtual ");
             
-            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 66 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.FKRefTable));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 66 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.WithoutID( c.Name )));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n        ");
             
-            #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 67 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
 
             }
         }
@@ -155,7 +186,7 @@ namespace CRUDAPI.Template.NET.API
             #line hidden
             this.Write("\r\n        ");
             
-            #line 55 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 72 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
 
             foreach(var t in refTables)
             {
@@ -165,21 +196,21 @@ namespace CRUDAPI.Template.NET.API
             #line hidden
             this.Write("        public virtual ICollection<");
             
-            #line 59 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 76 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(t.Name));
             
             #line default
             #line hidden
             this.Write("> ");
             
-            #line 59 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 76 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(t.Name)));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n        ");
             
-            #line 60 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
+            #line 77 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFModelTemplate.tt"
 
             }
         
