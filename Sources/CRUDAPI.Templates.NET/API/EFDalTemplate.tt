@@ -90,14 +90,14 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
     }
 #>
 
-        public PPT.Interfaces.Entities.<#= table.Name #> Get(<#
+        public <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> Get(<#
             for(int i = 0; i < pks.Count; ++i)
             {
             var pk = pks[i];
         #>
 <#= modelHelper.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>)
         {
-            PPT.Interfaces.Entities.<#= table.Name #> result = null;
+            <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> result = null;
             var entity = dbContext.<#= modelHelper.Pluralize(table.Name) #>.Where(e => <#
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -111,11 +111,11 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
             return result;
         }
 
-        public IList<PPT.Interfaces.Entities.<#= table.Name #>> GetAll()
+        public IList<<#=RootNamespace #>.Interfaces.Entities.<#= table.Name #>> GetAll()
         {
             var entities = dbContext.<#= modelHelper.Pluralize(table.Name) #>.ToList();
 
-            IList<PPT.Interfaces.Entities.<#= table.Name #>> result = ToList(entities);
+            IList<<#=RootNamespace #>.Interfaces.Entities.<#= table.Name #>> result = ToList(entities);
             
             return result;
         }
@@ -130,7 +130,7 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
         {
             var entities = dbContext.<#= modelHelper.Pluralize(table.Name) #>.Where(e => e.<#=c.Name #> == <#=c.Name #>).ToList();
 
-            IList<PPT.Interfaces.Entities.Address> result = ToList(entities);
+            IList<<#=RootNamespace #>.Interfaces.Entities.Address> result = ToList(entities);
 
             return result;
         }
@@ -142,14 +142,14 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
 
         public void Init(IInitParams initParams)
         {
-            dbContext = new PhotoPrintContext(initParams.Parameters["ConnectionString"]);
+            dbContext = new <#= projectName #>Context(initParams.Parameters["ConnectionString"]);
         }
 
-        public PPT.Interfaces.Entities.Address Insert(PPT.Interfaces.Entities.Address entity)
+        public <#=RootNamespace #>.Interfaces.Entities.Address Insert(<#=RootNamespace #>.Interfaces.Entities.Address entity)
         {
-            PPT.Interfaces.Entities.Address result = null;
+            <#=RootNamespace #>.Interfaces.Entities.Address result = null;
             var efEntity = Convertors.AddressConvertor.ToEFEntity(entity);
-            var efEntityEntry = dbContext.Add<PPT.DAL.EF.Models.Address>(efEntity);
+            var efEntityEntry = dbContext.Add<<#=RootNamespace #>.DAL.EF.Models.Address>(efEntity);
             dbContext.SaveChanges();
 
             result = Convertors.AddressConvertor.FromEFEntity(efEntityEntry.Entity);
@@ -157,9 +157,9 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
             return result;
         }
 
-        public PPT.Interfaces.Entities.Address Update(PPT.Interfaces.Entities.Address entity)
+        public <#=RootNamespace #>.Interfaces.Entities.Address Update(<#=RootNamespace #>.Interfaces.Entities.Address entity)
         {
-            PPT.Interfaces.Entities.Address result = null;
+            <#=RootNamespace #>.Interfaces.Entities.Address result = null;
             var efEntity = dbContext.Addresses.Where(e => <#
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -201,9 +201,9 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
         }
 
         #region Support methods
-        IList<PPT.Interfaces.Entities.Address> ToList(IList<PPT.DAL.EF.Models.Address> entities)
+        IList<<#=RootNamespace #>.Interfaces.Entities.Address> ToList(IList<<#=RootNamespace #>.DAL.EF.Models.Address> entities)
         {
-            IList<PPT.Interfaces.Entities.Address> result = new List<PPT.Interfaces.Entities.Address>();
+            IList<<#=RootNamespace #>.Interfaces.Entities.Address> result = new List<<#=RootNamespace #>.Interfaces.Entities.Address>();
             if (entities != null)
             {
                 foreach (var e in entities)

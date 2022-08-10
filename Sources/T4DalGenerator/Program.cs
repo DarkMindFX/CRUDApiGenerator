@@ -54,6 +54,7 @@ namespace T4DalGenerator
                 Generate<SQLDalTestGenerator>(tables, settings, timestamp);
 
                 Generate<EFModelGenerator>(tables, settings, timestamp);
+                Generate<EFDalGenerator>(tables, settings, timestamp);
 
                 Generate<DtosGenerator>(tables, settings, timestamp);
                 Generate<IServiceDalsGenerator>(tables, settings, timestamp);
