@@ -657,7 +657,7 @@ var pks = modelHelper.GetPKColumns(table);
             
             #line default
             #line hidden
-            this.Write(" = ");
+            this.Write(" == entity.");
             
             #line 168 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
@@ -739,7 +739,7 @@ var pks = modelHelper.GetPKColumns(table);
             
             #line default
             #line hidden
-            this.Write(" = ");
+            this.Write(" == entity.");
             
             #line 189 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\EFDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));

@@ -165,7 +165,7 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
             {
             var pk = pks[i];
         #>
-        e.<#=pk.Name #> = <#=pk.Name #>  <#= i+1 < pks.Count ? "&&" : string.Empty #><#}#>).FirstOrDefault();
+        e.<#=pk.Name #> == entity.<#=pk.Name #>  <#= i+1 < pks.Count ? "&&" : string.Empty #><#}#>).FirstOrDefault();
             if (efEntity != null)
             {
         <#
@@ -186,7 +186,7 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
             {
             var pk = pks[i];
         #>
-        e.<#=pk.Name #> = <#=pk.Name #>  <#= i+1 < pks.Count ? "&&" : string.Empty #><#}#>).FirstOrDefault();
+        e.<#=pk.Name #> == entity.<#=pk.Name #>  <#= i+1 < pks.Count ? "&&" : string.Empty #><#}#>).FirstOrDefault();
                 result = Convertors.<#= table.Name #>Convertor.FromEFEntity(efEntity);
             }
             return result;

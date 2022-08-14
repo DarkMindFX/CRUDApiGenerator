@@ -47,7 +47,7 @@ namespace CRUDAPI.DataModel
 
             result = type.ToString();
 
-            if (c.IsIdentity || (c.IsNullable && !type.IsClass && Nullable.GetUnderlyingType(type) == null))
+            if (c.IsIdentity || (c.IsNullable && !type.IsClass /*&& Nullable.GetUnderlyingType(type) == null*/))
             {
                 result += "?";
             }

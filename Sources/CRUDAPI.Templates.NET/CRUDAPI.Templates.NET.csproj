@@ -12,6 +12,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>EFContextTemplate.tt</DependentUpon>
     </None>
+    <None Include="API\EFEntityConvertorTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EFEntityConvertorTemplate.tt</DependentUpon>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +48,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>EFDalTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="API\EFEntityConvertorTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EFEntityConvertorTemplate.tt</DependentUpon>
     </Compile>
     <Compile Update="API\EFModelTemplate.cs">
       <DesignTime>True</DesignTime>
@@ -253,6 +263,10 @@
     <None Update="API\EFDalTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EFDalTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="API\EFEntityConvertorTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EFEntityConvertorTemplate.cs</LastGenOutput>
     </None>
     <None Update="API\EFModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

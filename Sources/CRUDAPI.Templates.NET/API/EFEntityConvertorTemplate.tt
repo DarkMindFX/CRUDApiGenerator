@@ -1,0 +1,83 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+
+<#@ parameter name="RootNamespace" type="System.String" #>
+<#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
+<#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
+<#@ parameter name="projectName" type="System.String" #>
+<#@ parameter name="IsSoftDelete" type="System.Boolean" #>
+<#@ parameter name="SoftDeleteField" type="System.String" #>
+
+<#
+var pks = modelHelper.GetPKColumns(table);
+#>
+
+using <#= RootNamespace #>.DAL.EF.Models;
+using <#= RootNamespace #>.Interfaces;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Linq;
+
+namespace <#=RootNamespace #>.DAL.EF.Convertors
+{
+	public class <#= table.Name #>Convertor
+	{
+
+		public static <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> FromEFEntity(<#=RootNamespace #>.DAL.EF.Models.<#= table.Name #> efEntity)
+        {
+			<#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> result = new Interfaces.Entities.<#= table.Name #>()
+			{
+			<#
+				foreach(var c in table.Columns)
+				{
+			#>
+				<#= c.Name #> = efEntity.<#= c.Name #>,
+			<#
+				}
+			#>
+			};
+
+            return result;
+        }
+
+		public static <#=RootNamespace #>.DAL.EF.Models.<#= table.Name #> ToEFEntity(<#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> entity)
+		{
+			<#=RootNamespace #>.DAL.EF.Models.<#= table.Name #> result = new <#=RootNamespace #>.DAL.EF.Models.<#= table.Name #>()
+			{
+			<#
+				foreach(var c in table.Columns)
+				{
+					if(!c.IsNullable)
+					{
+			#>
+				<#= c.Name #> = entity.<#= c.Name #>,
+			<#
+					}					
+				}
+			#>
+			};
+
+			<#
+				foreach(var c in table.Columns)
+				{
+					if(c.IsNullable)
+					{
+			#>
+				if(entity.<#= c.Name #>.HasValue)
+				{
+					result.<#= c.Name #> = (<#= modelHelper.GetColumnType(c) #>) entity.<#= c.Name #>;
+				}
+			<#
+					}					
+				}
+			#>
+
+			return result;
+		}
+	}
+	
+}
