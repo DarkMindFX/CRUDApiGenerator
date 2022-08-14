@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="API\EFContextTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EFContextTemplate.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.CodeDom" Version="5.0.0" />
     <PackageReference Include="System.Reactive.Runtime.Remoting" Version="5.0.0" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
@@ -25,6 +33,11 @@
       <DependentUpon>DtoTemplate.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="API\EFContextTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EFContextTemplate.tt</DependentUpon>
     </Compile>
     <Compile Update="API\EFDalTemplate.cs">
       <DesignTime>True</DesignTime>
@@ -232,6 +245,10 @@
     <None Update="API\DtoTemplate.tt">
       <LastGenOutput>DtoTemplate.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="API\EFContextTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EFContextTemplate.cs</LastGenOutput>
     </None>
     <None Update="API\EFDalTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

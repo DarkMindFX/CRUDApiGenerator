@@ -130,7 +130,7 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
         {
             var entities = dbContext.<#= modelHelper.Pluralize(table.Name) #>.Where(e => e.<#=c.Name #> == <#=c.Name #>).ToList();
 
-            IList<<#=RootNamespace #>.Interfaces.Entities.Address> result = ToList(entities);
+            IList<<#=RootNamespace #>.Interfaces.Entities.<#= table.Name #>> result = ToList(entities);
 
             return result;
         }
@@ -145,22 +145,22 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
             dbContext = new <#= projectName #>Context(initParams.Parameters["ConnectionString"]);
         }
 
-        public <#=RootNamespace #>.Interfaces.Entities.Address Insert(<#=RootNamespace #>.Interfaces.Entities.Address entity)
+        public <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> Insert(<#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> entity)
         {
-            <#=RootNamespace #>.Interfaces.Entities.Address result = null;
-            var efEntity = Convertors.AddressConvertor.ToEFEntity(entity);
-            var efEntityEntry = dbContext.Add<<#=RootNamespace #>.DAL.EF.Models.Address>(efEntity);
+            <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> result = null;
+            var efEntity = Convertors.<#= table.Name #>Convertor.ToEFEntity(entity);
+            var efEntityEntry = dbContext.Add<<#=RootNamespace #>.DAL.EF.Models.<#= table.Name #>>(efEntity);
             dbContext.SaveChanges();
 
-            result = Convertors.AddressConvertor.FromEFEntity(efEntityEntry.Entity);
+            result = Convertors.<#= table.Name #>Convertor.FromEFEntity(efEntityEntry.Entity);
 
             return result;
         }
 
-        public <#=RootNamespace #>.Interfaces.Entities.Address Update(<#=RootNamespace #>.Interfaces.Entities.Address entity)
+        public <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> Update(<#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> entity)
         {
-            <#=RootNamespace #>.Interfaces.Entities.Address result = null;
-            var efEntity = dbContext.Addresses.Where(e => <#
+            <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> result = null;
+            var efEntity = dbContext.<#= modelHelper.Pluralize(table.Name) #>.Where(e => <#
             for(int i = 0; i < pks.Count; ++i)
             {
             var pk = pks[i];
@@ -168,47 +168,39 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
         e.<#=pk.Name #> = <#=pk.Name #>  <#= i+1 < pks.Count ? "&&" : string.Empty #><#}#>).FirstOrDefault();
             if (efEntity != null)
             {
-                efEntity.AddressTypeID = entity.AddressTypeID;
-
-                efEntity.Title = entity.Title;
-
-                efEntity.CityID = entity.CityID;
-
-                efEntity.Street = entity.Street;
-
-                efEntity.BuildingNo = entity.BuildingNo;
-
-                efEntity.ApartmentNo = entity.ApartmentNo;
-
-                efEntity.Comment = entity.Comment;
-
-                efEntity.CreatedByID = entity.CreatedByID;
-
-                efEntity.CreatedDate = entity.CreatedDate;
-
-                efEntity.ModifiedByID = entity.ModifiedByID;
-
-                efEntity.ModifiedDate = entity.ModifiedDate;
-
-                efEntity.IsDeleted = entity.IsDeleted;
-
+        <#
+			foreach(var c in table.Columns)
+			{
+				if(!c.IsPK)
+				{
+		#>
+				efEntity.<#= c.Name #> = entity.<#= c.Name #>;
+		<#
+				}
+			}
+		#>
                 dbContext.SaveChanges();
 
-                efEntity = dbContext.Addresses.Where(e => e.ID == entity.ID).FirstOrDefault();
-                result = Convertors.AddressConvertor.FromEFEntity(efEntity);
+                efEntity = dbContext.<#= modelHelper.Pluralize(table.Name) #>.Where(e => <#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #>
+        e.<#=pk.Name #> = <#=pk.Name #>  <#= i+1 < pks.Count ? "&&" : string.Empty #><#}#>).FirstOrDefault();
+                result = Convertors.<#= table.Name #>Convertor.FromEFEntity(efEntity);
             }
             return result;
         }
 
         #region Support methods
-        IList<<#=RootNamespace #>.Interfaces.Entities.Address> ToList(IList<<#=RootNamespace #>.DAL.EF.Models.Address> entities)
+        IList<<#=RootNamespace #>.Interfaces.Entities.<#= table.Name #>> ToList(IList<<#=RootNamespace #>.DAL.EF.Models.<#= table.Name #>> entities)
         {
-            IList<<#=RootNamespace #>.Interfaces.Entities.Address> result = new List<<#=RootNamespace #>.Interfaces.Entities.Address>();
+            IList<<#=RootNamespace #>.Interfaces.Entities.<#= table.Name #>> result = new List<<#=RootNamespace #>.Interfaces.Entities.<#= table.Name #>>();
             if (entities != null)
             {
                 foreach (var e in entities)
                 {
-                    result.Add(Convertors.AddressConvertor.FromEFEntity(e));
+                    result.Add(Convertors.<#= table.Name #>Convertor.FromEFEntity(e));
                 }
             }
             return result;

@@ -1,0 +1,107 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".txt" #>
+
+<#@ parameter name="RootNamespace" type="System.String" #>
+<#@ parameter name="tables" type="System.Collections.Generic.IList<CRUDAPI.DataModel.DataTable>" #>
+<#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
+<#@ parameter name="projectName" type="System.String" #>
+<#@ parameter name="connectionString" type="System.String" #>
+
+
+using Microsoft.EntityFrameworkCore;
+
+#nullable disable
+
+namespace <#=RootNamespace #>.DAL.EF.Models
+{
+    public partial class <#=projectName #>Context : DbContext
+    {
+        public <#=projectName #>Context()
+        {
+        }
+
+        public <#=projectName #>Context(DbContextOptions<<#=projectName #>Context> options)
+            : base(options)
+        {
+        }
+
+        public <#=projectName #>Context(string connectionString) : base(GetOptions(connectionString))
+        {
+        }
+
+        private static DbContextOptions GetOptions(string connectionString)
+        {
+            return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), connectionString).Options;
+        }
+
+		<#
+		foreach(var t in tables)
+		{
+		#>
+		public virtual DbSet<<#= t.Name #>> <#= modelHelper.Pluralize( t.Name ) #> { get; set; }
+
+		<#
+		}
+		#>
+        
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("<#=connectionString #>");
+            }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+		<#
+		foreach(var t in tables)
+		{
+		#>
+			modelBuilder.Entity<<#= t.Name #>>(entity =>
+            {
+                entity.ToTable("<#= t.Name #>");
+				
+		<#
+			foreach(var c in t.Columns)
+			{
+			
+		#>
+				entity.Property( e => e.<#= c.Name #>).HasColumnName("<#= c.Name #>")
+		<#
+				if(!c.IsNullable)
+				{
+		#>
+				.IsRequired()
+		<#
+				}
+
+				if(c.Type.CharMaxLength != null && c.Type.CharMaxLength > 0)
+				{
+		#>
+				.HasMaxLength(<#= c.Type.CharMaxLength #>)
+		<#
+				}
+		#>;
+		<#
+				
+
+			}
+		#>
+			});
+
+		<#
+		}
+		#>
+            OnModelCreatingPartial(modelBuilder);
+        }
+
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+    }
+}

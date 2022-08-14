@@ -55,6 +55,7 @@ namespace T4DalGenerator
 
                 Generate<EFModelGenerator>(tables, settings, timestamp);
                 Generate<EFDalGenerator>(tables, settings, timestamp);
+                GenerateSingle<EFContextGenerator>(tables, settings, timestamp);
 
                 Generate<DtosGenerator>(tables, settings, timestamp);
                 Generate<IServiceDalsGenerator>(tables, settings, timestamp);

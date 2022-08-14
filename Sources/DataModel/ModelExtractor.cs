@@ -37,10 +37,13 @@ namespace CRUDAPI.DataModel
                 IList<string> tableNames = GetDbTables(conn);
                 foreach (var tName in tableNames)
                 {
-                    DataTable table = new DataTable();
-                    table.Name = tName;
-                    table.Columns = GetTableColumns(tName, conn);
-                    result.Add(table);
+                    if (!tName.Contains("sys")) // skipping system tables
+                    {
+                        DataTable table = new DataTable();
+                        table.Name = tName;
+                        table.Columns = GetTableColumns(tName, conn);
+                        result.Add(table);
+                    }
                 }
             }
 
