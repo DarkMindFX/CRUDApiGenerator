@@ -48,7 +48,20 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
             var entity = dbContext.<#= modelHelper.Pluralize( table.Name ) #>.Find(ID);
             if (entity != null)
             {
+			<#
+				if(IsSoftDelete && table.HasColumn(SoftDeleteField))
+				{
+			#>
                 entity.IsDeleted = true;
+			<#
+				}
+				else
+				{
+			#>
+				dbContext.Remove(entity);
+			<#
+				}
+			#>
                 dbContext.SaveChanges();
                 return true;
             }
@@ -90,7 +103,7 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
     }
 #>
 
-        public <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> Get(<#
+        public <#= RootNamespace #>.Interfaces.Entities.<#= table.Name #> Get(<#
             for(int i = 0; i < pks.Count; ++i)
             {
             var pk = pks[i];
@@ -103,7 +116,7 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
             {
             var pk = pks[i];
         #>
-        e.<#=pk.Name #> = <#=pk.Name #>  <#= i+1 < pks.Count ? "&&" : string.Empty #><#}#>).FirstOrDefault();
+        e.<#=pk.Name #> == <#=pk.Name #>  <#= i+1 < pks.Count ? "&&" : string.Empty #><#}#>).FirstOrDefault();
             if (entity != null)
             {
                 result = Convertors.<#= table.Name #>Convertor.FromEFEntity(entity);
@@ -126,7 +139,7 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
                 if(!string.IsNullOrEmpty(c.FKRefTable))
                 {
         #>
-        public IList<<#=table.Name #>> GetBy<#=c.Name #>(<#= modelHelper.DbTypeToType(c) #> <#=c.Name #>)
+        public IList<<#=RootNamespace #>.Interfaces.Entities.<#= table.Name #>> GetBy<#=c.Name #>(<#= modelHelper.DbTypeToType(c) #> <#=c.Name #>)
         {
             var entities = dbContext.<#= modelHelper.Pluralize(table.Name) #>.Where(e => e.<#=c.Name #> == <#=c.Name #>).ToList();
 
