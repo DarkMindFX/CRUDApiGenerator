@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
 
@@ -28,7 +28,7 @@
     <ProjectReference Include="..\..\CRUD.DAL.MSSQL\CRUD.DAL.MSSQL.csproj" />
     <ProjectReference Include="..\..\CRUD.DTO\CRUD.DTO.csproj" />
     <ProjectReference Include="..\..\CRUD.Interfaces\CRUD.Interfaces.csproj" />
-    <ProjectReference Include="..\..\Services\CRUD.API\CRUDTemplate.API.csproj" />
+    <ProjectReference Include="..\..\Services\CRUD.API\CRUD.API.csproj" />
   </ItemGroup>
 
   <ItemGroup>

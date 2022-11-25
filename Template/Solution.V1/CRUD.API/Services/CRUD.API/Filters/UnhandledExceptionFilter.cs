@@ -10,7 +10,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace PPT.API.Filters
+namespace CRUD.API.Filters
 {
     public class UnhandledExceptionFilter : ExceptionFilterAttribute
     {

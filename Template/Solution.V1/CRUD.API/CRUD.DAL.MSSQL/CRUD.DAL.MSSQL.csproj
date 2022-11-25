@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>PPT.DAL.MSSQL</RootNamespace>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>CRUD.DAL.MSSQL</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

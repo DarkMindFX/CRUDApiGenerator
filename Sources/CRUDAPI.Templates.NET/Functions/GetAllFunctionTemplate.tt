@@ -42,13 +42,13 @@ namespace <#=RootNamespace #>.Functions.<#= table.Name #>.V1
             ILogger log)
         {
             IActionResult result = null;
-            var funHelper = new PPT.Functions.Common.FunctionHelper();
+            var funHelper = new <#=RootNamespace #>.Functions.Common.FunctionHelper();
             log.LogInformation($"{System.Reflection.MethodInfo.GetCurrentMethod()} Started");
 
             try
             {
                 var entities = _dal<#= table.Name #>.GetAll();
-                var dtos = new List<PPT.DTO.<#= table.Name #>>();
+                var dtos = new List<<#=RootNamespace #>.DTO.<#= table.Name #>>();
                 foreach (var e in entities)
                 {
                     dtos.Add(<#= table.Name #>Convertor.Convert(e, null));

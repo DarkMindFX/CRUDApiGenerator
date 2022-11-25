@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.IdentityModel.Tokens;
-using PPT.Services.Common.Helpers;
-using PPT.Interfaces;
+using CRUD.Services.Common.Helpers;
+using CRUD.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,9 +12,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
-using PPT.Services.Common.Exceptions;
+using CRUD.Services.Common.Exceptions;
 
-namespace PPT.Functions.Common
+namespace CRUD.Functions.Common
 {
     public class AuthorizeAttribute : FunctionInvocationFilterAttribute
     {
@@ -30,7 +30,7 @@ namespace PPT.Functions.Common
             }
 
             var funHelper = new FunctionHelper();
-            var dalUsers = request.HttpContext.RequestServices.GetRequiredService<PPT.Services.Dal.IUserDal>();
+            var dalUsers = request.HttpContext.RequestServices.GetRequiredService<CRUD.Services.Dal.IUserDal>();
 
             var secret = funHelper.GetEnvironmentVariable<string>(Constants.ENV_JWT_SECRET);
             var token = JWTHelper.GetAuthToken(request);

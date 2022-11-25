@@ -40,39 +40,301 @@ namespace CRUDAPI.Template.NET.API
             #line hidden
             this.Write("\r\nMicrosoft Visual Studio Solution File, Format Version 12.00\r\n# Visual Studio Ve" +
                     "rsion 17\r\nVisualStudioVersion = 17.0.32014.148\r\nMinimumVisualStudioVersion = 10." +
-                    "0.40219.1\r\nProject(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"CRUD.Common\", \"C" +
-                    "RUD.Common\\CRUD.Common.csproj\", \"{F0238ADA-9D26-4F20-AF10-CF24EBB8AA3F}\"\r\nEndPro" +
-                    "ject\r\nProject(\"{2150E333-8FDC-42A3-9474-1A3956D46DE8}\") = \"Services\", \"Services\"" +
-                    ", \"{812EC8C4-DF64-4E7E-93BC-FA8CF25A095A}\"\r\nEndProject\r\nProject(\"{2150E333-8FDC-" +
-                    "42A3-9474-1A3956D46DE8}\") = \"Tests\", \"Tests\", \"{2820586E-CE98-444F-AD08-12F2E4CA" +
-                    "835B}\"\r\nEndProject\r\nProject(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"CRUD.DT" +
-                    "O\", \"CRUD.DTO\\CRUD.DTO.csproj\", \"{242244DE-FCCA-4226-9F9A-E6FCD9EEA125}\"\r\nEndPro" +
-                    "ject\r\nProject(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"CRUD.DAL.MSSQL\", \"CRU" +
-                    "D.DAL.MSSQL\\CRUD.DAL.MSSQL.csproj\", \"{76C4AFCB-22F6-4CB1-ACFC-CEC8027254CD}\"\r\nEn" +
-                    "dProject\r\nProject(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"CRUD.Interfaces\"," +
-                    " \"CRUD.Interfaces\\CRUD.Interfaces.csproj\", \"{F08C05FC-2F7B-4281-9B29-81537F670FD" +
-                    "3}\"\r\nEndProject\r\nProject(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"CRUD.Utils" +
-                    "\", \"CRUD.Utils\\CRUD.Utils.csproj\", \"{2EED79EF-A4FE-45AB-A1B9-796ECD3B9473}\"\r\nEnd" +
-                    "Project\r\nProject(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"CRUDTemplate.API\"," +
-                    " \"Services\\CRUD.API\\CRUDTemplate.API.csproj\", \"{C79E6270-2B15-46BD-B228-CCD4FE82" +
-                    "CEA8}\"\r\nEndProject\r\nProject(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"Test.E2" +
-                    "E.CRUD.API\", \"Tests\\Test.CRUD.API\\Test.E2E.CRUD.API.csproj\", \"{708E8211-8E38-42F" +
-                    "D-8DB7-DA42509FFE3E}\"\r\nEndProject\r\nProject(\"{9A19103F-16F7-4668-BE54-9A1E7A4F755" +
-                    "6}\") = \"Test.CRUD.DAL.MSSQL\", \"Tests\\Test.CRUD.DAL.MSSQL\\Test.CRUD.DAL.MSSQL.csp" +
-                    "roj\", \"{4A00A7A1-8666-41B6-8381-73C008CE8A93}\"\r\nEndProject\r\nProject(\"{9A19103F-1" +
-                    "6F7-4668-BE54-9A1E7A4F7556}\") = \"CRUD.DAL.EF\", \"CRUD.DAL.EF\\CRUD.DAL.EF.csproj\"," +
-                    " \"{26AAE746-CF68-4ED3-BB04-255722C70102}\"\r\nEndProject\r\nProject(\"{9A19103F-16F7-4" +
-                    "668-BE54-9A1E7A4F7556}\") = \"Test.CRUD.Common\", \"Tests\\Test.CRUD.Common\\Test.CRUD" +
-                    ".Common.csproj\", \"{32E54D18-F5AA-4567-931A-05EF290A5C5D}\"\r\nEndProject\r\nProject(\"" +
-                    "{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"Test.CRUD.DAL.EF\", \"Tests\\Test.CRUD." +
-                    "DAL.EF\\Test.CRUD.DAL.EF.csproj\", \"{0B252E9F-686A-41EC-BE4C-ED7504D63475}\"\r\nEndPr" +
-                    "oject\r\nProject(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"CRUD.Services.DAL\", " +
-                    "\"CRUD.Services.DAL\\CRUD.Services.DAL.csproj\", \"{86ADDCE8-6E78-400A-9646-E22F58C6" +
-                    "1AA5}\"\r\nEndProject\r\nProject(\"{2150E333-8FDC-42A3-9474-1A3956D46DE8}\") = \"Functio" +
-                    "ns\", \"Functions\", \"{6D7BA996-E702-42BE-B715-344F9C58DC75}\"\r\nEndProject\r\nProject(" +
-                    "\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"CRUD.Functions.Common\", \"Functions\\" +
-                    "CRUD.Functions.Common\\CRUD.Functions.Common.csproj\", \"{9F812B84-46D3-439C-A380-7" +
-                    "82D8D0CEADA}\"\r\nEndProject\r\n");
+                    "0.40219.1\r\nProject(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"");
+            
+            #line 20 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Common\", \"");
+            
+            #line 20 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Common\\");
+            
+            #line 20 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(@".Common.csproj"", ""{F0238ADA-9D26-4F20-AF10-CF24EBB8AA3F}""
+EndProject
+Project(""{2150E333-8FDC-42A3-9474-1A3956D46DE8}"") = ""Services"", ""Services"", ""{812EC8C4-DF64-4E7E-93BC-FA8CF25A095A}""
+EndProject
+Project(""{2150E333-8FDC-42A3-9474-1A3956D46DE8}"") = ""Tests"", ""Tests"", ""{2820586E-CE98-444F-AD08-12F2E4CA835B}""
+EndProject
+Project(""{9A19103F-16F7-4668-BE54-9A1E7A4F7556}"") = """);
+            
+            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DTO\", \"");
+            
+            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DTO\\");
+            
+            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DTO.csproj\", \"{242244DE-FCCA-4226-9F9A-E6FCD9EEA125}\"\r\nEndProject\r\nProject(\"{9A1" +
+                    "9103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"");
+            
+            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.MSSQL\", \"");
+            
+            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.MSSQL\\");
+            
+            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.MSSQL.csproj\", \"{76C4AFCB-22F6-4CB1-ACFC-CEC8027254CD}\"\r\nEndProject\r\nProject" +
+                    "(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"");
+            
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces\", \"");
+            
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces\\");
+            
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.csproj\", \"{F08C05FC-2F7B-4281-9B29-81537F670FD3}\"\r\nEndProject\r\nProjec" +
+                    "t(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"");
+            
+            #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Utils\", \"");
+            
+            #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Utils\\");
+            
+            #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Utils.csproj\", \"{2EED79EF-A4FE-45AB-A1B9-796ECD3B9473}\"\r\nEndProject\r\nProject(\"{9" +
+                    "A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"");
+            
+            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".API\", \"Services\\");
+            
+            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".API\\");
+            
+            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".API.csproj\", \"{C79E6270-2B15-46BD-B228-CCD4FE82CEA8}\"\r\nEndProject\r\nProject(\"{9A1" +
+                    "9103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"Test.E2E.");
+            
+            #line 36 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".API\", \"Tests\\Test.");
+            
+            #line 36 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".API\\Test.E2E.");
+            
+            #line 36 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".API.csproj\", \"{708E8211-8E38-42FD-8DB7-DA42509FFE3E}\"\r\nEndProject\r\nProject(\"{9A1" +
+                    "9103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"Test.");
+            
+            #line 38 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.MSSQL\", \"Tests\\Test.");
+            
+            #line 38 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.MSSQL\\Test.");
+            
+            #line 38 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.MSSQL.csproj\", \"{4A00A7A1-8666-41B6-8381-73C008CE8A93}\"\r\nEndProject\r\nProject" +
+                    "(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"");
+            
+            #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.EF\", \"");
+            
+            #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.EF\\");
+            
+            #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.EF.csproj\", \"{26AAE746-CF68-4ED3-BB04-255722C70102}\"\r\nEndProject\r\nProject(\"{" +
+                    "9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"Test.");
+            
+            #line 42 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Common\", \"Tests\\Test.");
+            
+            #line 42 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Common\\Test.");
+            
+            #line 42 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Common.csproj\", \"{32E54D18-F5AA-4567-931A-05EF290A5C5D}\"\r\nEndProject\r\nProject(\"{" +
+                    "9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"Test.");
+            
+            #line 44 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.EF\", \"Tests\\Test.");
+            
+            #line 44 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.EF\\Test.");
+            
+            #line 44 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.EF.csproj\", \"{0B252E9F-686A-41EC-BE4C-ED7504D63475}\"\r\nEndProject\r\nProject(\"{" +
+                    "9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"");
+            
+            #line 46 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Services.DAL\", \"");
+            
+            #line 46 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Services.DAL\\");
+            
+            #line 46 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(@".Services.DAL.csproj"", ""{86ADDCE8-6E78-400A-9646-E22F58C61AA5}""
+EndProject
+Project(""{2150E333-8FDC-42A3-9474-1A3956D46DE8}"") = ""Functions"", ""Functions"", ""{6D7BA996-E702-42BE-B715-344F9C58DC75}""
+EndProject
+Project(""{9A19103F-16F7-4668-BE54-9A1E7A4F7556}"") = """);
+            
+            #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.Common\", \"Functions\\");
+            
+            #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.Common\\");
+            
+            #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.Common.csproj\", \"{9F812B84-46D3-439C-A380-782D8D0CEADA}\"\r\nEndProject\r\n" +
+                    "");
             
             #line 52 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
 
@@ -116,83 +378,116 @@ namespace CRUDAPI.Template.NET.API
             
             #line default
             #line hidden
-            this.Write("Project(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"CRUD.Services.Common\", \"CRUD" +
-                    ".Services.Common\\CRUD.Services.Common.csproj\", \"{95579090-C899-42F2-89AC-068EA5C" +
-                    "6D808}\"\r\nEndProject\r\nProject(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"Test.F" +
-                    "unctions.Common\", \"Tests\\Test.Functions.Common\\Test.Functions.Common.csproj\", \"{" +
-                    "23809777-E3CC-4D0A-900E-E29EDA123E01}\"\r\nEndProject\r\nProject(\"{9A19103F-16F7-4668" +
-                    "-BE54-9A1E7A4F7556}\") = \"Test.E2E.CRUD.Functions\", \"Tests\\Test.E2E.Functions\\Tes" +
-                    "t.E2E.CRUD.Functions.csproj\", \"{E47E0CD9-9665-4B97-8494-0BC23A414F08}\"\r\nEndProje" +
-                    "ct\r\nGlobal\r\n\tGlobalSection(SolutionConfigurationPlatforms) = preSolution\r\n\t\tDebu" +
-                    "g|Any CPU = Debug|Any CPU\r\n\t\tRelease|Any CPU = Release|Any CPU\r\n\tEndGlobalSectio" +
-                    "n\r\n\tGlobalSection(ProjectConfigurationPlatforms) = postSolution\r\n\t\t{F0238ADA-9D2" +
-                    "6-4F20-AF10-CF24EBB8AA3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{F0238ADA-9" +
-                    "D26-4F20-AF10-CF24EBB8AA3F}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{F0238ADA-9" +
-                    "D26-4F20-AF10-CF24EBB8AA3F}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{F023" +
-                    "8ADA-9D26-4F20-AF10-CF24EBB8AA3F}.Release|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{" +
-                    "242244DE-FCCA-4226-9F9A-E6FCD9EEA125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t" +
-                    "\t{242244DE-FCCA-4226-9F9A-E6FCD9EEA125}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t" +
-                    "\t{242244DE-FCCA-4226-9F9A-E6FCD9EEA125}.Release|Any CPU.ActiveCfg = Release|Any " +
-                    "CPU\r\n\t\t{242244DE-FCCA-4226-9F9A-E6FCD9EEA125}.Release|Any CPU.Build.0 = Release|" +
-                    "Any CPU\r\n\t\t{76C4AFCB-22F6-4CB1-ACFC-CEC8027254CD}.Debug|Any CPU.ActiveCfg = Debu" +
-                    "g|Any CPU\r\n\t\t{76C4AFCB-22F6-4CB1-ACFC-CEC8027254CD}.Debug|Any CPU.Build.0 = Debu" +
-                    "g|Any CPU\r\n\t\t{76C4AFCB-22F6-4CB1-ACFC-CEC8027254CD}.Release|Any CPU.ActiveCfg = " +
-                    "Release|Any CPU\r\n\t\t{76C4AFCB-22F6-4CB1-ACFC-CEC8027254CD}.Release|Any CPU.Build." +
-                    "0 = Release|Any CPU\r\n\t\t{F08C05FC-2F7B-4281-9B29-81537F670FD3}.Debug|Any CPU.Acti" +
-                    "veCfg = Debug|Any CPU\r\n\t\t{F08C05FC-2F7B-4281-9B29-81537F670FD3}.Debug|Any CPU.Bu" +
-                    "ild.0 = Debug|Any CPU\r\n\t\t{F08C05FC-2F7B-4281-9B29-81537F670FD3}.Release|Any CPU." +
-                    "ActiveCfg = Release|Any CPU\r\n\t\t{F08C05FC-2F7B-4281-9B29-81537F670FD3}.Release|An" +
-                    "y CPU.Build.0 = Release|Any CPU\r\n\t\t{2EED79EF-A4FE-45AB-A1B9-796ECD3B9473}.Debug|" +
-                    "Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{2EED79EF-A4FE-45AB-A1B9-796ECD3B9473}.Debu" +
-                    "g|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{2EED79EF-A4FE-45AB-A1B9-796ECD3B9473}.Rele" +
-                    "ase|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{2EED79EF-A4FE-45AB-A1B9-796ECD3B9473" +
-                    "}.Release|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{C79E6270-2B15-46BD-B228-CCD4FE82" +
-                    "CEA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{C79E6270-2B15-46BD-B228-CCD4FE" +
-                    "82CEA8}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{C79E6270-2B15-46BD-B228-CCD4FE" +
-                    "82CEA8}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{C79E6270-2B15-46BD-B228-" +
-                    "CCD4FE82CEA8}.Release|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{708E8211-8E38-42FD-8" +
-                    "DB7-DA42509FFE3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{708E8211-8E38-42FD" +
-                    "-8DB7-DA42509FFE3E}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{708E8211-8E38-42FD" +
-                    "-8DB7-DA42509FFE3E}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{708E8211-8E3" +
-                    "8-42FD-8DB7-DA42509FFE3E}.Release|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{4A00A7A1" +
-                    "-8666-41B6-8381-73C008CE8A93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{4A00A7" +
-                    "A1-8666-41B6-8381-73C008CE8A93}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{4A00A7" +
-                    "A1-8666-41B6-8381-73C008CE8A93}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{" +
-                    "4A00A7A1-8666-41B6-8381-73C008CE8A93}.Release|Any CPU.Build.0 = Release|Any CPU\r" +
-                    "\n\t\t{26AAE746-CF68-4ED3-BB04-255722C70102}.Debug|Any CPU.ActiveCfg = Debug|Any CP" +
-                    "U\r\n\t\t{26AAE746-CF68-4ED3-BB04-255722C70102}.Debug|Any CPU.Build.0 = Debug|Any CP" +
-                    "U\r\n\t\t{26AAE746-CF68-4ED3-BB04-255722C70102}.Release|Any CPU.ActiveCfg = Release|" +
-                    "Any CPU\r\n\t\t{26AAE746-CF68-4ED3-BB04-255722C70102}.Release|Any CPU.Build.0 = Rele" +
-                    "ase|Any CPU\r\n\t\t{32E54D18-F5AA-4567-931A-05EF290A5C5D}.Debug|Any CPU.ActiveCfg = " +
-                    "Debug|Any CPU\r\n\t\t{32E54D18-F5AA-4567-931A-05EF290A5C5D}.Debug|Any CPU.Build.0 = " +
-                    "Debug|Any CPU\r\n\t\t{32E54D18-F5AA-4567-931A-05EF290A5C5D}.Release|Any CPU.ActiveCf" +
-                    "g = Release|Any CPU\r\n\t\t{32E54D18-F5AA-4567-931A-05EF290A5C5D}.Release|Any CPU.Bu" +
-                    "ild.0 = Release|Any CPU\r\n\t\t{0B252E9F-686A-41EC-BE4C-ED7504D63475}.Debug|Any CPU." +
-                    "ActiveCfg = Debug|Any CPU\r\n\t\t{0B252E9F-686A-41EC-BE4C-ED7504D63475}.Debug|Any CP" +
-                    "U.Build.0 = Debug|Any CPU\r\n\t\t{0B252E9F-686A-41EC-BE4C-ED7504D63475}.Release|Any " +
-                    "CPU.ActiveCfg = Release|Any CPU\r\n\t\t{0B252E9F-686A-41EC-BE4C-ED7504D63475}.Releas" +
-                    "e|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{86ADDCE8-6E78-400A-9646-E22F58C61AA5}.De" +
-                    "bug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{86ADDCE8-6E78-400A-9646-E22F58C61AA5}." +
-                    "Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{86ADDCE8-6E78-400A-9646-E22F58C61AA5}." +
-                    "Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{86ADDCE8-6E78-400A-9646-E22F58C6" +
-                    "1AA5}.Release|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{9F812B84-46D3-439C-A380-782D" +
-                    "8D0CEADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{9F812B84-46D3-439C-A380-78" +
-                    "2D8D0CEADA}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{9F812B84-46D3-439C-A380-78" +
-                    "2D8D0CEADA}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{9F812B84-46D3-439C-A" +
-                    "380-782D8D0CEADA}.Release|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{95579090-C899-42" +
-                    "F2-89AC-068EA5C6D808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{95579090-C899-" +
-                    "42F2-89AC-068EA5C6D808}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{95579090-C899-" +
-                    "42F2-89AC-068EA5C6D808}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{95579090" +
-                    "-C899-42F2-89AC-068EA5C6D808}.Release|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{2380" +
-                    "9777-E3CC-4D0A-900E-E29EDA123E01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{23" +
-                    "809777-E3CC-4D0A-900E-E29EDA123E01}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{23" +
-                    "809777-E3CC-4D0A-900E-E29EDA123E01}.Release|Any CPU.ActiveCfg = Release|Any CPU\r" +
-                    "\n\t\t{23809777-E3CC-4D0A-900E-E29EDA123E01}.Release|Any CPU.Build.0 = Release|Any " +
-                    "CPU\r\n\t\t{E47E0CD9-9665-4B97-8494-0BC23A414F08}.Debug|Any CPU.ActiveCfg = Debug|An" +
-                    "y CPU\r\n\t\t{E47E0CD9-9665-4B97-8494-0BC23A414F08}.Debug|Any CPU.Build.0 = Debug|An" +
-                    "y CPU\r\n\t\t{E47E0CD9-9665-4B97-8494-0BC23A414F08}.Release|Any CPU.ActiveCfg = Rele" +
-                    "ase|Any CPU\r\n\t\t{E47E0CD9-9665-4B97-8494-0BC23A414F08}.Release|Any CPU.Build.0 = " +
-                    "Release|Any CPU\r\n\r\n");
+            this.Write("Project(\"{9A19103F-16F7-4668-BE54-9A1E7A4F7556}\") = \"");
+            
+            #line 65 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Services.Common\", \"");
+            
+            #line 65 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Services.Common\\");
+            
+            #line 65 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(@".Services.Common.csproj"", ""{95579090-C899-42F2-89AC-068EA5C6D808}""
+EndProject
+Project(""{9A19103F-16F7-4668-BE54-9A1E7A4F7556}"") = ""Test.Functions.Common"", ""Tests\Test.Functions.Common\Test.Functions.Common.csproj"", ""{23809777-E3CC-4D0A-900E-E29EDA123E01}""
+EndProject
+Project(""{9A19103F-16F7-4668-BE54-9A1E7A4F7556}"") = ""Test.E2E.");
+            
+            #line 69 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions\", \"Tests\\Test.E2E.Functions\\Test.E2E.");
+            
+            #line 69 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.csproj\", \"{E47E0CD9-9665-4B97-8494-0BC23A414F08}\"\r\nEndProject\r\nGlobal\r" +
+                    "\n\tGlobalSection(SolutionConfigurationPlatforms) = preSolution\r\n\t\tDebug|Any CPU =" +
+                    " Debug|Any CPU\r\n\t\tRelease|Any CPU = Release|Any CPU\r\n\tEndGlobalSection\r\n\tGlobalS" +
+                    "ection(ProjectConfigurationPlatforms) = postSolution\r\n\t\t{F0238ADA-9D26-4F20-AF10" +
+                    "-CF24EBB8AA3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{F0238ADA-9D26-4F20-AF" +
+                    "10-CF24EBB8AA3F}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{F0238ADA-9D26-4F20-AF" +
+                    "10-CF24EBB8AA3F}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{F0238ADA-9D26-4" +
+                    "F20-AF10-CF24EBB8AA3F}.Release|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{242244DE-FC" +
+                    "CA-4226-9F9A-E6FCD9EEA125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{242244DE-" +
+                    "FCCA-4226-9F9A-E6FCD9EEA125}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{242244DE-" +
+                    "FCCA-4226-9F9A-E6FCD9EEA125}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{242" +
+                    "244DE-FCCA-4226-9F9A-E6FCD9EEA125}.Release|Any CPU.Build.0 = Release|Any CPU\r\n\t\t" +
+                    "{76C4AFCB-22F6-4CB1-ACFC-CEC8027254CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n" +
+                    "\t\t{76C4AFCB-22F6-4CB1-ACFC-CEC8027254CD}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n" +
+                    "\t\t{76C4AFCB-22F6-4CB1-ACFC-CEC8027254CD}.Release|Any CPU.ActiveCfg = Release|Any" +
+                    " CPU\r\n\t\t{76C4AFCB-22F6-4CB1-ACFC-CEC8027254CD}.Release|Any CPU.Build.0 = Release" +
+                    "|Any CPU\r\n\t\t{F08C05FC-2F7B-4281-9B29-81537F670FD3}.Debug|Any CPU.ActiveCfg = Deb" +
+                    "ug|Any CPU\r\n\t\t{F08C05FC-2F7B-4281-9B29-81537F670FD3}.Debug|Any CPU.Build.0 = Deb" +
+                    "ug|Any CPU\r\n\t\t{F08C05FC-2F7B-4281-9B29-81537F670FD3}.Release|Any CPU.ActiveCfg =" +
+                    " Release|Any CPU\r\n\t\t{F08C05FC-2F7B-4281-9B29-81537F670FD3}.Release|Any CPU.Build" +
+                    ".0 = Release|Any CPU\r\n\t\t{2EED79EF-A4FE-45AB-A1B9-796ECD3B9473}.Debug|Any CPU.Act" +
+                    "iveCfg = Debug|Any CPU\r\n\t\t{2EED79EF-A4FE-45AB-A1B9-796ECD3B9473}.Debug|Any CPU.B" +
+                    "uild.0 = Debug|Any CPU\r\n\t\t{2EED79EF-A4FE-45AB-A1B9-796ECD3B9473}.Release|Any CPU" +
+                    ".ActiveCfg = Release|Any CPU\r\n\t\t{2EED79EF-A4FE-45AB-A1B9-796ECD3B9473}.Release|A" +
+                    "ny CPU.Build.0 = Release|Any CPU\r\n\t\t{C79E6270-2B15-46BD-B228-CCD4FE82CEA8}.Debug" +
+                    "|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{C79E6270-2B15-46BD-B228-CCD4FE82CEA8}.Deb" +
+                    "ug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{C79E6270-2B15-46BD-B228-CCD4FE82CEA8}.Rel" +
+                    "ease|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{C79E6270-2B15-46BD-B228-CCD4FE82CEA" +
+                    "8}.Release|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{708E8211-8E38-42FD-8DB7-DA42509" +
+                    "FFE3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{708E8211-8E38-42FD-8DB7-DA425" +
+                    "09FFE3E}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{708E8211-8E38-42FD-8DB7-DA425" +
+                    "09FFE3E}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{708E8211-8E38-42FD-8DB7" +
+                    "-DA42509FFE3E}.Release|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{4A00A7A1-8666-41B6-" +
+                    "8381-73C008CE8A93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{4A00A7A1-8666-41B" +
+                    "6-8381-73C008CE8A93}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{4A00A7A1-8666-41B" +
+                    "6-8381-73C008CE8A93}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{4A00A7A1-86" +
+                    "66-41B6-8381-73C008CE8A93}.Release|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{26AAE74" +
+                    "6-CF68-4ED3-BB04-255722C70102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{26AAE" +
+                    "746-CF68-4ED3-BB04-255722C70102}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{26AAE" +
+                    "746-CF68-4ED3-BB04-255722C70102}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t" +
+                    "{26AAE746-CF68-4ED3-BB04-255722C70102}.Release|Any CPU.Build.0 = Release|Any CPU" +
+                    "\r\n\t\t{32E54D18-F5AA-4567-931A-05EF290A5C5D}.Debug|Any CPU.ActiveCfg = Debug|Any C" +
+                    "PU\r\n\t\t{32E54D18-F5AA-4567-931A-05EF290A5C5D}.Debug|Any CPU.Build.0 = Debug|Any C" +
+                    "PU\r\n\t\t{32E54D18-F5AA-4567-931A-05EF290A5C5D}.Release|Any CPU.ActiveCfg = Release" +
+                    "|Any CPU\r\n\t\t{32E54D18-F5AA-4567-931A-05EF290A5C5D}.Release|Any CPU.Build.0 = Rel" +
+                    "ease|Any CPU\r\n\t\t{0B252E9F-686A-41EC-BE4C-ED7504D63475}.Debug|Any CPU.ActiveCfg =" +
+                    " Debug|Any CPU\r\n\t\t{0B252E9F-686A-41EC-BE4C-ED7504D63475}.Debug|Any CPU.Build.0 =" +
+                    " Debug|Any CPU\r\n\t\t{0B252E9F-686A-41EC-BE4C-ED7504D63475}.Release|Any CPU.ActiveC" +
+                    "fg = Release|Any CPU\r\n\t\t{0B252E9F-686A-41EC-BE4C-ED7504D63475}.Release|Any CPU.B" +
+                    "uild.0 = Release|Any CPU\r\n\t\t{86ADDCE8-6E78-400A-9646-E22F58C61AA5}.Debug|Any CPU" +
+                    ".ActiveCfg = Debug|Any CPU\r\n\t\t{86ADDCE8-6E78-400A-9646-E22F58C61AA5}.Debug|Any C" +
+                    "PU.Build.0 = Debug|Any CPU\r\n\t\t{86ADDCE8-6E78-400A-9646-E22F58C61AA5}.Release|Any" +
+                    " CPU.ActiveCfg = Release|Any CPU\r\n\t\t{86ADDCE8-6E78-400A-9646-E22F58C61AA5}.Relea" +
+                    "se|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{9F812B84-46D3-439C-A380-782D8D0CEADA}.D" +
+                    "ebug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{9F812B84-46D3-439C-A380-782D8D0CEADA}" +
+                    ".Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{9F812B84-46D3-439C-A380-782D8D0CEADA}" +
+                    ".Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{9F812B84-46D3-439C-A380-782D8D0" +
+                    "CEADA}.Release|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{95579090-C899-42F2-89AC-068" +
+                    "EA5C6D808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{95579090-C899-42F2-89AC-0" +
+                    "68EA5C6D808}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{95579090-C899-42F2-89AC-0" +
+                    "68EA5C6D808}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{95579090-C899-42F2-" +
+                    "89AC-068EA5C6D808}.Release|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{23809777-E3CC-4" +
+                    "D0A-900E-E29EDA123E01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{23809777-E3CC" +
+                    "-4D0A-900E-E29EDA123E01}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{23809777-E3CC" +
+                    "-4D0A-900E-E29EDA123E01}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{2380977" +
+                    "7-E3CC-4D0A-900E-E29EDA123E01}.Release|Any CPU.Build.0 = Release|Any CPU\r\n\t\t{E47" +
+                    "E0CD9-9665-4B97-8494-0BC23A414F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{E" +
+                    "47E0CD9-9665-4B97-8494-0BC23A414F08}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{E" +
+                    "47E0CD9-9665-4B97-8494-0BC23A414F08}.Release|Any CPU.ActiveCfg = Release|Any CPU" +
+                    "\r\n\t\t{E47E0CD9-9665-4B97-8494-0BC23A414F08}.Release|Any CPU.Build.0 = Release|Any" +
+                    " CPU\r\n\r\n");
             
             #line 142 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\API\SolutionTemplate.tt"
 

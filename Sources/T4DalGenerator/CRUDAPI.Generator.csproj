@@ -28,6 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="appsettings.Jaggu.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="appsettings.ITM.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

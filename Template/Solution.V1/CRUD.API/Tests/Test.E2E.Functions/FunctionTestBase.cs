@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using PPT.Test.Functions.Common;
+using CRUD.Test.Functions.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace PPT.Test.E2E.Functions
+namespace CRUD.Test.E2E.Functions
 {
     public abstract class FunctionTestBase
     {
@@ -69,23 +69,23 @@ namespace PPT.Test.E2E.Functions
                                  .ToArray();
         }
 
-        protected async Task<PPT.DTO.LoginResponse> Login(string login, string password, IHost host, ILogger logger)
+        protected async Task<CRUD.DTO.LoginResponse> Login(string login, string password, IHost host, ILogger logger)
         {
 
-            var dtoLogin = new PPT.DTO.LoginRequest()
+            var dtoLogin = new CRUD.DTO.LoginRequest()
             {
                 Login = login,
                 Password = password
             };
 
-            PPT.DTO.LoginResponse dtoResp = null;
+            CRUD.DTO.LoginResponse dtoResp = null;
 
             // TODO: Implement call to Login function
             /*
             var request = TestFactory.CreateHttpRequest(dtoLogin, null);
-            var response = (ObjectResult)await (GetFunction<PPT.Functions.User.V1.Login>(host)).Run(request, logger);
+            var response = (ObjectResult)await (GetFunction<CRUD.Functions.User.V1.Login>(host)).Run(request, logger);
             
-            var dtoResp = JsonSerializer.Deserialize<PPT.DTO.LoginResponse>(response.Value.ToString());
+            var dtoResp = JsonSerializer.Deserialize<CRUD.DTO.LoginResponse>(response.Value.ToString());
             */
             return dtoResp;
 

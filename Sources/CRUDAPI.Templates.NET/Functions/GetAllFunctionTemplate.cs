@@ -134,23 +134,31 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             
             #line default
             #line hidden
-            this.Write(@""")] HttpRequest req,
-            ILogger log)
-        {
-            IActionResult result = null;
-            var funHelper = new PPT.Functions.Common.FunctionHelper();
-            log.LogInformation($""{System.Reflection.MethodInfo.GetCurrentMethod()} Started"");
-
-            try
-            {
-                var entities = _dal");
+            this.Write("\")] HttpRequest req,\r\n            ILogger log)\r\n        {\r\n            IActionRes" +
+                    "ult result = null;\r\n            var funHelper = new ");
+            
+            #line 45 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.Common.FunctionHelper();\r\n            log.LogInformation($\"{System.Ref" +
+                    "lection.MethodInfo.GetCurrentMethod()} Started\");\r\n\r\n            try\r\n          " +
+                    "  {\r\n                var entities = _dal");
             
             #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(".GetAll();\r\n                var dtos = new List<PPT.DTO.");
+            this.Write(".GetAll();\r\n                var dtos = new List<");
+            
+            #line 51 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DTO.");
             
             #line 51 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetAllFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));

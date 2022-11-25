@@ -191,16 +191,17 @@ for(int i = 0; i < pks.Count; ++i)
             
             #line default
             #line hidden
-            this.Write(@",
-            ILogger log)
-        {
-            IActionResult result = null;
-            var funHelper = new PPT.Functions.Common.FunctionHelper();
-            log.LogInformation($""{System.Reflection.MethodInfo.GetCurrentMethod()} Started"");
-
-            try
-            {
-                var user = _dal");
+            this.Write(",\r\n            ILogger log)\r\n        {\r\n            IActionResult result = null;\r" +
+                    "\n            var funHelper = new ");
+            
+            #line 54 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.Common.FunctionHelper();\r\n            log.LogInformation($\"{System.Ref" +
+                    "lection.MethodInfo.GetCurrentMethod()} Started\");\r\n\r\n            try\r\n          " +
+                    "  {\r\n                var user = _dal");
             
             #line 59 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -279,10 +280,15 @@ for(int i = 0; i < pks.Count; ++i)
                     }
                     else
                     {
-                        result = new ObjectResult(funHelper.ToJosn(new PPT.DTO.Error()
-                        {
-                            Code = (int)HttpStatusCode.InternalServerError,
-                            Message = $""");
+                        result = new ObjectResult(funHelper.ToJosn(new ");
+            
+            #line 76 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DTO.Error()\r\n                        {\r\n                            Code = (int)" +
+                    "HttpStatusCode.InternalServerError,\r\n                            Message = $\"");
             
             #line 79 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -326,10 +332,15 @@ for(int i = 0; i < pks.Count; ++i)
                 }
                 else
                 {
-                    result = new ObjectResult(funHelper.ToJosn(new PPT.DTO.Error()
-                    {
-                        Code = (int)HttpStatusCode.NotFound,
-                        Message = $""");
+                    result = new ObjectResult(funHelper.ToJosn(new ");
+            
+            #line 91 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DTO.Error()\r\n                    {\r\n                        Code = (int)HttpStat" +
+                    "usCode.NotFound,\r\n                        Message = $\"");
             
             #line 94 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\EraseFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));

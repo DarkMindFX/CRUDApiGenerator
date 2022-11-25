@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace PPT.API
+namespace CRUD.API
 {
     public class Program
     {
@@ -20,7 +20,7 @@ namespace PPT.API
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<PPT.API.Startup>();
+                    webBuilder.UseStartup<CRUD.API.Startup>();
                 });
     }
 }

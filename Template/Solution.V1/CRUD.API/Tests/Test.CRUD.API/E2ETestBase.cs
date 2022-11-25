@@ -32,19 +32,19 @@ namespace Test.E2E.API
             }
         }
 
-        protected readonly WebApplicationFactory<PPT.API.Startup> _factory;
+        protected readonly WebApplicationFactory<CRUD.API.Startup> _factory;
         protected TestParams _testParams;
 
-        public E2ETestBase(WebApplicationFactory<PPT.API.Startup> factory)
+        public E2ETestBase(WebApplicationFactory<CRUD.API.Startup> factory)
         {
             this._factory = factory;
         }
 
-        protected PPT.DTO.LoginResponse Login(string login, string password)
+        protected CRUD.DTO.LoginResponse Login(string login, string password)
         {
             using (var client = _factory.CreateClient())
             {
-                var dtoLogin = new PPT.DTO.LoginRequest()
+                var dtoLogin = new CRUD.DTO.LoginRequest()
                 {
                     Login = login,
                     Password = password
@@ -53,7 +53,7 @@ namespace Test.E2E.API
 
                 var respLogin = client.PostAsync($"/api/v1/users/login/", content);
 
-                var dtoResponse = ExtractContentJson<PPT.DTO.LoginResponse>(respLogin.Result.Content);
+                var dtoResponse = ExtractContentJson<CRUD.DTO.LoginResponse>(respLogin.Result.Content);
 
                 return dtoResponse;
             }

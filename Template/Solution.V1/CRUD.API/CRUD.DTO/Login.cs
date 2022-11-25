@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace PPT.DTO
+namespace CRUD.DTO
 {
     public class LoginRequest
     {

@@ -151,18 +151,29 @@ using ");
             
             #line default
             #line hidden
-            this.Write(@""")] HttpRequest req,
-            ILogger log)
-        {
-            IActionResult result = null;
-            var funHelper = new PPT.Functions.Common.FunctionHelper();
+            this.Write("\")] HttpRequest req,\r\n            ILogger log)\r\n        {\r\n            IActionRes" +
+                    "ult result = null;\r\n            var funHelper = new ");
+            
+            #line 51 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(@".Functions.Common.FunctionHelper();
             log.LogInformation($""{System.Reflection.MethodInfo.GetCurrentMethod()} Started"");
 
             try
             {
                 var content = await new StreamReader(req.Body).ReadToEndAsync();
 
-                var dto = JsonConvert.DeserializeObject<PPT.DTO.");
+                var dto = JsonConvert.DeserializeObject<");
+            
+            #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DTO.");
             
             #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -247,8 +258,14 @@ using ");
             
             #line default
             #line hidden
-            this.Write(",\r\n\t\t\t\t\t\t\t\t\t\t\t(PPT.Interfaces.Entities.User)req.HttpContext.Items[\"User\"]); \r\n\t\t\t" +
-                    "\t\t");
+            this.Write(",\r\n\t\t\t\t\t\t\t\t\t\t\t(");
+            
+            #line 91 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.User)req.HttpContext.Items[\"User\"]); \r\n\t\t\t\t\t");
             
             #line 92 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
 
@@ -257,7 +274,14 @@ using ");
             
             #line default
             #line hidden
-            this.Write("                   \r\n                    PPT.Interfaces.Entities.");
+            this.Write("                   \r\n                    ");
+            
+            #line 96 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 96 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -286,10 +310,15 @@ using ");
                 }
                 else
                 {
-                    result = new ObjectResult(funHelper.ToJosn(new PPT.DTO.Error()
-                    {
-                        Code = (int)HttpStatusCode.NotFound,
-                        Message = $""");
+                    result = new ObjectResult(funHelper.ToJosn(new ");
+            
+            #line 105 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DTO.Error()\r\n                    {\r\n                        Code = (int)HttpStat" +
+                    "usCode.NotFound,\r\n                        Message = $\"");
             
             #line 108 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));

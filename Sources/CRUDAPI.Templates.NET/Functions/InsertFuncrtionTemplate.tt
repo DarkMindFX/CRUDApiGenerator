@@ -46,14 +46,14 @@ namespace <#=RootNamespace #>.Functions.<#= table.Name #>.V1
             ILogger log)
         {
             IActionResult result = null;
-            var funHelper = new PPT.Functions.Common.FunctionHelper();
+            var funHelper = new <#=RootNamespace #>.Functions.Common.FunctionHelper();
             log.LogInformation($"{System.Reflection.MethodInfo.GetCurrentMethod()} Started");
 
             try
             {
                 var content = await new StreamReader(req.Body).ReadToEndAsync();
 
-                var dto = JsonConvert.DeserializeObject<PPT.DTO.<#= table.Name #>>(content);
+                var dto = JsonConvert.DeserializeObject<<#=RootNamespace #>.DTO.<#= table.Name #>>(content);
 
                 var entity = <#= table.Name #>Convertor.Convert(dto);
 
@@ -64,12 +64,12 @@ namespace <#=RootNamespace #>.Functions.<#= table.Name #>.V1
 				funHelper.SetCreatedModifiedProperties(entity, 
 										<#= table.HasColumn("CreatedDate") ? "\"CreatedDate\"" : "null" #>, 
 										<#= table.HasColumn("CreatedByID") ? "\"CreatedByID\"" : "null" #>,
-										(PPT.Interfaces.Entities.User)req.HttpContext.Items["User"]); 
+										(<#=RootNamespace #>.Interfaces.Entities.User)req.HttpContext.Items["User"]); 
 				<#
 					}
 				#>
 
-                PPT.Interfaces.Entities.<#= table.Name #> newEntity = _dal<#= table.Name #>.Insert(entity);
+                <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> newEntity = _dal<#= table.Name #>.Insert(entity);
 
                 if (newEntity != null)
                 {
@@ -80,7 +80,7 @@ namespace <#=RootNamespace #>.Functions.<#= table.Name #>.V1
                 }
                 else
                 {
-                    result = new ObjectResult(funHelper.ToJosn(new PPT.DTO.Error()
+                    result = new ObjectResult(funHelper.ToJosn(new <#=RootNamespace #>.DTO.Error()
                     {
                         Code = (int)HttpStatusCode.InternalServerError,
                         Message = $"Something went wrong. <#= table.Name #> was not inserted."

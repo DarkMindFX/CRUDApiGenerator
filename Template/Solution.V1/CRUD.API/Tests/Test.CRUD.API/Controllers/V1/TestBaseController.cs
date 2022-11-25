@@ -1,4 +1,4 @@
-﻿using PPT.API.Controllers.V1;
+﻿using CRUD.API.Controllers.V1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +12,9 @@ namespace Test.E2E.API.Controllers.V1
     {
         class BaseControllerTestWrapper : BaseController
         {
-            private readonly PPT.Interfaces.Entities.User currentUser = new PPT.Interfaces.Entities.User { ID = 100001 };
+            private readonly CRUD.Interfaces.Entities.User currentUser = new CRUD.Interfaces.Entities.User { ID = 100001 };
 
-            public override PPT.Interfaces.Entities.User CurrentUser
+            public override CRUD.Interfaces.Entities.User CurrentUser
             {
                 get
                 {

@@ -374,10 +374,7 @@ namespace CRUDAPI.Generators
         {
             string outFolder = Path.Combine(_genParams.Settings.OutputRoot, _genParams.Timestamp.ToString("yyyy-MM-dd HH-mm-ss"), 
                                             _genParams.Settings.OutputFolders["DalSQLTests"], _genParams.Table.Name);
-            if (!Directory.Exists(outFolder))
-            {
-                Directory.CreateDirectory(outFolder);
-            }
+            outFolder = base.CreateDirectory(outFolder);
 
             return outFolder;
         }

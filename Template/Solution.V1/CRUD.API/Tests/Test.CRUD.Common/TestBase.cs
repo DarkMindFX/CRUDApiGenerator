@@ -8,7 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 
-namespace Test.PPT.DAL.MSSQL
+namespace Test.CRUD.DAL.MSSQL
 {
     public class TestBase
     {

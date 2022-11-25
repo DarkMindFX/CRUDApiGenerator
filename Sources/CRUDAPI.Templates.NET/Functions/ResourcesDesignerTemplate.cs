@@ -74,7 +74,14 @@ namespace ");
                     "\r\n        internal static global::System.Resources.ResourceManager ResourceManag" +
                     "er {\r\n            get {\r\n                if (object.ReferenceEquals(resourceMan," +
                     " null)) {\r\n                    global::System.Resources.ResourceManager temp = n" +
-                    "ew global::System.Resources.ResourceManager(\"PPT.Functions.");
+                    "ew global::System.Resources.ResourceManager(\"");
+            
+            #line 52 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\ResourcesDesignerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
             
             #line 52 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\ResourcesDesignerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));

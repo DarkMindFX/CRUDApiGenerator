@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPT.Services.Common.Helpers
+namespace CRUD.Services.Common.Helpers
 {
     public class PasswordHelper
     {

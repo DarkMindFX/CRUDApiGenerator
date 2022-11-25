@@ -1,12 +1,12 @@
 
 
-using PPT.Interfaces.Entities;
+using CRUD.Interfaces.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using PPT.Services.Dal;
+using CRUD.Services.Dal;
 
-namespace PPT.Services.Dal
+namespace CRUD.Services.Dal
 {
     public interface IUserDal : IDalBase<User>
     {

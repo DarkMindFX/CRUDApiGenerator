@@ -29,9 +29,9 @@ using Xunit;
 
 namespace Test.E2E.API.Controllers.V1
 {
-    public class Test<#= modelHelper.Pluralize(table.Name) #>Controller : E2ETestBase, IClassFixture<WebApplicationFactory<PPT.API.Startup>>
+    public class Test<#= modelHelper.Pluralize(table.Name) #>Controller : E2ETestBase, IClassFixture<WebApplicationFactory<<#=RootNamespace #>.API.Startup>>
     {
-        public Test<#= modelHelper.Pluralize(table.Name) #>Controller(WebApplicationFactory<PPT.API.Startup> factory) : base(factory)
+        public Test<#= modelHelper.Pluralize(table.Name) #>Controller(WebApplicationFactory<<#=RootNamespace #>.API.Startup> factory) : base(factory)
         {
             _testParams = GetTestParams("GenericControllerTestSettings");
         }
@@ -58,7 +58,7 @@ namespace Test.E2E.API.Controllers.V1
         [Fact]
         public void <#= table.Name #>_Get_Success()
         {
-            PPT.Interfaces.Entities.<#= table.Name #> testEntity = AddTestEntity();
+            <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> testEntity = AddTestEntity();
             using (var client = _factory.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
@@ -184,8 +184,8 @@ namespace Test.E2E.API.Controllers.V1
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
 
-                PPT.Interfaces.Entities.<#= table.Name #> testEntity = CreateTestEntity();
-                PPT.Interfaces.Entities.<#= table.Name #> respEntity = null;
+                <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> testEntity = CreateTestEntity();
+                <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> respEntity = null;
                 try
                 {
                     var reqDto = <#= table.Name #>Convertor.Convert(testEntity, null);
@@ -232,7 +232,7 @@ namespace Test.E2E.API.Controllers.V1
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
 
-                PPT.Interfaces.Entities.<#= table.Name #> testEntity = AddTestEntity();
+                <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> testEntity = AddTestEntity();
                 try
                 {
             <#
@@ -312,7 +312,7 @@ namespace Test.E2E.API.Controllers.V1
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
 
-                PPT.Interfaces.Entities.<#= table.Name #> testEntity = CreateTestEntity();
+                <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> testEntity = CreateTestEntity();
                 try
                 {
               <#
@@ -372,7 +372,7 @@ namespace Test.E2E.API.Controllers.V1
 
         #region Support methods
 
-        protected bool RemoveTestEntity(PPT.Interfaces.Entities.<#= table.Name #> entity)
+        protected bool RemoveTestEntity(<#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> entity)
         {
             if (entity != null)
             {
@@ -415,9 +415,9 @@ namespace Test.E2E.API.Controllers.V1
             }
         }
 
-        protected PPT.Interfaces.Entities.<#= table.Name #> CreateTestEntity()
+        protected <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> CreateTestEntity()
         {
-            var entity = new PPT.Interfaces.Entities.<#= table.Name #>();
+            var entity = new <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #>();
             <#
                 foreach(var c in table.Columns)
                 {
@@ -455,9 +455,9 @@ namespace Test.E2E.API.Controllers.V1
             return entity;
         }
 
-        protected PPT.Interfaces.Entities.<#= table.Name #> AddTestEntity()
+        protected <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> AddTestEntity()
         {
-            PPT.Interfaces.Entities.<#= table.Name #> result = null;
+            <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> result = null;
 
             var entity = CreateTestEntity();
 
@@ -467,11 +467,11 @@ namespace Test.E2E.API.Controllers.V1
             return result;
         }
 
-        private PPT.Interfaces.I<#= table.Name #>Dal CreateDal()
+        private <#=RootNamespace #>.Interfaces.I<#= table.Name #>Dal CreateDal()
         {
             var initParams = GetTestParams("DALInitParams");
 
-            PPT.Interfaces.I<#= table.Name #>Dal dal = new PPT.DAL.MSSQL.<#= table.Name #>Dal();
+            <#=RootNamespace #>.Interfaces.I<#= table.Name #>Dal dal = new <#=RootNamespace #>.DAL.MSSQL.<#= table.Name #>Dal();
             var dalInitParams = dal.CreateInitParams();
             dalInitParams.Parameters["ConnectionString"] = (string)initParams.Settings["ConnectionString"];
             dal.Init(dalInitParams);

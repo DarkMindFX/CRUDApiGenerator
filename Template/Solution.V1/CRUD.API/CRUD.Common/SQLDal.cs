@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 
-namespace PPT.Common
+namespace CRUD.Common
 {
     public abstract class SQLDal
     {

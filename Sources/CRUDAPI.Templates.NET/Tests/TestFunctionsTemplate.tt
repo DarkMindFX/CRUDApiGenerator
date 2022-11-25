@@ -36,7 +36,7 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
     public class Test<#= table.Name #>Functions : FunctionTestBase
     {
         private readonly ILogger _logger = TestFactory.CreateLogger();
-        private PPT.Functions.<#= table.Name #>.Startup _startup;
+        private <#=RootNamespace #>.Functions.<#= table.Name #>.Startup _startup;
         private IHost _host;
 
 
@@ -51,12 +51,12 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
             var initParams = GetTestParams("DALInitParams");
 
             // Function replies on env vars for config
-            Environment.SetEnvironmentVariable(PPT.Functions.Common.Constants.ENV_DAL_TYPE, _testParams.Settings["DALType"].ToString());
-            Environment.SetEnvironmentVariable(PPT.Functions.Common.Constants.ENV_SQL_CONNECTION_STRING, (string)initParams.Settings["ConnectionString"]);
-            Environment.SetEnvironmentVariable(PPT.Functions.Common.Constants.ENV_JWT_SECRET, (string)_testParams.Settings["JWTSecret"]);
-            Environment.SetEnvironmentVariable(PPT.Functions.Common.Constants.ENV_SESSION_TIMEOUT, (string)_testParams.Settings["JWTSessionTimeout"]);
+            Environment.SetEnvironmentVariable(<#=RootNamespace #>.Functions.Common.Constants.ENV_DAL_TYPE, _testParams.Settings["DALType"].ToString());
+            Environment.SetEnvironmentVariable(<#=RootNamespace #>.Functions.Common.Constants.ENV_SQL_CONNECTION_STRING, (string)initParams.Settings["ConnectionString"]);
+            Environment.SetEnvironmentVariable(<#=RootNamespace #>.Functions.Common.Constants.ENV_JWT_SECRET, (string)_testParams.Settings["JWTSecret"]);
+            Environment.SetEnvironmentVariable(<#=RootNamespace #>.Functions.Common.Constants.ENV_SESSION_TIMEOUT, (string)_testParams.Settings["JWTSessionTimeout"]);
 
-            _startup = new PPT.Functions.<#= table.Name #>.Startup();
+            _startup = new <#=RootNamespace #>.Functions.<#= table.Name #>.Startup();
             _host = new HostBuilder()
                 .ConfigureWebJobs(_startup.Configure)                
                 .Build();
@@ -67,14 +67,14 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
         {
             var request = TestFactory.CreateHttpRequest();
 
-            var function = GetFunction<PPT.Functions.<#= table.Name #>.V1.GetAll>(_host);
+            var function = GetFunction<<#=RootNamespace #>.Functions.<#= table.Name #>.V1.GetAll>(_host);
 
             var response = (ObjectResult)await function.Run(request, _logger);
 
             Assert.IsNotNull(response);
             Assert.AreEqual((int)HttpStatusCode.OK, response.StatusCode);
 
-            var dtos = JsonSerializer.Deserialize<List<PPT.DTO.<#= table.Name #>>>(response.Value.ToString());
+            var dtos = JsonSerializer.Deserialize<List<<#=RootNamespace #>.DTO.<#= table.Name #>>>(response.Value.ToString());
 
             Assert.NotNull(dtos);
             Assert.IsNotEmpty(dtos);
@@ -83,12 +83,12 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
         [Test]
         public async Task <#= tableNamePlural #>GetDetails_Success()
         {
-            PPT.Interfaces.Entities.<#= table.Name #> testEntity = AddTestEntity();
+            <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> testEntity = AddTestEntity();
 
             try
             {
                 var request = TestFactory.CreateHttpRequest();
-                var response = (ObjectResult)await(GetFunction<PPT.Functions.<#= table.Name #>.V1.GetDetails>(_host)).Run(request,
+                var response = (ObjectResult)await(GetFunction<<#=RootNamespace #>.Functions.<#= table.Name #>.V1.GetDetails>(_host)).Run(request,
 <#
 	for(int i = 0; i < pks.Count; ++i)
     {
@@ -102,7 +102,7 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
                 Assert.IsNotNull(response);
                 Assert.AreEqual((int)HttpStatusCode.OK, response.StatusCode);
 
-                var dto = JsonSerializer.Deserialize<PPT.DTO.<#= table.Name #>>(response.Value.ToString());
+                var dto = JsonSerializer.Deserialize<<#=RootNamespace #>.DTO.<#= table.Name #>>(response.Value.ToString());
 
                 Assert.NotNull(dto);
                 Assert.AreEqual(testEntity.ID, dto.ID);
@@ -126,7 +126,7 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
 		}
 #>
             var request = TestFactory.CreateHttpRequest();
-            var response = (ObjectResult)await(GetFunction<PPT.Functions.<#= table.Name #>.V1.GetDetails>(_host)).Run(request, 
+            var response = (ObjectResult)await(GetFunction<<#=RootNamespace #>.Functions.<#= table.Name #>.V1.GetDetails>(_host)).Run(request, 
 <#
 		for(int i = 0; i < pks.Count; ++i)
 		{         
@@ -144,12 +144,12 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
         [Test]
         public async Task <#= tableNamePlural #>Delete_Success()
         {
-            PPT.Interfaces.Entities.<#= table.Name #> testEntity = AddTestEntity();
+            <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> testEntity = AddTestEntity();
 
             try
             {
                 var request = TestFactory.CreateHttpRequest();
-                var response = (StatusCodeResult)await(GetFunction<PPT.Functions.<#= table.Name #>.V1.Delete>(_host)).Run(request, 
+                var response = (StatusCodeResult)await(GetFunction<<#=RootNamespace #>.Functions.<#= table.Name #>.V1.Delete>(_host)).Run(request, 
 				<#
 					for(int i = 0; i < pks.Count; ++i)
 					{
@@ -181,7 +181,7 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
 		}
 #>
             var request = TestFactory.CreateHttpRequest();
-            var response = (ObjectResult)await(GetFunction<PPT.Functions.<#= table.Name #>.V1.Delete>(_host)).Run(request, 
+            var response = (ObjectResult)await(GetFunction<<#=RootNamespace #>.Functions.<#= table.Name #>.V1.Delete>(_host)).Run(request, 
 <#
 		for(int i = 0; i < pks.Count; ++i)
 		{         
@@ -199,19 +199,19 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
         [Test]
         public async Task <#= tableNamePlural #>Insert_Success()
         {
-            PPT.Interfaces.Entities.<#= table.Name #> testEntity = CreateTestEntity();
+            <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> testEntity = CreateTestEntity();
 
             try
             {
-                var dtoReq = PPT.Utils.Convertors.<#= table.Name #>Convertor.Convert(testEntity, null);
+                var dtoReq = <#=RootNamespace #>.Utils.Convertors.<#= table.Name #>Convertor.Convert(testEntity, null);
 
                 var request = TestFactory.CreateHttpRequest(dtoReq);
-                var response = (ObjectResult)await(GetFunction<PPT.Functions.<#= table.Name #>.V1.Insert>(_host)).Run(request, _logger);
+                var response = (ObjectResult)await(GetFunction<<#=RootNamespace #>.Functions.<#= table.Name #>.V1.Insert>(_host)).Run(request, _logger);
 
                 Assert.IsNotNull(response);
                 Assert.AreEqual((int)HttpStatusCode.Created, response.StatusCode);
 
-                var dto = JsonSerializer.Deserialize<PPT.DTO.<#= table.Name #>>(response.Value.ToString());
+                var dto = JsonSerializer.Deserialize<<#=RootNamespace #>.DTO.<#= table.Name #>>(response.Value.ToString());
 
                 Assert.NotNull(dto);
 
@@ -249,7 +249,7 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
         [Test]
         public async Task <#= tableNamePlural #>Update_Success()
         {
-            PPT.Interfaces.Entities.<#= table.Name #> testEntity = AddTestEntity();
+            <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> testEntity = AddTestEntity();
 
             try
             {
@@ -290,12 +290,12 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
                 var reqDto = <#= table.Name #>Convertor.Convert(testEntity, null);
 
                 var request = TestFactory.CreateHttpRequest(reqDto);
-                var response = (ObjectResult)await(GetFunction<PPT.Functions.<#= table.Name #>.V1.Update>(_host)).Run(request, _logger);
+                var response = (ObjectResult)await(GetFunction<<#=RootNamespace #>.Functions.<#= table.Name #>.V1.Update>(_host)).Run(request, _logger);
 
                 Assert.IsNotNull(response);
                 Assert.AreEqual((int)HttpStatusCode.OK, response.StatusCode);
 
-				var dto = JsonSerializer.Deserialize<PPT.DTO.<#= table.Name #>>(response.Value.ToString());
+				var dto = JsonSerializer.Deserialize<<#=RootNamespace #>.DTO.<#= table.Name #>>(response.Value.ToString());
 
 				<#
                 foreach(var c in table.Columns)
@@ -322,7 +322,7 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
         [Test]
         public async Task <#= tableNamePlural #>Update_NotFound()
         {
-            PPT.Interfaces.Entities.<#= table.Name #> testEntity = CreateTestEntity();
+            <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> testEntity = CreateTestEntity();
 
             try
             {
@@ -369,7 +369,7 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
                 var reqDto = <#= table.Name #>Convertor.Convert(testEntity, null);
 
                 var request = TestFactory.CreateHttpRequest(reqDto);
-                var response = (ObjectResult)await(GetFunction<PPT.Functions.<#= table.Name #>.V1.Update>(_host)).Run(request, _logger);
+                var response = (ObjectResult)await(GetFunction<<#=RootNamespace #>.Functions.<#= table.Name #>.V1.Update>(_host)).Run(request, _logger);
 
                 Assert.IsNotNull(response);
                 Assert.AreEqual((int)HttpStatusCode.NotFound, response.StatusCode);
@@ -382,7 +382,7 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
 
 		#region Support methods
 
-        protected bool RemoveTestEntity(PPT.Interfaces.Entities.<#= table.Name #> entity)
+        protected bool RemoveTestEntity(<#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> entity)
         {
             if (entity != null)
             {
@@ -425,9 +425,9 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
             }
         }
 
-        protected PPT.Interfaces.Entities.<#= table.Name #> CreateTestEntity()
+        protected <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> CreateTestEntity()
         {
-            var entity = new PPT.Interfaces.Entities.<#= table.Name #>();
+            var entity = new <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #>();
             <#
                 foreach(var c in table.Columns)
                 {
@@ -465,9 +465,9 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
             return entity;
         }
 
-        protected PPT.Interfaces.Entities.<#= table.Name #> AddTestEntity()
+        protected <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> AddTestEntity()
         {
-            PPT.Interfaces.Entities.<#= table.Name #> result = null;
+            <#=RootNamespace #>.Interfaces.Entities.<#= table.Name #> result = null;
 
             var entity = CreateTestEntity();
 
@@ -477,11 +477,11 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
             return result;
         }
 
-        private PPT.Interfaces.I<#= table.Name #>Dal CreateDal()
+        private <#=RootNamespace #>.Interfaces.I<#= table.Name #>Dal CreateDal()
         {
             var initParams = GetTestParams("DALInitParams");
 
-            PPT.Interfaces.I<#= table.Name #>Dal dal = new PPT.DAL.MSSQL.<#= table.Name #>Dal();
+            <#=RootNamespace #>.Interfaces.I<#= table.Name #>Dal dal = new <#=RootNamespace #>.DAL.MSSQL.<#= table.Name #>Dal();
             var dalInitParams = dal.CreateInitParams();
             dalInitParams.Parameters["ConnectionString"] = (string)initParams.Settings["ConnectionString"];
             dal.Init(dalInitParams);

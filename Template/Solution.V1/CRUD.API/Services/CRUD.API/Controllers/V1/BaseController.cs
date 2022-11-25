@@ -1,4 +1,4 @@
-﻿using PPT.Interfaces.Entities;
+﻿using CRUD.Interfaces.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Reflection;
 
-namespace PPT.API.Controllers.V1
+namespace CRUD.API.Controllers.V1
 {
     public class BaseController : ControllerBase
     {

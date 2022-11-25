@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
-using PPT.Interfaces;
+using CRUD.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -9,11 +9,11 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPT.Services.Common.Helpers
+namespace CRUD.Services.Common.Helpers
 {
     public class JWTHelper
     {
-        public static string GenerateToken(PPT.Interfaces.Entities.User user, DateTime expires, string secret)
+        public static string GenerateToken(CRUD.Interfaces.Entities.User user, DateTime expires, string secret)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(secret);
@@ -42,9 +42,9 @@ namespace PPT.Services.Common.Helpers
             return token;
         }
 
-        public static PPT.Interfaces.Entities.User GetUserFromToken(string token, string secret, PPT.Services.Dal.IUserDal dalUser)
+        public static CRUD.Interfaces.Entities.User GetUserFromToken(string token, string secret, CRUD.Services.Dal.IUserDal dalUser)
         {
-            PPT.Interfaces.Entities.User user = null;
+            CRUD.Interfaces.Entities.User user = null;
             try
             {
                 var tokenHandler = new JwtSecurityTokenHandler();

@@ -70,7 +70,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line default
             #line hidden
             this.Write("Functions : FunctionTestBase\r\n    {\r\n        private readonly ILogger _logger = T" +
-                    "estFactory.CreateLogger();\r\n        private PPT.Functions.");
+                    "estFactory.CreateLogger();\r\n        private ");
+            
+            #line 39 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
             
             #line 39 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -95,12 +102,46 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             var initParams = GetTestParams(""DALInitParams"");
 
             // Function replies on env vars for config
-            Environment.SetEnvironmentVariable(PPT.Functions.Common.Constants.ENV_DAL_TYPE, _testParams.Settings[""DALType""].ToString());
-            Environment.SetEnvironmentVariable(PPT.Functions.Common.Constants.ENV_SQL_CONNECTION_STRING, (string)initParams.Settings[""ConnectionString""]);
-            Environment.SetEnvironmentVariable(PPT.Functions.Common.Constants.ENV_JWT_SECRET, (string)_testParams.Settings[""JWTSecret""]);
-            Environment.SetEnvironmentVariable(PPT.Functions.Common.Constants.ENV_SESSION_TIMEOUT, (string)_testParams.Settings[""JWTSessionTimeout""]);
-
-            _startup = new PPT.Functions.");
+            Environment.SetEnvironmentVariable(");
+            
+            #line 54 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.Common.Constants.ENV_DAL_TYPE, _testParams.Settings[\"DALType\"].ToStrin" +
+                    "g());\r\n            Environment.SetEnvironmentVariable(");
+            
+            #line 55 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.Common.Constants.ENV_SQL_CONNECTION_STRING, (string)initParams.Setting" +
+                    "s[\"ConnectionString\"]);\r\n            Environment.SetEnvironmentVariable(");
+            
+            #line 56 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.Common.Constants.ENV_JWT_SECRET, (string)_testParams.Settings[\"JWTSecr" +
+                    "et\"]);\r\n            Environment.SetEnvironmentVariable(");
+            
+            #line 57 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.Common.Constants.ENV_SESSION_TIMEOUT, (string)_testParams.Settings[\"JW" +
+                    "TSessionTimeout\"]);\r\n\r\n            _startup = new ");
+            
+            #line 59 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
             
             #line 59 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -117,7 +158,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line default
             #line hidden
             this.Write("GetAll_Success()\r\n        {\r\n            var request = TestFactory.CreateHttpRequ" +
-                    "est();\r\n\r\n            var function = GetFunction<PPT.Functions.");
+                    "est();\r\n\r\n            var function = GetFunction<");
+            
+            #line 70 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
             
             #line 70 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -131,7 +179,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             Assert.IsNotNull(response);
             Assert.AreEqual((int)HttpStatusCode.OK, response.StatusCode);
 
-            var dtos = JsonSerializer.Deserialize<List<PPT.DTO.");
+            var dtos = JsonSerializer.Deserialize<List<");
+            
+            #line 77 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DTO.");
             
             #line 77 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -147,7 +202,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             
             #line default
             #line hidden
-            this.Write("GetDetails_Success()\r\n        {\r\n            PPT.Interfaces.Entities.");
+            this.Write("GetDetails_Success()\r\n        {\r\n            ");
+            
+            #line 86 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 86 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -156,7 +218,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line hidden
             this.Write(" testEntity = AddTestEntity();\r\n\r\n            try\r\n            {\r\n               " +
                     " var request = TestFactory.CreateHttpRequest();\r\n                var response = " +
-                    "(ObjectResult)await(GetFunction<PPT.Functions.");
+                    "(ObjectResult)await(GetFunction<");
+            
+            #line 91 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
             
             #line 91 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -191,7 +260,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line hidden
             this.Write("\t\t\t\t\t_logger);\r\n\r\n                Assert.IsNotNull(response);\r\n                As" +
                     "sert.AreEqual((int)HttpStatusCode.OK, response.StatusCode);\r\n\r\n                v" +
-                    "ar dto = JsonSerializer.Deserialize<PPT.DTO.");
+                    "ar dto = JsonSerializer.Deserialize<");
+            
+            #line 105 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DTO.");
             
             #line 105 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -245,7 +321,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line default
             #line hidden
             this.Write("            var request = TestFactory.CreateHttpRequest();\r\n            var respo" +
-                    "nse = (ObjectResult)await(GetFunction<PPT.Functions.");
+                    "nse = (ObjectResult)await(GetFunction<");
+            
+            #line 129 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
             
             #line 129 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -287,7 +370,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             
             #line default
             #line hidden
-            this.Write("Delete_Success()\r\n        {\r\n            PPT.Interfaces.Entities.");
+            this.Write("Delete_Success()\r\n        {\r\n            ");
+            
+            #line 147 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 147 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -296,7 +386,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line hidden
             this.Write(" testEntity = AddTestEntity();\r\n\r\n            try\r\n            {\r\n               " +
                     " var request = TestFactory.CreateHttpRequest();\r\n                var response = " +
-                    "(StatusCodeResult)await(GetFunction<PPT.Functions.");
+                    "(StatusCodeResult)await(GetFunction<");
+            
+            #line 152 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
             
             #line 152 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -376,7 +473,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line default
             #line hidden
             this.Write("            var request = TestFactory.CreateHttpRequest();\r\n            var respo" +
-                    "nse = (ObjectResult)await(GetFunction<PPT.Functions.");
+                    "nse = (ObjectResult)await(GetFunction<");
+            
+            #line 184 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
             
             #line 184 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -418,7 +522,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             
             #line default
             #line hidden
-            this.Write("Insert_Success()\r\n        {\r\n            PPT.Interfaces.Entities.");
+            this.Write("Insert_Success()\r\n        {\r\n            ");
+            
+            #line 202 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 202 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -426,7 +537,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line default
             #line hidden
             this.Write(" testEntity = CreateTestEntity();\r\n\r\n            try\r\n            {\r\n            " +
-                    "    var dtoReq = PPT.Utils.Convertors.");
+                    "    var dtoReq = ");
+            
+            #line 206 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Utils.Convertors.");
             
             #line 206 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -435,7 +553,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line hidden
             this.Write("Convertor.Convert(testEntity, null);\r\n\r\n                var request = TestFactory" +
                     ".CreateHttpRequest(dtoReq);\r\n                var response = (ObjectResult)await(" +
-                    "GetFunction<PPT.Functions.");
+                    "GetFunction<");
+            
+            #line 209 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
             
             #line 209 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -444,7 +569,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line hidden
             this.Write(".V1.Insert>(_host)).Run(request, _logger);\r\n\r\n                Assert.IsNotNull(re" +
                     "sponse);\r\n                Assert.AreEqual((int)HttpStatusCode.Created, response." +
-                    "StatusCode);\r\n\r\n                var dto = JsonSerializer.Deserialize<PPT.DTO.");
+                    "StatusCode);\r\n\r\n                var dto = JsonSerializer.Deserialize<");
+            
+            #line 214 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DTO.");
             
             #line 214 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -545,7 +677,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             
             #line default
             #line hidden
-            this.Write("Update_Success()\r\n        {\r\n            PPT.Interfaces.Entities.");
+            this.Write("Update_Success()\r\n        {\r\n            ");
+            
+            #line 252 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 252 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -676,7 +815,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line hidden
             this.Write("Convertor.Convert(testEntity, null);\r\n\r\n                var request = TestFactory" +
                     ".CreateHttpRequest(reqDto);\r\n                var response = (ObjectResult)await(" +
-                    "GetFunction<PPT.Functions.");
+                    "GetFunction<");
+            
+            #line 293 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
             
             #line 293 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -685,7 +831,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line hidden
             this.Write(".V1.Update>(_host)).Run(request, _logger);\r\n\r\n                Assert.IsNotNull(re" +
                     "sponse);\r\n                Assert.AreEqual((int)HttpStatusCode.OK, response.Statu" +
-                    "sCode);\r\n\r\n\t\t\t\tvar dto = JsonSerializer.Deserialize<PPT.DTO.");
+                    "sCode);\r\n\r\n\t\t\t\tvar dto = JsonSerializer.Deserialize<");
+            
+            #line 298 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DTO.");
             
             #line 298 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -753,7 +906,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             
             #line default
             #line hidden
-            this.Write("Update_NotFound()\r\n        {\r\n            PPT.Interfaces.Entities.");
+            this.Write("Update_NotFound()\r\n        {\r\n            ");
+            
+            #line 325 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 325 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -903,7 +1063,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line hidden
             this.Write("Convertor.Convert(testEntity, null);\r\n\r\n                var request = TestFactory" +
                     ".CreateHttpRequest(reqDto);\r\n                var response = (ObjectResult)await(" +
-                    "GetFunction<PPT.Functions.");
+                    "GetFunction<");
+            
+            #line 372 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
             
             #line 372 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -923,7 +1090,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
 
 		#region Support methods
 
-        protected bool RemoveTestEntity(PPT.Interfaces.Entities.");
+        protected bool RemoveTestEntity(");
+            
+            #line 385 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 385 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -1026,15 +1200,28 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line default
             #line hidden
             this.Write("            }\r\n            else\r\n            {\r\n                return false;\r\n  " +
-                    "          }\r\n        }\r\n\r\n        protected PPT.Interfaces.Entities.");
+                    "          }\r\n        }\r\n\r\n        protected ");
+            
+            #line 428 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 428 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(" CreateTestEntity()\r\n        {\r\n            var entity = new PPT.Interfaces.Entit" +
-                    "ies.");
+            this.Write(" CreateTestEntity()\r\n        {\r\n            var entity = new ");
+            
+            #line 430 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 430 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -1156,15 +1343,28 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             
             #line default
             #line hidden
-            this.Write("\r\n            return entity;\r\n        }\r\n\r\n        protected PPT.Interfaces.Entit" +
-                    "ies.");
+            this.Write("\r\n            return entity;\r\n        }\r\n\r\n        protected ");
+            
+            #line 468 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 468 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(" AddTestEntity()\r\n        {\r\n            PPT.Interfaces.Entities.");
+            this.Write(" AddTestEntity()\r\n        {\r\n            ");
+            
+            #line 470 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 470 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -1173,7 +1373,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line hidden
             this.Write(" result = null;\r\n\r\n            var entity = CreateTestEntity();\r\n\r\n            va" +
                     "r dal = CreateDal();\r\n            result = dal.Insert(entity);\r\n\r\n            re" +
-                    "turn result;\r\n        }\r\n\r\n        private PPT.Interfaces.I");
+                    "turn result;\r\n        }\r\n\r\n        private ");
+            
+            #line 480 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.I");
             
             #line 480 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -1181,14 +1388,28 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             #line default
             #line hidden
             this.Write("Dal CreateDal()\r\n        {\r\n            var initParams = GetTestParams(\"DALInitPa" +
-                    "rams\");\r\n\r\n            PPT.Interfaces.I");
+                    "rams\");\r\n\r\n            ");
+            
+            #line 484 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.I");
             
             #line 484 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write("Dal dal = new PPT.DAL.MSSQL.");
+            this.Write("Dal dal = new ");
+            
+            #line 484 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.MSSQL.");
             
             #line 484 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestFunctionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));

@@ -11,7 +11,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PPT.Functions.Common
+namespace CRUD.Functions.Common
 {
     public class FunctionBase : IFunctionExceptionFilter
     {
@@ -33,7 +33,7 @@ namespace PPT.Functions.Common
                 statusCode = HttpStatusCode.BadRequest;
                 error.Message = exception.Message;
             }
-            else if (context.Exception.InnerException is PPT.Services.Common.Exceptions.UnauthorizedException)
+            else if (context.Exception.InnerException is CRUD.Services.Common.Exceptions.UnauthorizedException)
             {
                 statusCode = HttpStatusCode.Unauthorized;
                 error.Message = $"Access Denied: {context.Exception.InnerException.Message}";

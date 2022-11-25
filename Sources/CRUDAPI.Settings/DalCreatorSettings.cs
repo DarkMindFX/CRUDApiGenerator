@@ -17,6 +17,8 @@ namespace CRUDAPI.Settings
 
         public string RootNamespace { get; set; }
 
+        public string TemplateNamespace { get; set; }
+
         public bool IsSoftDelete { get; set; }
 
         public string SoftDeleteField { get; set; }

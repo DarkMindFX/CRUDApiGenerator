@@ -59,10 +59,7 @@ namespace CRUDAPI.Generator
         protected string GetOutputFolder()
         {
             string outFolder = Path.Combine(_genParams.Settings.OutputRoot, _genParams.Timestamp.ToString("yyyy-MM-dd HH-mm-ss"), _genParams.Settings.OutputFolders["SlnFileDest"]);
-            if (!Directory.Exists(outFolder))
-            {
-                Directory.CreateDirectory(outFolder);
-            }
+            outFolder = base.CreateDirectory(outFolder);
 
             return outFolder;
         }

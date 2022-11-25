@@ -1,4 +1,4 @@
-﻿namespace PPT.Functions.Common
+﻿namespace CRUD.Functions.Common
 {
     public class Constants
     {

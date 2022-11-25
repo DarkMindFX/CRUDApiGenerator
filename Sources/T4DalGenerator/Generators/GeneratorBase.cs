@@ -143,5 +143,16 @@ namespace CRUDAPI.Generators
         {
             return Guid.NewGuid().ToString().Replace("-", string.Empty).Replace("{", string.Empty).Replace("}", string.Empty);
         }
+
+        protected string CreateDirectory(string dirPath)
+        {
+            string dirAdjustedPath = dirPath.Replace(_genParams.Settings.TemplateNamespace, _genParams.Settings.RootNamespace);
+            if(!Directory.Exists(dirAdjustedPath))
+            {
+                Directory.CreateDirectory(dirAdjustedPath);
+            }
+
+            return dirAdjustedPath;
+        }
     }
 }

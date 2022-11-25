@@ -1,8 +1,8 @@
-﻿using PPT.Interfaces;
+﻿using CRUD.Interfaces;
 using System.Collections.Generic;
 
 
-namespace PPT.DAL.EF.Dals
+namespace CRUD.DAL.EF.Dals
 {
     public class InitParamsImpl : IInitParams
     {

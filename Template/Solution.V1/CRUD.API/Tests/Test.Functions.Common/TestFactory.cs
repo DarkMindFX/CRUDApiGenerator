@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
-namespace PPT.Test.Functions.Common
+namespace CRUD.Test.Functions.Common
 {
     public class TestFactory
     {

@@ -1,11 +1,11 @@
-﻿using PPT.Common;
-using PPT.Interfaces;
+﻿using CRUD.Common;
+using CRUD.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Text;
 
-namespace PPT.DAL.MSSQL
+namespace CRUD.DAL.MSSQL
 {
     class ConnectionTestDalInitParams : InitParamsImpl
     {

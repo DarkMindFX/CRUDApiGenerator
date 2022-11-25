@@ -1,12 +1,12 @@
-﻿using PPT.Interfaces;
+﻿using CRUD.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PPT.Services.Dal
+namespace CRUD.Services.Dal
 {
-    public class DalBaseImpl<TEntity, TDal> : IDalBase<TEntity> where TDal : PPT.Interfaces.IDalBase<TEntity>
+    public class DalBaseImpl<TEntity, TDal> : IDalBase<TEntity> where TDal : CRUD.Interfaces.IDalBase<TEntity>
     {
         protected TDal _dalImpl;
 

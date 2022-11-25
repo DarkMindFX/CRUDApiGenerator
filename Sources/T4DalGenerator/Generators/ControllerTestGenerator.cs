@@ -91,10 +91,7 @@ namespace CRUDAPI.Generators
                                             _genParams.Timestamp.ToString("yyyy-MM-dd HH-mm-ss"), 
                                             _genParams.Settings.OutputFolders["ControllerTests"],
                                             _genParams.Settings.APIVersion);
-            if (!Directory.Exists(outFolder))
-            {
-                Directory.CreateDirectory(outFolder);
-            }
+            outFolder = base.CreateDirectory(outFolder);
 
             return outFolder;
         }

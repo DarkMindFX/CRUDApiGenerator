@@ -51,7 +51,7 @@ namespace <#=RootNamespace #>.Functions.<#= table.Name #>.V1
             ILogger log)
         {
             IActionResult result = null;
-            var funHelper = new PPT.Functions.Common.FunctionHelper();
+            var funHelper = new <#=RootNamespace #>.Functions.Common.FunctionHelper();
             log.LogInformation($"{System.Reflection.MethodInfo.GetCurrentMethod()} Started");
 
             try
@@ -73,7 +73,7 @@ namespace <#=RootNamespace #>.Functions.<#= table.Name #>.V1
                     }
                     else
                     {
-                        result = new ObjectResult(funHelper.ToJosn(new PPT.DTO.Error()
+                        result = new ObjectResult(funHelper.ToJosn(new <#=RootNamespace #>.DTO.Error()
                         {
                             Code = (int)HttpStatusCode.InternalServerError,
                             Message = $"<#= table.Name #> was found, but item was not deleted [ids:{<#for(int i = 0; i < pks.Count; ++i)
@@ -88,7 +88,7 @@ namespace <#=RootNamespace #>.Functions.<#= table.Name #>.V1
                 }
                 else
                 {
-                    result = new ObjectResult(funHelper.ToJosn(new PPT.DTO.Error()
+                    result = new ObjectResult(funHelper.ToJosn(new <#=RootNamespace #>.DTO.Error()
                     {
                         Code = (int)HttpStatusCode.NotFound,
                         Message = $"<#= table.Name #> was not found [ids:{<#for(int i = 0; i < pks.Count; ++i)

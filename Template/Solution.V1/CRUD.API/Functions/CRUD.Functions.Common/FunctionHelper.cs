@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PPT.Interfaces;
+using CRUD.Interfaces;
 using System;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
@@ -8,7 +8,7 @@ using System.Net;
 using System.Reflection;
 using System.Text.Json;
 
-namespace PPT.Functions.Common
+namespace CRUD.Functions.Common
 {
     public class FunctionHelper
     {
@@ -21,7 +21,7 @@ namespace PPT.Functions.Common
             return result;
         }
 
-        public void SetCreatedModifiedProperties(object obj, string propNameDate, string propNameID, PPT.Interfaces.Entities.User currentUser = null)
+        public void SetCreatedModifiedProperties(object obj, string propNameDate, string propNameID, CRUD.Interfaces.Entities.User currentUser = null)
         {
             if (propNameDate != null && obj.GetType().GetProperty(propNameDate) != null)
             {
@@ -53,7 +53,7 @@ namespace PPT.Functions.Common
             }
             else if (errorMessage != null)
             {
-                result = new ObjectResult(ToJosn(new PPT.DTO.Error()
+                result = new ObjectResult(ToJosn(new CRUD.DTO.Error()
                 {
                     Code = (int)code,
                     Message = errorMessage

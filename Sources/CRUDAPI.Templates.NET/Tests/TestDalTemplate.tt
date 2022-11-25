@@ -17,6 +17,7 @@
 using <#= RootNamespace #>.DAL.MSSQL;
 using <#= RootNamespace #>.Interfaces;
 using <#= RootNamespace #>.Interfaces.Entities;
+using Test.<#= RootNamespace #>.DAL.MSSQL;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System;
@@ -27,7 +28,7 @@ using System.Data.SqlClient;
 		var pks = modelHelper.GetPKColumns(table);
 #>
 
-namespace Test.PPT.DAL.MSSQL
+namespace Test.<#= RootNamespace #>.DAL.MSSQL
 {
     public class Test<#= table.Name #>Dal : TestBase
     {

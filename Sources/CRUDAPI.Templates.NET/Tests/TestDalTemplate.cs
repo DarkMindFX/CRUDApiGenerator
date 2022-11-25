@@ -51,20 +51,34 @@ namespace CRUDAPI.Template.NET.Tests
             
             #line default
             #line hidden
-            this.Write(".Interfaces.Entities;\r\nusing Microsoft.Extensions.Configuration;\r\nusing NUnit.Fra" +
-                    "mework;\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Data.Sql" +
-                    "Client;\r\n\r\n");
+            this.Write(".Interfaces.Entities;\r\nusing Test.");
             
-            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 20 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.MSSQL;\r\nusing Microsoft.Extensions.Configuration;\r\nusing NUnit.Framework;\r\nu" +
+                    "sing System;\r\nusing System.Collections.Generic;\r\nusing System.Data.SqlClient;\r\n\r" +
+                    "\n");
+            
+            #line 27 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
 		var pks = modelHelper.GetPKColumns(table);
 
             
             #line default
             #line hidden
-            this.Write("\r\nnamespace Test.PPT.DAL.MSSQL\r\n{\r\n    public class Test");
+            this.Write("\r\nnamespace Test.");
             
-            #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.MSSQL\r\n{\r\n    public class Test");
+            
+            #line 33 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -74,14 +88,14 @@ namespace CRUDAPI.Template.NET.Tests
                     " initParams = config.GetSection(\"DALInitParams\").Get<TestDalInitParams>();\r\n\r\n  " +
                     "          I");
             
-            #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 41 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal dal = new ");
             
-            #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 41 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -91,21 +105,21 @@ namespace CRUDAPI.Template.NET.Tests
                     "     dal.Init(dalInitParams);\r\n        }\r\n\r\n        [Test]\r\n        public void " +
                     "");
             
-            #line 47 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 48 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("_GetAll_Success()\r\n        {\r\n            var dal = Prepare");
             
-            #line 49 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 50 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal(\"DALInitParams\");\r\n\r\n            IList<");
             
-            #line 51 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 52 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -113,14 +127,14 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("> entities = dal.GetAll();\r\n\r\n            Assert.IsNotNull(entities);\r\n          " +
                     "  Assert.IsNotEmpty(entities);\r\n        }\r\n\r\n        [TestCase(\"");
             
-            #line 57 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("\\\\000.GetDetails.Success\")]\r\n        public void ");
             
-            #line 58 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 59 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -128,7 +142,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("_GetDetails_Success(string caseName)\r\n        {\r\n            SqlConnection conn =" +
                     " OpenConnection(\"DALInitParams\");\r\n            var dal = Prepare");
             
-            #line 61 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 62 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -136,7 +150,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("Dal(\"DALInitParams\");\r\n\r\n            IList<object> objIds = SetupCase(conn, caseN" +
                     "ame);\r\n");
             
-            #line 64 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 65 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -146,28 +160,28 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                var param");
             
-            #line 68 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 69 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(" = (");
             
-            #line 68 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 69 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(pks[i])));
             
             #line default
             #line hidden
             this.Write(")objIds[");
             
-            #line 68 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 69 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i));
             
             #line default
             #line hidden
             this.Write("];\r\n");
             
-            #line 69 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 70 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
             }
 
@@ -176,33 +190,33 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("            ");
             
-            #line 72 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 73 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" entity = dal.Get(");
             
-            #line 72 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 73 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
  for(int i = 0; i < pks.Count; ++i) {
             
             #line default
             #line hidden
             this.Write("param");
             
-            #line 72 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 73 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             
-            #line 72 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 73 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 72 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 73 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 }
             
             #line default
@@ -210,7 +224,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write(");\r\n\r\n            TeardownCase(conn, caseName);\r\n\r\n            Assert.IsNotNull(e" +
                     "ntity);\r\n            ");
             
-            #line 77 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 78 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -222,14 +236,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("            Assert.IsNotNull(entity.");
             
-            #line 83 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 84 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n            ");
             
-            #line 84 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 85 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                     }
                 }
@@ -239,7 +253,7 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("\r\n            ");
             
-            #line 89 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 90 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -254,21 +268,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              Assert.AreEqual(DateTime.Parse(\"");
             
-            #line 98 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 99 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsGet[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\"), entity.");
             
-            #line 98 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 99 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n              ");
             
-            #line 99 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 100 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(columnType == typeof(string))
@@ -279,21 +293,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              Assert.AreEqual(\"");
             
-            #line 104 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 105 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsGet[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\", entity.");
             
-            #line 104 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 105 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n              ");
             
-            #line 105 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 106 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(columnType == typeof(bool))
@@ -304,21 +318,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              Assert.AreEqual(");
             
-            #line 110 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 111 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsGet[c.Name].ToString().ToLower()));
             
             #line default
             #line hidden
             this.Write(", entity.");
             
-            #line 110 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 111 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n              ");
             
-            #line 111 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 112 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(testValsGet[c.Name] != null)
@@ -329,21 +343,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              Assert.AreEqual(");
             
-            #line 116 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 117 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsGet[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty)));
             
             #line default
             #line hidden
             this.Write(", entity.");
             
-            #line 116 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 117 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n              ");
             
-            #line 117 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 118 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                     }
@@ -354,14 +368,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("        }\r\n\r\n        [Test]\r\n        public void ");
             
-            #line 125 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 126 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("_GetDetails_InvalidId()\r\n        {\r\n");
             
-            #line 127 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 128 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -371,14 +385,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                var param");
             
-            #line 131 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 132 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(" = Int64.MaxValue - 1;\r\n");
             
-            #line 132 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 133 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
             }
 
@@ -387,54 +401,54 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("            var dal = Prepare");
             
-            #line 135 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 136 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal(\"DALInitParams\");\r\n\r\n            ");
             
-            #line 137 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 138 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" entity = dal.Get(");
             
-            #line 137 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 138 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
  for(int i = 0; i < pks.Count; ++i) {
             
             #line default
             #line hidden
             this.Write("param");
             
-            #line 137 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 138 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             
-            #line 137 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 138 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 137 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 138 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write(");\r\n\r\n            Assert.IsNull(entity);\r\n        }\r\n\r\n        [TestCase(\"");
             
-            #line 142 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 143 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("\\\\010.Delete.Success\")]\r\n        public void ");
             
-            #line 143 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 144 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -442,7 +456,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("_Delete_Success(string caseName)\r\n        {\r\n            SqlConnection conn = Ope" +
                     "nConnection(\"DALInitParams\");\r\n            var dal = Prepare");
             
-            #line 146 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 147 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -450,7 +464,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("Dal(\"DALInitParams\");\r\n\r\n            IList<object> objIds = SetupCase(conn, caseN" +
                     "ame);\r\n");
             
-            #line 149 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 150 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -460,28 +474,28 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                var param");
             
-            #line 153 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 154 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(" = (");
             
-            #line 153 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 154 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(pks[i])));
             
             #line default
             #line hidden
             this.Write(")objIds[");
             
-            #line 153 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 154 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i));
             
             #line default
             #line hidden
             this.Write("];\r\n");
             
-            #line 154 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 155 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
             }
 
@@ -490,26 +504,26 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("            bool removed = dal.Delete(");
             
-            #line 157 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 158 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
  for(int i = 0; i < pks.Count; ++i) {
             
             #line default
             #line hidden
             this.Write("param");
             
-            #line 157 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 158 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             
-            #line 157 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 158 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 157 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 158 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 }
             
             #line default
@@ -517,21 +531,21 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write(");\r\n\r\n            TeardownCase(conn, caseName);\r\n\r\n            Assert.IsTrue(remo" +
                     "ved);\r\n        }\r\n\r\n        [Test]\r\n        public void ");
             
-            #line 165 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 166 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("_Delete_InvalidId()\r\n        {\r\n            var dal = Prepare");
             
-            #line 167 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 168 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal(\"DALInitParams\");\r\n");
             
-            #line 168 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 169 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -541,14 +555,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                var param");
             
-            #line 172 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 173 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(" = Int64.MaxValue - 1;\r\n");
             
-            #line 173 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 174 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
             }
 
@@ -557,40 +571,40 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("   \r\n            bool removed = dal.Delete(");
             
-            #line 177 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 178 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
  for(int i = 0; i < pks.Count; ++i) {
             
             #line default
             #line hidden
             this.Write("param");
             
-            #line 177 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 178 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             
-            #line 177 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 178 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 177 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 178 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write(");\r\n            Assert.IsFalse(removed);\r\n\r\n        }\r\n\r\n        [TestCase(\"");
             
-            #line 182 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 183 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("\\\\020.Insert.Success\")]\r\n        public void ");
             
-            #line 183 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 184 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -599,21 +613,21 @@ namespace CRUDAPI.Template.NET.Tests
                     "nConnection(\"DALInitParams\");\r\n            SetupCase(conn, caseName);\r\n\r\n       " +
                     "     var dal = Prepare");
             
-            #line 188 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 189 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal(\"DALInitParams\");\r\n\r\n            var entity = new ");
             
-            #line 190 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 191 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("();\r\n            ");
             
-            #line 191 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 192 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -628,21 +642,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 200 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 201 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = DateTime.Parse(\"");
             
-            #line 200 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 201 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\");\r\n              ");
             
-            #line 201 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 202 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(columnType == typeof(string))
@@ -653,21 +667,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 206 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 207 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = \"");
             
-            #line 206 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 207 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\";\r\n              ");
             
-            #line 207 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 208 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(columnType == typeof(bool))
@@ -678,21 +692,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 212 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 213 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 212 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 213 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString().ToLower()));
             
             #line default
             #line hidden
             this.Write(";              \r\n              ");
             
-            #line 213 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 214 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(testValsInsert[c.Name] != null)
@@ -703,21 +717,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 218 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 219 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 218 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 219 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty)));
             
             #line default
             #line hidden
             this.Write(";\r\n              ");
             
-            #line 219 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 220 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                     }
@@ -729,7 +743,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("            \r\n            entity = dal.Insert(entity);\r\n\r\n            TeardownCas" +
                     "e(conn, caseName);\r\n\r\n            Assert.IsNotNull(entity);\r\n            ");
             
-            #line 230 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 231 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -741,14 +755,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("            Assert.IsNotNull(entity.");
             
-            #line 236 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 237 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n            ");
             
-            #line 237 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 238 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                     }
                 }
@@ -758,7 +772,7 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("\r\n            ");
             
-            #line 242 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 243 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -773,21 +787,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              Assert.AreEqual(DateTime.Parse(\"");
             
-            #line 251 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 252 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\"), entity.");
             
-            #line 251 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 252 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n              ");
             
-            #line 252 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 253 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(columnType == typeof(string))
@@ -798,21 +812,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              Assert.AreEqual(\"");
             
-            #line 257 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 258 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\", entity.");
             
-            #line 257 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 258 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n              ");
             
-            #line 258 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 259 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(columnType == typeof(bool))
@@ -823,21 +837,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              Assert.AreEqual(");
             
-            #line 263 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 264 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString().ToLower()));
             
             #line default
             #line hidden
             this.Write(", entity.");
             
-            #line 263 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 264 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n              ");
             
-            #line 264 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 265 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(testValsInsert[c.Name] != null)
@@ -848,21 +862,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              Assert.AreEqual(");
             
-            #line 269 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 270 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsInsert[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty)));
             
             #line default
             #line hidden
             this.Write(", entity.");
             
-            #line 269 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 270 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n              ");
             
-            #line 270 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 271 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                     }
@@ -873,14 +887,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("\r\n        }\r\n\r\n        [TestCase(\"");
             
-            #line 278 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 279 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("\\\\030.Update.Success\")]\r\n        public void ");
             
-            #line 279 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 280 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -888,7 +902,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("_Update_Success(string caseName)\r\n        {\r\n            SqlConnection conn = Ope" +
                     "nConnection(\"DALInitParams\");\r\n            var dal = Prepare");
             
-            #line 282 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 283 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -896,7 +910,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("Dal(\"DALInitParams\");\r\n\r\n            IList<object> objIds = SetupCase(conn, caseN" +
                     "ame);\r\n");
             
-            #line 285 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 286 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -906,28 +920,28 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                var param");
             
-            #line 289 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 290 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(" = (");
             
-            #line 289 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 290 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(pks[i])));
             
             #line default
             #line hidden
             this.Write(")objIds[");
             
-            #line 289 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 290 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i));
             
             #line default
             #line hidden
             this.Write("];\r\n");
             
-            #line 290 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 291 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
             }
 
@@ -936,40 +950,40 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("            ");
             
-            #line 293 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 294 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" entity = dal.Get(");
             
-            #line 293 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 294 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
  for(int i = 0; i < pks.Count; ++i) {
             
             #line default
             #line hidden
             this.Write("param");
             
-            #line 293 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 294 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             
-            #line 293 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 294 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 293 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 294 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write(");\r\n\r\n            ");
             
-            #line 295 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 296 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -984,21 +998,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 304 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 305 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = DateTime.Parse(\"");
             
-            #line 304 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 305 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\");\r\n              ");
             
-            #line 305 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 306 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(columnType == typeof(string))
@@ -1009,21 +1023,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 310 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 311 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = \"");
             
-            #line 310 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 311 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\";\r\n              ");
             
-            #line 311 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 312 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(columnType == typeof(bool))
@@ -1034,21 +1048,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 316 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 317 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 316 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 317 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString().ToLower()));
             
             #line default
             #line hidden
             this.Write(";              \r\n              ");
             
-            #line 317 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 318 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(testValsUpdateAfter[c.Name] != null)
@@ -1059,21 +1073,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 322 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 323 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 322 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 323 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty)));
             
             #line default
             #line hidden
             this.Write(";\r\n              ");
             
-            #line 323 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 324 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                     }
@@ -1085,7 +1099,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("\r\n            entity = dal.Update(entity);\r\n\r\n            TeardownCase(conn, case" +
                     "Name);\r\n\r\n            Assert.IsNotNull(entity);\r\n            ");
             
-            #line 334 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 335 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -1097,14 +1111,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("            Assert.IsNotNull(entity.");
             
-            #line 340 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 341 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n            ");
             
-            #line 341 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 342 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                     }
                 }
@@ -1114,7 +1128,7 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("\r\n            ");
             
-            #line 346 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 347 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -1129,21 +1143,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              Assert.AreEqual(DateTime.Parse(\"");
             
-            #line 355 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 356 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\"), entity.");
             
-            #line 355 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 356 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n              ");
             
-            #line 356 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 357 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(columnType == typeof(string))
@@ -1154,21 +1168,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              Assert.AreEqual(\"");
             
-            #line 361 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 362 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\", entity.");
             
-            #line 361 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 362 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n              ");
             
-            #line 362 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 363 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(columnType == typeof(bool))
@@ -1179,21 +1193,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              Assert.AreEqual(");
             
-            #line 367 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 368 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString().ToLower()));
             
             #line default
             #line hidden
             this.Write(", entity.");
             
-            #line 367 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 368 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n              ");
             
-            #line 368 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 369 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(testValsUpdateAfter[c.Name] != null)
@@ -1204,21 +1218,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              Assert.AreEqual(");
             
-            #line 373 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 374 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty)));
             
             #line default
             #line hidden
             this.Write(", entity.");
             
-            #line 373 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 374 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(");\r\n              ");
             
-            #line 374 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 375 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                     }
@@ -1229,28 +1243,28 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("\r\n        }\r\n\r\n        [Test]\r\n        public void ");
             
-            #line 383 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 384 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("_Update_InvalidId()\r\n        {\r\n            var dal = Prepare");
             
-            #line 385 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 386 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal(\"DALInitParams\");\r\n\r\n            var entity = new ");
             
-            #line 387 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 388 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("();\r\n            ");
             
-            #line 388 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 389 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                 foreach(var c in table.Columns)
                 {
@@ -1265,21 +1279,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 397 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 398 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = DateTime.Parse(\"");
             
-            #line 397 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 398 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\");\r\n              ");
             
-            #line 398 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 399 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(columnType == typeof(string))
@@ -1290,21 +1304,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 403 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 404 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = \"");
             
-            #line 403 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 404 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString()));
             
             #line default
             #line hidden
             this.Write("\";\r\n              ");
             
-            #line 404 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 405 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(columnType == typeof(bool))
@@ -1315,21 +1329,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 409 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 410 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 409 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 410 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString().ToLower()));
             
             #line default
             #line hidden
             this.Write(";              \r\n              ");
             
-            #line 410 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 411 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                         else if(testValsUpdateAfter[c.Name] != null)
@@ -1340,21 +1354,21 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("              entity.");
             
-            #line 415 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 416 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.Name));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 415 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 416 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(testValsUpdateAfter[c.Name].ToString() + (columnType == typeof(decimal) ? "M" : string.Empty)));
             
             #line default
             #line hidden
             this.Write(";\r\n              ");
             
-            #line 416 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 417 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
                         }
                     }
@@ -1378,7 +1392,7 @@ namespace CRUDAPI.Template.NET.Tests
 
 ");
             
-            #line 434 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 435 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
     if(IsSoftDelete && table.HasColumn(SoftDeleteField))
     {
@@ -1388,14 +1402,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("        [TestCase(\"");
             
-            #line 438 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 439 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("\\\\040.Erase.Success\")]\r\n        public void ");
             
-            #line 439 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 440 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -1403,7 +1417,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("_Erase_Success(string caseName)\r\n        {\r\n            SqlConnection conn = Open" +
                     "Connection(\"DALInitParams\");\r\n            var dal = Prepare");
             
-            #line 442 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 443 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -1411,7 +1425,7 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write("Dal(\"DALInitParams\");\r\n\r\n            IList<object> objIds = SetupCase(conn, caseN" +
                     "ame);\r\n");
             
-            #line 445 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 446 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -1421,28 +1435,28 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                var param");
             
-            #line 449 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 450 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(" = (");
             
-            #line 449 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 450 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.DbTypeToType(pks[i])));
             
             #line default
             #line hidden
             this.Write(")objIds[");
             
-            #line 449 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 450 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i));
             
             #line default
             #line hidden
             this.Write("];\r\n");
             
-            #line 450 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 451 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
             }
 
@@ -1451,26 +1465,26 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("            bool removed = dal.Erase(");
             
-            #line 453 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 454 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
  for(int i = 0; i < pks.Count; ++i) {
             
             #line default
             #line hidden
             this.Write("param");
             
-            #line 453 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 454 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             
-            #line 453 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 454 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 453 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 454 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 }
             
             #line default
@@ -1478,21 +1492,21 @@ namespace CRUDAPI.Template.NET.Tests
             this.Write(");\r\n\r\n            TeardownCase(conn, caseName);\r\n\r\n            Assert.IsTrue(remo" +
                     "ved);\r\n        }\r\n\r\n        [Test]\r\n        public void ");
             
-            #line 461 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 462 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("_Erase_InvalidId()\r\n        {\r\n            var dal = Prepare");
             
-            #line 463 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 464 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal(\"DALInitParams\");\r\n");
             
-            #line 464 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 465 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
             for(int i = 0; i < pks.Count; ++i)
             {
@@ -1502,14 +1516,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("                var param");
             
-            #line 468 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 469 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             this.Write(" = Int64.MaxValue - 1;\r\n");
             
-            #line 469 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 470 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
             }
 
@@ -1518,33 +1532,33 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("   \r\n            bool removed = dal.Erase(");
             
-            #line 473 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 474 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
  for(int i = 0; i < pks.Count; ++i) {
             
             #line default
             #line hidden
             this.Write("param");
             
-            #line 473 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 474 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(pks[i].Name));
             
             #line default
             #line hidden
             
-            #line 473 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 474 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
             
             #line default
             #line hidden
             
-            #line 473 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 474 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write(");\r\n            Assert.IsFalse(removed);\r\n\r\n        }\r\n");
             
-            #line 477 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 478 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
     }
 
@@ -1553,14 +1567,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write("\r\n        protected I");
             
-            #line 481 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 482 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal Prepare");
             
-            #line 481 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 482 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -1569,14 +1583,14 @@ namespace CRUDAPI.Template.NET.Tests
                     "ration();\r\n            var initParams = config.GetSection(configName).Get<TestDa" +
                     "lInitParams>();\r\n\r\n            I");
             
-            #line 486 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 487 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write("Dal dal = new ");
             
-            #line 486 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
+            #line 487 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default

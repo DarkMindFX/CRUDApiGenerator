@@ -1,8 +1,8 @@
-﻿using PPT.Interfaces;
+﻿using CRUD.Interfaces;
 using System.Collections.Generic;
 
 
-namespace PPT.DAL.MSSQL
+namespace CRUD.DAL.MSSQL
 {
     public class InitParamsImpl : IInitParams
     {

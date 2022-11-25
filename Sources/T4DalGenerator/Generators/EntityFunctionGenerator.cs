@@ -52,6 +52,7 @@ namespace CRUDAPI.Generators
             var template = new FunctionCsprojTemplate();
             template.Session = new Dictionary<string, object>();
 
+            template.Session["RootNamespace"] = _genParams.Settings.RootNamespace;
             template.Session["table"] = _genParams.Table;
             template.Session["modelHelper"] = modelHelper;
             template.Initialize();
@@ -404,10 +405,7 @@ namespace CRUDAPI.Generators
                                             _genParams.Timestamp.ToString("yyyy-MM-dd HH-mm-ss"),
                                             _genParams.Settings.OutputFolders["Functions"],
                                             string.Format(_genParams.Settings.FunctionProjectNameTemplate, _genParams.Table.Name));
-            if (!Directory.Exists(outFolder))
-            {
-                Directory.CreateDirectory(outFolder);
-            }
+            outFolder = base.CreateDirectory(outFolder);
 
             return outFolder;
         }

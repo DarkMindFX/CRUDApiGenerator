@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PPT.Services.Common.Exceptions
+namespace CRUD.Services.Common.Exceptions
 {
     public class UnauthorizedException : Exception
     {

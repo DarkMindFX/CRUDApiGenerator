@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>PPT.Interfaces</RootNamespace>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>CRUD.Interfaces</RootNamespace>
   </PropertyGroup>
 
 </Project>

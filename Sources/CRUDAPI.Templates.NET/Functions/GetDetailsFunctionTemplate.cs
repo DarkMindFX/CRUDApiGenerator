@@ -199,16 +199,17 @@ for(int i = 0; i < pks.Count; ++i)
             
             #line default
             #line hidden
-            this.Write(@",
-            ILogger log)
-        {
-            IActionResult result = null;
-            var funHelper = new PPT.Functions.Common.FunctionHelper();
-            log.LogInformation($""{System.Reflection.MethodInfo.GetCurrentMethod()} Started"");
-
-            try
-            {
-                var e = _dal");
+            this.Write(",\r\n            ILogger log)\r\n        {\r\n            IActionResult result = null;\r" +
+                    "\n            var funHelper = new ");
+            
+            #line 55 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.Common.FunctionHelper();\r\n            log.LogInformation($\"{System.Ref" +
+                    "lection.MethodInfo.GetCurrentMethod()} Started\");\r\n\r\n            try\r\n          " +
+                    "  {\r\n                var e = _dal");
             
             #line 60 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -251,16 +252,17 @@ for(int i = 0; i < pks.Count; ++i)
             
             #line default
             #line hidden
-            this.Write(@"Convertor.Convert(e, null);
-
-                    result = new OkObjectResult(funHelper.ToJosn(dtos));
-                }
-                else
-                {
-                    result = new ObjectResult(funHelper.ToJosn(new PPT.DTO.Error()
-                    {
-                        Code = (int)HttpStatusCode.NotFound,
-                        Message = $""");
+            this.Write("Convertor.Convert(e, null);\r\n\r\n                    result = new OkObjectResult(fu" +
+                    "nHelper.ToJosn(dtos));\r\n                }\r\n                else\r\n               " +
+                    " {\r\n                    result = new ObjectResult(funHelper.ToJosn(new ");
+            
+            #line 72 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DTO.Error()\r\n                    {\r\n                        Code = (int)HttpStat" +
+                    "usCode.NotFound,\r\n                        Message = $\"");
             
             #line 75 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\GetDetailsFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));

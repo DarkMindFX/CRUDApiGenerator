@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using PPT.Interfaces;
-using PPT.API.Filters;
+using CRUD.Interfaces;
+using CRUD.API.Filters;
 
-namespace PPT.API.Controllers.V1
+namespace CRUD.API.Controllers.V1
 {
     [ApiController]
     [UnhandledExceptionFilter]
@@ -33,10 +33,10 @@ namespace PPT.API.Controllers.V1
         {
             var dto = new DTO.HealthResponse();
             dto.Timestamp = DateTime.UtcNow;
-            dto.Message = "PPT.API health details";
+            dto.Message = "CRUD.API health details";
 
             dto.Diagnostics = new Dictionary<string, object>();
-            dto.Diagnostics["PPT.API"] = "OK";
+            dto.Diagnostics["CRUD.API"] = "OK";
 
             bool canConnectDal = CanConnectDal();
             dto.Diagnostics["DAL"] = canConnectDal ? "OK" : "FAIL";

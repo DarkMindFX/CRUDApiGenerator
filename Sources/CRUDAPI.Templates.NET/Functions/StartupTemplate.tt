@@ -17,7 +17,7 @@ using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using <#= RootNamespace #>.Functions.Common;
 
-[assembly: FunctionsStartup(typeof(PPT.Functions.<#= table.Name #>.Startup))]
+[assembly: FunctionsStartup(typeof(<#=RootNamespace #>.Functions.<#= table.Name #>.Startup))]
 namespace <#=RootNamespace #>.Functions.<#= table.Name #>
 {
     public class Startup : FunctionStartupBase
@@ -28,7 +28,7 @@ namespace <#=RootNamespace #>.Functions.<#= table.Name #>
 
             var dal<#= table.Name #>Dal = InitDal<Interfaces.I<#= table.Name #>Dal>();
             builder.Services.AddSingleton<Interfaces.I<#= table.Name #>Dal>(dal<#= table.Name #>Dal);
-            builder.Services.AddSingleton<PPT.Services.Dal.I<#= table.Name #>Dal, PPT.Services.Dal.<#= table.Name #>Dal>();            
+            builder.Services.AddSingleton<<#=RootNamespace #>.Services.Dal.I<#= table.Name #>Dal, <#=RootNamespace #>.Services.Dal.<#= table.Name #>Dal>();            
         }
     }
 }

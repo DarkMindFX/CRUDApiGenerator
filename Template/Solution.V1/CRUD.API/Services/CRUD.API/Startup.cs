@@ -7,9 +7,9 @@ using System.ComponentModel.Composition.Hosting;
 using System.IO;
 using System.Reflection;
 using System.Text;
-using PPT.API.Helpers;
-using PPT.API.MiddleWare;
-using PPT.Interfaces;
+using CRUD.API.Helpers;
+using CRUD.API.MiddleWare;
+using CRUD.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,7 +17,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace PPT.API
+namespace CRUD.API
 {
     public class Startup
     {

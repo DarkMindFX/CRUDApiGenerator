@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPT.Test.Functions.Common
+namespace CRUD.Test.Functions.Common
 {
     public enum LoggerTypes
     {

@@ -47,7 +47,14 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             
             #line default
             #line hidden
-            this.Write(".Functions.Common;\r\n\r\n[assembly: FunctionsStartup(typeof(PPT.Functions.");
+            this.Write(".Functions.Common;\r\n\r\n[assembly: FunctionsStartup(typeof(");
+            
+            #line 20 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
             
             #line 20 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -98,14 +105,28 @@ var tableNamePlural = modelHelper.Pluralize( table.Name );
             
             #line default
             #line hidden
-            this.Write("Dal);\r\n            builder.Services.AddSingleton<PPT.Services.Dal.I");
+            this.Write("Dal);\r\n            builder.Services.AddSingleton<");
+            
+            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Services.Dal.I");
             
             #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write("Dal, PPT.Services.Dal.");
+            this.Write("Dal, ");
+            
+            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Services.Dal.");
             
             #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\StartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));

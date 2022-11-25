@@ -31,38 +31,155 @@ namespace CRUDAPI.Template.NET.Functions
             this.Write("\r\n");
             this.Write("\r\n<Project Sdk=\"Microsoft.NET.Sdk\">\r\n  <PropertyGroup>\r\n    <TargetFramework>net5" +
                     ".0</TargetFramework>\r\n    <AzureFunctionsVersion>v4</AzureFunctionsVersion>\r\n\t<_" +
-                    "FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput>\r\n\t<RootNamespace>PPT.F" +
-                    "unctions.");
+                    "FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput>\r\n\t<RootNamespace>");
+            
+            #line 15 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.");
             
             #line 15 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write("</RootNamespace>\r\n  </PropertyGroup>\r\n  <ItemGroup>\r\n    <PackageReference Includ" +
-                    "e=\"Microsoft.AspNetCore.Mvc.Abstractions\" Version=\"2.2.0\" />\r\n    <PackageRefere" +
-                    "nce Include=\"Microsoft.Azure.Functions.Extensions\" Version=\"1.1.0\" />\r\n    <Pack" +
-                    "ageReference Include=\"Microsoft.Azure.WebJobs.Core\" Version=\"3.0.30\" />\r\n    <Pa" +
-                    "ckageReference Include=\"Microsoft.Azure.WebJobs.Extensions.Http\" Version=\"3.0.12" +
-                    "\" />\r\n    <PackageReference Include=\"Microsoft.NET.Sdk.Functions\" Version=\"4.0.1" +
-                    "\" />\r\n  </ItemGroup>\r\n  <ItemGroup>\r\n    <ProjectReference Include=\"..\\..\\CRUD.D" +
-                    "AL.MSSQL\\CRUD.DAL.MSSQL.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\CRUD.DT" +
-                    "O\\CRUD.DTO.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\CRUD.Interfaces\\CRUD" +
-                    ".Interfaces.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\CRUD.Services.Commo" +
-                    "n\\CRUD.Services.Common.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\CRUD.Ser" +
-                    "vices.DAL\\CRUD.Services.DAL.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\CRU" +
-                    "D.Utils\\CRUD.Utils.csproj\" />\r\n    <ProjectReference Include=\"..\\CRUD.Functions." +
-                    "Common\\CRUD.Functions.Common.csproj\" />\r\n  </ItemGroup>\r\n  <ItemGroup>\r\n    <Com" +
-                    "pile Update=\"Properties\\Resources.Designer.cs\">\r\n      <DesignTime>True</DesignT" +
-                    "ime>\r\n      <AutoGen>True</AutoGen>\r\n      <DependentUpon>Resources.resx</Depend" +
-                    "entUpon>\r\n    </Compile>\r\n  </ItemGroup>\r\n  <ItemGroup>\r\n    <EmbeddedResource U" +
-                    "pdate=\"Properties\\Resources.resx\">\r\n      <Generator>ResXFileCodeGenerator</Gene" +
-                    "rator>\r\n      <LastGenOutput>Resources.Designer.cs</LastGenOutput>\r\n    </Embedd" +
-                    "edResource>\r\n  </ItemGroup>\r\n  <ItemGroup>\r\n    <None Update=\"host.json\">\r\n     " +
-                    " <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>\r\n    </None>\r\n   " +
-                    " <None Update=\"local.settings.json\">\r\n      <CopyToOutputDirectory>PreserveNewes" +
-                    "t</CopyToOutputDirectory>\r\n      <CopyToPublishDirectory>Never</CopyToPublishDir" +
-                    "ectory>\r\n    </None>\r\n  </ItemGroup>\r\n</Project>\r\n\r\n");
+            this.Write(@"</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include=""Microsoft.AspNetCore.Mvc.Abstractions"" Version=""2.2.0"" />
+    <PackageReference Include=""Microsoft.Azure.Functions.Extensions"" Version=""1.1.0"" />
+    <PackageReference Include=""Microsoft.Azure.WebJobs.Core"" Version=""3.0.30"" />
+    <PackageReference Include=""Microsoft.Azure.WebJobs.Extensions.Http"" Version=""3.0.12"" />
+    <PackageReference Include=""Microsoft.NET.Sdk.Functions"" Version=""4.0.1"" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include=""..\..\");
+            
+            #line 25 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.MSSQL\\");
+            
+            #line 25 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.MSSQL.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\");
+            
+            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DTO\\");
+            
+            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DTO.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\");
+            
+            #line 27 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces\\");
+            
+            #line 27 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\");
+            
+            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Services.Common\\");
+            
+            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Services.Common.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\");
+            
+            #line 29 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Services.DAL\\");
+            
+            #line 29 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Services.DAL.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\");
+            
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Utils\\");
+            
+            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Utils.csproj\" />\r\n    <ProjectReference Include=\"..\\");
+            
+            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Functions.Common\\");
+            
+            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(@".Functions.Common.csproj"" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update=""Properties\Resources.Designer.cs"">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update=""Properties\Resources.resx"">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update=""host.json"">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update=""local.settings.json"">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+</Project>
+
+");
             return this.GenerationEnvironment.ToString();
         }
         

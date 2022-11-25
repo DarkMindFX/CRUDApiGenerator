@@ -167,10 +167,10 @@ namespace T4DalGenerator
             string srcFolder = settings.SolutionTemplate;
             string destFolder = Path.Combine(settings.OutputRoot, timestamp.ToString("yyyy-MM-dd HH-mm-ss"));
 
-            CopyFilesRecursively(srcFolder, destFolder);
+            CopyFilesRecursively(srcFolder, destFolder, settings);
         }
 
-        private static void CopyFilesRecursively(string sourcePath, string targetPath)
+        private static void CopyFilesRecursively(string sourcePath, string targetPath, DalCreatorSettings settings)
         {
             //Now Create all of the directories
             foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories))
@@ -178,19 +178,27 @@ namespace T4DalGenerator
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write($"Copy folder: {dirPath} ...");
 
-                Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
+                string destDir = dirPath.Replace(sourcePath, targetPath);
+                destDir = destDir.Replace(settings.TemplateNamespace, settings.RootNamespace);
+
+                Directory.CreateDirectory(destDir);
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("DONE");
             }
 
             //Copy all the files & Replaces any files with the same name
-            foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
+            foreach (string srcPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write($"Copy file: {newPath} ...");
+                Console.Write($"Copy file: {srcPath} ...");
 
-                File.Copy(newPath, newPath.Replace(sourcePath, targetPath), true);
+                string newPath = srcPath.Replace(sourcePath, targetPath).Replace(settings.TemplateNamespace, settings.RootNamespace);
+
+                string fileContent = File.ReadAllText(srcPath);
+                fileContent = fileContent.Replace(settings.TemplateNamespace, settings.RootNamespace);
+
+                File.WriteAllText(newPath, fileContent, System.Text.Encoding.UTF8);
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("DONE");

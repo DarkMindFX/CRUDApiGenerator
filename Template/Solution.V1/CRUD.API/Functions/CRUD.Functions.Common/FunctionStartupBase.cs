@@ -1,5 +1,5 @@
 ﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
-using PPT.Interfaces;
+using CRUD.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPT.Functions.Common
+namespace CRUD.Functions.Common
 {
     public class FunctionStartupBase : FunctionsStartup
     {

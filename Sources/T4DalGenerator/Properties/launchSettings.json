@@ -2,7 +2,7 @@
   "profiles": {
     "T4DalGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "appsettings.ITM.json"
+      "commandLineArgs": "appsettings.Jaggu.json"
     }
   }
 }

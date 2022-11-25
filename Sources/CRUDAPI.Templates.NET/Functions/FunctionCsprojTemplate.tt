@@ -12,7 +12,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
 	<_FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput>
-	<RootNamespace>PPT.Functions.<#= table.Name #></RootNamespace>
+	<RootNamespace><#= RootNamespace #>.Functions.<#= table.Name #></RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
@@ -22,13 +22,13 @@
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CRUD.DAL.MSSQL\CRUD.DAL.MSSQL.csproj" />
-    <ProjectReference Include="..\..\CRUD.DTO\CRUD.DTO.csproj" />
-    <ProjectReference Include="..\..\CRUD.Interfaces\CRUD.Interfaces.csproj" />
-    <ProjectReference Include="..\..\CRUD.Services.Common\CRUD.Services.Common.csproj" />
-    <ProjectReference Include="..\..\CRUD.Services.DAL\CRUD.Services.DAL.csproj" />
-    <ProjectReference Include="..\..\CRUD.Utils\CRUD.Utils.csproj" />
-    <ProjectReference Include="..\CRUD.Functions.Common\CRUD.Functions.Common.csproj" />
+    <ProjectReference Include="..\..\\<#= RootNamespace #>.DAL.MSSQL\\<#= RootNamespace #>.DAL.MSSQL.csproj" />
+    <ProjectReference Include="..\..\\<#= RootNamespace #>.DTO\\<#= RootNamespace #>.DTO.csproj" />
+    <ProjectReference Include="..\..\\<#= RootNamespace #>.Interfaces\\<#= RootNamespace #>.Interfaces.csproj" />
+    <ProjectReference Include="..\..\\<#= RootNamespace #>.Services.Common\\<#= RootNamespace #>.Services.Common.csproj" />
+    <ProjectReference Include="..\..\\<#= RootNamespace #>.Services.DAL\\<#= RootNamespace #>.Services.DAL.csproj" />
+    <ProjectReference Include="..\..\\<#= RootNamespace #>.Utils\\<#= RootNamespace #>.Utils.csproj" />
+    <ProjectReference Include="..\\<#= RootNamespace #>.Functions.Common\\<#= RootNamespace #>.Functions.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">

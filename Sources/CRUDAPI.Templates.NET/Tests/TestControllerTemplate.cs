@@ -62,17 +62,30 @@ namespace CRUDAPI.Template.NET.Tests
             
             #line default
             #line hidden
-            this.Write("Controller : E2ETestBase, IClassFixture<WebApplicationFactory<PPT.API.Startup>>\r\n" +
-                    "    {\r\n        public Test");
+            this.Write("Controller : E2ETestBase, IClassFixture<WebApplicationFactory<");
+            
+            #line 32 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".API.Startup>>\r\n    {\r\n        public Test");
             
             #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(modelHelper.Pluralize(table.Name)));
             
             #line default
             #line hidden
-            this.Write("Controller(WebApplicationFactory<PPT.API.Startup> factory) : base(factory)\r\n     " +
-                    "   {\r\n            _testParams = GetTestParams(\"GenericControllerTestSettings\");\r" +
-                    "\n        }\r\n\r\n        [Fact]\r\n        public void ");
+            this.Write("Controller(WebApplicationFactory<");
+            
+            #line 34 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".API.Startup> factory) : base(factory)\r\n        {\r\n            _testParams = GetT" +
+                    "estParams(\"GenericControllerTestSettings\");\r\n        }\r\n\r\n        [Fact]\r\n      " +
+                    "  public void ");
             
             #line 40 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -117,7 +130,14 @@ namespace CRUDAPI.Template.NET.Tests
             
             #line default
             #line hidden
-            this.Write("_Get_Success()\r\n        {\r\n            PPT.Interfaces.Entities.");
+            this.Write("_Get_Success()\r\n        {\r\n            ");
+            
+            #line 61 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 61 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -416,14 +436,28 @@ namespace CRUDAPI.Template.NET.Tests
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(""Bearer"", respLogin.Token);
 
-                PPT.Interfaces.Entities.");
+                ");
+            
+            #line 187 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 187 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(" testEntity = CreateTestEntity();\r\n                PPT.Interfaces.Entities.");
+            this.Write(" testEntity = CreateTestEntity();\r\n                ");
+            
+            #line 188 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 188 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -538,7 +572,14 @@ namespace CRUDAPI.Template.NET.Tests
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(""Bearer"", respLogin.Token);
 
-                PPT.Interfaces.Entities.");
+                ");
+            
+            #line 235 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 235 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -761,7 +802,14 @@ namespace CRUDAPI.Template.NET.Tests
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(""Bearer"", respLogin.Token);
 
-                PPT.Interfaces.Entities.");
+                ");
+            
+            #line 315 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 315 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -931,7 +979,14 @@ namespace CRUDAPI.Template.NET.Tests
 
         #region Support methods
 
-        protected bool RemoveTestEntity(PPT.Interfaces.Entities.");
+        protected bool RemoveTestEntity(");
+            
+            #line 375 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 375 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -1034,15 +1089,28 @@ namespace CRUDAPI.Template.NET.Tests
             #line default
             #line hidden
             this.Write("            }\r\n            else\r\n            {\r\n                return false;\r\n  " +
-                    "          }\r\n        }\r\n\r\n        protected PPT.Interfaces.Entities.");
+                    "          }\r\n        }\r\n\r\n        protected ");
+            
+            #line 418 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 418 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(" CreateTestEntity()\r\n        {\r\n            var entity = new PPT.Interfaces.Entit" +
-                    "ies.");
+            this.Write(" CreateTestEntity()\r\n        {\r\n            var entity = new ");
+            
+            #line 420 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 420 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -1164,15 +1232,28 @@ namespace CRUDAPI.Template.NET.Tests
             
             #line default
             #line hidden
-            this.Write("\r\n            return entity;\r\n        }\r\n\r\n        protected PPT.Interfaces.Entit" +
-                    "ies.");
+            this.Write("\r\n            return entity;\r\n        }\r\n\r\n        protected ");
+            
+            #line 458 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 458 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(" AddTestEntity()\r\n        {\r\n            PPT.Interfaces.Entities.");
+            this.Write(" AddTestEntity()\r\n        {\r\n            ");
+            
+            #line 460 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.Entities.");
             
             #line 460 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -1181,7 +1262,14 @@ namespace CRUDAPI.Template.NET.Tests
             #line hidden
             this.Write(" result = null;\r\n\r\n            var entity = CreateTestEntity();\r\n\r\n            va" +
                     "r dal = CreateDal();\r\n            result = dal.Insert(entity);\r\n\r\n            re" +
-                    "turn result;\r\n        }\r\n\r\n        private PPT.Interfaces.I");
+                    "turn result;\r\n        }\r\n\r\n        private ");
+            
+            #line 470 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.I");
             
             #line 470 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -1189,14 +1277,28 @@ namespace CRUDAPI.Template.NET.Tests
             #line default
             #line hidden
             this.Write("Dal CreateDal()\r\n        {\r\n            var initParams = GetTestParams(\"DALInitPa" +
-                    "rams\");\r\n\r\n            PPT.Interfaces.I");
+                    "rams\");\r\n\r\n            ");
+            
+            #line 474 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Interfaces.I");
             
             #line 474 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write("Dal dal = new PPT.DAL.MSSQL.");
+            this.Write("Dal dal = new ");
+            
+            #line 474 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DAL.MSSQL.");
             
             #line 474 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
