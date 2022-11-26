@@ -45,7 +45,12 @@ namespace <#=RootNamespace #>.DAL.EF.Dals
         #>
 <#= modelHelper.DbTypeToType(pk) #> <#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>)
         {
-            var entity = dbContext.<#= modelHelper.Pluralize( table.Name ) #>.Find(ID);
+            var entity = dbContext.<#= modelHelper.Pluralize( table.Name ) #>.Find(<#
+            
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #><#=pk.Name #><#= i+1 < pks.Count ? "," : string.Empty #><#}#>);
             if (entity != null)
             {
 			<#

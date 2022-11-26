@@ -28,7 +28,6 @@ namespace CRUDAPI.Template.NET.Functions
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\n");
             this.Write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<root>\r\n\t<!-- \r\n\t\tMicrosoft ResX Schema\r\n" +
                     "\r\n\t\tVersion 1.3\r\n\r\n\t\tThe primary goals of this format is to allow a simple XML f" +
                     "ormat \r\n\t\tthat is mostly human readable. The generation and parsing of the \r\n\t\tv" +

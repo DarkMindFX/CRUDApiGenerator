@@ -59,7 +59,12 @@ namespace <#=RootNamespace #>.Functions.<#= table.Name #>.V1
 
                 var newEntity = <#= table.Name #>Convertor.Convert(dto);
 
-                var existingEntity = _dal<#= table.Name #>.Get(newEntity.ID);
+                var existingEntity = _dal<#= table.Name #>.Get(<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #>
+        newEntity.<#=pk.Name #> <#= i+1 < pks.Count ? "," : string.Empty #><#}#>);
 
                 if (existingEntity != null)
                 {
@@ -105,8 +110,12 @@ namespace <#=RootNamespace #>.Functions.<#= table.Name #>.V1
                     result = new ObjectResult(funHelper.ToJosn(new <#=RootNamespace #>.DTO.Error()
                     {
                         Code = (int)HttpStatusCode.NotFound,
-                        Message = $"<#= table.Name #> was not found [ids:{newEntity.ID}]"
-                    }))
+                        Message = $"<#= table.Name #> was not found [ids:{<#
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        #>newEntity.<#=pk.Name #> <#= i+1 < pks.Count ? "},{" : "}" #><#}#>]"}
+                    ))
                     {
                         StatusCode = (int)HttpStatusCode.NotFound
                     };

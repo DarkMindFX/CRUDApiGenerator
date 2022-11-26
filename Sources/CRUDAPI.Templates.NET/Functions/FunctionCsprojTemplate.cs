@@ -29,7 +29,7 @@ namespace CRUDAPI.Template.NET.Functions
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\n<Project Sdk=\"Microsoft.NET.Sdk\">\r\n  <PropertyGroup>\r\n    <TargetFramework>net5" +
+            this.Write("\r\n<Project Sdk=\"Microsoft.NET.Sdk\">\r\n  <PropertyGroup>\r\n    <TargetFramework>net6" +
                     ".0</TargetFramework>\r\n    <AzureFunctionsVersion>v4</AzureFunctionsVersion>\r\n\t<_" +
                     "FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput>\r\n\t<RootNamespace>");
             

@@ -194,10 +194,41 @@ using ");
             
             #line default
             #line hidden
-            this.Write(".Get(newEntity.ID);\r\n\r\n                if (existingEntity != null)\r\n             " +
-                    "   {\r\n                    ");
+            this.Write(".Get(");
             
-            #line 66 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            #line 62 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        
+            
+            #line default
+            #line hidden
+            this.Write("        newEntity.");
+            
+            #line 67 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 67 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "," : string.Empty));
+            
+            #line default
+            #line hidden
+            
+            #line 67 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n\r\n                if (existingEntity != null)\r\n                {\r\n           " +
+                    "         ");
+            
+            #line 71 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
 
 						if(table.HasColumn("CreatedDate"))
 						{
@@ -207,7 +238,7 @@ using ");
             #line hidden
             this.Write("\t\t\t\t\tnewEntity.CreatedDate = existingEntity.CreatedDate; \r\n\t\t\t\t\t");
             
-            #line 71 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            #line 76 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
 
 						}
 					
@@ -216,7 +247,7 @@ using ");
             #line hidden
             this.Write("\t\t\t\t\t");
             
-            #line 74 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            #line 79 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
 
 						if(table.HasColumn("CreatedByID"))
 						{
@@ -226,7 +257,7 @@ using ");
             #line hidden
             this.Write("\t\t\t\t\tnewEntity.CreatedByID = existingEntity.CreatedByID; \r\n\t\t\t\t\t");
             
-            #line 79 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            #line 84 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
 
 						}
 					
@@ -235,7 +266,7 @@ using ");
             #line hidden
             this.Write("\t\t\t\t\t");
             
-            #line 82 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            #line 87 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
 
 						if(table.HasColumn("ModifiedDate") || table.HasColumn("ModifiedByID"))
 						{
@@ -246,28 +277,28 @@ using ");
             #line hidden
             this.Write("\r\n\t\t\t\t\tfunHelper.SetCreatedModifiedProperties(newEntity, \r\n\t\t\t\t\t\t\t\t\t\t\t");
             
-            #line 89 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            #line 94 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.HasColumn("ModifiedDate") ? "\"ModifiedDate\"" : "null"));
             
             #line default
             #line hidden
             this.Write(", \r\n\t\t\t\t\t\t\t\t\t\t\t");
             
-            #line 90 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            #line 95 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.HasColumn("ModifiedByID") ? "\"ModifiedByID\"" : "null"));
             
             #line default
             #line hidden
             this.Write(",\r\n\t\t\t\t\t\t\t\t\t\t\t(");
             
-            #line 91 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            #line 96 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Interfaces.Entities.User)req.HttpContext.Items[\"User\"]); \r\n\t\t\t\t\t");
             
-            #line 92 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            #line 97 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
 
 						}
 					
@@ -276,21 +307,21 @@ using ");
             #line hidden
             this.Write("                   \r\n                    ");
             
-            #line 96 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            #line 101 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Interfaces.Entities.");
             
-            #line 96 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            #line 101 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
             this.Write(" entity = _dal");
             
-            #line 96 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            #line 101 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -298,7 +329,7 @@ using ");
             this.Write(".Update(newEntity);\r\n\r\n                    result = new ObjectResult(funHelper.To" +
                     "Josn(");
             
-            #line 98 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            #line 103 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -312,7 +343,7 @@ using ");
                 {
                     result = new ObjectResult(funHelper.ToJosn(new ");
             
-            #line 105 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            #line 110 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
@@ -320,13 +351,44 @@ using ");
             this.Write(".DTO.Error()\r\n                    {\r\n                        Code = (int)HttpStat" +
                     "usCode.NotFound,\r\n                        Message = $\"");
             
-            #line 108 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            #line 113 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
             #line hidden
-            this.Write(@" was not found [ids:{newEntity.ID}]""
-                    }))
+            this.Write(" was not found [ids:{");
+            
+            #line 113 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+
+            for(int i = 0; i < pks.Count; ++i)
+            {
+            var pk = pks[i];
+        
+            
+            #line default
+            #line hidden
+            this.Write("newEntity.");
+            
+            #line 117 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(pk.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 117 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1 < pks.Count ? "},{" : "}"));
+            
+            #line default
+            #line hidden
+            
+            #line 117 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\UpdateFunctionTemplate.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write(@"]""}
+                    ))
                     {
                         StatusCode = (int)HttpStatusCode.NotFound
                     };
