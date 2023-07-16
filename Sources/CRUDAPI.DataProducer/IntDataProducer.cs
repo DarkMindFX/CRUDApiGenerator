@@ -19,6 +19,7 @@ namespace CRUDAPI.DataProducer
         private IntDataProducerParams<T> _initParams;
         private HashSet<System.Type> _typesSupported;
         private Random _rnd;
+        private Random64 _rnd64;
 
         public IntDataProducer()
         {
@@ -30,16 +31,30 @@ namespace CRUDAPI.DataProducer
             }
 
             _rnd = new Random(DateTime.Now.Millisecond);
+            _rnd64 = new Random64(_rnd);
         }
 
         public void Init(IDataProducerParams initParams) => _initParams = initParams as IntDataProducerParams<T>;
 
         public T NextValue()
         {
-            return (T)Convert.ChangeType(
-                                _rnd.Next(   (int)Convert.ChangeType(_initParams.RangeStart, typeof(int)), 
-                                (int)Convert.ChangeType(_initParams.RangeEnd, typeof(int))), 
-                                typeof(T));
+            if (typeof(T) == typeof(Int64))
+            {
+                var rndLong = _rnd64.Next(
+                        (long)Convert.ChangeType(_initParams.RangeStart, typeof(long)),
+                        (long)Convert.ChangeType(_initParams.RangeEnd, typeof(long))
+                    );
+
+                return (T)Convert.ChangeType(rndLong, typeof(T));
+
+            }
+            else
+            {
+                return (T)Convert.ChangeType(
+                                    _rnd.Next((int)Convert.ChangeType(_initParams.RangeStart, typeof(int)),
+                                    (int)Convert.ChangeType(_initParams.RangeEnd, typeof(int))),
+                                    typeof(T));
+            }
         }
 
         #region Support methods
@@ -51,6 +66,7 @@ namespace CRUDAPI.DataProducer
             _typesSupported.Add(typeof(Int64));
         }
 
+        
        
         #endregion
     }
