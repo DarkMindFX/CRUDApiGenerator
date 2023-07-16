@@ -6,6 +6,7 @@ using System.IO;
 using CRUDAPI.Generators;
 using CRUDAPI.Settings;
 using CRUDAPI.Generator;
+using CRUDAPI.Interfaces;
 
 namespace T4DalGenerator
 {
@@ -32,7 +33,7 @@ namespace T4DalGenerator
 
                 ModelExtractor extractor = new ModelExtractor();
                 extractor.Init(initParams);
-                var tables = extractor.GetModel();
+                var tables = extractor.GetModel().Tables;
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("DONE");
@@ -48,7 +49,7 @@ namespace T4DalGenerator
                 Console.WriteLine("Preparing output folder...DONE");
 
                 Generate<StorProcsGenerator>(tables, settings, timestamp);
-                Generate<IDalsGenerator>(tables, settings, timestamp);
+                Generate<DalsGeneratorBase>(tables, settings, timestamp);
                 Generate<EntitiesGenerator>(tables, settings, timestamp);
                 Generate<SQLDalGenerator>(tables, settings, timestamp);
                 Generate<SQLDalTestGenerator>(tables, settings, timestamp);
@@ -59,7 +60,7 @@ namespace T4DalGenerator
                 GenerateSingle<EFContextGenerator>(tables, settings, timestamp);
 
                 Generate<DtosGenerator>(tables, settings, timestamp);
-                Generate<IServiceDalsGenerator>(tables, settings, timestamp);
+                Generate<ServiceDalsGeneratorBase>(tables, settings, timestamp);
                 Generate<ServiceDalsImplGenerator>(tables, settings, timestamp);
                 Generate<ConvertorsGenerator>(tables, settings, timestamp);
                 Generate<EntityControllerGenerator>(tables, settings, timestamp);
@@ -93,7 +94,9 @@ namespace T4DalGenerator
 
         }
 
-        private static IList<string> Generate<TGenerator>(IList<CRUDAPI.DataModel.DataTable> tables, DalCreatorSettings settings, DateTime timestamp) where TGenerator : IGenerator
+        private static IList<string> Generate<TGenerator>(  IList<CRUDAPI.DataModel.DataTable> tables, 
+                                                            DalCreatorSettings settings, 
+                                                            DateTime timestamp) where TGenerator : IGenerator
         {
 
             Console.ForegroundColor = ConsoleColor.White;

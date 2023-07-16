@@ -40,7 +40,7 @@ namespace CRUDAPI.DataModel
             return result;
         }
         
-        public string DbTypeToType(DataModel.DataColumn c)
+        public string DbTypeToType(DataColumn c)
         {
             string result = null;
             Type type = GetColumnType(c);
@@ -96,7 +96,7 @@ namespace CRUDAPI.DataModel
             return type;
         }
 
-        public Type GetColumnType(DataModel.DataColumn c)
+        public Type GetColumnType(DataColumn c)
         {
             Type type = GetColumnType(c.Type.SqlType);
             
@@ -164,9 +164,9 @@ namespace CRUDAPI.DataModel
             return table.Columns.Where(c => c.IsPK).ToList();
         }
 
-        public IList<DataModel.DataColumn> GetFKColumns(DataModel.DataTable table)
+        public IList<DataColumn> GetFKColumns(DataTable table)
         {
-            List<DataModel.DataColumn> fks = new List<DataModel.DataColumn>();
+            List<DataColumn> fks = new List<DataColumn>();
             fks.AddRange(table.Columns.Where(c => !string.IsNullOrEmpty(c.FKRefColumn)));
 
             return fks;

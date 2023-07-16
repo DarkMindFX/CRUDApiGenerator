@@ -105,7 +105,14 @@ namespace <#=RootNamespace #>.Test.E2E.Functions
                 var dto = JsonSerializer.Deserialize<<#=RootNamespace #>.DTO.<#= table.Name #>>(response.Value.ToString());
 
                 Assert.NotNull(dto);
-                Assert.AreEqual(testEntity.ID, dto.ID);
+<#
+	for(int i = 0; i < pks.Count; ++i)
+    {
+#>				Assert.AreEqual(testEntity.<#= pks[i].Name #>, dto.<#= pks[i].Name #>);
+<#
+	}
+#>
+                
             }
             finally
             {

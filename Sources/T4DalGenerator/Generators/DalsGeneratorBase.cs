@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace CRUDAPI.Generators
 {
-    public class IDalsGenerator : GeneratorBase
+    public class DalsGeneratorBase : GeneratorBase
     {
 
-        public IDalsGenerator(GeneratorParams genParams) : base(genParams)
+        public DalsGeneratorBase(GeneratorParams genParams) : base(genParams)
         {
         }
 

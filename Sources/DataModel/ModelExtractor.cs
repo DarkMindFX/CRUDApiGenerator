@@ -25,9 +25,9 @@ namespace CRUDAPI.DataModel
             this._initParams = initParams;
         }
 
-        public IList<DataTable> GetModel()
+        public DataModel GetModel()
         {
-            IList<DataTable> result = new List<DataTable>();
+            IList<DataTable> tables = new List<DataTable>();
 
             SqlConnection conn = new SqlConnection(_initParams.ConnectionString);
             conn.Open();
@@ -42,10 +42,12 @@ namespace CRUDAPI.DataModel
                         DataTable table = new DataTable();
                         table.Name = tName;
                         table.Columns = GetTableColumns(tName, conn);
-                        result.Add(table);
+                        tables.Add(table);
                     }
                 }
             }
+
+            var result = new DataModel() { Tables = tables };
 
             return result;
         }

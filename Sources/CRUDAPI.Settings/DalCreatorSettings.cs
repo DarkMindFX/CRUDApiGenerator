@@ -28,5 +28,7 @@ namespace CRUDAPI.Settings
         public Dictionary<string, string> OutputFolders { get; set; }
 
         public string FunctionProjectNameTemplate { get; set; }
+
+        public bool GenerateTestData { get; set; }
     }
 }

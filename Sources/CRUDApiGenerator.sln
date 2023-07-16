@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31025.194
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDAPI.Generator", "T4DalGenerator\CRUDAPI.Generator.csproj", "{B05A9231-5706-41D8-8253-BC42D2F11938}"
 EndProject
@@ -13,7 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDAPI.Template.React", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDAPI.Template.SQL", "CRUDAPI.Template.SQL\CRUDAPI.Template.SQL.csproj", "{44C79679-91FE-4F59-9BD6-82B98F9F053D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDAPI.Settings", "CRUDAPI.Settings\CRUDAPI.Settings.csproj", "{0A206483-903D-4BF1-89B6-91F5DD65610D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDAPI.Settings", "CRUDAPI.Settings\CRUDAPI.Settings.csproj", "{0A206483-903D-4BF1-89B6-91F5DD65610D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDAPI.Interfaces", "CRUDAPI.Interfaces\CRUDAPI.Interfaces.csproj", "{36DAD6EF-86F7-48CA-9CC5-B57781668C75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDAPI.DataProducer", "CRUDAPI.DataProducer\CRUDAPI.DataProducer.csproj", "{CEED39A9-6C3C-4766-8582-7A5F94336B1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0AAF608E-8D6A-4CA2-81AB-23CEFFC8C5A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.CRUDAPI.DataProducer", "Tests\Test.CRUDAPI.DataProducer\Test.CRUDAPI.DataProducer.csproj", "{17E8DB52-92F6-456E-97AA-E1733873D0EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,9 +53,24 @@ Global
 		{0A206483-903D-4BF1-89B6-91F5DD65610D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A206483-903D-4BF1-89B6-91F5DD65610D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A206483-903D-4BF1-89B6-91F5DD65610D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36DAD6EF-86F7-48CA-9CC5-B57781668C75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36DAD6EF-86F7-48CA-9CC5-B57781668C75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36DAD6EF-86F7-48CA-9CC5-B57781668C75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36DAD6EF-86F7-48CA-9CC5-B57781668C75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEED39A9-6C3C-4766-8582-7A5F94336B1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEED39A9-6C3C-4766-8582-7A5F94336B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEED39A9-6C3C-4766-8582-7A5F94336B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEED39A9-6C3C-4766-8582-7A5F94336B1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17E8DB52-92F6-456E-97AA-E1733873D0EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17E8DB52-92F6-456E-97AA-E1733873D0EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17E8DB52-92F6-456E-97AA-E1733873D0EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17E8DB52-92F6-456E-97AA-E1733873D0EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{17E8DB52-92F6-456E-97AA-E1733873D0EA} = {0AAF608E-8D6A-4CA2-81AB-23CEFFC8C5A9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4AFEC677-EDBA-4A58-AF86-BE6DE0BCD8AB}
