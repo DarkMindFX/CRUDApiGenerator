@@ -62,7 +62,7 @@ namespace Test.CRUDAPI.DataProducer
 
             var s = strProducer.NextValue();
 
-            Assert.AreEqual(s.Length, length);
+            Assert.LessOrEqual(s.Length, length);
         }
     }
 }

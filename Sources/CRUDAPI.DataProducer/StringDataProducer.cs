@@ -33,7 +33,8 @@ namespace CRUDAPI.DataProducer
         public string NextValue()
         {
             StringBuilder sb = new StringBuilder();
-            for(int i = 0; i < _initParams.MaxLength; ++i)
+            int length = _rnd.Next(1, (int)_initParams.MaxLength);
+            for(int i = 0; i < length; ++i)
             {
                 sb.Append((char)(32 + _rnd.Next(0, 90)));
             }
