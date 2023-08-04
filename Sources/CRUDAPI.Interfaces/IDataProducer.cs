@@ -10,9 +10,13 @@ namespace CRUDAPI.Interfaces
     {
     }
 
-    public interface IDataProducer<T>
+    public interface IDataProducer
     {
         void Init(IDataProducerParams initParams);
+    }
+
+    public interface IDataProducer<T> : IDataProducer
+    {        
         T NextValue();
     }
 }

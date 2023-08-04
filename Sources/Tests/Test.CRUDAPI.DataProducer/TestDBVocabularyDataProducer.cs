@@ -54,9 +54,6 @@ namespace Test.CRUDAPI.DataProducer
             Assert.IsNotNull(nextValue);
             Assert.True(nextValue.Length > 0);
             Assert.True(nextValue.Length <= maxLength);
-
-
-
         }
 
         #region Support methods
