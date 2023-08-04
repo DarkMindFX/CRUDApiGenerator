@@ -21,5 +21,7 @@ namespace CRUDAPI.DataModel
         {
             return this.Columns.FirstOrDefault(c => c.Name.Equals(name)) != null;
         }
+        
+        public IList<DataColumn> ForeignKeys { get; set; }
     }
 }

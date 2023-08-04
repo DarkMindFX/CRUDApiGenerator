@@ -43,6 +43,8 @@ namespace CRUDAPI.DataModel
                         table.Name = tName;
                         table.Columns = GetTableColumns(tName, conn);
                         tables.Add(table);
+
+                        table.ForeignKeys = table.Columns.Where(c => c.FKRefTable != null).ToList();
                     }
                 }
             }
