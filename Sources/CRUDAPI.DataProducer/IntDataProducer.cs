@@ -34,7 +34,16 @@ namespace CRUDAPI.DataProducer
             _rnd64 = new Random64(_rnd);
         }
 
-        public void Init(IDataProducerParams initParams) => _initParams = initParams as IntDataProducerParams<T>;
+        public void Init(IDataProducerParams initParams)
+        {
+            _initParams = initParams as IntDataProducerParams<T>;
+
+            if (_initParams == null)
+            {
+                throw new ArgumentException("Object of type IntDataProducerParams<Type> is expected");
+            }
+        }
+
 
         public T NextValue()
         {

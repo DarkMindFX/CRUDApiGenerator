@@ -26,6 +26,11 @@ namespace CRUDAPI.DataProducer
         {
             _initParams = initParams as StringDataProducerParams;
 
+            if (_initParams == null)
+            {
+                throw new ArgumentException("Object of type StringDataProducerParams<Type> is expected");
+            }
+
             if (_initParams.MaxLength == 0)
                 throw new ArgumentException("MaxLength must be greater than 0");
         }

@@ -26,6 +26,11 @@ namespace CRUDAPI.DataProducer
         {
             _initParams = initParams as DBVocabularyDataProducerParams;
 
+            if(_initParams == null)
+            {
+                throw new ArgumentException("Object of type DBVocabularyDataProducerParams is expected");
+            }
+
             if (string.IsNullOrEmpty(_initParams.ConnectionString))
                 throw new ArgumentException("ConnectionString is empty. Provide connection string to DB which contains vocabulary");
 
