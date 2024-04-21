@@ -1,11 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net4.8</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>CRUDAPI.Template.NET</RootNamespace>
     <AssemblyName>CRUDAPI.Template.NET</AssemblyName>
   </PropertyGroup>
-
   <ItemGroup>
     <None Include="API\EFContextTemplate.cs">
       <DesignTime>True</DesignTime>
@@ -18,21 +16,17 @@
       <DependentUpon>EFEntityConvertorTemplate.tt</DependentUpon>
     </None>
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="System.CodeDom" Version="5.0.0" />
     <PackageReference Include="System.Reactive.Runtime.Remoting" Version="5.0.0" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\DataModel\CRUDAPI.DataModel.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Reference Include="System.Web.Extensions" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Update="API\DtoTemplate.cs">
       <DependentUpon>DtoTemplate.tt</DependentUpon>
@@ -250,7 +244,6 @@
       <AutoGen>True</AutoGen>
     </Compile>
   </ItemGroup>
-
   <ItemGroup>
     <None Update="API\DtoTemplate.tt">
       <LastGenOutput>DtoTemplate.cs</LastGenOutput>
@@ -425,9 +418,7 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
     </None>
   </ItemGroup>
-
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
-
 </Project>

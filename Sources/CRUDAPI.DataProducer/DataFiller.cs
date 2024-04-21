@@ -20,6 +20,13 @@ namespace CRUDAPI.DataProducer
         }
 
         #region Support methods
+
+        /// <summary>
+        /// This methods orders tables based on their FK relations. Tables with less FK-s are put at the beginning on the list. 
+        /// Tables with FK-s will be put after the tables their are referencing.
+        /// </summary>
+        /// <param name="dataModel"></param>
+        /// <returns></returns>
         public IList<DataModel.DataTable> OrderTablesByDependencies(DataModel.DataModel dataModel)
         {
             List<DataModel.DataTable> result = new List<DataModel.DataTable>(dataModel.Tables);
@@ -29,7 +36,12 @@ namespace CRUDAPI.DataProducer
                 var currTable = dataModel.Tables[t];
                 for(int i = result.Count - 2; i >= 0; ++i)
                 {
-
+                    if (!currTable.ReferencesTable(dataModel.Tables[i].Name))
+                    {
+                        // swapping table positions
+                        dataModel.Tables[t] = dataModel.Tables[i];
+                        dataModel.Tables[i] = currTable;
+                    }
                 }
             }
 

@@ -23,5 +23,15 @@ namespace CRUDAPI.DataModel
         }
         
         public IList<DataColumn> ForeignKeys { get; set; }
+
+        public bool ReferencesTable(string tableName)
+        {
+            bool result = false;
+            if(ForeignKeys != null)
+            {
+                result = ForeignKeys.FirstOrDefault(fk => fk.FKRefTable.Equals(tableName)) != null;
+            }
+            return result;
+        }
     }
 }

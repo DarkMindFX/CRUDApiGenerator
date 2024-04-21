@@ -12,7 +12,7 @@ namespace CRUDAPI.Template.NET.Tests
     using System.Linq;
     using System.Text;
     using System.Collections.Generic;
-    using System.Web.Script.Serialization;
+    //using System.Web.Script.Serialization;
     using System;
     
     /// <summary>

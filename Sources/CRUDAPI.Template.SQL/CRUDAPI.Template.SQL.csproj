@@ -1,18 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net4.8</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="System.CodeDom" Version="5.0.0" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\DataModel\CRUDAPI.DataModel.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Update="SQL\StorProcEntityDelete.cs">
       <DependentUpon>StorProcEntityDelete.tt</DependentUpon>
@@ -50,7 +46,6 @@
       <AutoGen>True</AutoGen>
     </Compile>
   </ItemGroup>
-
   <ItemGroup>
     <None Update="SQL\StorProcEntityDelete.tt">
       <LastGenOutput>StorProcEntityDelete.cs</LastGenOutput>
@@ -81,9 +76,7 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
     </None>
   </ItemGroup>
-
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
-
 </Project>
