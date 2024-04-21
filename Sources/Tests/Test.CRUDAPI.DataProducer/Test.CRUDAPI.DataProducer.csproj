@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net481</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\CRUDAPI.DataProducer\CRUDAPI.DataProducer.csproj" />
     <ProjectReference Include="..\..\CRUDAPI.Interfaces\CRUDAPI.Interfaces.csproj" />
+    <ProjectReference Include="..\..\DataModel\CRUDAPI.DataModel.csproj" />
   </ItemGroup>
 
   <ItemGroup>

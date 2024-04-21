@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CRUDAPI.Interfaces")]
+[assembly: AssemblyTitle("CRUDAPI.DataProducer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CRUDAPI.Interfaces")]
-[assembly: AssemblyCopyright("Copyright ©  2024")]
+[assembly: AssemblyProduct("CRUDAPI.DataProducer")]
+[assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("175385d1-d29c-4cb8-ba5b-8e8007372b40")]
+[assembly: Guid("ceed39a9-6c3c-4766-8582-7a5f94336b1c")]
 
 // Version information for an assembly consists of the following four values:
 //
