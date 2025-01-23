@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using API.Exceptions;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Text.Json;
