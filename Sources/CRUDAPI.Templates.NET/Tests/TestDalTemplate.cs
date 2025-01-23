@@ -59,8 +59,8 @@ namespace CRUDAPI.Template.NET.Tests
             #line default
             #line hidden
             this.Write(".DAL.MSSQL;\r\nusing Microsoft.Extensions.Configuration;\r\nusing NUnit.Framework;\r\nu" +
-                    "sing System;\r\nusing System.Collections.Generic;\r\nusing System.Data.SqlClient;\r\n\r" +
-                    "\n");
+                    "sing System;\r\nusing System.Collections.Generic;\r\nusing Microsoft.Data.SqlClient;" +
+                    "\r\n\r\n");
             
             #line 27 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
 
