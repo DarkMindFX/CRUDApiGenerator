@@ -44,6 +44,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="appsettings.Quotes.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="appsettings.CRUDAPIGenTestDB.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -28,10 +28,9 @@ namespace CRUDAPI.Template.NET.Functions
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\n");
-            this.Write("\r\n{\r\n  \"profiles\": {\r\n    \"CRUD.Functions.");
+            this.Write("{\r\n  \"profiles\": {\r\n    \"CRUD.Functions.");
             
-            #line 13 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\LaunchSettingsTemplate.tt"
+            #line 11 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\LaunchSettingsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -179,7 +178,7 @@ if ((modelHelperValueAcquired == false))
         /// <summary>
         /// The string builder that generation-time code is using to assemble generated output
         /// </summary>
-        protected System.Text.StringBuilder GenerationEnvironment
+        public System.Text.StringBuilder GenerationEnvironment
         {
             get
             {

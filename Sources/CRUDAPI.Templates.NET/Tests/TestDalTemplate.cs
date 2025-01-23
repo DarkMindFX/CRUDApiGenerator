@@ -69,14 +69,14 @@ namespace CRUDAPI.Template.NET.Tests
             
             #line default
             #line hidden
-            this.Write("\r\nnamespace Test.");
+            this.Write("\r\nnamespace ");
             
             #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
-            this.Write(".DAL.MSSQL\r\n{\r\n    public class Test");
+            this.Write(".Test.DAL.MSSQL\r\n{\r\n    public class Test");
             
             #line 33 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Tests\TestDalTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
@@ -1859,7 +1859,7 @@ if ((SoftDeleteFieldValueAcquired == false))
         /// <summary>
         /// The string builder that generation-time code is using to assemble generated output
         /// </summary>
-        protected System.Text.StringBuilder GenerationEnvironment
+        public System.Text.StringBuilder GenerationEnvironment
         {
             get
             {

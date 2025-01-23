@@ -28,10 +28,9 @@ namespace CRUDAPI.Template.NET.Functions
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\n");
-            this.Write("\r\n{\r\n    \"version\": \"2.0\",\r\n    \"logging\": {\r\n        \"applicationInsights\": {\r\n " +
-                    "           \"samplingSettings\": {\r\n                \"isEnabled\": true,\r\n          " +
-                    "      \"excludedTypes\": \"Request\"\r\n            }\r\n        }\r\n    }\r\n}\r\n");
+            this.Write("{\r\n    \"version\": \"2.0\",\r\n    \"logging\": {\r\n        \"applicationInsights\": {\r\n   " +
+                    "         \"samplingSettings\": {\r\n                \"isEnabled\": true,\r\n            " +
+                    "    \"excludedTypes\": \"Request\"\r\n            }\r\n        }\r\n    }\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
@@ -131,7 +130,7 @@ if ((tableValueAcquired == false))
         /// <summary>
         /// The string builder that generation-time code is using to assemble generated output
         /// </summary>
-        protected System.Text.StringBuilder GenerationEnvironment
+        public System.Text.StringBuilder GenerationEnvironment
         {
             get
             {

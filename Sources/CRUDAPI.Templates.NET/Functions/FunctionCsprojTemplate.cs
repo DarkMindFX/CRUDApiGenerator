@@ -28,19 +28,18 @@ namespace CRUDAPI.Template.NET.Functions
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\n");
-            this.Write("\r\n<Project Sdk=\"Microsoft.NET.Sdk\">\r\n  <PropertyGroup>\r\n    <TargetFramework>net6" +
-                    ".0</TargetFramework>\r\n    <AzureFunctionsVersion>v4</AzureFunctionsVersion>\r\n\t<_" +
-                    "FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput>\r\n\t<RootNamespace>");
+            this.Write("<Project Sdk=\"Microsoft.NET.Sdk\">\r\n  <PropertyGroup>\r\n    <TargetFramework>net8.0" +
+                    "</TargetFramework>\r\n    <AzureFunctionsVersion>v4</AzureFunctionsVersion>\r\n\t<_Fu" +
+                    "nctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput>\r\n\t<RootNamespace>");
             
-            #line 15 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 13 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Functions.");
             
-            #line 15 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 13 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.Name));
             
             #line default
@@ -57,98 +56,98 @@ namespace CRUDAPI.Template.NET.Functions
   <ItemGroup>
     <ProjectReference Include=""..\..\");
             
-            #line 25 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 23 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".DAL.MSSQL\\");
             
-            #line 25 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 23 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".DAL.MSSQL.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\");
             
-            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 24 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".DTO\\");
             
-            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 24 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".DTO.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\");
             
-            #line 27 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 25 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Interfaces\\");
             
-            #line 27 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 25 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Interfaces.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\");
             
-            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Services.Common\\");
             
-            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 26 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Services.Common.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\");
             
-            #line 29 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 27 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Services.DAL\\");
             
-            #line 29 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 27 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Services.DAL.csproj\" />\r\n    <ProjectReference Include=\"..\\..\\");
             
-            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Utils\\");
             
-            #line 30 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 28 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Utils.csproj\" />\r\n    <ProjectReference Include=\"..\\");
             
-            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 29 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
             #line hidden
             this.Write(".Functions.Common\\");
             
-            #line 31 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
+            #line 29 "D:\Projects\CRUDApiGenerator\Sources\CRUDAPI.Templates.NET\Functions\FunctionCsprojTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RootNamespace));
             
             #line default
@@ -279,7 +278,7 @@ if ((tableValueAcquired == false))
         /// <summary>
         /// The string builder that generation-time code is using to assemble generated output
         /// </summary>
-        protected System.Text.StringBuilder GenerationEnvironment
+        public System.Text.StringBuilder GenerationEnvironment
         {
             get
             {

@@ -7,12 +7,10 @@
 <#@ parameter name="RootNamespace" type="System.String" #>
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
-
 <#
 var pks = modelHelper.GetPKColumns(table);
 var tableNamePlural = modelHelper.Pluralize( table.Name );
 #>
-
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;

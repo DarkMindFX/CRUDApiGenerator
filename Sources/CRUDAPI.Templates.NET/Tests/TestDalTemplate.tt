@@ -28,7 +28,7 @@ using System.Data.SqlClient;
 		var pks = modelHelper.GetPKColumns(table);
 #>
 
-namespace Test.<#= RootNamespace #>.DAL.MSSQL
+namespace <#= RootNamespace #>.Test.DAL.MSSQL
 {
     public class Test<#= table.Name #>Dal : TestBase
     {
