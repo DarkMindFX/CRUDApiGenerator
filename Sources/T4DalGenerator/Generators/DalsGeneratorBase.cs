@@ -40,6 +40,7 @@ namespace CRUDAPI.Generators
             template.Session["modelHelper"] = modelHelper;
             template.Session["IsSoftDelete"] = _genParams.Settings.IsSoftDelete;
             template.Session["SoftDeleteField"] = _genParams.Settings.SoftDeleteField;
+            template.Session["StorProcGenerateDrop"] = _genParams.Settings.StorProcGenerateDrop;
             template.Initialize();
 
             string content = template.TransformText();

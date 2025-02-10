@@ -2,7 +2,7 @@
   "profiles": {
     "T4DalGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "appsettings.Quotes.json"
+      "commandLineArgs": "appsettings.RoboAdvisor.json"
     }
   }
 }

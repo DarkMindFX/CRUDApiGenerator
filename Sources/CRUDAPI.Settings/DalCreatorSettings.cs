@@ -8,6 +8,11 @@ namespace CRUDAPI.Settings
 {
     public class DalCreatorSettings
     {
+        public DalCreatorSettings()
+        {
+            IsSoftDelete = false;
+            StorProcGenerateDrop = true;
+        }
         public string ProjectName { get; set; }
         public string ConnectionString { get; set; }
 
@@ -22,6 +27,8 @@ namespace CRUDAPI.Settings
         public bool IsSoftDelete { get; set; }
 
         public string SoftDeleteField { get; set; }
+
+        public bool StorProcGenerateDrop { get; set; }
 
         public string APIVersion { get; set; } 
 

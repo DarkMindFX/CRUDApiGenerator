@@ -4,14 +4,16 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".sql"#>
-
 <#@ parameter name="table" type="CRUDAPI.DataModel.DataTable" #>
 <#@ parameter name="modelHelper" type="CRUDAPI.DataModel.ModelHelper" #>
-
 <#@ parameter name="IsSoftDelete" type="System.Boolean" #>
 <#@ parameter name="SoftDeleteField" type="System.String" #>
+<#@ parameter name="StorProcGenerateDrop" type="System.Boolean" #>
 
-
+<#
+if(StorProcGenerateDrop)
+{
+#>
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -20,6 +22,10 @@ GO
 IF OBJECT_ID('p_<#= table.Name #>_Delete', 'P') IS NOT NULL
 DROP PROC [dbo].[p_<#= table.Name #>_Delete]
 GO
+
+<#
+}
+#>
 
 CREATE PROCEDURE [dbo].[p_<#= table.Name #>_Delete]
 	<#

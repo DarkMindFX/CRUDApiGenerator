@@ -44,6 +44,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="appsettings.RoboAdvisor.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="appsettings.Quotes.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

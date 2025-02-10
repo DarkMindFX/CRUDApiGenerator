@@ -126,6 +126,7 @@ namespace CRUDAPI.DataModel
             mapping.Add("text", System.Data.SqlDbType.Text);
             mapping.Add("ntext", System.Data.SqlDbType.NText);
             mapping.Add("xml", System.Data.SqlDbType.Xml);
+            mapping.Add("uniqueidentifier", System.Data.SqlDbType.UniqueIdentifier);
 
             type = mapping[c.Type.SqlType].ToString();
 
